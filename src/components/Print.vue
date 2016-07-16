@@ -16,14 +16,14 @@
       </a>
     </li>
     <li>
-      <a href="#" class="waves-effect waves-light">
+      <a @click="print()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden <br/> interna</p>
         </div>
       </a>
     </li>
     <li>
-      <a href="#" class="waves-effect waves-light">
+      <a @click="print()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden <br/> cliente</p>
         </div>
@@ -55,12 +55,12 @@
 
 <script>
 
-export default {
+  export default {
 
-  name: 'Print',
+    name: 'Print',
 
-  data() {
-    return {
+    data() {
+      return {
       // user: director.user
     }
   },
@@ -68,7 +68,13 @@ export default {
   methods: {
 
     print() {
-      // director.logout()
+      cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ",
+        function(success) { 
+          console.info("zbtprinter ok !!!!!!!!!"); 
+        }, function(fail) { 
+          console.info(fail, 'zbtprinter fail !!!!!!!!!'); 
+        }
+        );
     }
   },
 
