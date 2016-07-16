@@ -197,10 +197,14 @@
 	  '/available': {
 	    component: _Available2.default
 	  },
+	  // '*': {
+	  //   component: {
+	  //     template: '<div>' +
+	  //       '<center><p>Ruta no existe, Deje el trago.</p></center>' +
+	  //       '</div>'
+	  //   }
 	  '*': {
-	    component: {
-	      template: '<div>' + '<center><p>Ruta no existe, Deje el trago.</p></center>' + '</div>'
-	    }
+	    component: _EventPickup2.default
 	  }
 	});
 
@@ -14732,7 +14736,10 @@
 	    } else {
 
 	      this.user.authenticated = false;
-	      this.goPassport();
+	      // this.goPassport()
+	      //
+	      //
+	      //
 	    }
 	  },
 
