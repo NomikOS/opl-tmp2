@@ -1,12 +1,8 @@
 <template>
 	<router-view></router-view>
-	<Display></Display>
-	<Increment></Increment>      
 </template>
 
 <script>
-	import Display from './Display.vue'
-	import Increment from './Increment.vue'
 	import store from '../vuex/store'
 	import { pubnub } from '../libs/global'
 
@@ -14,8 +10,6 @@
 
 	export default {
 		components: {
-			Display: Display,
-			Increment: Increment
 		},
 
 		vuex: {

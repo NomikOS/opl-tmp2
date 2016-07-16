@@ -66,79 +66,79 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _StandBy = __webpack_require__(20);
+	var _StandBy = __webpack_require__(13);
 
 	var _StandBy2 = _interopRequireDefault(_StandBy);
 
-	var _Setup = __webpack_require__(32);
+	var _Setup = __webpack_require__(25);
 
 	var _Setup2 = _interopRequireDefault(_Setup);
 
-	var _EventPickup = __webpack_require__(35);
+	var _EventPickup = __webpack_require__(28);
 
 	var _EventPickup2 = _interopRequireDefault(_EventPickup);
 
-	var _EventDelivery = __webpack_require__(47);
+	var _EventDelivery = __webpack_require__(40);
 
 	var _EventDelivery2 = _interopRequireDefault(_EventDelivery);
 
-	var _LoadVehicle = __webpack_require__(50);
+	var _LoadVehicle = __webpack_require__(43);
 
 	var _LoadVehicle2 = _interopRequireDefault(_LoadVehicle);
 
-	var _HubReception = __webpack_require__(53);
+	var _HubReception = __webpack_require__(47);
 
 	var _HubReception2 = _interopRequireDefault(_HubReception);
 
-	var _HubTransfer = __webpack_require__(56);
+	var _HubTransfer = __webpack_require__(50);
 
 	var _HubTransfer2 = _interopRequireDefault(_HubTransfer);
 
-	var _Print = __webpack_require__(59);
+	var _Print = __webpack_require__(53);
 
 	var _Print2 = _interopRequireDefault(_Print);
 
-	var _Scan = __webpack_require__(62);
+	var _Scan = __webpack_require__(56);
 
 	var _Scan2 = _interopRequireDefault(_Scan);
 
-	var _Payment = __webpack_require__(65);
+	var _Payment = __webpack_require__(59);
 
 	var _Payment2 = _interopRequireDefault(_Payment);
 
-	var _Call = __webpack_require__(68);
+	var _Call = __webpack_require__(62);
 
 	var _Call2 = _interopRequireDefault(_Call);
 
-	var _Logout = __webpack_require__(71);
+	var _Logout = __webpack_require__(65);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _LoggedIn = __webpack_require__(74);
+	var _LoggedIn = __webpack_require__(68);
 
 	var _LoggedIn2 = _interopRequireDefault(_LoggedIn);
 
-	var _Redirecting = __webpack_require__(77);
+	var _Redirecting = __webpack_require__(71);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(80);
+	var _Available = __webpack_require__(74);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _vueRouter = __webpack_require__(83);
+	var _vueRouter = __webpack_require__(77);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(84);
+	var _vueResource = __webpack_require__(78);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _ls = __webpack_require__(26);
+	var _ls = __webpack_require__(19);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
@@ -10472,7 +10472,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(5)
-	__vue_template__ = __webpack_require__(19)
+	__vue_template__ = __webpack_require__(12)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10498,29 +10498,18 @@
 		value: true
 	});
 
-	var _Display = __webpack_require__(6);
-
-	var _Display2 = _interopRequireDefault(_Display);
-
-	var _Increment = __webpack_require__(10);
-
-	var _Increment2 = _interopRequireDefault(_Increment);
-
-	var _store = __webpack_require__(14);
+	var _store = __webpack_require__(6);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _global = __webpack_require__(16);
+	var _global = __webpack_require__(8);
 
-	var _actions = __webpack_require__(12);
+	var _actions = __webpack_require__(11);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-		components: {
-			Display: _Display2.default,
-			Increment: _Increment2.default
-		},
+		components: {},
 
 		vuex: {
 			actions: {
@@ -10571,174 +10560,12 @@
 	// </script>
 	// <template>
 	// 	<router-view></router-view>
-	// 	<Display></Display>
-	// 	<Increment></Increment>     
 	// </template>
 	//
 	// <script>
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(7)
-	__vue_template__ = __webpack_require__(9)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Display.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _getters = __webpack_require__(8);
-
-	exports.default = {
-	  vuex: {
-	    getters: {
-	      // note that you're passing the function itself, and not the value 'getCount()'
-	      counterValue: _getters.getCount
-	    }
-	  }
-	};
-	// </script>
-	// <template>
-	//   <div>
-	//     <h3>Count is {{ counterValue }}</h3>
-	//   </div>
-	// </template>
-	//
-	// <script>
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getCount = getCount;
-	exports.getOrder = getOrder;
-	// This getter is a function which just returns the count
-	// With ES6 you can also write it as:
-	// export const getCount = state => state.count
-
-	function getCount(state) {
-	  return state.count;
-	}
-	function getOrder(state) {
-	  return state.order;
-	}
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	module.exports = "\n  <div>\n    <h3>Count is {{ counterValue }}</h3>\n  </div>\n";
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(11)
-	__vue_template__ = __webpack_require__(13)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Increment.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _actions = __webpack_require__(12);
-
-	exports.default = {
-	  vuex: {
-	    actions: {
-	      increment: _actions.incrementCounter
-	    }
-	  }
-	};
-	// </script>
-	// <template>
-	//   <div>
-	//     <button @click='increment'>Increment +1</button>
-	//   </div>
-	// </template>
-	//
-	// <script>
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// An action will receive the store as the first argument.
-	// Since we are only interested in the dispatch (and optionally the state)
-	// we can pull those two parameters using the ES6 destructuring feature
-	var incrementCounter = exports.incrementCounter = function incrementCounter(_ref) {
-	  var dispatch = _ref.dispatch;
-	  var state = _ref.state;
-
-	  dispatch('INCREMENT', 10);
-	};
-	var loadData = exports.loadData = function loadData(_ref2, data) {
-	  var dispatch = _ref2.dispatch;
-	  var state = _ref2.state;
-
-	  dispatch('LOAD_DATA', data);
-	};
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	module.exports = "\n  <div>\n    <button @click='increment'>Increment +1</button>\n  </div>\n";
-
-/***/ },
-/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10751,7 +10578,7 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vuex = __webpack_require__(15);
+	var _vuex = __webpack_require__(7);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
@@ -10798,7 +10625,7 @@
 	});
 
 /***/ },
-/* 15 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11441,7 +11268,7 @@
 	}));
 
 /***/ },
-/* 16 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11451,15 +11278,15 @@
 	});
 	exports.pubnub = undefined;
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var pubnub = exports.pubnub = __webpack_require__(18)({
+	var pubnub = exports.pubnub = __webpack_require__(10)({
 	  publish_key: _common.credentials.pubnub.publishKey,
 	  subscribe_key: _common.credentials.pubnub.subscribeKey
 	});
 
 /***/ },
-/* 17 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -11488,7 +11315,7 @@
 	};
 
 /***/ },
-/* 18 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*! 3.15.2 / modern */
@@ -14501,18 +14328,43 @@
 	;
 
 /***/ },
-/* 19 */
+/* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<router-view></router-view>\n\t<Display></Display>\n\t<Increment></Increment>      \n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// An action will receive the store as the first argument.
+	// Since we are only interested in the dispatch (and optionally the state)
+	// we can pull those two parameters using the ES6 destructuring feature
+	var incrementCounter = exports.incrementCounter = function incrementCounter(_ref) {
+	  var dispatch = _ref.dispatch;
+	  var state = _ref.state;
+
+	  dispatch('INCREMENT', 10);
+	};
+	var loadData = exports.loadData = function loadData(_ref2, data) {
+	  var dispatch = _ref2.dispatch;
+	  var state = _ref2.state;
+
+	  dispatch('LOAD_DATA', data);
+	};
 
 /***/ },
-/* 20 */
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<router-view></router-view>\n";
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(21)
-	__vue_template__ = __webpack_require__(31)
+	__vue_script__ = __webpack_require__(14)
+	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -14529,7 +14381,7 @@
 	})()}
 
 /***/ },
-/* 21 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14538,7 +14390,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -14573,12 +14425,12 @@
 	// <script>
 
 /***/ },
-/* 22 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(23)
-	__vue_template__ = __webpack_require__(30)
+	__vue_script__ = __webpack_require__(16)
+	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -14595,7 +14447,7 @@
 	})()}
 
 /***/ },
-/* 23 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14604,11 +14456,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _global = __webpack_require__(16);
+	var _global = __webpack_require__(8);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14654,7 +14506,7 @@
 	// </script>
 
 /***/ },
-/* 24 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14669,13 +14521,13 @@
 
 	var _index = __webpack_require__(1);
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _utils = __webpack_require__(25);
+	var _utils = __webpack_require__(18);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _ls = __webpack_require__(26);
+	var _ls = __webpack_require__(19);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
@@ -14703,7 +14555,25 @@
 	   * Chek for phone setup and user director
 	   * --------------------------------------
 	   */
+	  fixPaths: function fixPaths() {
+	    if (_utils2.default.inDev()) {
+	      $('img').each(function () {
+	        var src = $(this).attr('src');
+
+	        console.info(src, 'first images sources');
+
+	        if (src.substr(0, 1) === '/') {
+	          src = src.substr(1, src.length);
+	        }
+	        console.info(src, 'after images sources');
+
+	        $(this).attr('src', src);
+	      });
+	    }
+	  },
 	  init: function init() {
+
+	    this.fixPaths();
 	    var access_token = _ls2.default.get('access_token');
 
 	    /**
@@ -14783,7 +14653,7 @@
 	};
 
 /***/ },
-/* 25 */
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14828,7 +14698,7 @@
 		},
 
 		inDev: function inDev() {
-			if (/(agente\.dev)/.test(location.href)) {
+			if (/(localhost\:8080)/.test(location.href)) {
 				return true;
 			}
 			return false;
@@ -14873,7 +14743,7 @@
 	};
 
 /***/ },
-/* 26 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14882,7 +14752,7 @@
 	    value: true
 	});
 
-	var _stringify = __webpack_require__(27);
+	var _stringify = __webpack_require__(20);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -14914,46 +14784,46 @@
 	};
 
 /***/ },
-/* 27 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(28), __esModule: true };
+	module.exports = { "default": __webpack_require__(21), __esModule: true };
 
 /***/ },
-/* 28 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(29);
+	var core = __webpack_require__(22);
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
 	};
 
 /***/ },
-/* 29 */
+/* 22 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '1.2.6'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 30 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div class=\"ac25-top-bar ac25-border-bottom\">\n       <div class=\"container\">\n          <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n          <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>          \n          <span class=\"right\">VER: 0.1</span>\n       </div><!-- end .container -->\n    </div><!-- end .top-bar -->\n";
 
 /***/ },
-/* 31 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"/html/images/loading.gif\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"/html/images/hand.png\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
 
 /***/ },
-/* 32 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(33)
-	__vue_template__ = __webpack_require__(34)
+	__vue_script__ = __webpack_require__(26)
+	__vue_template__ = __webpack_require__(27)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -14970,7 +14840,7 @@
 	})()}
 
 /***/ },
-/* 33 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14979,9 +14849,9 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _ls = __webpack_require__(26);
+	var _ls = __webpack_require__(19);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
@@ -15082,18 +14952,18 @@
 	// </script>
 
 /***/ },
-/* 34 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Seleccion vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>            \n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 35 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(36)
-	__vue_template__ = __webpack_require__(46)
+	__vue_script__ = __webpack_require__(29)
+	__vue_template__ = __webpack_require__(39)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15110,7 +14980,7 @@
 	})()}
 
 /***/ },
-/* 36 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15119,21 +14989,21 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(37);
+	var _NotificationIcon = __webpack_require__(30);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(40);
+	var _ButtonPrint = __webpack_require__(33);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(43);
+	var _ButtonScan = __webpack_require__(36);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -15242,12 +15112,12 @@
 	// </script>
 
 /***/ },
-/* 37 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(38)
-	__vue_template__ = __webpack_require__(39)
+	__vue_script__ = __webpack_require__(31)
+	__vue_template__ = __webpack_require__(32)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15264,7 +15134,7 @@
 	})()}
 
 /***/ },
-/* 38 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15314,18 +15184,18 @@
 	// </script>
 
 /***/ },
-/* 39 */
+/* 32 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<a v-if=\"notification\" @click=\"popup()\"><img class=\"\" src=\"/html/images/info.png\" /></a>\n";
 
 /***/ },
-/* 40 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(41)
-	__vue_template__ = __webpack_require__(42)
+	__vue_script__ = __webpack_require__(34)
+	__vue_template__ = __webpack_require__(35)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15342,7 +15212,7 @@
 	})()}
 
 /***/ },
-/* 41 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15367,18 +15237,18 @@
 	// </script>
 
 /***/ },
-/* 42 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\t<a v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n\t\t<img src=\"/html/images/print-big.png\" alt=\"\" />\n\t\t<p class=\"ac25-no-margin\">imprimir</p>\n\t</a>\n";
 
 /***/ },
-/* 43 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(44)
-	__vue_template__ = __webpack_require__(45)
+	__vue_script__ = __webpack_require__(37)
+	__vue_template__ = __webpack_require__(38)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15395,7 +15265,7 @@
 	})()}
 
 /***/ },
-/* 44 */
+/* 37 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15420,24 +15290,24 @@
 	// </script>
 
 /***/ },
-/* 45 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"/html/images/barcode-big-2.png\" alt=\"\" />\n    <p class=\"ac25-no-margin\">escanear</p>\n  </a>\n";
 
 /***/ },
-/* 46 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"/html/images/pickup.png\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 47 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(48)
-	__vue_template__ = __webpack_require__(49)
+	__vue_script__ = __webpack_require__(41)
+	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15454,7 +15324,7 @@
 	})()}
 
 /***/ },
-/* 48 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15463,21 +15333,21 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(37);
+	var _NotificationIcon = __webpack_require__(30);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(40);
+	var _ButtonPrint = __webpack_require__(33);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(43);
+	var _ButtonScan = __webpack_require__(36);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -15586,18 +15456,18 @@
 	// </script>
 
 /***/ },
-/* 49 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"/html/images/pickup.png\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 50 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(51)
-	__vue_template__ = __webpack_require__(52)
+	__vue_script__ = __webpack_require__(44)
+	__vue_template__ = __webpack_require__(46)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15614,7 +15484,7 @@
 	})()}
 
 /***/ },
-/* 51 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15623,25 +15493,25 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(37);
+	var _NotificationIcon = __webpack_require__(30);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(40);
+	var _ButtonPrint = __webpack_require__(33);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(43);
+	var _ButtonScan = __webpack_require__(36);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(8);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15739,18 +15609,40 @@
 	// </script>
 
 /***/ },
-/* 52 */
+/* 45 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getCount = getCount;
+	exports.getOrder = getOrder;
+	// This getter is a function which just returns the count
+	// With ES6 you can also write it as:
+	// export const getCount = state => state.count
+
+	function getCount(state) {
+	  return state.count;
+	}
+	function getOrder(state) {
+	  return state.order;
+	}
+
+/***/ },
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n      </li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"/html/images/print.png\"  class=\"left\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 53 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(54)
-	__vue_template__ = __webpack_require__(55)
+	__vue_script__ = __webpack_require__(48)
+	__vue_template__ = __webpack_require__(49)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15767,7 +15659,7 @@
 	})()}
 
 /***/ },
-/* 54 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15776,21 +15668,21 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(37);
+	var _NotificationIcon = __webpack_require__(30);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(40);
+	var _ButtonPrint = __webpack_require__(33);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(43);
+	var _ButtonScan = __webpack_require__(36);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -15872,18 +15764,18 @@
 	// </script>
 
 /***/ },
-/* 55 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"/html/images/print.png\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 56 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(57)
-	__vue_template__ = __webpack_require__(58)
+	__vue_script__ = __webpack_require__(51)
+	__vue_template__ = __webpack_require__(52)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15900,7 +15792,7 @@
 	})()}
 
 /***/ },
-/* 57 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15909,21 +15801,21 @@
 	  value: true
 	});
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(37);
+	var _NotificationIcon = __webpack_require__(30);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(40);
+	var _ButtonPrint = __webpack_require__(33);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(43);
+	var _ButtonScan = __webpack_require__(36);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -16005,18 +15897,18 @@
 	// </script>
 
 /***/ },
-/* 58 */
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"/html/images/print.png\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 59 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(60)
-	__vue_template__ = __webpack_require__(61)
+	__vue_script__ = __webpack_require__(54)
+	__vue_template__ = __webpack_require__(55)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16033,7 +15925,7 @@
 	})()}
 
 /***/ },
-/* 60 */
+/* 54 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16122,18 +16014,18 @@
 	// </script>
 
 /***/ },
-/* 61 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden <br/> interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden <br/> cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>comprobante <br/> de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
-/* 62 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(63)
-	__vue_template__ = __webpack_require__(64)
+	__vue_script__ = __webpack_require__(57)
+	__vue_template__ = __webpack_require__(58)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16150,7 +16042,7 @@
 	})()}
 
 /***/ },
-/* 63 */
+/* 57 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16214,18 +16106,18 @@
 	// </script>
 
 /***/ },
-/* 64 */
+/* 58 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a href=\"#\" class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"/html/images/barcode-big-2.png\" alt=\"\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a href=\"#\">\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">id 45889901</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\"> Sofa americano de 3 cuerpos  </p>\n      </div>\n    </div><!-- end content-inner-holder -->\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <img class=\"ac25-cam-image\" src=\"/html/images/cam-img.png\" alt=\"\" />\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 65 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(66)
-	__vue_template__ = __webpack_require__(67)
+	__vue_script__ = __webpack_require__(60)
+	__vue_template__ = __webpack_require__(61)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16242,7 +16134,7 @@
 	})()}
 
 /***/ },
-/* 66 */
+/* 60 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16273,18 +16165,18 @@
 	// </script>
 
 /***/ },
-/* 67 */
+/* 61 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div class=\"ac25-red-loading-section\">\n        <div class=\"container\">\n            <div class=\"ac25-loading-content\">\n               <h5>No disponible en esta versión</h5>\n            </div>\n        </div>\n    </div><!-- end red-loading-section -->\n    <footer class=\"ac25-newfoot\">\n        <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n";
 
 /***/ },
-/* 68 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(69)
-	__vue_template__ = __webpack_require__(70)
+	__vue_script__ = __webpack_require__(63)
+	__vue_template__ = __webpack_require__(64)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16301,7 +16193,7 @@
 	})()}
 
 /***/ },
-/* 69 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16310,7 +16202,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16368,18 +16260,18 @@
 	// <script>
 
 /***/ },
-/* 70 */
+/* 64 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
-/* 71 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(72)
-	__vue_template__ = __webpack_require__(73)
+	__vue_script__ = __webpack_require__(66)
+	__vue_template__ = __webpack_require__(67)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16396,7 +16288,7 @@
 	})()}
 
 /***/ },
-/* 72 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16407,11 +16299,11 @@
 
 	var _index = __webpack_require__(1);
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16452,18 +16344,18 @@
 	// <script>
 
 /***/ },
-/* 73 */
+/* 67 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
-/* 74 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(75)
-	__vue_template__ = __webpack_require__(76)
+	__vue_script__ = __webpack_require__(69)
+	__vue_template__ = __webpack_require__(70)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16480,7 +16372,7 @@
 	})()}
 
 /***/ },
-/* 75 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16489,11 +16381,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16525,18 +16417,18 @@
 	// </script>
 
 /***/ },
-/* 76 */
+/* 70 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Autentificado</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 77 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(78)
-	__vue_template__ = __webpack_require__(79)
+	__vue_script__ = __webpack_require__(72)
+	__vue_template__ = __webpack_require__(73)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16553,7 +16445,7 @@
 	})()}
 
 /***/ },
-/* 78 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16562,11 +16454,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16606,18 +16498,18 @@
 	// </script>
 
 /***/ },
-/* 79 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 80 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(81)
-	__vue_template__ = __webpack_require__(82)
+	__vue_script__ = __webpack_require__(75)
+	__vue_template__ = __webpack_require__(76)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16634,7 +16526,7 @@
 	})()}
 
 /***/ },
-/* 81 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16643,17 +16535,17 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(24);
+	var _director = __webpack_require__(17);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(22);
+	var _HeaderUserData = __webpack_require__(15);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _common = __webpack_require__(17);
+	var _common = __webpack_require__(9);
 
-	var _ls = __webpack_require__(26);
+	var _ls = __webpack_require__(19);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
@@ -16718,13 +16610,13 @@
 	// </script>
 
 /***/ },
-/* 82 */
+/* 76 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 83 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -19438,7 +19330,7 @@
 	}));
 
 /***/ },
-/* 84 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19447,11 +19339,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(85)(Vue);
+	    var _ = __webpack_require__(79)(Vue);
 
-	    Vue.url = __webpack_require__(86)(_);
-	    Vue.http = __webpack_require__(87)(_);
-	    Vue.resource = __webpack_require__(91)(_);
+	    Vue.url = __webpack_require__(80)(_);
+	    Vue.http = __webpack_require__(81)(_);
+	    Vue.resource = __webpack_require__(85)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -19483,7 +19375,7 @@
 	module.exports = install;
 
 /***/ },
-/* 85 */
+/* 79 */
 /***/ function(module, exports) {
 
 	/**
@@ -19569,7 +19461,7 @@
 
 
 /***/ },
-/* 86 */
+/* 80 */
 /***/ function(module, exports) {
 
 	/**
@@ -19732,16 +19624,16 @@
 
 
 /***/ },
-/* 87 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(88);
-	var jsonp = __webpack_require__(90);
-	var Promise = __webpack_require__(89);
+	var xhr = __webpack_require__(82);
+	var jsonp = __webpack_require__(84);
+	var Promise = __webpack_require__(83);
 
 	module.exports = function (_) {
 
@@ -19898,14 +19790,14 @@
 
 
 /***/ },
-/* 88 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(89);
+	var Promise = __webpack_require__(83);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -19955,7 +19847,7 @@
 
 
 /***/ },
-/* 89 */
+/* 83 */
 /***/ function(module, exports) {
 
 	/**
@@ -20171,14 +20063,14 @@
 
 
 /***/ },
-/* 90 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(89);
+	var Promise = __webpack_require__(83);
 
 	module.exports = function (_, options) {
 
@@ -20227,7 +20119,7 @@
 
 
 /***/ },
-/* 91 */
+/* 85 */
 /***/ function(module, exports) {
 
 	/**

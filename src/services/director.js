@@ -25,7 +25,26 @@ export default {
    * Chek for phone setup and user director
    * --------------------------------------
    */
+  fixPaths() {
+    if ( utils.inDev() ) {
+      $( 'img' ).each( function() {
+        var src = $( this ).attr( 'src' )
+
+        console.info(src, 'first images sources');
+
+        if ( src.substr(0,  1 ) === '/' ) {
+          src = src.substr( 1, src.length );
+        }
+        console.info(src, 'after images sources');
+
+        $( this ).attr( 'src', src );
+      } );
+    }
+  },
+
   init() {
+
+    this.fixPaths()
     var access_token = ls.get( 'access_token' )
 
     /**
@@ -35,14 +54,14 @@ export default {
 
       var setup = ls.get( 'setup' )
 
-        /**
-         * Setup is needed
-         */
+      /**
+       * Setup is needed
+       */
       if ( setup ) {
 
       } else {
 
-        console.info('going to setup');
+        console.info( 'going to setup' );
         return router.go( 'setup' )
       }
 
@@ -56,15 +75,15 @@ export default {
       /**
        *   initPubnub
        */
-        // this.initPubnub()
+      // this.initPubnub()
 
     } else {
 
       this.user.authenticated = false
-      // this.goPassport()
-      // 
-      // 
-      // 
+        // this.goPassport()
+        // 
+        // 
+        // 
 
     }
   },

@@ -37,7 +37,7 @@
 	},
 
 	inDev: function() {
-		if ( /(agente\.dev)/.test( location.href ) ) {
+		if ( /(localhost\:8080)/.test( location.href ) ) {
 			return true;
 		}
 		return false;
