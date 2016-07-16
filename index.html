@@ -15,13 +15,12 @@
 	<!-- JS -->
 	<script type="text/javascript" src="html/js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript" src="html/plugins/materialize/js/materialize.min.js"></script>
-	<script type="text/javascript" src="//cdn.pubnub.com/pubnub-3.15.2.js"></script>
 
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
 
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' https://* 'unsafe-inline' 'unsafe-eval'; media-src *" />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
