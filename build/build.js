@@ -14556,7 +14556,8 @@
 	   * --------------------------------------
 	   */
 	  fixPaths: function fixPaths() {
-	    if (_utils2.default.inDev()) {
+	    console.info(_utils2.default.inDev(), 'utils.inDev() ???');
+	    if (!_utils2.default.inDev()) {
 	      $('img').each(function () {
 	        var src = $(this).attr('src');
 

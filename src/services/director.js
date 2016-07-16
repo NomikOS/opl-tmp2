@@ -26,7 +26,8 @@ export default {
    * --------------------------------------
    */
   fixPaths() {
-    if ( utils.inDev() ) {
+    console.info(utils.inDev(), 'utils.inDev() ???');
+    if ( !utils.inDev() ) {
       $( 'img' ).each( function() {
         var src = $( this ).attr( 'src' )
 
