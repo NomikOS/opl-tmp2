@@ -1,0 +1,70 @@
+<template>
+	<router-view></router-view>
+	<Display></Display>
+	<Increment></Increment>      
+</template>
+
+<script>
+	import Display from './Display.vue'
+	import Increment from './Increment.vue'
+	import store from '../vuex/store'
+	import { pubnub } from '../libs/global'
+
+	import { loadData } from '../vuex/actions'
+
+	export default {
+		components: {
+			Display: Display,
+			Increment: Increment
+		},
+
+		vuex: {
+			actions: {
+				loadData: loadData
+			}
+		},
+
+		/**
+		 * Make this and all child components aware of the new store
+		 */
+		 store: store,
+
+		 ready: function() {
+		 	console.info( 'APP is ready ===================================' );
+		 	this.initPubnub()
+		 },
+
+		 methods: {
+		 	initPubnub: function() {
+
+		 		var that = this;
+		 		pubnub.subscribe( {
+		 			channel: 'notifications-opl',
+		 			message: function( message ) {
+		 				console.info( message );
+
+		 				var type = message.type
+
+		 				switch ( type ) {
+		 					case 'order-pickup':
+		 					that.loadData({
+		 						type: 'order',
+		 						content: message.order
+		 					} )
+		 					break;
+		 					case 'order-delivery':
+								// that.loadData( message.order )
+								break;
+								case 'shipment-notification':
+								// that.loadData( message.notification )
+								break;
+							}
+
+
+						}
+					} )
+
+		 	},
+		 }
+		}
+	</script>

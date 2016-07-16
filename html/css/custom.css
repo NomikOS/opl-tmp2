@@ -1,0 +1,728 @@
+/*--------------------------------------------------------------------*/
+/*                        	CUSTOM CSS 		 					  							  */
+/*--------------------------------------------------------------------*/
+
+
+	/*-------------------- GENERAL --------------------*/
+	html,body{
+	 margin:0;
+   padding:0;
+   height:100%;
+	 font-family: 'Montserrat', sans-serif;
+	}
+	body{
+		background: #fff;
+		color:#000;
+		overflow-x: hidden;
+	}
+  body.red{
+    background: #e61c37;
+  }
+	body a, body a:focus{
+		color: #384159;
+	}
+
+
+
+
+
+
+	/* ---- margins ---- */
+	.ac25-no-margin{
+		margin: 0 !important;
+	}
+	.ac25-mbottom0{
+		margin-bottom: 0;
+	}
+	.ac25-mbottom20{
+		margin-bottom: 20px;
+	}
+	.ac25-mbottom30{
+		margin-bottom: 30px;
+	}
+	.ac25-mbottom40{
+		margin-bottom: 40px;
+	}
+	.ac25-mbottom50{
+		margin-bottom: 50px;
+	}
+	.ac25-mbottom60{
+		margin-bottom: 60px;
+	}
+	.ac25-mbottom70{
+		margin-bottom: 70px;
+	}
+	.ac25-mbottom80{
+		margin-bottom: 80px;
+	}
+	.ac25-mbottom90{
+		margin-bottom: 90px;
+	}
+	.ac25-mbottom100{
+		margin-bottom: 100px;
+	}
+
+
+
+	.ac25-mtop0{
+		margin-top: 0px;
+	}
+	.ac25-mtop20{
+		margin-top: 20px;
+	}
+	.ac25-mtop30{
+		margin-top: 30px;
+	}
+	.ac25-mtop35{
+		margin-top: 35px;
+	}
+	.ac25-mtop40{
+		margin-top: 40px;
+	}
+	.ac25-mtop50{
+		margin-top: 50px;
+	}
+	.ac25-mtop60{
+		margin-top: 60px;
+	}
+	.ac25-mtop70{
+		margin-top: 70px;
+	}
+	.ac25-mtop100{
+		margin-top: 100px;
+	}
+	.ac25-mtop120{
+		margin-top: 120px;
+	}
+	.ac25-mtop140{
+		margin-top: 140px;
+	}
+
+
+	/* ------  paddings ------ */
+	.ac25-no-padding{
+		padding: 0 !important;
+	}
+	.ac25-no-padding-left{
+		padding-left: 0 !important;
+	}
+	.ac25-no-padding-right{
+		padding-right: 0 !important;
+	}
+	.ac25-no-padding-bottom{
+		padding-bottom: 0 !important;
+	}
+	.ac25-ptop15{
+		padding-top: 15px !important;
+	}
+	.ac25-ptop20{
+		padding-top: 20px;
+	}
+	.ac25-ptop30{
+		padding-top: 30px;
+	}
+	.ac25-pbottom40{
+		padding-bottom: 40px;
+	}
+	.ac25-pbottom50{
+		padding-bottom: 50px;
+	}
+
+
+	/* ------ Visibility ------ */
+	.ac25-display-block{
+		display: block !important;
+	}
+	.ac25-display-none{
+		display: none !important;
+	}
+
+
+
+
+
+/*------------------------------ COMMON CSS ------------------------------*/
+
+/* ----- Holders ----- */
+.ac25-content-global{
+	min-height:100%;
+	position:relative;
+}
+.ac25-content-inner-holder{
+	padding-bottom:120px;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.ac25-min-height-200{
+		min-height: 200px !important;
+}
+.ac25-min-height-650{
+	 min-height: 650px !important;
+}
+.ac25-min-height-750{
+		min-height: 750px !important;
+}
+.ac25-min-height-835{
+		min-height: 835px !important;
+}
+.ac25-min-height-950{
+	 min-height: 950px !important;
+}
+
+.ac25-content-inner-holder.ac25-min-height-650{
+		min-height: 650px;
+}
+.ac25-content-footer{
+	position:absolute;
+	bottom:-1px;
+	width:100%;
+	height:auto;
+}
+
+
+/* ------ Topbar ------ */
+.ac25-top-bar{
+	background: #e61c37;
+	color:#fff;
+	width: 100%;
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	font-size: 11px;
+}
+.ac25-top-bar.ac25-border-bottom{
+	border-bottom: 1px solid white;
+}
+
+/* ----- Top red teext ----- */
+	.ac25-top-red-text{
+		color:#e61c37;
+		float:left;
+		font-size: 33px;
+		margin-bottom: 5px;
+		margin-top: 30px;
+		margin-left: 10px;
+	}
+	.ac25-subtitle{
+		margin-top: 0;
+		font-size: 22px;
+	}
+
+
+
+/* ------ Sections ------ */
+.ac25-full-black{
+	float: left;
+}
+.ac25-half-black, .ac25-full-black{
+	width: 50%;
+	background: #000;
+	font-weight: 300;
+	font-size: 28px;
+	display: inline-block;
+	color:#fff !important;
+	text-align: center;
+	padding:50px 10px;
+}
+
+.ac25-full-black{
+	width: 100% !important;
+	border-top: 1px solid white;
+}
+.ac25-half-black.ac25-border{
+	border-right:1px solid #fff;
+}
+.ac25-half-red{
+	width: 50%;
+	background: #e61c37;
+	padding:50px 10px;
+	font-size: 28px;
+	display: inline-block;
+	color:#fff !important;
+	text-align: center;
+	border-bottom: 1px solid white;
+}
+.ac25-half-border-right{
+	border-right:1px solid white;
+}
+.ac25-half-black img, .ac25-half-red img, .ac25-full-black img{
+	width:85px;
+}
+
+
+/* 35 and 65 */
+.ac25-half-black.ac25-wd35{
+	width: 35% !important;
+}
+.ac25-half-red.ac25-wd65{
+	width: 65% !important;
+}
+
+
+
+
+/* ------ Square buttons ------ */
+.ac25-square-bottom-button{
+	height: 100px;
+	color:#fff;
+	width: 50%;
+}
+.ac25-square-bottom-button.ac25-red{
+	background: #e61c37;
+}
+.ac25-square-bottom-button.ac25-black{
+	background: #000;
+}
+
+
+
+
+/* ------ Red list ------ */
+.ac25-red-list{
+	list-style-type:decimal;
+	counter-reset: item;
+	margin-left: 45px;
+	float:left;
+}
+.ac25-red-list li{
+	margin-bottom: 45px;
+	padding-left:20px;
+	position: relative;
+	font-size: 30px;
+	line-height: 35px;
+}
+.ac25-red-list li::before{
+		content:counter(item) ". ";
+		counter-increment: item;
+		color:#fff;
+		font-size: 24px;
+		text-align: center;
+		background:#e61c37;
+		width: 45px;
+		height: 45px;
+		position: absolute;
+		left:-45px;
+		top:0;
+		z-index: -1;
+		padding-top: 3px;
+}
+.ac25-large-font{
+	font-size: 40px;
+}
+
+
+
+/* ------ Scan list ------ */
+.ac25-scan-list{
+	margin:0;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+.ac25-scan-list li{
+	width: 50%;
+	float:left;
+	height: 220px;
+}
+.ac25-scan-list li a{
+	width: 100%;
+	height: 100%;
+	display: table;
+	font-size: 18px;
+}
+.ac25-scan-list .ac25-scan-list-content{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.ac25-scan-list li:first-child a{
+	background: #000;
+	color: #fff;
+}
+.ac25-scan-list li:last-child a{
+	 color:#e61c37;
+}
+.ac25-scanlist-scan-code{
+	width: 85px;
+}
+.ac25-scanlist-scan-text{
+	font-size: 28px;
+}
+.ac25-sclanlist-scan-id{
+	font-size: 28px;
+}
+
+
+/* ------ Print button ------ */
+.ac25-print-button{
+	background: black;
+	padding:16px 15px;
+	width: 80%;
+	font-size: 21px;
+	margin-left: 10%;
+	text-align: center;
+	color:white;
+	margin-top: 30px;
+}
+.ac25-print-button span{
+	float:left;
+	margin-top:10px;
+}
+.ac25-print-button img{
+	width: 45px;
+	margin-right: 15px;
+}
+.ac25-print-button:focus, .ac25-print-button:visited{
+	color: white;
+}
+
+.ac25-red-print{
+	width: 80px;
+	height: 80px;
+	float:right;
+	background: #e61c37;
+	text-align: center;
+	padding:5px;
+}
+.ac25-red-print span,.ac25-red-print:focus span{
+	color:#fff !important;
+	font-size: 15px;
+}
+.ac25-red-print img{
+	width: 40px;
+}
+
+
+
+
+
+/*	------ Info list ------	*/
+.ac25-info-list{
+	float:left;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+.ac25-info-list.ac25-w100{
+	width: 100%;
+}
+.ac25-info-list li .ac25-big-green{
+		color: green;
+		font-size: 24px;
+		float:right;
+		margin-right: 20px;
+}
+.ac25-info-list li .ac25-big-red{
+		color: #e61c37;
+		font-size: 24px;
+		float: right;
+		margin-right: 20px;
+}
+
+/* 1 step list */
+.ac25-info-list li{
+	float:left;
+	width:100%;
+	border-bottom: 1px solid #e61c37;
+}
+
+/* 2 step list */
+.ac25-info-list.ac25-steps2 li:first-child{
+		width: 39.5%;
+		margin-right: 1%;
+}
+.ac25-info-list.ac25-steps2 li:last-child{
+		width: 59.5%;
+}
+
+/* 3 step list */
+.ac25-info-list.ac25-steps3 li{
+	width: 32.666%;
+}
+.ac25-info-list.ac25-steps3 li:first-child{
+	margin-right:1% !important;
+}
+.ac25-info-list.ac25-steps3 li:last-child{
+	margin-left:1% !important;
+}
+
+.ac25-info-list .ac25-info-list-title{
+	color: #e61c37;
+	margin-bottom: 0;
+	text-transform: uppercase;
+	font-size: 15px;
+	margin-left: 9px;
+	margin-top: 15px;
+}
+.ac25-info-list .ac25-info-list-content{
+	font-size: 22px;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+
+
+/*	------ calc-list ------	*/
+.ac25-calc-list{
+	float:left;
+	margin-bottom: 0;
+	margin-top: 0;
+	width: 32.666%;
+}
+.ac25-calc-list.ac25-spacing-middle{
+	margin:0 1% !important;
+}
+.ac25-calc-list li{
+	float:left;
+	width:100%;
+	border-bottom: 1px solid #e61c37;
+	padding-top: 15px;
+}
+.ac25-calc-list li:last-child{
+	border-bottom: none;
+}
+.ac25-calc-list .ac25-calc-list-title{
+	color: #e61c37;
+	margin-bottom: 0;
+	text-transform: uppercase;
+	font-size: 15px;
+	margin-left: 12px;
+	margin-top: 15px;
+}
+.ac25-calc-list .ac25-calc-list-content{
+	font-size: 22px;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+
+/*	------ calc-list ------	*/
+.ac25-payment-image{
+		max-width: 300px !important;
+		width: 100% !important;
+}
+
+
+
+/*------------------------------ PAGE 1 ------------------------------*/
+.ac25-newfoot{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	height: 143px;
+}
+.ac25-newfoot.ac25-height-auto{
+	height: auto !important;
+}
+.ac25-red-loading-section{
+	width: 100%;
+	height: 100%;
+	background: #e61c37;
+	color:#fff !important;
+	text-align: center;
+	position: relative;
+}
+.ac25-loading-content{
+	min-width: 200px;
+  position: absolute;
+	top:35%;
+	transform: translateY(-50%);
+	left: 49%;
+	transform: translateX(-50%);
+}
+.ac25-loading-content h5{
+	font-size: 26px;
+	margin-bottom: 15px;
+}
+.ac25-top-right-hand{
+	 position: absolute;
+	 top:30px;
+	 right:7%;
+	 max-width: 80px;
+}
+.ac25-top-right-hand.ac25-z-1{
+	/* nomikos: jode los click*/
+	/*z-index: -1;*/
+}
+
+
+
+
+
+/*------------------------------ PAGE 3 ------------------------------*/
+.ac25-page-top-logo{
+	margin-top: 10px;
+	max-width: 215px;
+}
+.ac25-order-number-info{
+	font-size: 18px;
+	margin-top: 0;
+}
+.ac25-order-number-info a{
+	float:left;
+	margin-left: 25px;
+}
+.ac25-order-number-info span{
+	float:left;
+	margin-top: 7px;
+	margin-left: 20px;
+	font-size: 22px;
+}
+
+
+
+
+/*------------------------------ PAGE Main Menu ------------------------------*/
+.ac25-main-menu{
+	margin:0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	float:left;
+	box-sizing: border-box;
+}
+.ac25-main-menu li{
+	width: 50%;
+	height: 28.16666%;
+	float:left;
+	background: #e61c37;
+	border-bottom:1px solid #fff;
+}
+.ac25-main-menu li:last-child{
+	height: 15.5%;
+}
+.ac25-main-menu li a{
+	display: table;
+	width: 100%;
+	height: 100%;
+	float: left;
+	color:#fff;
+	font-size: 28px;
+}
+.ac25-main-menu li a img{
+	width: 85px;
+}
+.ac25-main-menu .ac25-main-menu-content{
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+.ac25-main-menu li a p{
+	margin:0;
+}
+.ac25-main-menu li:nth-child(2n){
+	border-left:1px solid #fff;
+}
+.ac25-main-menu li:first-child{
+	background: #000;
+}
+.ac25-main-menu li:last-child{
+	width: 100%;
+	background: #000;
+	border-bottom:none;
+}
+
+
+
+/*------------------------------ PAGE 5 ------------------------------*/
+.ac25-mid-page-paragraph{
+	font-size: 28px;
+	float: left;
+	margin-top: 70px;
+	margin-bottom: 40px;
+	width: 100%;
+	text-align: center;
+}
+.ac25-red-id-text{
+	font-size: 28px;
+	color:#e61c37;
+}
+.ac25-cam-image{
+	float:left;
+	width: 100%;
+	max-height: 380px;
+}
+.ac25-top-check-title{
+	font-size: 35px;
+}
+
+/*--------------------------------------------------------------------*/
+/*                          RESPONSIVE 		 					  							  */
+/*--------------------------------------------------------------------*/
+
+@media only screen and (min-width:960px) and (max-width:1200px) {}
+
+@media only screen and (min-width:768px) and (max-width:959px) {}
+
+@media only screen and (min-width:480px) and (max-width:767px) {}
+
+@media(max-width:479px) {
+
+	/* Red text */
+	.ac25-top-red-text{
+		font-size: 21px;
+	}
+
+	/* Red list */
+	.ac25-red-list li{
+		font-size: 19px;
+	}
+
+	/* Print button */
+	.ac25-print-button{
+		width: 100% !important;
+		margin:0;
+		font-size: 12px;
+	}
+
+}
+
+
+
+
+
+
+/* Custom Query */
+@media (max-width:350px) {
+
+		/* De pagos title */
+		.ac25-de-pagos{
+			font-size: 18px;
+		}
+
+		/* Scan List */
+		.ac25-scan-list{
+			margin-top: 23px;
+		}
+
+		/* Topbar */
+		.ac25-top-bar .ac25-right{
+			float:left !important;
+			width: 100%;
+		}
+
+		/* Top right hand */
+		.ac25-top-right-hand{
+				top:50px;
+				width: 40px;
+				right: 5%;
+		}
+
+		/* Loading Top right hand */
+		.ac25-top-right-hand.ac25-loading{
+				top:70px;
+		}
+}
+
+
+.ac25-full-red-custom{
+	width: 100%;
+	background: #e61c37;
+	padding:30px 10px;
+	font-size: 28px;
+	display: inline-block;
+	color:#fff !important;
+	text-align: center;
+	border-bottom: 1px solid white;
+}
