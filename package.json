@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Aplicación de operador logístico",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot"
+    "dev": "webpack-dev-server --inline --hot",
+    "build":"webpack --watch"
   },
   "author": "igor.parra@agente.cl",
   "license": "MIT",
