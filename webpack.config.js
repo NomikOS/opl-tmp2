@@ -24,5 +24,17 @@ entry: ['./src/index.js'],
   babel: {
     presets: ['es2015'],
     plugins: ['transform-runtime']
-  }
+  },
+  // plugins: [
+  //   new webpack.DefinePlugin({
+  //     'process.env': {
+  //       NODE_ENV: '"production"'
+  //     }
+  //   }),
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     compress: {
+  //       warnings: false
+  //     }
+  //   })
+  // ]  
 }

@@ -74,12 +74,14 @@ router.map( {
   '/available': {
     component: Available
   },
+  // '*': {
+  //   component: {
+  //     template: '<div>' +
+  //       '<center><p>Ruta no existe, Deje el trago.</p></center>' +
+  //       '</div>'
+  //   }
   '*': {
-    component: {
-      template: '<div>' +
-        '<center><p>Ruta no existe, Deje el trago.</p></center>' +
-        '</div>'
-    }
+    component: EventPickup
   }
 } )
 

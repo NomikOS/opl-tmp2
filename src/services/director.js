@@ -61,7 +61,10 @@ export default {
     } else {
 
       this.user.authenticated = false
-      this.goPassport()
+      // this.goPassport()
+      // 
+      // 
+      // 
 
     }
   },

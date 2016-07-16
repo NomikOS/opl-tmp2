@@ -11477,7 +11477,6 @@
 	};
 
 	var urls = exports.urls = {
-	  // app: location.origin + location.pathname,
 	  app: 'http://localhost:8080/#!',
 	  passport_website: 'http://passport.testing.agente.cl/login2.html',
 	  passport_api: 'http://passport.api.testing.agente.cl',
