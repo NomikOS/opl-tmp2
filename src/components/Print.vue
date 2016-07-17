@@ -54,12 +54,12 @@
 </template>
 
 <script>
-export default {
+  export default {
 
-  name: 'Print',
+    name: 'Print',
 
-  data() {
-    return {
+    data() {
+      return {
       // user: director.user
     }
   },
@@ -85,10 +85,10 @@ export default {
     print() {
       var mac = 'AC:3F:A4:56:66:EC';
       var text = "! U1 setvar " + 
-        'device.languages " "' + 
-        'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      'device.languages " "' + 
+      'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
 
-        text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
@@ -97,15 +97,15 @@ export default {
         function( fail ) {
           alert( fail );
         }
-      );
+        );
     },
     print2() {
       var mac = '2C:B4:3A:12:F9:E0';
       var text = "! U1 setvar " + 
-        'device.languages " "' + 
-        'line_print "\r\nTEXT ***Welcome to the new world order 2, Pak!***\r\nPRINT\r\n"'
+      'device.languages " "' + 
+      'line_print "\r\nTEXT ***Welcome to the new world order 2, Pak!***\r\nPRINT\r\n"'
 
-        text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
@@ -114,7 +114,7 @@ export default {
         function( fail ) {
           alert( fail );
         }
-      );
+        );
     },
 
   },
