@@ -88,8 +88,8 @@
       'device.languages " "' + 
       'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
 
-      text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-
+      text = '! U1 setvar "device.languages" "zpl"\r\nline_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      // text = '"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
           alert( "Print ok" );
