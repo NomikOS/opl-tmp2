@@ -95,7 +95,26 @@
       
       // https://km.zebra.com/kb/index?page=content&id=SA315&actp=RSS codigos de barra
       text = '^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ' // ok
-      text = '^XA^BY8,0^FT124,209^BON,8,N,0,N,1,^FDNew world order now!^FS^XZ';
+
+      var text = ''
+      text =  "^XA";
+      text += "^LL100";
+      text += "^FO20,30^GB750,1100,4^FS";
+      text += "^FO20,30^GB750,200,4^FS";
+      text += "^FO20,30^GB750,400,4^FS";
+      text += "^FO20,30^GB750,700,4^FS";
+      text += "^FO20,226^GB325,204,4^FS";
+      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
+      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
+      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
+      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
+      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
+      text += "^FO60,330^ADN,36,20^FD14042^FS";
+      text += "^FO400,330^ADN,36,20^FDScrew^FS";
+      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
+      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
+      text += "^XZ";
+
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
         },
@@ -106,8 +125,9 @@
     print2() {
       var mac = 'AC:3F:A4:56:66:EC';
       var text = ''
+
       text =  "^XA";
-      text =  "^LL100";
+      text += "^LL200";
       text += "^FO20,30^GB750,1100,4^FS";
       text += "^FO20,30^GB750,200,4^FS";
       text += "^FO20,30^GB750,400,4^FS";
@@ -137,6 +157,7 @@
       var text = ''
 
       text =  "^XA";
+      text += "^LL300";
       text += "^FO20,30^GB750,1100,4^FS";
       text += "^FO20,30^GB750,200,4^FS";
       text += "^FO20,30^GB750,400,4^FS";
