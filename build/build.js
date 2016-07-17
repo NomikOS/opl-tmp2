@@ -15968,7 +15968,7 @@
 	//     <li>
 	//       <a @click="print2()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//         <input type="text" id="setzpl">
+	//           <input type="text" id="setzpl">
 	//           <p>print2()</p>
 	//         </div>
 	//       </a>
@@ -16029,7 +16029,7 @@
 	      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
 	      //
 	      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
-	      text = '! U1 setvar "device.languages" "zpl"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n';
+	      text = '! U1 setvar "device.languages" "zpl" TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n';
 	      cordova.plugins.zbtprinter.print(mac, text, function (success) {
 	        alert("Print ok?");
 	      }, function (fail) {
@@ -16045,7 +16045,7 @@
 	      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
 	      //
 	      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
-	      text = '! U1 setvar "device.languages" "hybrid_xml_zpl"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n';
+	      text = '! U1 setvar "device.languages" "hybrid_xml_zpl" TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n';
 	      cordova.plugins.zbtprinter.print(mac, text, function (success) {
 	        alert("Print ok2?");
 	      }, function (fail) {
@@ -16064,7 +16064,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n        <input type=\"text\" id=\"setzpl\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <input type=\"text\" id=\"setzpl\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */
