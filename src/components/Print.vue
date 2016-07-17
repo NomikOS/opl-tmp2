@@ -93,10 +93,11 @@
       // 
       // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
       // text = '! U1 setvar "device.languages" "zpl" TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
-      text = '^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ'
+      // 
+      text = '^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ' // ok
+      text = '^XA^BY8,0^FT124,209^BON,8,N,0,N,1,^FDNew world order now!^FS^XZ';
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
-          alert( "Print ok?" );
         },
         function( fail ) {
           alert( fail );
@@ -111,10 +112,9 @@
       // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
       // 
       // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
-      text = 'TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
+      text = '^XA^BY2,3^FO10,10^B7N,5,5,,83,N^FDNew world order now! yeah!^FS^XZ'
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
-          alert( "Print ok2?" );
         },
         function( fail ) {
           alert( fail );
