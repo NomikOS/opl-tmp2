@@ -15929,7 +15929,7 @@
 /* 54 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -15952,16 +15952,16 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print()" class="waves-effect waves-light">
+	//       <a @click="find()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>orden <br/> interna</p>
+	//           <p>find()</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
 	//       <a @click="print()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>orden <br/> cliente</p>
+	//           <p>print()</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -15990,7 +15990,6 @@
 	// </template>
 	//
 	// <script>
-
 	exports.default = {
 
 	  name: 'Print',
@@ -16003,11 +16002,30 @@
 
 
 	  methods: {
-	    print: function print() {
-	      cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ", function (success) {
-	        console.info("zbtprinter ok !!!!!!!!!");
+
+	    // print() {
+	    //   cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ",
+	    //     function(success) {
+	    //       console.info("zbtprinter ok !!!!!!!!!");
+	    //     }, function(fail) {
+	    //       console.info(fail, 'zbtprinter fail !!!!!!!!!');
+	    //     });
+	    // },
+
+	    find: function find() {
+	      cordova.plugins.zbtprinter.find(function (mac) {
+	        alert(mac);
 	      }, function (fail) {
-	        console.info(fail, 'zbtprinter fail !!!!!!!!!');
+	        alert(fail);
+	      });
+	    },
+	    print: function print() {
+	      var text = "! U1 setvar " + 'device.languages " "' + 'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"';
+
+	      cordova.plugins.zbtprinter.print("AC:3F:A4:56:66:EC", text, function (success) {
+	        alert("Print ok");
+	      }, function (fail) {
+	        alert(fail);
 	      });
 	    }
 	  },
@@ -16022,7 +16040,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden <br/> interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden <br/> cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>comprobante <br/> de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>comprobante <br/> de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */

@@ -83,9 +83,11 @@ export default {
     },
 
     print() {
-      cordova.plugins.zbtprinter.print( "AC:3F:A4:56:66:EC", "! U1 setvar "
-        device.languages " "
-        line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n",
+      var text = "! U1 setvar " + 
+        'device.languages " "' + 
+        'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+
+      cordova.plugins.zbtprinter.print( "AC:3F:A4:56:66:EC", text,
         function( success ) {
           alert( "Print ok" );
         },
