@@ -15968,15 +15968,14 @@
 	//     <li>
 	//       <a @click="print2()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <input type="text" id="setzpl">
 	//           <p>print2()</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a href="#" class="waves-effect waves-light">
+	//       <a @click="print3()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>especial</p>
+	//           <p>print3()</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -16030,7 +16029,8 @@
 	      //
 	      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
 	      // text = '! U1 setvar "device.languages" "zpl" TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
-	      //
+
+	      // https://km.zebra.com/kb/index?page=content&id=SA315&actp=RSS codigos de barra
 	      text = '^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ'; // ok
 	      text = '^XA^BY8,0^FT124,209^BON,8,N,0,N,1,^FDNew world order now!^FS^XZ';
 	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
@@ -16040,13 +16040,49 @@
 	    print2: function print2() {
 	      var mac = 'AC:3F:A4:56:66:EC';
 	      var text = '';
+	      text = "^XA";
+	      text = "^LL100";
+	      text += "^FO20,30^GB750,1100,4^FS";
+	      text += "^FO20,30^GB750,200,4^FS";
+	      text += "^FO20,30^GB750,400,4^FS";
+	      text += "^FO20,30^GB750,700,4^FS";
+	      text += "^FO20,226^GB325,204,4^FS";
+	      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
+	      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
+	      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
+	      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
+	      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
+	      text += "^FO60,330^ADN,36,20^FD14042^FS";
+	      text += "^FO400,330^ADN,36,20^FDScrew^FS";
+	      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
+	      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
+	      text += "^XZ";
 
-	      // text = '! U1 setvar "device.languages" "zpl"\r\nline_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-	      // text = '"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-	      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
-	      //
-	      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
-	      text = '^XA^BY2,3^FO10,10^B7N,5,5,,83,N^FDNew world order now! yeah!^FS^XZ';
+	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	        alert(fail);
+	      });
+	    },
+	    print3: function print3() {
+	      var mac = 'AC:3F:A4:56:66:EC';
+	      var text = '';
+
+	      text = "^XA";
+	      text += "^FO20,30^GB750,1100,4^FS";
+	      text += "^FO20,30^GB750,200,4^FS";
+	      text += "^FO20,30^GB750,400,4^FS";
+	      text += "^FO20,30^GB750,700,4^FS";
+	      text += "^FO20,226^GB325,204,4^FS";
+	      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
+	      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
+	      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
+	      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
+	      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
+	      text += "^FO60,330^ADN,36,20^FD14042^FS";
+	      text += "^FO400,330^ADN,36,20^FDScrew^FS";
+	      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
+	      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
+	      text += "^XZ";
+
 	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
 	        alert(fail);
 	      });
@@ -16063,7 +16099,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <input type=\"text\" id=\"setzpl\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print3()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print3()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */
