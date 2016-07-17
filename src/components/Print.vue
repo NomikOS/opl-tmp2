@@ -98,7 +98,6 @@
 
       var text = ''
       text =  "^XA";
-      text += "^LL100";
       text += "^FO20,30^GB750,1100,4^FS";
       text += "^FO20,30^GB750,200,4^FS";
       text += "^FO20,30^GB750,400,4^FS";
@@ -114,6 +113,9 @@
       text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
       text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
       text += "^XZ";
+
+      text = '^XA^LL400^FO10,10^AFN,26,13^FDNew world order now, 400dots^FS' // ok      
+      text += '^FO100,100^BQN,2,10^FDnew world order, 400dots^FS^XZ'      
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
@@ -126,23 +128,8 @@
       var mac = 'AC:3F:A4:56:66:EC';
       var text = ''
 
-      text =  "^XA";
-      text += "^LL200";
-      text += "^FO20,30^GB750,1100,4^FS";
-      text += "^FO20,30^GB750,200,4^FS";
-      text += "^FO20,30^GB750,400,4^FS";
-      text += "^FO20,30^GB750,700,4^FS";
-      text += "^FO20,226^GB325,204,4^FS";
-      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
-      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
-      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
-      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
-      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
-      text += "^FO60,330^ADN,36,20^FD14042^FS";
-      text += "^FO400,330^ADN,36,20^FDScrew^FS";
-      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
-      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
-      text += "^XZ";
+      text = '^XA^LL800^FO10,10^AFN,26,13^FDNew world order now, 800dots^FS' // ok      
+      text += '^FO100,100^BQN,2,10^FDnew world order, 800dots^FS^XZ'      
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
@@ -156,23 +143,8 @@
       var mac = 'AC:3F:A4:56:66:EC';
       var text = ''
 
-      text =  "^XA";
-      text += "^LL300";
-      text += "^FO20,30^GB750,1100,4^FS";
-      text += "^FO20,30^GB750,200,4^FS";
-      text += "^FO20,30^GB750,400,4^FS";
-      text += "^FO20,30^GB750,700,4^FS";
-      text += "^FO20,226^GB325,204,4^FS";
-      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
-      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
-      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
-      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
-      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
-      text += "^FO60,330^ADN,36,20^FD14042^FS";
-      text += "^FO400,330^ADN,36,20^FDScrew^FS";
-      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
-      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
-      text += "^XZ";
+      text = '^XA^LL1600^FO10,10^AFN,26,13^FDNew world order now, 1600dots^FS' // ok      
+      text += '^FO100,100^BQN,2,10^FDnew world order, 1600dots^FS^XZ'      
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
