@@ -32,6 +32,7 @@
     <li>
       <a @click="print2()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
+        <input type="text" id="setzpl">
           <p>print2()</p>
         </div>
       </a>
@@ -84,38 +85,39 @@
 
     print() {
       var mac = 'AC:3F:A4:56:66:EC';
-      var text = "! U1 setvar " + 
-      'device.languages " "' + 
-      'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      var text = ''
 
       // text = '! U1 setvar "device.languages" "zpl"\r\nline_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
       // text = '"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-      text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
+      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
+      // 
+      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
+       text = '! U1 setvar "device.languages" "zpl"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
           alert( "Print ok?" );
         },
         function( fail ) {
           alert( fail );
-        }
-        );
+        });
     },
     print2() {
-      var mac = '2C:B4:3A:12:F9:E0';
-      var text = "! U1 setvar " + 
-      'device.languages " "' + 
-      'line_print "\r\nTEXT ***Welcome to the new world order 2, Pak!***\r\nPRINT\r\n"'
+      var mac = 'AC:3F:A4:56:66:EC';
+      var text = ''
 
-      text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-
+      // text = '! U1 setvar "device.languages" "zpl"\r\nline_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      // text = '"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
+      // 
+      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
+       text = '! U1 setvar "device.languages" "hybrid_xml_zpl"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
-          alert( "Print ok" );
+          alert( "Print ok2?" );
         },
         function( fail ) {
           alert( fail );
-        }
-        );
+        });
     },
 
   },
