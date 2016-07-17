@@ -30,9 +30,9 @@
       </a>
     </li>
     <li>
-      <a href="#" class="waves-effect waves-light">
+      <a @click="print2()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>comprobante <br/> de pago</p>
+          <p>print2()</p>
         </div>
       </a>
     </li>
@@ -83,11 +83,31 @@ export default {
     },
 
     print() {
+      var mac = 'AC:3F:A4:56:66:EC';
       var text = "! U1 setvar " + 
         'device.languages " "' + 
         'line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
 
-      cordova.plugins.zbtprinter.print( "AC:3F:A4:56:66:EC", text,
+        text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+
+      cordova.plugins.zbtprinter.print( mac, text,
+        function( success ) {
+          alert( "Print ok" );
+        },
+        function( fail ) {
+          alert( fail );
+        }
+      );
+    },
+    print2() {
+      var mac = '2C:B4:3A:12:F9:E0';
+      var text = "! U1 setvar " + 
+        'device.languages " "' + 
+        'line_print "\r\nTEXT ***Welcome to the new world order 2, Pak!***\r\nPRINT\r\n"'
+
+        text = '! U1 setvar "device.languages" "zpl" line_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
+
+      cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
           alert( "Print ok" );
         },
