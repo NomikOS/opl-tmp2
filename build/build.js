@@ -15973,9 +15973,9 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print3()" class="waves-effect waves-light">
+	//       <a @click="scan()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>print3()</p>
+	//           <p>scan()</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -16052,7 +16052,7 @@
 	      text += "^XZ";
 
 	      text = '^XA^LL400^FO10,10^AFN,26,13^FDNew world order now, 400dots^FS'; // ok     
-	      text += '^FO100,100^BQN,2,10^FDnew world order, 400dots^FS^XZ';
+	      text += '^FO400,100^BQN,2,10^FDnew world order, 400dots^FS^XZ';
 
 	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
 	        alert(fail);
@@ -16069,15 +16069,17 @@
 	        alert(fail);
 	      });
 	    },
-	    print3: function print3() {
-	      var mac = 'AC:3F:A4:56:66:EC';
-	      var text = '';
-
-	      text = '^XA^LL1600^FO10,10^AFN,26,13^FDNew world order now, 1600dots^FS'; // ok     
-	      text += '^FO100,100^BQN,2,10^FDnew world order, 1600dots^FS^XZ';
-
-	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
-	        alert(fail);
+	    scan: function scan() {
+	      cordova.plugins.barcodeScanner.scan(function (result) {
+	        alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
+	      }, function (error) {
+	        alert("Scanning failed: " + error);
+	      }, {
+	        "preferFrontCamera": true, // iOS and Android
+	        "showFlipCameraButton": true, // iOS and Android
+	        "prompt": "Apuntar a codigo QR", // supported on Android only
+	        "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+	        "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
 	      });
 	    }
 	  },
@@ -16092,7 +16094,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print3()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print3()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>scan()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */

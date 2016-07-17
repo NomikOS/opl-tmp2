@@ -37,9 +37,9 @@
       </a>
     </li>
     <li>
-      <a @click="print3()" class="waves-effect waves-light">
+      <a @click="scan()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>print3()</p>
+          <p>scan()</p>
         </div>
       </a>
     </li>
@@ -115,7 +115,7 @@
       text += "^XZ";
 
       text = '^XA^LL400^FO10,10^AFN,26,13^FDNew world order now, 400dots^FS' // ok      
-      text += '^FO100,100^BQN,2,10^FDnew world order, 400dots^FS^XZ'      
+      text += '^FO400,100^BQN,2,10^FDnew world order, 400dots^FS^XZ'      
 
       cordova.plugins.zbtprinter.print( mac, text,
         function( success ) {
@@ -139,25 +139,31 @@
         });
     },
 
-    print3() {
-      var mac = 'AC:3F:A4:56:66:EC';
-      var text = ''
+    scan() {
+     cordova.plugins.barcodeScanner.scan(
+      function (result) {
+        alert("We got a barcode\n" +
+          "Result: " + result.text + "\n" +
+          "Format: " + result.format + "\n" +
+          "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+        alert("Scanning failed: " + error);
+      },
+      {
+          "preferFrontCamera" : true, // iOS and Android
+          "showFlipCameraButton" : true, // iOS and Android
+          "prompt" : "Apuntar a codigo QR", // supported on Android only
+          "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+          "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
+        }
+        );
+   },    
 
-      text = '^XA^LL1600^FO10,10^AFN,26,13^FDNew world order now, 1600dots^FS' // ok      
-      text += '^FO100,100^BQN,2,10^FDnew world order, 1600dots^FS^XZ'      
+ },
 
-      cordova.plugins.zbtprinter.print( mac, text,
-        function( success ) {
-        },
-        function( fail ) {
-          alert( fail );
-        });
-    },    
-
-  },
-
-  ready() {
-    console.info( 'Print is ready ===================================' );
-  }
+ ready() {
+  console.info( 'Print is ready ===================================' );
+}
 }
 </script>
