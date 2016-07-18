@@ -10530,13 +10530,17 @@
 		methods: {
 			initPubnub: function initPubnub() {
 
+				console.info('pubnub cargado y listo para disparar');
+
 				var that = this;
 				_global.pubnub.subscribe({
 					channel: 'notifications-opl',
+
 					message: function message(_message) {
 						console.info(_message);
 
 						var type = _message.type;
+						console.info(type);
 
 						switch (type) {
 							case 'order-pickup':
@@ -10545,8 +10549,13 @@
 									content: _message.order
 								});
 								break;
-							case 'order-delivery':
-								// that.loadData( message.order )
+							case 'print-order':
+								var mac = 'AC:3F:A4:56:66:EC';
+								var text = _message.order_zpl;
+
+								cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+									alert(fail);
+								});
 								break;
 							case 'shipment-notification':
 								// that.loadData( message.notification )
@@ -15952,37 +15961,37 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="find()" class="waves-effect waves-light">
+	//       <a @click="print('internal_order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>find()</p>
+	//           <p>orden interna</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print()" class="waves-effect waves-light">
+	//       <a @click="print('customer_order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>print()</p>
+	//           <p>orden cliente</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print2()" class="waves-effect waves-light">
+	//       <a @click="print('payments_history')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>print2()</p>
+	//           <p>historial de pago</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="scan()" class="waves-effect waves-light">
+	//       <a @click="scan('special')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>scan()</p>
+	//           <p>especial</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
 	//       <a onclick="window.history.back()" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p> volver </p>
+	//           <p>volver</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -16011,15 +16020,17 @@
 	    //       console.info(fail, 'zbtprinter fail !!!!!!!!!');
 	    //     });
 	    // },
+	    //
+	    // find() {
+	    //   cordova.plugins.zbtprinter.find( function( mac ) {
+	    //     alert( mac );
+	    //   }, function( fail ) {
+	    //     alert( fail );
+	    //   } )
+	    // },
 
-	    find: function find() {
-	      cordova.plugins.zbtprinter.find(function (mac) {
-	        alert(mac);
-	      }, function (fail) {
-	        alert(fail);
-	      });
-	    },
-	    print: function print() {
+	    print: function print(label) {
+	      console.info(label);
 	      var mac = 'AC:3F:A4:56:66:EC';
 	      var text = '';
 
@@ -16058,17 +16069,6 @@
 	        alert(fail);
 	      });
 	    },
-	    print2: function print2() {
-	      var mac = 'AC:3F:A4:56:66:EC';
-	      var text = '';
-
-	      text = '^XA^LL800^FO10,10^AFN,26,13^FDNew world order now, 800dots^FS'; // ok     
-	      text += '^FO100,100^BQN,2,10^FDnew world order, 800dots^FS^XZ';
-
-	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
-	        alert(fail);
-	      });
-	    },
 	    scan: function scan() {
 	      cordova.plugins.barcodeScanner.scan(function (result) {
 	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
@@ -16095,7 +16095,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"find()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>find()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print2()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>print2()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>scan()</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p> volver </p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal_order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer_order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('payments_history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>historial de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */

@@ -31,13 +31,17 @@
 		 methods: {
 		 	initPubnub: function() {
 
+		 		console.info('pubnub cargado y listo para disparar');
+
 		 		var that = this;
 		 		pubnub.subscribe( {
 		 			channel: 'notifications-opl',
+		 			
 		 			message: function( message ) {
 		 				console.info( message );
 
 		 				var type = message.type
+		 				console.info(type);
 
 		 				switch ( type ) {
 		 					case 'order-pickup':
@@ -46,17 +50,24 @@
 		 						content: message.order
 		 					} )
 		 					break;
-		 					case 'order-delivery':
-								// that.loadData( message.order )
-								break;
-								case 'shipment-notification':
-								// that.loadData( message.notification )
-								break;
-							}
+		 					case 'print-order':
+		 					var mac = 'AC:3F:A4:56:66:EC'
+		 					var text = message.order_zpl
 
-
+		 					cordova.plugins.zbtprinter.print( mac, text,
+		 						function( success ) {
+		 						},
+		 						function( fail ) {
+		 							alert( fail );
+		 						});
+		 					break;
+		 					case 'shipment-notification':
+							// that.loadData( message.notification )
+							break;
 						}
-					} )
+
+					}
+				} )
 
 		 	},
 		 }

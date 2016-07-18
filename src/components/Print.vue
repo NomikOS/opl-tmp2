@@ -16,37 +16,37 @@
       </a>
     </li>
     <li>
-      <a @click="find()" class="waves-effect waves-light">
+      <a @click="print('internal_order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>find()</p>
+          <p>orden interna</p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="print()" class="waves-effect waves-light">
+      <a @click="print('customer_order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>print()</p>
+          <p>orden cliente</p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="print2()" class="waves-effect waves-light">
+      <a @click="print('payments_history')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>print2()</p>
+          <p>historial de pago</p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="scan()" class="waves-effect waves-light">
+      <a @click="scan('special')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>scan()</p>
+          <p>especial</p>
         </div>
       </a>
     </li>
     <li>
       <a onclick="window.history.back()" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p> volver </p>
+          <p>volver</p>
         </div>
       </a>
     </li>
@@ -74,15 +74,17 @@
     //       console.info(fail, 'zbtprinter fail !!!!!!!!!'); 
     //     });
     // },
-    find() {
-      cordova.plugins.zbtprinter.find( function( mac ) {
-        alert( mac );
-      }, function( fail ) {
-        alert( fail );
-      } )
-    },
+    // 
+    // find() {
+    //   cordova.plugins.zbtprinter.find( function( mac ) {
+    //     alert( mac );
+    //   }, function( fail ) {
+    //     alert( fail );
+    //   } )
+    // },
 
-    print() {
+    print(label) {
+      console.info(label);
       var mac = 'AC:3F:A4:56:66:EC';
       var text = ''
 
@@ -124,20 +126,6 @@
           alert( fail );
         });
     },
-    print2() {
-      var mac = 'AC:3F:A4:56:66:EC';
-      var text = ''
-
-      text = '^XA^LL800^FO10,10^AFN,26,13^FDNew world order now, 800dots^FS' // ok      
-      text += '^FO100,100^BQN,2,10^FDnew world order, 800dots^FS^XZ'      
-
-      cordova.plugins.zbtprinter.print( mac, text,
-        function( success ) {
-        },
-        function( fail ) {
-          alert( fail );
-        });
-    },
 
     scan() {
      cordova.plugins.barcodeScanner.scan(
@@ -157,8 +145,7 @@
           "prompt" : "Apuntar a codigo QR", // supported on Android only
           "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
           "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
-        }
-        );
+        });
    },    
 
  },
