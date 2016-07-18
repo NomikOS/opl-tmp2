@@ -16,14 +16,14 @@
       </a>
     </li>
     <li>
-      <a @click="print('internal_order')" class="waves-effect waves-light">
+    <a @click="print('img2')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden interna</p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="print('customer_order')" class="waves-effect waves-light">
+      <a @click="print('img3')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden cliente</p>
         </div>
@@ -54,6 +54,9 @@
 </template>
 
 <script>
+  import { urls } from '../libs/common'
+  const ORDER_URL = urls.micro_api + '/order'
+
   export default {
 
     name: 'Print',
@@ -85,46 +88,25 @@
 
     print(label) {
       console.info(label);
-      var mac = 'AC:3F:A4:56:66:EC';
-      var text = ''
 
-      // text = '! U1 setvar "device.languages" "zpl"\r\nline_print "\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-      // text = '"\r\nTEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n"'
-      // text = '"^XA^FO10,10^AFN,26,13^Welcome to the new world order, Pak!^FS^XZ"'
-      // 
-      // cordova.plugins.zbtprinter.print("AC:3F:A4:1D:7A:5C", "! U1 setvar "device.languages" "line_print"\r\nTEXT ***Print test***\r\nPRINT\r\n",
-      // text = '! U1 setvar "device.languages" "zpl" TEXT ***Welcome to the new world order, Pak!***\r\nPRINT\r\n'
-      
-      // https://km.zebra.com/kb/index?page=content&id=SA315&actp=RSS codigos de barra
-      text = '^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ' // ok
+      // if ('customer_order' == label) {
 
-      var text = ''
-      text =  "^XA";
-      text += "^FO20,30^GB750,1100,4^FS";
-      text += "^FO20,30^GB750,200,4^FS";
-      text += "^FO20,30^GB750,400,4^FS";
-      text += "^FO20,30^GB750,700,4^FS";
-      text += "^FO20,226^GB325,204,4^FS";
-      text += "^FO30,40^ADN,36,20^FDShip to:^FS";
-      text += "^FO30,260^ADN,18,10^FDPart number #^FS";
-      text += "^FO360,260^ADN,18,10^FDDescription:^FS";
-      text += "^FO30,750^ADN,36,20^FDFrom:^FS";
-      text += "^FO150,125^ADN,36,20^FDAcme Printing^FS";
-      text += "^FO60,330^ADN,36,20^FD14042^FS";
-      text += "^FO400,330^ADN,36,20^FDScrew^FS";
-      text += "^FO70,480^BY4^B3N,,200^FD12345678^FS";
-      text += "^FO150,800^ADN,36,20^FDEconocargo^FS";
-      text += "^XZ";
+      // }
+      this.$http.get( ORDER_URL + '/' + label + '/opl-get-zpl' ).then( ( response ) => {
+        console.info( response, 'success callback' );
 
-      text = '^XA^LL400^FO10,10^AFN,26,13^FDNew world order now, 400dots^FS' // ok      
-      text += '^FO400,100^BQN,2,10^FDnew world order, 400dots^FS^XZ'      
+        var mac = 'AC:3F:A4:56:66:EC';
+        var text = response.data.text
+        cordova.plugins.zbtprinter.print( mac, text,
+          function( success ) {
+          },
+          function( fail ) {
+            alert( fail );
+          });
 
-      cordova.plugins.zbtprinter.print( mac, text,
-        function( success ) {
-        },
-        function( fail ) {
-          alert( fail );
-        });
+      }, ( response ) => {
+        console.info( response, 'error callback' );
+      } );      
     },
 
     scan() {
