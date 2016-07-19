@@ -16276,9 +16276,9 @@
 
 	        _this2.requestItem();
 
-	        var item = response.data.item;
-	        if (item.length) {
-	          _this2.item = item;
+	        var user_message = response.data.user_message;
+	        if (user_message.length) {
+	          alert(user_message);
 	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
