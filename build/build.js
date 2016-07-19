@@ -16218,10 +16218,11 @@
 
 	  methods: {
 	    scan: function scan() {
+	      var that = this;
 	      cordova.plugins.barcodeScanner.scan(function (result) {
 	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
-	        this.qr_id = result.text;
-	        this.updateItem();
+	        that.qr_id = result.text;
+	        that.updateItem();
 	      }, function (error) {
 	        alert("Scanning failed: " + error);
 	      }, {
@@ -16229,7 +16230,7 @@
 	        "showFlipCameraButton": true, // iOS and Android
 	        "prompt": "Apuntar a codigo QR", // supported on Android only
 	        "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-	        "orientation": "default" // Android only (portrait|landscape), default unset so it rotates with the device
+	        "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
 	      });
 	    },
 	    requestItem: function requestItem() {
@@ -16273,8 +16274,7 @@
 	        console.info(response, 'success callback');
 	        _this2.showModal(false);
 
-	        //manejo de erroes
-	        //this.requestItem()
+	        _this2.requestItem();
 
 	        var item = response.data.item;
 	        if (item.length) {

@@ -62,80 +62,79 @@
     },
     methods: {
       scan() {
-       cordova.plugins.barcodeScanner.scan(
-        function (result) {
-          console.info("RESULT\n" +
-            "Result: " + result.text + "\n" +
-            "Format: " + result.format + "\n" +
-            "Cancelled: " + result.cancelled)
-          this.qr_id = result.text
-          this.updateItem()
-        },
-        function (error) {
-          alert("Scanning failed: " + error);
-        },
-        {
+        var that= this
+        cordova.plugins.barcodeScanner.scan(
+          function (result) {
+            console.info("RESULT\n" +
+              "Result: " + result.text + "\n" +
+              "Format: " + result.format + "\n" +
+              "Cancelled: " + result.cancelled)
+            that.qr_id = result.text
+            that.updateItem()
+          },
+          function (error) {
+            alert("Scanning failed: " + error);
+          },
+          {
           "preferFrontCamera" : true, // iOS and Android
           "showFlipCameraButton" : true, // iOS and Android
           "prompt" : "Apuntar a codigo QR", // supported on Android only
           "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-          "orientation" : "default" // Android only (portrait|landscape), default unset so it rotates with the device
+          "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
         });
-     },
-     requestItem() {
-      var order_id = 137
-      var item_id = 0
-      var qr_id = 0
+      },
+      requestItem() {
+        var order_id = 137
+        var item_id = 0
+        var qr_id = 0
 
-      this.showModal(true)
-      this.$http.post( ORDER_URL + '/scan-item', {
-        order_id : order_id,
-        item_id : item_id,
-        qr_id : qr_id
-      } ).then( ( response ) => {
-        console.info( response, 'success callback' );
-        this.showModal(false)
-        var item = response.data.item
-        if (item.length) {
-          this.item = item
-        }
-      }, ( response ) => {
-        console.info( response, 'error callback' );
-        this.showModal(false)
-      } );
+        this.showModal(true)
+        this.$http.post( ORDER_URL + '/scan-item', {
+          order_id : order_id,
+          item_id : item_id,
+          qr_id : qr_id
+        } ).then( ( response ) => {
+          console.info( response, 'success callback' );
+          this.showModal(false)
+          var item = response.data.item
+          if (item.length) {
+            this.item = item
+          }
+        }, ( response ) => {
+          console.info( response, 'error callback' );
+          this.showModal(false)
+        } );
+      },
+      updateItem() {
+        console.info('updateItem()...');
+        var order_id = 137
+        var item_id = this.item.id
+        var qr_id = this.qr_id
+
+        this.showModal(true)
+        this.$http.post( ORDER_URL + '/scan-item', {
+          order_id : order_id,
+          item_id : item_id,
+          qr_id : qr_id
+        } ).then( ( response ) => {
+          console.info( response, 'success callback' );
+          this.showModal(false)
+
+          this.requestItem()
+
+          var item = response.data.item
+          if (item.length) {
+            this.item = item
+          }
+        }, ( response ) => {
+          console.info( response, 'error callback' );
+          this.showModal(false)
+        } );
+      }
     },
-    updateItem() {
-      console.info('updateItem()...');
-      var order_id = 137
-      var item_id = this.item.id
-      var qr_id = this.qr_id
-
-      this.showModal(true)
-      this.$http.post( ORDER_URL + '/scan-item', {
-        order_id : order_id,
-        item_id : item_id,
-        qr_id : qr_id
-      } ).then( ( response ) => {
-        console.info( response, 'success callback' );
-        this.showModal(false)
-
-
-//manejo de erroes
-//this.requestItem()
-
-var item = response.data.item
-if (item.length) {
-  this.item = item
-}
-}, ( response ) => {
-  console.info( response, 'error callback' );
-  this.showModal(false)
-} );
+    ready() {
+      console.info( 'Scan is ready ===================================' );
+      this.requestItem()
     }
-  },
-  ready() {
-    console.info( 'Scan is ready ===================================' );
-    this.requestItem()
   }
-}
 </script>
