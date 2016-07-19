@@ -66,7 +66,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _StandBy = __webpack_require__(13);
+	var _StandBy = __webpack_require__(14);
 
 	var _StandBy2 = _interopRequireDefault(_StandBy);
 
@@ -102,39 +102,39 @@
 
 	var _Scan2 = _interopRequireDefault(_Scan);
 
-	var _Payment = __webpack_require__(59);
+	var _Payment = __webpack_require__(66);
 
 	var _Payment2 = _interopRequireDefault(_Payment);
 
-	var _Call = __webpack_require__(62);
+	var _Call = __webpack_require__(69);
 
 	var _Call2 = _interopRequireDefault(_Call);
 
-	var _Logout = __webpack_require__(65);
+	var _Logout = __webpack_require__(72);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _LoggedIn = __webpack_require__(68);
+	var _LoggedIn = __webpack_require__(75);
 
 	var _LoggedIn2 = _interopRequireDefault(_LoggedIn);
 
-	var _Redirecting = __webpack_require__(71);
+	var _Redirecting = __webpack_require__(78);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(74);
+	var _Available = __webpack_require__(81);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _vueRouter = __webpack_require__(77);
+	var _vueRouter = __webpack_require__(84);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(78);
+	var _vueResource = __webpack_require__(85);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
@@ -10472,7 +10472,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(5)
-	__vue_template__ = __webpack_require__(12)
+	__vue_template__ = __webpack_require__(13)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10504,7 +10504,7 @@
 
 	var _global = __webpack_require__(8);
 
-	var _actions = __webpack_require__(11);
+	var _actions = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10551,7 +10551,10 @@
 								break;
 
 							case 'print-order':
-								var mac = 'AC:3F:A4:56:66:EC';
+
+								var setup = ls.get('setup');
+								var printerMAC = setup.printerMAC;
+								var mac = printerMAC;
 								// var text = message.order_zpl
 								var text = '';
 
@@ -10601,7 +10604,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-15 16:55:49
+	 * @Last Modified time: 2016-07-19 10:45:20
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10612,7 +10615,8 @@
 	  // When the app starts, count is set to 0
 	  count: 0,
 	  order: { id: 0 },
-	  shipmentNotification: {}
+	  shipmentNotification: {},
+	  modalVisible: true
 	};
 
 	var mutations = {
@@ -10626,6 +10630,9 @@
 	    var type = data.type;
 	    var content = data.content;
 	    state[type] = content;
+	  },
+	  HIDE_MODAL: function HIDE_MODAL(state, data) {
+	    state.modalVisible = data;
 	  }
 	};
 
@@ -11292,20 +11299,28 @@
 
 	var _common = __webpack_require__(9);
 
-	var pubnub = exports.pubnub = __webpack_require__(10)({
+	var pubnub = exports.pubnub = __webpack_require__(11)({
 	  publish_key: _common.credentials.pubnub.publishKey,
 	  subscribe_key: _common.credentials.pubnub.subscribeKey
 	});
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.urls = exports.credentials = undefined;
+
+	var _utils = __webpack_require__(10);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var credentials = exports.credentials = {
 	  pubnub: {
 	    // Default app
@@ -11323,11 +11338,101 @@
 	  app: 'http://localhost:8080/#!',
 	  passport_website: 'http://passport.testing.agente.cl/login2.html',
 	  passport_api: 'http://passport.api.testing.agente.cl',
-	  micro_api: 'http://ltl-micro.api.testing.agente.cl'
+	  micro_api: _utils2.default.inDev() ? 'http://micro.api.testing.agente.dev' : 'http://ltl-micro.api.testing.agente.cl'
 	};
 
 /***/ },
 /* 10 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		objBtn: function objBtn(type) {
+			appECBase.loadingPage(false);
+			$('#landingErrorGeofencePickUp').hide();
+			$('#landingErrorGeofenceDropOff').hide();
+			$('#landingErrorGeofence' + type).show();
+			return $("#microModalErrorGeoFEcnce").modal("show");
+		},
+		showMessages: function showMessages(user_messages) {
+			var msgErr = '';
+			$.each(user_messages, function (k, v) {
+				msgErr += v + '<br />';
+			});
+			return appECBase.showModal(msgErr);
+		},
+		showModal: function showModal(msg, $srcObject) {
+			appECBase.loadingPage(false);
+			appUtilidades.creamodal('modalErrorGeo', '', 'Información', msg, '', null, function () {
+				if ($srcObject) {
+					$srcObject.focus();
+				}
+			});
+		},
+		showModalCoolTitle: function showModalCoolTitle(idModal, title, cb) {
+			appECBase.loadingPage(false);
+			var msg = '<div class="text-center" style="height: 185px; margin-top: 50px;">' + '<img src="assets/img/circle-loading.gif" style="height: 80%;">' + '</div>';
+			appUtilidades.creamodal(idModal, '', title, msg, ' ', cb);
+		},
+		getUrl: function getUrl() {
+			var urlTemplate = 'ltl-micro.api.testing.agente.cl';
+			if (/(agente\.dev)/.test(location.href)) {
+				urlTemplate = 'micro.api.testing.agente.dev';
+			}
+			return urlTemplate;
+		},
+
+		inDev: function inDev() {
+			if (/(localhost\:8080)/.test(location.href)) {
+				return true;
+			}
+			return false;
+		},
+		getDistance: function getDistance(lat1, lon1, lat2, lon2, unit) {
+			var radlat1 = Math.PI * lat1 / 180;
+			var radlat2 = Math.PI * lat2 / 180;
+			var radlon1 = Math.PI * lon1 / 180;
+			var radlon2 = Math.PI * lon2 / 180;
+			var theta = lon1 - lon2;
+			var radtheta = Math.PI * theta / 180;
+			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+			dist = Math.acos(dist);
+			dist = dist * 180 / Math.PI;
+			dist = dist * 60 * 1.1515;
+			if (unit == "K") {
+				dist = dist * 1.609344;
+			}
+			if (unit == "N") {
+				dist = dist * 0.8684;
+			}
+			return dist;
+		},
+		getUrlVariable: function getUrlVariable(name) {
+			console.info(window.location.href, 'window.location.href -------------------');
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (!results) {
+				return '';
+			}
+			return results[1] || 0;
+
+			// var query = window.location.search.substring( 1 );
+			// var vars = query.split( "&" );
+			// for ( var i = 0; i < vars.length; i++ ) {
+			// 	var pair = vars[ i ].split( "=" );
+			// 	if ( pair[ 0 ] == variable ) {
+			// 		return pair[ 1 ];
+			// 	}
+			// }
+			// return ( false );
+		}
+	};
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*! 3.15.2 / modern */
@@ -14340,7 +14445,7 @@
 	;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14363,19 +14468,25 @@
 
 	  dispatch('LOAD_DATA', data);
 	};
+	var showModal = exports.showModal = function showModal(_ref3, data) {
+	  var dispatch = _ref3.dispatch;
+	  var state = _ref3.state;
+
+	  dispatch('HIDE_MODAL', data);
+	};
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\t<router-view></router-view>\n";
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(14)
+	__vue_script__ = __webpack_require__(15)
 	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -14393,7 +14504,7 @@
 	})()}
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14402,7 +14513,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -14437,11 +14548,11 @@
 	// <script>
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(16)
+	__vue_script__ = __webpack_require__(17)
 	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -14459,7 +14570,7 @@
 	})()}
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14468,7 +14579,7 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
@@ -14518,7 +14629,7 @@
 	// </script>
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14535,7 +14646,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _utils = __webpack_require__(18);
+	var _utils = __webpack_require__(10);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -14666,96 +14777,6 @@
 	};
 
 /***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		objBtn: function objBtn(type) {
-			appECBase.loadingPage(false);
-			$('#landingErrorGeofencePickUp').hide();
-			$('#landingErrorGeofenceDropOff').hide();
-			$('#landingErrorGeofence' + type).show();
-			return $("#microModalErrorGeoFEcnce").modal("show");
-		},
-		showMessages: function showMessages(user_messages) {
-			var msgErr = '';
-			$.each(user_messages, function (k, v) {
-				msgErr += v + '<br />';
-			});
-			return appECBase.showModal(msgErr);
-		},
-		showModal: function showModal(msg, $srcObject) {
-			appECBase.loadingPage(false);
-			appUtilidades.creamodal('modalErrorGeo', '', 'Información', msg, '', null, function () {
-				if ($srcObject) {
-					$srcObject.focus();
-				}
-			});
-		},
-		showModalCoolTitle: function showModalCoolTitle(idModal, title, cb) {
-			appECBase.loadingPage(false);
-			var msg = '<div class="text-center" style="height: 185px; margin-top: 50px;">' + '<img src="assets/img/circle-loading.gif" style="height: 80%;">' + '</div>';
-			appUtilidades.creamodal(idModal, '', title, msg, ' ', cb);
-		},
-		getUrl: function getUrl() {
-			var urlTemplate = 'ltl-micro.api.testing.agente.cl';
-			if (/(agente\.dev)/.test(location.href)) {
-				urlTemplate = 'micro.api.testing.agente.dev';
-			}
-			return urlTemplate;
-		},
-
-		inDev: function inDev() {
-			if (/(localhost\:8080)/.test(location.href)) {
-				return true;
-			}
-			return false;
-		},
-		getDistance: function getDistance(lat1, lon1, lat2, lon2, unit) {
-			var radlat1 = Math.PI * lat1 / 180;
-			var radlat2 = Math.PI * lat2 / 180;
-			var radlon1 = Math.PI * lon1 / 180;
-			var radlon2 = Math.PI * lon2 / 180;
-			var theta = lon1 - lon2;
-			var radtheta = Math.PI * theta / 180;
-			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-			dist = Math.acos(dist);
-			dist = dist * 180 / Math.PI;
-			dist = dist * 60 * 1.1515;
-			if (unit == "K") {
-				dist = dist * 1.609344;
-			}
-			if (unit == "N") {
-				dist = dist * 0.8684;
-			}
-			return dist;
-		},
-		getUrlVariable: function getUrlVariable(name) {
-			console.info(window.location.href, 'window.location.href -------------------');
-			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-			if (!results) {
-				return '';
-			}
-			return results[1] || 0;
-
-			// var query = window.location.search.substring( 1 );
-			// var vars = query.split( "&" );
-			// for ( var i = 0; i < vars.length; i++ ) {
-			// 	var pair = vars[ i ].split( "=" );
-			// 	if ( pair[ 0 ] == variable ) {
-			// 		return pair[ 1 ];
-			// 	}
-			// }
-			// return ( false );
-		}
-	};
-
-/***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -14879,13 +14900,17 @@
 	//         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
 	//           <form>
 	//             <p>
-	//               <label>Seleccion vehículo</label>
+	//               <label>Vehículo</label>
 	//               <select v-model="db.vehicleSelected">
 	//                 <option v-for="option in vehicleOptions" v-bind:value="option.id">
 	//                   {{ option.name }}
 	//                 </option>
 	//               </select>
 	//             </p>
+	//             <p>
+	//               <label>MAC impresora portátil</label>
+	//               <input type="text" v-model="db.printerMAC">
+	//             </p>           
 	//             <p>
 	//               <label>Teléfono móvil</label>
 	//               <input type="text" v-model="db.phoneMobile">
@@ -14922,6 +14947,7 @@
 	      vehicleOptions: [],
 	      db: {
 	        vehicleSelected: '',
+	        printerMAC: '',
 	        phoneMobile: '',
 	        phoneCentral: ''
 	      }
@@ -14968,7 +14994,7 @@
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Seleccion vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>            \n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>MAC impresora portátil</label>\n              <input type=\"text\" v-model=\"db.printerMAC\">\n            </p>            \n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>            \n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 28 */
@@ -15004,7 +15030,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15105,7 +15131,7 @@
 	    };
 	  },
 	  ready: function ready() {
-	    console.info('EventPickup is ready ===================================, AJAX...');
+	    console.info('EventPickup is ready ===================================');
 	    this.load();
 	  },
 	  methods: {
@@ -15288,7 +15314,7 @@
 	});
 	// <template>
 	//   <a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
-	//     <img src="/html/images/barcode-big-2.png" alt="" />
+	//     <img src="/html/images/barcode-big-2.png" />
 	//     <p class="ac25-no-margin">escanear</p>
 	//   </a>
 	// </template>
@@ -15306,7 +15332,7 @@
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"/html/images/barcode-big-2.png\" alt=\"\" />\n    <p class=\"ac25-no-margin\">escanear</p>\n  </a>\n";
+	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"/html/images/barcode-big-2.png\" />\n    <p class=\"ac25-no-margin\">escanear</p>\n  </a>\n";
 
 /***/ },
 /* 39 */
@@ -15348,7 +15374,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15508,7 +15534,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15632,6 +15658,7 @@
 	});
 	exports.getCount = getCount;
 	exports.getOrder = getOrder;
+	exports.getModalVisibility = getModalVisibility;
 	// This getter is a function which just returns the count
 	// With ES6 you can also write it as:
 	// export const getCount = state => state.count
@@ -15641,6 +15668,9 @@
 	}
 	function getOrder(state) {
 	  return state.order;
+	}
+	function getModalVisibility(state) {
+	  return state.modalVisible;
 	}
 
 /***/ },
@@ -15683,7 +15713,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15816,7 +15846,7 @@
 
 	var _common = __webpack_require__(9);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15949,10 +15979,17 @@
 
 	var _common = __webpack_require__(9);
 
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	var _HeaderUserData = __webpack_require__(16);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <header-user-data></header-user-data>
 	//   <ul class="ac25-main-menu">
 	//     <li>
-	//       <a href="#" class="waves-effect waves-light">
+	//       <a class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <img src="/html/images/print-big.png" alt="" />
 	//           <p>imprimir</p>
@@ -15967,7 +16004,7 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//     <a @click="print('img2')" class="waves-effect waves-light">
+	//       <a @click="print('img2')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>orden interna</p>
 	//         </div>
@@ -16007,9 +16044,13 @@
 	// <script>
 
 
-	exports.default = {
+	var ORDER_URL = _common.urls.micro_api + '/order';
 
+	exports.default = {
 	  name: 'Print',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default
+	  },
 
 	  data: function data() {
 	    return {
@@ -16054,20 +16095,6 @@
 	      }, function (response) {
 	        console.info(response, 'error callback');
 	      });
-	    },
-	    scan: function scan() {
-	      cordova.plugins.barcodeScanner.scan(function (result) {
-	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
-	        alert("ORDEN ID: " + result.text);
-	      }, function (error) {
-	        alert("Scanning failed: " + error);
-	      }, {
-	        "preferFrontCamera": true, // iOS and Android
-	        "showFlipCameraButton": true, // iOS and Android
-	        "prompt": "Apuntar a codigo QR", // supported on Android only
-	        "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-	        "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
-	      });
 	    }
 	  },
 
@@ -16081,7 +16108,7 @@
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n    <a @click=\"print('img2')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('img3')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('payments_history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>historial de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"/html/images/print-big.png\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('img2')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('img3')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('payments_history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>historial de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 56 */
@@ -16089,7 +16116,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(57)
-	__vue_template__ = __webpack_require__(58)
+	__vue_template__ = __webpack_require__(65)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16107,23 +16134,39 @@
 
 /***/ },
 /* 57 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _HeaderUserData = __webpack_require__(16);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	var _ModalWait = __webpack_require__(58);
+
+	var _ModalWait2 = _interopRequireDefault(_ModalWait);
+
+	var _common = __webpack_require__(9);
+
+	var _actions = __webpack_require__(12);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	// <template>
 	//   <header-user-data></header-user-data>
+	//   <modal-wait></modal-wait>
 	//
 	//   <div class="ac25-content-global">
 	//     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
 	//       <ul class="ac25-scan-list">
 	//         <li>
-	//           <a href="#" class="waves-effect waves-light">
+	//           <a class="waves-effect waves-light">
 	//             <div class="ac25-scan-list-content">
-	//               <img class="ac25-scanlist-scan-code" src="/html/images/barcode-big-2.png" alt="" />
+	//               <img class="ac25-scanlist-scan-code" src="/html/images/barcode-big-2.png" />
 	//               <div class="clearfix"></div>
 	//               <span class="ac25-scanlist-scan-text">escanear</span>
 	//             </div>
@@ -16132,17 +16175,17 @@
 	//         <li>
 	//           <a href="#">
 	//             <div class="ac25-scan-list-content">
-	//               <span class="ac25-sclanlist-scan-id">id 45889901</span>
+	//               <span class="ac25-sclanlist-scan-id">id {{item.id}}</span>
 	//             </div>
 	//           </a>
 	//         </li>
 	//       </ul><!-- end scan-list -->
 	//       <div class="container">
-	//         <p class="ac25-mid-page-paragraph"> Sofa americano de 3 cuerpos  </p>
+	//         <p class="ac25-mid-page-paragraph">{{item.name}}</p>
 	//       </div>
 	//     </div><!-- end content-inner-holder -->
 	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <img class="ac25-cam-image" src="/html/images/cam-img.png" alt="" />
+	//       <a @click="scan()" class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
 	//       <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
@@ -16150,38 +16193,543 @@
 	// </template>
 	//
 	// <script>
+
+
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
 	exports.default = {
 	  name: 'Scan',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default
+	  },
+	  vuex: {
+	    actions: {
+	      showModal: _actions.showModal
+	    }
+	  },
+
 	  data: function data() {
 	    return {
-	      // user: director.user
+	      item: [],
+	      qr_id: 0
 	    };
 	  },
 
 	  methods: {
 	    scan: function scan() {
-	      // director.logout()
+	      cordova.plugins.barcodeScanner.scan(function (result) {
+	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
+	        this.qr_id = result.text;
+	        this.updateItem();
+	      }, function (error) {
+	        alert("Scanning failed: " + error);
+	      }, {
+	        "preferFrontCamera": true, // iOS and Android
+	        "showFlipCameraButton": true, // iOS and Android
+	        "prompt": "Apuntar a codigo QR", // supported on Android only
+	        "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+	        "orientation": "default" // Android only (portrait|landscape), default unset so it rotates with the device
+	      });
+	    },
+	    requestItem: function requestItem() {
+	      var _this = this;
+
+	      var order_id = 137;
+	      var item_id = 0;
+	      var qr_id = 0;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id
+	      }).then(function (response) {
+	        console.info(response, 'success callback');
+	        _this.showModal(false);
+	        var item = response.data.item;
+	        if (item.length) {
+	          _this.item = item;
+	        }
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	        _this.showModal(false);
+	      });
+	    },
+	    updateItem: function updateItem() {
+	      var _this2 = this;
+
+	      console.info('updateItem()...');
+	      var order_id = 137;
+	      var item_id = this.item.id;
+	      var qr_id = this.qr_id;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id
+	      }).then(function (response) {
+	        console.info(response, 'success callback');
+	        _this2.showModal(false);
+
+	        //manejo de erroes
+	        //this.requestItem()
+
+	        var item = response.data.item;
+	        if (item.length) {
+	          _this2.item = item;
+	        }
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	        _this2.showModal(false);
+	      });
 	    }
 	  },
 	  ready: function ready() {
 	    console.info('Scan is ready ===================================');
+	    this.requestItem();
 	  }
 	};
 	// </script>
 
 /***/ },
 /* 58 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a href=\"#\" class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"/html/images/barcode-big-2.png\" alt=\"\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a href=\"#\">\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">id 45889901</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\"> Sofa americano de 3 cuerpos  </p>\n      </div>\n    </div><!-- end content-inner-holder -->\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <img class=\"ac25-cam-image\" src=\"/html/images/cam-img.png\" alt=\"\" />\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	var __vue_script__, __vue_template__
+	__webpack_require__(59)
+	__vue_script__ = __webpack_require__(63)
+	__vue_template__ = __webpack_require__(64)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ModalWait.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
 
 /***/ },
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(60);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(62)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b287f78a&file=ModalWait.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./ModalWait.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-b287f78a&file=ModalWait.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./ModalWait.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(61)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.modal-enter, .modal-leave {\n  opacity:0;\n}\n\n.modal-enter .container,\n.modal-leave .container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n\t\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 61 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _getters = __webpack_require__(45);
+
+	exports.default = {
+		name: 'ModalWait',
+		vuex: {
+			getters: {
+				modalVisible: _getters.getModalVisibility
+			}
+		}
+	};
+	// </script>
+	//
+	// <style type="text/css">
+	// .modal-enter, .modal-leave {
+	//   opacity:0;
+	// }
+	//
+	// .modal-enter .container,
+	// .modal-leave .container {
+	//   -webkit-transform: scale(1.1);
+	//   transform: scale(1.1);
+	// }
+	//
+	// </style>
+	// <template>
+	// 	<div class="ac25-red-loading-section" style="z-index:10;position:absolute" v-show="modalVisible" transition="modal">
+	// 		<div class="container">
+	// 			<div class="ac25-loading-content">
+	// 				<h5>Comunicando con central...</h5>
+	// 				<img src="/html/images/loading.gif" />
+	// 			</div>
+	// 		</div>
+	// 	</div>	
+	// </template>
+	//
+	// <script>
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<div class=\"ac25-red-loading-section\" style=\"z-index:10;position:absolute\" v-show=\"modalVisible\" transition=\"modal\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5>Comunicando con central...</h5>\n\t\t\t\t<img src=\"/html/images/loading.gif\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"/html/images/barcode-big-2.png\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a href=\"#\">\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">id {{item.id}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item.name}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0\">escanear item</a>\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(60)
-	__vue_template__ = __webpack_require__(61)
+	__vue_script__ = __webpack_require__(67)
+	__vue_template__ = __webpack_require__(68)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16198,7 +16746,7 @@
 	})()}
 
 /***/ },
-/* 60 */
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16229,18 +16777,18 @@
 	// </script>
 
 /***/ },
-/* 61 */
+/* 68 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div class=\"ac25-red-loading-section\">\n        <div class=\"container\">\n            <div class=\"ac25-loading-content\">\n               <h5>No disponible en esta versión</h5>\n            </div>\n        </div>\n    </div><!-- end red-loading-section -->\n    <footer class=\"ac25-newfoot\">\n        <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n";
 
 /***/ },
-/* 62 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(63)
-	__vue_template__ = __webpack_require__(64)
+	__vue_script__ = __webpack_require__(70)
+	__vue_template__ = __webpack_require__(71)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16257,7 +16805,7 @@
 	})()}
 
 /***/ },
-/* 63 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16266,7 +16814,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16324,18 +16872,18 @@
 	// <script>
 
 /***/ },
-/* 64 */
+/* 71 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
-/* 65 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(66)
-	__vue_template__ = __webpack_require__(67)
+	__vue_script__ = __webpack_require__(73)
+	__vue_template__ = __webpack_require__(74)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16352,7 +16900,7 @@
 	})()}
 
 /***/ },
-/* 66 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16363,11 +16911,11 @@
 
 	var _index = __webpack_require__(1);
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16408,18 +16956,18 @@
 	// <script>
 
 /***/ },
-/* 67 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"/html/images/hand-black.png\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
-/* 68 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(69)
-	__vue_template__ = __webpack_require__(70)
+	__vue_script__ = __webpack_require__(76)
+	__vue_template__ = __webpack_require__(77)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16436,7 +16984,7 @@
 	})()}
 
 /***/ },
-/* 69 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16445,11 +16993,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16481,18 +17029,18 @@
 	// </script>
 
 /***/ },
-/* 70 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Autentificado</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 71 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(72)
-	__vue_template__ = __webpack_require__(73)
+	__vue_script__ = __webpack_require__(79)
+	__vue_template__ = __webpack_require__(80)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16509,7 +17057,7 @@
 	})()}
 
 /***/ },
-/* 72 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16518,11 +17066,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16562,18 +17110,18 @@
 	// </script>
 
 /***/ },
-/* 73 */
+/* 80 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 74 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(75)
-	__vue_template__ = __webpack_require__(76)
+	__vue_script__ = __webpack_require__(82)
+	__vue_template__ = __webpack_require__(83)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16590,7 +17138,7 @@
 	})()}
 
 /***/ },
-/* 75 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16599,11 +17147,11 @@
 	  value: true
 	});
 
-	var _director = __webpack_require__(17);
+	var _director = __webpack_require__(18);
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(15);
+	var _HeaderUserData = __webpack_require__(16);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -16674,13 +17222,13 @@
 	// </script>
 
 /***/ },
-/* 76 */
+/* 83 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"/html/images/loading.gif\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 77 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -19394,7 +19942,7 @@
 	}));
 
 /***/ },
-/* 78 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19403,11 +19951,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(79)(Vue);
+	    var _ = __webpack_require__(86)(Vue);
 
-	    Vue.url = __webpack_require__(80)(_);
-	    Vue.http = __webpack_require__(81)(_);
-	    Vue.resource = __webpack_require__(85)(_);
+	    Vue.url = __webpack_require__(87)(_);
+	    Vue.http = __webpack_require__(88)(_);
+	    Vue.resource = __webpack_require__(92)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -19439,7 +19987,7 @@
 	module.exports = install;
 
 /***/ },
-/* 79 */
+/* 86 */
 /***/ function(module, exports) {
 
 	/**
@@ -19525,7 +20073,7 @@
 
 
 /***/ },
-/* 80 */
+/* 87 */
 /***/ function(module, exports) {
 
 	/**
@@ -19688,16 +20236,16 @@
 
 
 /***/ },
-/* 81 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(82);
-	var jsonp = __webpack_require__(84);
-	var Promise = __webpack_require__(83);
+	var xhr = __webpack_require__(89);
+	var jsonp = __webpack_require__(91);
+	var Promise = __webpack_require__(90);
 
 	module.exports = function (_) {
 
@@ -19854,14 +20402,14 @@
 
 
 /***/ },
-/* 82 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(83);
+	var Promise = __webpack_require__(90);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -19911,7 +20459,7 @@
 
 
 /***/ },
-/* 83 */
+/* 90 */
 /***/ function(module, exports) {
 
 	/**
@@ -20127,14 +20675,14 @@
 
 
 /***/ },
-/* 84 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(83);
+	var Promise = __webpack_require__(90);
 
 	module.exports = function (_, options) {
 
@@ -20183,7 +20731,7 @@
 
 
 /***/ },
-/* 85 */
+/* 92 */
 /***/ function(module, exports) {
 
 	/**

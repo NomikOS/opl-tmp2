@@ -1,7 +1,8 @@
 <template>
+  <header-user-data></header-user-data>
   <ul class="ac25-main-menu">
     <li>
-      <a href="#" class="waves-effect waves-light">
+      <a class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <img src="/html/images/print-big.png" alt="" />
           <p>imprimir</p>
@@ -16,7 +17,7 @@
       </a>
     </li>
     <li>
-    <a @click="print('img2')" class="waves-effect waves-light">
+      <a @click="print('img2')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden interna</p>
         </div>
@@ -55,11 +56,15 @@
 
 <script>
   import { urls } from '../libs/common'
+  import HeaderUserData from './Partials/HeaderUserData.vue'
+
   const ORDER_URL = urls.micro_api + '/order'
 
   export default {
-
     name: 'Print',
+    components: {
+      HeaderUserData,
+    },    
 
     data() {
       return {
@@ -108,28 +113,6 @@
         console.info( response, 'error callback' );
       } );      
     },
-
-    scan() {
-     cordova.plugins.barcodeScanner.scan(
-      function (result) {
-        console.info("RESULT\n" +
-          "Result: " + result.text + "\n" +
-          "Format: " + result.format + "\n" +
-          "Cancelled: " + result.cancelled);        
-        alert("ORDEN ID: " + result.text);
-      }, 
-      function (error) {
-        alert("Scanning failed: " + error);
-      },
-      {
-          "preferFrontCamera" : true, // iOS and Android
-          "showFlipCameraButton" : true, // iOS and Android
-          "prompt" : "Apuntar a codigo QR", // supported on Android only
-          "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-          "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
-        });
-   },    
-
  },
 
  ready() {

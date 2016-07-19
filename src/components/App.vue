@@ -5,7 +5,6 @@
 <script>
 	import store from '../vuex/store'
 	import { pubnub } from '../libs/global'
-
 	import { loadData } from '../vuex/actions'
 
 	export default {
@@ -52,7 +51,10 @@
 		 					break;
 
 		 					case 'print-order':
-		 					var mac = 'AC:3F:A4:56:66:EC'
+
+		 					var setup = ls.get( 'setup' )
+		 					var printerMAC = setup.printerMAC
+		 					var mac = printerMAC
 		 					// var text = message.order_zpl
 		 					var text = '';
 

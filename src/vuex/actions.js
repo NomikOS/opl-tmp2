@@ -7,3 +7,6 @@ export const incrementCounter = function ({ dispatch, state }) {
 export const loadData = function ({ dispatch, state }, data) {
   dispatch('LOAD_DATA', data)
 }
+export const showModal = function ({ dispatch, state }, data) {
+  dispatch('HIDE_MODAL', data)
+}

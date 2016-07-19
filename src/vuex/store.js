@@ -2,7 +2,7 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-07-15 16:55:49
+ * @Last Modified time: 2016-07-19 10:45:20
  */
 
 import Vue from 'vue'
@@ -17,7 +17,8 @@ const state = {
   // When the app starts, count is set to 0
   count: 0,
   order: { id: 0 },
-  shipmentNotification: {}
+  shipmentNotification: {},
+  modalVisible: true
 }
 
 const mutations = {
@@ -30,7 +31,10 @@ const mutations = {
     var type = data.type
     var content = data.content
     state[ type ] = content
-  }
+  },
+  HIDE_MODAL( state, data ) {
+    state.modalVisible = data
+  },
 }
 
 // Combine the initial state and the mutations to create a Vuex store.

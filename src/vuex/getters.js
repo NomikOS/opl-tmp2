@@ -8,3 +8,6 @@ export function getCount (state) {
 export function getOrder (state) {
   return state.order
 }
+export function getModalVisibility (state) {
+  return state.modalVisible
+}

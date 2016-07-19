@@ -7,13 +7,17 @@
         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
           <form>
             <p>
-              <label>Seleccion vehículo</label>
+              <label>Vehículo</label>
               <select v-model="db.vehicleSelected">
                 <option v-for="option in vehicleOptions" v-bind:value="option.id">
                   {{ option.name }}
                 </option>
               </select>
             </p>
+            <p>
+              <label>MAC impresora portátil</label>
+              <input type="text" v-model="db.printerMAC">
+            </p>            
             <p>
               <label>Teléfono móvil</label>
               <input type="text" v-model="db.phoneMobile">
@@ -52,6 +56,7 @@
         vehicleOptions: [],
         db: {
           vehicleSelected: '',
+          printerMAC: '',
           phoneMobile: '',
           phoneCentral: ''
         }
@@ -65,7 +70,7 @@
       load: function() {
 
         var setup = ls.get( 'setup' )
-        console.info(setup, 'setup');
+        console.info(setup, 'setup')
 
         if ( setup ) {
           this.db = setup

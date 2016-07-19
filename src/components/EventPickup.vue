@@ -87,7 +87,7 @@ export default {
     };
   },
   ready: function() {
-    console.info( 'EventPickup is ready ===================================, AJAX...' );
+    console.info( 'EventPickup is ready ===================================' );
     this.load();
   },
   methods: {
