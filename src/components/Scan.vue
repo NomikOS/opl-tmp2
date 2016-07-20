@@ -89,10 +89,10 @@
                             "Format: " + result.format + "\n" +
                             "Cancelled: " + result.cancelled )
 
-                        this.switherParseQrScanResult( null, result )
+                        that.switherParseQrScanResult( null, result )
                     },
                     function( error ) {
-                        this.switherParseQrScanResult( error )
+                        that.switherParseQrScanResult( error )
 
                     }, barcodeScannerOptions );
             },

@@ -16507,9 +16507,9 @@
 	            cordova.plugins.barcodeScanner.scan(function (result) {
 	                console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
 
-	                this.switherParseQrScanResult(null, result);
+	                that.switherParseQrScanResult(null, result);
 	            }, function (error) {
-	                this.switherParseQrScanResult(error);
+	                that.switherParseQrScanResult(error);
 	            }, barcodeScannerOptions);
 	        },
 	        switherParseQrScanResult: function switherParseQrScanResult(error, qr_id) {
