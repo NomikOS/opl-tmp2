@@ -26,7 +26,7 @@ module.exports = {
       loader: 'url',
       query: {
         // limit for base64 inlining in bytes
-        limit: 10000,
+        limit: 100,
         // custom naming format if file is larger than
         // the threshold
         name: '[name].[ext]?[hash]'
