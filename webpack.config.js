@@ -21,17 +21,17 @@ module.exports = {
       //   test: /\.(png|jpg|gif)$/,
       //   loader: "file-loader?name=img/img-[hash:6].[ext]"
       // },
-    {
-      test: /\.(png|jpg|gif)$/,
-      loader: 'url',
-      query: {
-        // limit for base64 inlining in bytes
-        limit: 100,
-        // custom naming format if file is larger than
-        // the threshold
-        name: '[name].[ext]?[hash]'
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url',
+        query: {
+          // limit for base64 inlining in bytes
+          limit: 10000,
+          // custom naming format if file is larger than
+          // the threshold
+          name: 'images/[name].[ext]?[hash]'
+        }
       }
-    }
     ]
   },
   // configure babel-loader.
