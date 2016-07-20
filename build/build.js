@@ -10589,10 +10589,21 @@
 						switch (type) {
 
 							case 'order-pickup':
+
 								that.loadData({
 									type: 'order',
 									content: _message.order
 								});
+								that.$route.router.go('/event-pickup');
+								break;
+
+							case 'order-delivery':
+
+								that.loadData({
+									type: 'order',
+									content: _message.order
+								});
+								that.$route.router.go('/event-delivery');
 								break;
 
 							case 'user-authenticated':
@@ -15222,7 +15233,7 @@
 
 	      var vehicleSelected = setup.vehicleSelected;
 
-	      this.$http.get(MICRO_API_URL + '/' + vehicleSelected + '/opl-available').then(function (response) {
+	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available').then(function (response) {
 	        console.info(response, 'success callback');
 
 	        var result = response.data.result;
@@ -17545,7 +17556,7 @@
 
 	      var vehicleSelected = setup.vehicleSelected;
 
-	      this.$http.get(MICRO_API_URL + '/' + vehicleSelected + '/opl-available').then(function (response) {
+	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available').then(function (response) {
 	        console.info(response, 'success callback');
 
 	        var result = response.data.result;

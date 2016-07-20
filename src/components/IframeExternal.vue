@@ -92,7 +92,7 @@
 
         var vehicleSelected = setup.vehicleSelected
 
-        this.$http.get( MICRO_API_URL + '/' + vehicleSelected + '/opl-available' ).then( ( response ) => {
+        this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )
 
           var result = response.data.result
