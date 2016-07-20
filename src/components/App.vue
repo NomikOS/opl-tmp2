@@ -78,7 +78,14 @@
 
 		 						console.info($('#opl_iframe'), '$(#opl_iframe)');
 
-		 						that.$route.router.go( '/stand-by' )
+		 						var setup = ls.get( 'setup' )
+
+		 						if (!setup) {
+		 							that.$route.router.go( '/setup' )
+		 						} else {
+		 							that.$route.router.go( '/available' )
+		 						}		 						
+
 		 						$('#opl_iframe').remove()
 
 		 					}, ( response ) => {

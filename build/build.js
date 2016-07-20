@@ -10619,7 +10619,14 @@
 
 									console.info($('#opl_iframe'), '$(#opl_iframe)');
 
-									that.$route.router.go('/stand-by');
+									var setup = _ls2.default.get('setup');
+
+									if (!setup) {
+										that.$route.router.go('/setup');
+									} else {
+										that.$route.router.go('/available');
+									}
+
 									$('#opl_iframe').remove();
 								}, function (response) {
 									console.info(response, 'error callback');
@@ -15132,7 +15139,7 @@
 
 
 	var MICRO_API_URL = _common.urls.micro_api;
-	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.app + '/logged-in';
+	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.passport_api + '/auth/xxx123/phonegap-logged-in';
 
 	exports.default = {
 	  name: 'IframeExternal',
@@ -15154,6 +15161,8 @@
 	        url = PASSPORT_WEBSITE_LOGIN_URL;
 	        break;
 	    }
+
+	    console.info(PASSPORT_WEBSITE_LOGIN_URL, 'PASSPORT_WEBSITE_LOGIN_URL');
 
 	    var $opl_iframe = $('#opl_iframe');
 	    $opl_iframe.prop('src', url);

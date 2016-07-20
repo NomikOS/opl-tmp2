@@ -37,7 +37,7 @@
       // centar esto de retry para todos los ajax
     },
     methods: {
-      retry: function() {    
+      retry: function() {
 
         var setup = ls.get( 'setup' )
 
@@ -45,7 +45,7 @@
           return this.$route.router.go( '/setup' )
         }
 
-        var vehicleSelected = setup.vehicleSelected        
+        var vehicleSelected = setup.vehicleSelected
 
         this.$http.get( MICRO_API_URL + '/' + vehicleSelected  + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )
@@ -59,7 +59,7 @@
 
         }, ( response ) => {
           console.info( response, 'error callback' );
-        } )        
+        } )
       }
     }
   }
