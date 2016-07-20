@@ -16512,8 +16512,7 @@
 	                that.switherParseQrScanResult(error);
 	            }, barcodeScannerOptions);
 	        },
-	        switherParseQrScanResult: function switherParseQrScanResult(error, qr_id) {
-
+	        switherParseQrScanResult: function switherParseQrScanResult(error, result) {
 	            if (error) {
 	                console.info("Scanning failed: " + error);
 	                this.$route.router.go('/scan-failed');
@@ -16589,7 +16588,11 @@
 	        updateItem: function updateItem() {
 	            var _this2 = this;
 
-	            var order_id = this.order;
+	            var order_id = this.order.id;
+
+	            var order_id = 137; //this.order.id
+	            console.info(order_id, 'order_id:::::::::::');
+
 	            var item_id = this.item.id;
 	            var qr_id = this.qr_id;
 
