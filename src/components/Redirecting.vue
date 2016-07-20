@@ -28,7 +28,7 @@ export default {
   ready() {
     console.info(this.$route);
     // window.setTimeout(function(){
-    //   this.$route.router.go( 'stand-by' )
+    //   this.$route.router.go( '/stand-by' )
     // }, 1000)
     
   }

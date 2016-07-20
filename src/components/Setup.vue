@@ -93,7 +93,7 @@
         var setup = this.db
         ls.save( 'setup', setup )
 
-        this.$route.router.go( 'available' )
+        this.$route.router.go( '/available' )
 
       },
       cancel: function() {

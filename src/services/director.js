@@ -1,21 +1,15 @@
 import Vue from 'vue' // modules are singletons!!!
 import { router } from '../index'
 import { urls } from '../libs/common' // import una variable
-
 import utils from '../libs/utils' // import un objecto default
 import ls from '../libs/ls'
 
-
-
-const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.app + '/logged-in';
+const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/xxx123/phonegap-logged-in'
 const PASSPORT_WEBSITE_LOGOUT_URL = urls.passport_website + '?action=logout';
 const PASSPORT_API_URL = urls.passport_api
 const SIGNUP_URL = urls.api + 'users/'
 
 export default {
-
-
-
   user: {
     authenticated: false,
     profile: {}
@@ -25,8 +19,7 @@ export default {
    * Chek for phone setup and user director
    * --------------------------------------
    */
-  fixPaths() {
-    console.info(utils.inDev(), 'utils.inDev() ???');
+   fixPaths() {
     if ( !utils.inDev() ) {
       $( 'img' ).each( function() {
         var src = $( this ).attr( 'src' )
@@ -48,22 +41,26 @@ export default {
     this.fixPaths()
     var access_token = ls.get( 'access_token' )
 
+    console.info(access_token, 'access_token');
+
     /**
      * Access token is needed
      */
-    if ( access_token ) {
+     if ( access_token ) {
 
       var setup = ls.get( 'setup' )
+
+      console.info(setup, 'setup');
 
       /**
        * Setup is needed
        */
-      if ( setup ) {
+       if ( setup ) {
 
-      } else {
+       } else {
 
         console.info( 'going to setup' );
-        return router.go( 'setup' )
+        return router.go( '/setup' )
       }
 
       this.user.authenticated = true
@@ -82,19 +79,20 @@ export default {
 
       this.user.authenticated = false
         // this.goPassport()
+        return router.go( '/iframe-external/go-passport' )
         // 
         // 
         // 
 
-    }
-  },
+      }
+    },
 
 
   /**
    * Save access_token and user_id returned by passport website
    * Ex: http://localhost:8080/#!/logged-in/?token=6BIxefKZa8WWMmigflo6aexeUDRL1mwej7Du4j4X&uid=5
    */
-  loggedIn( context ) {
+   loggedIn( context ) {
     console.info( 'loggedIn:' );
 
     var token = utils.getUrlVariable( 'token' );
@@ -109,7 +107,7 @@ export default {
       var profile = response.data.data
       ls.save( 'profile', profile );
 
-      // router.go( 'stand-by' )
+      // router.go( '/stand-by' )
 
     }, ( response ) => {
       console.info( response, 'error callback' );
@@ -117,7 +115,10 @@ export default {
   },
 
   goPassport() {
-    return location.href = PASSPORT_WEBSITE_LOGIN_URL;
+
+    console.info('aqui goPassport()');
+    // $('#opl_iframe').prop('src', PASSPORT_WEBSITE_LOGIN_URL)
+    // return location.href = PASSPORT_WEBSITE_LOGIN_URL;
   },
 
   logout() {

@@ -11,130 +11,218 @@
               <img class="ac25-scanlist-scan-code" src="/html/images/barcode-big-2.png" />
               <div class="clearfix"></div>
               <span class="ac25-scanlist-scan-text">escanear</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <div class="ac25-scan-list-content">
-              <span class="ac25-sclanlist-scan-id">id {{item.id}}</span>
-            </div>
-          </a>
-        </li>
-      </ul><!-- end scan-list -->
-      <div class="container">
-        <p class="ac25-mid-page-paragraph">{{item.name}}</p>
+          </div>
+      </a>
+  </li>
+  <li>
+      <a>
+        <div class="ac25-scan-list-content">
+          <span class="ac25-sclanlist-scan-id">{{item_id_info}}</span>
       </div>
-    </div><!-- end content-inner-holder -->
-    <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
-      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
-    </footer><!-- end footer -->
+  </a>
+</li>
+</ul><!-- end scan-list -->
+<div class="container">
+    <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
+</div>
+</div><!-- end content-inner-holder -->
 
-  </div><!-- end content-global -->
+<footer class="ac25-newfoot ac25-height-auto">
+  <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
+  <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
+</footer><!-- end footer -->
+
+</div><!-- end content-global -->
 </template>
 
 <script>
-  import HeaderUserData from './Partials/HeaderUserData.vue'
-  import ModalWait from './Partials/ModalWait.vue'
-  import { urls } from '../libs/common'
-  import { showModal } from '../vuex/actions'
+    import HeaderUserData from './Partials/HeaderUserData.vue'
+    import ModalWait from './Partials/ModalWait.vue'
 
-  const ORDER_URL = urls.micro_api + '/order'
+    import { urls } from '../libs/common'
+    import { showModal, loadData } from '../vuex/actions'
+    import { getOrder, getItem } from '../vuex/getters'
+    import store from '../vuex/store'
 
-  export default {
-    name: 'Scan',
-    components: {
-      HeaderUserData,
-      ModalWait,
-    },
-    vuex: {
-      actions: {
-        showModal: showModal
-      }
-    },    
-
-    data() {
-      return {
-        item: [],
-        qr_id: 0
-      }
-    },
-    methods: {
-      scan() {
-        var that= this
-        cordova.plugins.barcodeScanner.scan(
-          function (result) {
-            console.info("RESULT\n" +
-              "Result: " + result.text + "\n" +
-              "Format: " + result.format + "\n" +
-              "Cancelled: " + result.cancelled)
-            that.qr_id = result.text
-            that.updateItem()
-          },
-          function (error) {
-            alert("Scanning failed: " + error);
-          },
-          {
-          "preferFrontCamera" : true, // iOS and Android
-          "showFlipCameraButton" : true, // iOS and Android
-          "prompt" : "Apuntar a codigo QR", // supported on Android only
-          "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-          "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
-        });
-      },
-      requestItem() {
-        var order_id = 137
-        var item_id = 0
-        var qr_id = 0
-
-        this.showModal(true)
-        this.$http.post( ORDER_URL + '/scan-item', {
-          order_id : order_id,
-          item_id : item_id,
-          qr_id : qr_id
-        } ).then( ( response ) => {
-          console.info( response, 'success callback' );
-          this.showModal(false)
-          var item = response.data.item
-          if (item.length) {
-            this.item = item
-          }
-        }, ( response ) => {
-          console.info( response, 'error callback' );
-          this.showModal(false)
-        } );
-      },
-      updateItem() {
-        console.info('updateItem()...');
-        var order_id = 137
-        var item_id = this.item.id
-        var qr_id = this.qr_id
-
-        this.showModal(true)
-        this.$http.post( ORDER_URL + '/scan-item', {
-          order_id : order_id,
-          item_id : item_id,
-          qr_id : qr_id
-        } ).then( ( response ) => {
-          console.info( response, 'success callback' );
-          this.showModal(false)
-
-          this.requestItem()
-
-          var user_message = response.data.user_message
-          if (user_message.length) {
-            alert(user_message)
-          }
-        }, ( response ) => {
-          console.info( response, 'error callback' );
-          this.showModal(false)
-        } );
-      }
-    },
-    ready() {
-      console.info( 'Scan is ready ===================================' );
-      this.requestItem()
+    const ORDER_URL = urls.micro_api + '/order'
+    const barcodeScannerOptions = {
+        "preferFrontCamera": true, // iOS and Android
+        "showFlipCameraButton": true, // iOS and Android
+        "prompt": "Apuntar a codigo QR", // supported on Android only
+        "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+        "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
     }
-  }
+
+    export default {
+        name: 'Scan',
+        components: {
+            HeaderUserData,
+            ModalWait,
+        },
+        vuex: {
+            actions: {
+                showModal: showModal,
+                loadData: loadData
+            },
+            getters: {
+                order: getOrder,
+                item: getItem
+            }
+        },
+        data() {
+            return {
+                // order : {},
+                item: [],
+                qr_id: 0,
+                item_id_info: '',
+                item_name_info: ''
+            }
+        },
+        methods: {
+            scan() {
+                var that = this
+
+                cordova.plugins.barcodeScanner.scan(
+                    function( result ) {
+                        console.info( "RESULT\n" +
+                            "Result: " + result.text + "\n" +
+                            "Format: " + result.format + "\n" +
+                            "Cancelled: " + result.cancelled )
+
+                        this.switherParseQrScanResult( null, result )
+                    },
+                    function( error ) {
+                        this.switherParseQrScanResult( error )
+
+                    }, barcodeScannerOptions );
+            },
+            switherParseQrScanResult( error, qr_id ) {
+
+                if ( error ) {
+                    console.info( "Scanning failed: " + error );
+                    this.$route.router.go( '/scan-failed' )
+
+                } else {
+                    this.qr_id = result.text
+                    this.updateItem()
+                }
+
+            },
+            requestItem() {
+                // console.info(this.order);
+                //
+                //
+                var order_id = 137 //this.order.id
+                console.info( order_id, 'order_id:::::::::::' );
+
+
+                var item_id = 0
+                var qr_id = 0
+
+                this.showModal( true )
+                this.$http.post( ORDER_URL + '/scan-item', {
+                    order_id: order_id,
+                    item_id: item_id,
+                    qr_id: qr_id
+                } ).then( ( response ) => {
+
+                    var data = response.data
+                    this.switherParseItemRequest( null, data )
+
+                }, ( response ) => {
+
+                    this.switherParseItemRequest( response )
+                } );
+            },
+            switherParseItemRequest(error, data ) {
+
+                this.showModal( false )
+
+                if ( error ) {
+
+                    console.info( error, 'error callback' )
+                    this.$route.router.go( '/scan-failed' )
+
+                } else {
+
+                    var item = data.item
+                    var user_messages = data.user_messages
+
+                    this.item_name_info = 'No hay mas items que escanear' // o retry?
+
+                    /**
+                     * update item
+                     * and placeholders
+                     */
+                     this.item = item // esto es well
+
+                     this.loadData({
+                        type: 'item',
+                        content: item
+                    } )
+
+                     this.item_id_info = 'id ' + item.id
+                     this.item_name_info = item.name
+
+                     /**
+                      * all ok here, waiting for user click scan button
+                      */
+
+                     // to test
+                     // console.info(data, 'data <<<<<<<<<<<<');
+                     // return this.$route.router.go( '/scan-failed' );
+                 }
+             },
+             updateItem() {
+                var order_id = this.order
+                var item_id = this.item.id
+                var qr_id = this.qr_id
+
+                this.showModal( true )
+                this.$http.post( ORDER_URL + '/scan-item', {
+                    order_id: order_id,
+                    item_id: item_id,
+                    qr_id: qr_id
+                } ).then( ( response ) => {
+
+                    var data = response.data
+                    this.switherParseItemUpdated( null, data )
+
+                }, ( response ) => {
+
+                    switherParseItemUpdated( response )
+                } );
+            },
+            switherParseItemUpdated( error, data ) {
+
+                this.showModal( false )
+
+                if ( error ) {
+
+                    console.info( error, 'error callback' )
+                    this.$route.router.go( '/scan-failed' )
+
+                } else {
+
+                    console.info( data, 'success callback' );
+
+                    // centralizar estos mensajes?
+                    var user_messages = data.user_messages
+                    if ( user_messages.length ) {
+                        alert( user_messages )
+                    }
+
+                    if (data.is_last) {
+                        return this.$route.router.go( '/scan-finished' )
+                    }
+
+                    return this.$route.router.go( '/scan-succesful' )                    
+                }
+            },
+        },
+        ready() {
+            console.info( 'Scan is ready ===================================' );
+            this.requestItem()
+        }
+    }
 </script>

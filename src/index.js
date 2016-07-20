@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './components/App.vue'
 import StandBy from './components/StandBy.vue'
 import Setup from './components/Setup.vue'
+import IframeExternal from './components/IframeExternal.vue'
+
 import EventPickup from './components/EventPickup.vue'
 import EventDelivery from './components/EventDelivery.vue'
 import LoadVehicle from './components/LoadVehicle.vue'
@@ -16,6 +18,10 @@ import LoggedIn from './components/LoggedIn.vue'
 import Redirecting from './components/Redirecting.vue'
 import Available from './components/Available.vue'
 
+import ScanSuccesful from './components/Partials/ScanSuccesful.vue'
+import ScanFailed from './components/Partials/ScanFailed.vue'
+import ScanFinished from './components/Partials/ScanFinished.vue'
+
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
@@ -29,6 +35,18 @@ import director from './services/director'
 export var router = new VueRouter()
 
 router.map( {
+  '/scan-succesful': {
+    component: ScanSuccesful
+  },
+  '/scan-failed': {
+    component: ScanFailed
+  },
+  '/scan-finished': {
+    component: ScanFinished
+  },  
+  '/iframe-external/:url': {
+    component: IframeExternal
+  },  
   '/setup': {
     component: Setup
   },

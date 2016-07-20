@@ -40,7 +40,12 @@
       retry: function() {    
 
         var setup = ls.get( 'setup' )
-        var vehicleSelected = setup.vehicleSelected
+
+        if (!setup || !setup.vehicleSelected) {
+          return this.$route.router.go( '/setup' )
+        }
+
+        var vehicleSelected = setup.vehicleSelected        
 
         this.$http.get( MICRO_API_URL + '/' + vehicleSelected  + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )

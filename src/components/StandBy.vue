@@ -15,15 +15,18 @@
 </template>
 
 <script>
-import HeaderUserData from './Partials/HeaderUserData.vue'
+  import HeaderUserData from './Partials/HeaderUserData.vue'
 
-export default {
-  name: 'StandBy',
-  components: {
-    HeaderUserData
-  },
-  destroyed() {
-    console.info( 'StandBy is destroyed ===================================' );
+  export default {
+    name: 'StandBy',
+    components: {
+      HeaderUserData
+    },
+    ready() {
+      console.info( 'StandBy is ready ===================================' );
+    },  
+    destroyed() {
+      console.info( 'StandBy is destroyed ===================================' );
+    }
   }
-}
 </script>

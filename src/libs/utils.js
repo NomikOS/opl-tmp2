@@ -24,8 +24,8 @@
 	showModalCoolTitle: function( idModal, title, cb ) {
 		appECBase.loadingPage( false );
 		var msg = '<div class="text-center" style="height: 185px; margin-top: 50px;">' +
-			'<img src="assets/img/circle-loading.gif" style="height: 80%;">' +
-			'</div>';
+		'<img src="assets/img/circle-loading.gif" style="height: 80%;">' +
+		'</div>';
 		appUtilidades.creamodal( idModal, '', title, msg, ' ', cb );
 	},
 	getUrl: function() {
@@ -61,9 +61,18 @@
 		}
 		return dist
 	},
-	getUrlVariable: function( name ) {
-		console.info(window.location.href, 'window.location.href -------------------');
-		var results = new RegExp( '[\?&]' + name + '=([^&#]*)' ).exec( window.location.href );
+	getUrlVariable: function( name, theurl ) {
+
+		var url = ''
+
+		if (theurl) {
+			url = theurl
+		} else {
+			url = window.location.href
+		}
+
+		console.info(url, 'window.location.href -------------------');
+		var results = new RegExp( '[\?&]' + name + '=([^&#]*)' ).exec( url );
 		if (!results) {
 			return '';
 		}

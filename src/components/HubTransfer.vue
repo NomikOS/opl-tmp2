@@ -70,7 +70,7 @@ export default {
 
 
 
-        this.$route.router.go( 'available' )
+        this.$route.router.go( '/available' )
 
 
 
