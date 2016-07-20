@@ -4,7 +4,7 @@
     <div class="container">
       <div class="ac25-content-inner-holder ac25-min-height-200">
        <h4 class="ac25-top-red-text">ECONOCARGO</h4>
-       <img class="ac25-top-right-hand ac25-z-1" src="/html/images/hand-black.png" />
+       <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" />
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">

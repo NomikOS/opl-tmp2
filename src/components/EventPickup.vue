@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ac25-content-inner-holder">
 
-        <img class="ac25-top-right-hand ac25-z-1" src="/html/images/hand-black.png" v-link="'call'" />
+        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
-        <img class="ac25-page-top-logo" src="/html/images/pickup.png" />
+        <img class="ac25-page-top-logo" src="html/images/pickup.png" />
         <p class="ac25-order-number-info">
           <span>orden {{order.special_id}}</span>
           <notification-icon></notification-icon>

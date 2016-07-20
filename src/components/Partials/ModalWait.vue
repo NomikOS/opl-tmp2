@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="ac25-loading-content">
 				<h5>Comunicando con central...</h5>
-				<img src="/html/images/loading.gif" />
+				<img src="../html/images/loading.gif" />
 			</div>
 		</div>
 	</div>	

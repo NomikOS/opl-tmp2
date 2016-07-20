@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="ac25-content-inner-holder ac25-min-height-200 center">
 				<p class="ac25-mtop140">
-					<img src="/html/images/green-check.png" />
+					<img src="../html/images/green-check.png" />
 					<div class="clearfix"></div>
 					<span class="ac25-top-check-title"> escaneo terminado </span>
 

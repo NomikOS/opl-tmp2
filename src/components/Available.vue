@@ -4,7 +4,7 @@
     <div class="container">
       <div class="ac25-loading-content">
        <h5>{{message}}</h5>
-       <img src="/html/images/loading.gif" />
+       <img src="html/images/loading.gif" />
      </div>
    </div>
  </div><!-- end red-loading-section -->

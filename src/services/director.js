@@ -19,26 +19,31 @@ export default {
    * Chek for phone setup and user director
    * --------------------------------------
    */
-   fixPaths() {
-    if ( !utils.inDev() ) {
-      $( 'img' ).each( function() {
-        var src = $( this ).attr( 'src' )
+  //  fixPaths() {
+  //   if ( !utils.inDev() ) {
+  //     $( 'img' ).each( function() {
+  //       var src = $( this ).attr( 'src' )
 
-        console.info(src, 'first images sources');
+  //       console.info(src, 'first images sources');
 
-        if ( src.substr(0,  1 ) === '/' ) {
-          src = src.substr( 1, src.length );
-        }
-        console.info(src, 'after images sources');
+  //       if ( src.substr(0,  1 ) === '/' ) {
+  //         src = src.substr( 1, src.length );
+  //       }
+  //       console.info(src, 'after images sources');
 
-        $( this ).attr( 'src', src );
-      } );
-    }
-  },
+  //       $( this ).attr( 'src', src );
+  //     } );
+  //   }
+  // },
 
   init() {
 
-    this.fixPaths()
+    // this.fixPaths()
+    // 
+    // 
+    // 
+    // 
+    // 
     var access_token = ls.get( 'access_token' )
 
     console.info(access_token, 'access_token');

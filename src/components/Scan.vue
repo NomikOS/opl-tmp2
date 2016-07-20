@@ -8,7 +8,7 @@
         <li>
           <a class="waves-effect waves-light">
             <div class="ac25-scan-list-content">
-              <img class="ac25-scanlist-scan-code" src="/html/images/barcode-big-2.png" />
+              <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
               <div class="clearfix"></div>
               <span class="ac25-scanlist-scan-text">escanear</span>
           </div>
@@ -214,11 +214,17 @@
                         alert( user_messages )
                     }
 
-                    if (data.is_last) {
-                        return this.$route.router.go( '/scan-finished' )
-                    }
+                    if (data.OK) {
+                        if (data.is_last) {
+                            return this.$route.router.go( '/scan-finished' )
+                        }
+                        return this.$route.router.go( '/scan-succesful' )
 
-                    return this.$route.router.go( '/scan-succesful' )                    
+                    } else {
+                        
+                        console.info( error, 'error callback' )
+                        this.$route.router.go( '/scan-failed' )
+                    }
                 }
             },
         },

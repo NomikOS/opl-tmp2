@@ -1,5 +1,5 @@
 <template>
-<a v-if="notification" @click="popup()"><img class="" src="/html/images/info.png" /></a>
+<a v-if="notification" @click="popup()"><img class="" src="../html/images/info.png" /></a>
 </template>
 
 <script>

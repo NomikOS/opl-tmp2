@@ -4,13 +4,13 @@
 		<div class="container">
 			<div class="ac25-content-inner-holder ac25-min-height-200 center">
 				<p class="ac25-mtop140">
-					<img src="/html/images/info.png" />
+					<img src="../html/images/info.png" />
 					<div class="clearfix"></div>
 					<span class="ac25-top-check-title"> Lectura fallida </span>
 
 					<div class="clearfix"></div>
 
-					<img class="ac25-no-margin" src="/html/images/barcode-big-2.png" />
+					<img class="ac25-no-margin" src="../html/images/barcode-big-2.png" />
 					<p class="ac25-mid-page-paragraph ac25-no-margin"> {{item.name}}  </p>
 
 					<div class="clearfix"></div>

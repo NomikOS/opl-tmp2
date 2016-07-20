@@ -4,7 +4,7 @@
     <li>
       <a class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <img src="/html/images/print-big.png" alt="" />
+          <img src="html/images/print-big.png" alt="" />
           <p>imprimir</p>
         </div>
       </a>

@@ -10,7 +10,7 @@
          <br />
          Llame a cliente sólo en caso de ser necesario.
        </p>
-       <img class="ac25-top-right-hand ac25-z-1" src="/html/images/hand-black.png" />
+       <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" />
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">

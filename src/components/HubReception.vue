@@ -5,7 +5,7 @@
     <div class="ac25-content-inner-holder ac25-min-height-200">
      <h4 class="ac25-top-red-text">CARGAR EL CAMION</h4>
      <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
-     <img class="ac25-top-right-hand ac25-z-1" src="/html/images/hand-black.png" v-link="'call'" />
+     <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
      <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
       <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
@@ -13,7 +13,7 @@
     </ul>
 
     <div class="clearfix"></div>
-    <a href="#" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="/html/images/print.png"  class="left" alt="" />  <span>imprimir listado de bultos</span> </a>
+    <a href="#" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png"  class="left" alt="" />  <span>imprimir listado de bultos</span> </a>
   </div><!-- end content-inner-holder -->
 </div><!-- end container -->
 
