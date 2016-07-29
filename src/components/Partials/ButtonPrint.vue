@@ -6,10 +6,8 @@
 </template>
 
 <script>
-export default {
-	name: 'ButtonPrint',
-	ready() {
-		console.info( 'ButtonPrint is ready ===================================' );
+	export default {
+		name: 'ButtonPrint',
+		ready() {	}
 	}
-}
 </script>

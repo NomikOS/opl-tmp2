@@ -23,35 +23,32 @@
     components: {
       HeaderUserData
     },
-    data: function(){
+    data: function() {
       return {
-        message:'Poniendose a disposición de la central'
+        message: 'Poniendose a disposición de la central'
       }
     },
     ready() {
       console.info( 'Available is ready ===================================' );
       this.retry();
-
-
-
-      // centar esto de retry para todos los ajax
+      // centrar esto de retry para todos los ajax
     },
     methods: {
       retry: function() {
 
         var setup = ls.get( 'setup' )
 
-        if (!setup || !setup.vehicleSelected) {
+        if ( !setup || !setup.vehicleSelected ) {
           return this.$route.router.go( '/setup' )
         }
 
         var vehicleSelected = setup.vehicleSelected
 
-        this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected  + '/opl-available' ).then( ( response ) => {
+        this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )
 
           var result = response.data.result
-          if (result != 'OK') {
+          if ( result != 'OK' ) {
             return this.retry();
           }
 

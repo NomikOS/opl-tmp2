@@ -1,7 +1,7 @@
 // An action will receive the store as the first argument.
 // Since we are only interested in the dispatch (and optionally the state)
 // we can pull those two parameters using the ES6 destructuring feature
-export const loadData = function ({ dispatch, state }, data) {
+export const storeData = function ({ dispatch, state }, data) {
   dispatch('LOAD_DATA', data)
 }
 export const showModal = function ({ dispatch, state }, data) {

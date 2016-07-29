@@ -65,41 +65,34 @@
 </template>
 
 <script>
-import { urls } from '../libs/common'
-import HeaderUserData from './Partials/HeaderUserData.vue'
-import NotificationIcon from './Partials/NotificationIcon.vue'
-import ButtonPrint from './Partials/ButtonPrint.vue'
-import ButtonScan from './Partials/ButtonScan.vue'
+  import { urls } from '../libs/common'
+  import HeaderUserData from './Partials/HeaderUserData.vue'
+  import NotificationIcon from './Partials/NotificationIcon.vue'
+  import ButtonPrint from './Partials/ButtonPrint.vue'
+  import ButtonScan from './Partials/ButtonScan.vue'
+  import { getOrder } from '../vuex/getters'
 
-const ORDER_URL = urls.micro_api + '/order'
+  const ORDER_URL = urls.micro_api + '/order'
 
-export default {
-  name: 'EventPickup',
-  components: {
-    HeaderUserData,
-    NotificationIcon,
-    ButtonPrint,
-    ButtonScan
-  },
-  data: function() {
-    return {
-      order: {}
-    };
-  },
-  ready: function() {
-    console.info( 'EventPickup is ready ===================================' );
-    this.load();
-  },
-  methods: {
-    load: function() {
-      this.$http.get( ORDER_URL + '/137' ).then( ( response ) => {
-        console.info( response, 'success callback' );
-        var order = response.data.data
-        this.order = order
-      }, ( response ) => {
-        console.info( response, 'error callback' );
-      } );
-    }
+  export default {
+    name: 'EventPickup',
+    components: {
+      HeaderUserData,
+      NotificationIcon,
+      ButtonPrint,
+      ButtonScan
+    },
+    vuex: {
+      getters: {
+        order: getOrder
+      }
+    },
+    data: function() {
+      return {}
+    },
+    methods: {},
+    ready: function() {
+      console.info( '=================================== EventPickup is ready with this order: ', this.order.id )
+    },
   }
-}
 </script>

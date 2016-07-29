@@ -2,11 +2,11 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-07-19 20:15:33
+ * @Last Modified time: 2016-07-23 13:37:45
  */
 
- import Vue from 'vue'
- import Vuex from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 // Make vue aware of Vuex
 Vue.use( Vuex )
@@ -14,8 +14,8 @@ Vue.use( Vuex )
 // Create an object to hold the initial state when
 // the app starts up
 const state = {
-  order: { id: 137 },
-  item: {},
+  order: { id: 0 },
+  item: { id: 0 },
   shipmentNotification: {},
   modalVisible: true,
   urlIframe: ''

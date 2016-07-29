@@ -82,11 +82,11 @@
 
 	var _EventPickup2 = _interopRequireDefault(_EventPickup);
 
-	var _EventDelivery = __webpack_require__(50);
+	var _EventDelivery = __webpack_require__(51);
 
 	var _EventDelivery2 = _interopRequireDefault(_EventDelivery);
 
-	var _LoadVehicle = __webpack_require__(53);
+	var _LoadVehicle = __webpack_require__(54);
 
 	var _LoadVehicle2 = _interopRequireDefault(_LoadVehicle);
 
@@ -10590,6 +10590,8 @@
 
 							case 'order-pickup':
 
+								console.info(_message.order, 'message.order');
+
 								that.loadData({
 									type: 'order',
 									content: _message.order
@@ -10694,7 +10696,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-19 20:15:33
+	 * @Last Modified time: 2016-07-20 15:04:09
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10702,7 +10704,7 @@
 	// Create an object to hold the initial state when
 	// the app starts up
 	var state = {
-	  order: { id: 137 },
+	  order: { id: 0 },
 	  item: {},
 	  shipmentNotification: {},
 	  modalVisible: true,
@@ -15280,7 +15282,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(34)
-	__vue_template__ = __webpack_require__(47)
+	__vue_template__ = __webpack_require__(48)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15324,9 +15326,11 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
+	var _getters = __webpack_require__(47);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	// <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
 	//     <div class="container">
@@ -15395,6 +15399,8 @@
 	// <script>
 
 
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
 	exports.default = {
 	  name: 'EventPickup',
 	  components: {
@@ -15403,27 +15409,20 @@
 	    ButtonPrint: _ButtonPrint2.default,
 	    ButtonScan: _ButtonScan2.default
 	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder
+	    }
+	  },
 	  data: function data() {
 	    return {
-	      order: {}
+	      // order: {} // no sar junto a vuex
 	    };
 	  },
+	  methods: {},
 	  ready: function ready() {
 	    console.info('EventPickup is ready ===================================');
-	    this.load();
-	  },
-	  methods: {
-	    load: function load() {
-	      var _this = this;
-
-	      this.$http.get(ORDER_URL + '/137').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-	        _this.order = order;
-	      }, function (response) {
-	        console.info(response, 'error callback');
-	      });
-	    }
+	    console.info('with this order: ', this.order.id);
 	  }
 	};
 	// </script>
@@ -15632,29 +15631,58 @@
 
 /***/ },
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(49) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getOrder = getOrder;
+	exports.getItem = getItem;
+	exports.getModalVisibility = getModalVisibility;
+	exports.getUrlIframe = getUrlIframe;
+	// This getter is a function which just returns the count
+	// With ES6 you can also write it as:
+	// export const getCount = state => state.count
+	function getOrder(state) {
+	  return state.order;
+	}
+	function getItem(state) {
+	  return state.item;
+	}
+	function getModalVisibility(state) {
+	  return state.modalVisible;
+	}
+	function getUrlIframe(state) {
+	  return state.urlIframe;
+	}
 
 /***/ },
 /* 48 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "data:image/png;base64,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"
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 49 */
 /***/ function(module, exports) {
 
-	module.exports = "data:image/png;base64,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"
+	module.exports = "data:image/png;base64,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"
 
 /***/ },
 /* 50 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(51)
-	__vue_template__ = __webpack_require__(52)
+	__vue_script__ = __webpack_require__(52)
+	__vue_template__ = __webpack_require__(53)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15671,7 +15699,7 @@
 	})()}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15698,9 +15726,11 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
+	var _getters = __webpack_require__(47);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	// <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
 	//     <div class="container">
@@ -15769,6 +15799,8 @@
 	// <script>
 
 
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
 	exports.default = {
 	  name: 'EventDelivery',
 	  components: {
@@ -15777,43 +15809,36 @@
 	    ButtonPrint: _ButtonPrint2.default,
 	    ButtonScan: _ButtonScan2.default
 	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder
+	    }
+	  },
 	  data: function data() {
 	    return {
-	      order: {}
+	      // order: {} // no sar junto a vuex
 	    };
 	  },
+	  methods: {},
 	  ready: function ready() {
-	    console.info('EventDelivery is ready ===================================, AJAX...');
-	    this.load();
-	  },
-	  methods: {
-	    load: function load() {
-	      var _this = this;
-
-	      this.$http.get(ORDER_URL + '/137').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-	        _this.order = order;
-	      }, function (response) {
-	        console.info(response, 'error callback');
-	      });
-	    }
+	    console.info('EventDelivery is ready ===================================');
+	    console.info('with this order: ', this.order.id);
 	  }
 	};
 	// </script>
 
 /***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(49) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(54)
+	__vue_script__ = __webpack_require__(55)
 	__vue_template__ = __webpack_require__(56)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -15831,7 +15856,7 @@
 	})()}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15858,7 +15883,7 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(55);
+	var _getters = __webpack_require__(47);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15956,39 +15981,10 @@
 	// </script>
 
 /***/ },
-/* 55 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getOrder = getOrder;
-	exports.getItem = getItem;
-	exports.getModalVisibility = getModalVisibility;
-	exports.getUrlIframe = getUrlIframe;
-	// This getter is a function which just returns the count
-	// With ES6 you can also write it as:
-	// export const getCount = state => state.count
-	function getOrder(state) {
-	  return state.order;
-	}
-	function getItem(state) {
-	  return state.item;
-	}
-	function getModalVisibility(state) {
-	  return state.modalVisible;
-	}
-	function getUrlIframe(state) {
-	  return state.urlIframe;
-	}
-
-/***/ },
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n      </li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n      </li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 57 */
@@ -16127,7 +16123,7 @@
 /* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 61 */
@@ -16260,7 +16256,7 @@
 /* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" alt=\"\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 64 */
@@ -16456,7 +16452,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _HeaderUserData = __webpack_require__(20);
@@ -16471,15 +16467,11 @@
 
 	var _actions = __webpack_require__(12);
 
-	var _getters = __webpack_require__(55);
-
-	var _store = __webpack_require__(6);
-
-	var _store2 = _interopRequireDefault(_store);
+	var _getters = __webpack_require__(47);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
 	//   <header-user-data></header-user-data>
 	//   <modal-wait></modal-wait>
 	//
@@ -16492,213 +16484,207 @@
 	//               <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
 	//               <div class="clearfix"></div>
 	//               <span class="ac25-scanlist-scan-text">escanear</span>
-	//           </div>
-	//       </a>
-	//   </li>
-	//   <li>
-	//       <a>
-	//         <div class="ac25-scan-list-content">
-	//           <span class="ac25-sclanlist-scan-id">{{item_id_info}}</span>
+	//             </div>
+	//           </a>
+	//         </li>
+	//         <li>
+	//           <a>
+	//             <div class="ac25-scan-list-content">
+	//               <span class="ac25-sclanlist-scan-id">{{item_id_info}}</span>
+	//             </div>
+	//           </a>
+	//         </li>
+	//       </ul><!-- end scan-list -->
+	//       <div class="container">
+	//         <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
 	//       </div>
-	//   </a>
-	// </li>
-	// </ul><!-- end scan-list -->
-	// <div class="container">
-	//     <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
-	// </div>
-	// </div><!-- end content-inner-holder -->
+	//     </div><!-- end content-inner-holder -->
 	//
-	// <footer class="ac25-newfoot ac25-height-auto">
-	//   <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
-	//   <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
-	// </footer><!-- end footer -->
+	//     <footer class="ac25-newfoot ac25-height-auto">
+	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
+	//       <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
+	//     </footer><!-- end footer -->
 	//
-	// </div><!-- end content-global -->
+	//   </div><!-- end content-global -->
 	// </template>
 	//
 	// <script>
 
-
-	var ORDER_URL = _common.urls.micro_api + '/order';
 	var barcodeScannerOptions = {
-	    "preferFrontCamera": true, // iOS and Android
-	    "showFlipCameraButton": true, // iOS and Android
-	    "prompt": "Apuntar a codigo QR", // supported on Android only
-	    "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-	    "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
+	  "preferFrontCamera": true, // iOS and Android
+	  "showFlipCameraButton": true, // iOS and Android
+	  "prompt": "Apuntar a codigo QR", // supported on Android only
+	  "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+	  "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
 	};
 
 	exports.default = {
-	    name: 'Scan',
-	    components: {
-	        HeaderUserData: _HeaderUserData2.default,
-	        ModalWait: _ModalWait2.default
+	  name: 'Scan',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default
+	  },
+	  vuex: {
+	    actions: {
+	      showModal: _actions.showModal,
+	      loadData: _actions.loadData
 	    },
-	    vuex: {
-	        actions: {
-	            showModal: _actions.showModal,
-	            loadData: _actions.loadData
-	        },
-	        getters: {
-	            order: _getters.getOrder,
-	            item: _getters.getItem
-	        }
-	    },
-	    data: function data() {
-	        return {
-	            // order : {},
-	            item: [],
-	            qr_id: 0,
-	            item_id_info: '',
-	            item_name_info: ''
-	        };
-	    },
-
-	    methods: {
-	        scan: function scan() {
-	            var that = this;
-
-	            cordova.plugins.barcodeScanner.scan(function (result) {
-	                console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
-
-	                that.switherParseQrScanResult(null, result);
-	            }, function (error) {
-	                that.switherParseQrScanResult(error);
-	            }, barcodeScannerOptions);
-	        },
-	        switherParseQrScanResult: function switherParseQrScanResult(error, result) {
-	            if (error) {
-	                console.info("Scanning failed: " + error);
-	                this.$route.router.go('/scan-failed');
-	            } else {
-	                this.qr_id = result.text;
-	                this.updateItem();
-	            }
-	        },
-	        requestItem: function requestItem() {
-	            var _this = this;
-
-	            // console.info(this.order);
-	            //
-	            //
-	            var order_id = 137; //this.order.id
-	            console.info(order_id, 'order_id:::::::::::');
-
-	            var item_id = 0;
-	            var qr_id = 0;
-
-	            this.showModal(true);
-	            this.$http.post(ORDER_URL + '/scan-item', {
-	                order_id: order_id,
-	                item_id: item_id,
-	                qr_id: qr_id
-	            }).then(function (response) {
-
-	                var data = response.data;
-	                _this.switherParseItemRequest(null, data);
-	            }, function (response) {
-
-	                _this.switherParseItemRequest(response);
-	            });
-	        },
-	        switherParseItemRequest: function switherParseItemRequest(error, data) {
-
-	            this.showModal(false);
-
-	            if (error) {
-
-	                console.info(error, 'error callback');
-	                this.$route.router.go('/scan-failed');
-	            } else {
-
-	                var item = data.item;
-	                var user_messages = data.user_messages;
-
-	                this.item_name_info = 'No hay mas items que escanear'; // o retry?
-
-	                /**
-	                 * update item
-	                 * and placeholders
-	                 */
-	                this.item = item; // esto es well
-
-	                this.loadData({
-	                    type: 'item',
-	                    content: item
-	                });
-
-	                this.item_id_info = 'id ' + item.id;
-	                this.item_name_info = item.name;
-
-	                /**
-	                 * all ok here, waiting for user click scan button
-	                 */
-
-	                // to test
-	                // console.info(data, 'data <<<<<<<<<<<<');
-	                // return this.$route.router.go( '/scan-failed' );
-	            }
-	        },
-	        updateItem: function updateItem() {
-	            var _this2 = this;
-
-	            var order_id = this.order.id;
-
-	            var order_id = 137; //this.order.id
-	            console.info(order_id, 'order_id:::::::::::');
-
-	            var item_id = this.item.id;
-	            var qr_id = this.qr_id;
-
-	            this.showModal(true);
-	            this.$http.post(ORDER_URL + '/scan-item', {
-	                order_id: order_id,
-	                item_id: item_id,
-	                qr_id: qr_id
-	            }).then(function (response) {
-
-	                var data = response.data;
-	                _this2.switherParseItemUpdated(null, data);
-	            }, function (response) {
-
-	                switherParseItemUpdated(response);
-	            });
-	        },
-	        switherParseItemUpdated: function switherParseItemUpdated(error, data) {
-
-	            this.showModal(false);
-
-	            if (error) {
-
-	                console.info(error, 'error callback');
-	                this.$route.router.go('/scan-failed');
-	            } else {
-
-	                console.info(data, 'success callback');
-
-	                // centralizar estos mensajes?
-	                var user_messages = data.user_messages;
-	                if (user_messages.length) {
-	                    alert(user_messages);
-	                }
-
-	                if (data.OK) {
-	                    if (data.is_last) {
-	                        return this.$route.router.go('/scan-finished');
-	                    }
-	                    return this.$route.router.go('/scan-succesful');
-	                } else {
-
-	                    console.info(error, 'error callback');
-	                    this.$route.router.go('/scan-failed');
-	                }
-	            }
-	        }
-	    },
-	    ready: function ready() {
-	        console.info('Scan is ready ===================================');
-	        this.requestItem();
+	    getters: {
+	      order: _getters.getOrder,
+	      item: _getters.getItem
 	    }
+	  },
+	  data: function data() {
+	    return {
+	      // order : {},
+	      item: [],
+	      qr_id: 0,
+	      item_id_info: '',
+	      item_name_info: ''
+	    };
+	  },
+
+	  methods: {
+	    scan: function scan() {
+	      var that = this;
+
+	      cordova.plugins.barcodeScanner.scan(function (result) {
+	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
+
+	        that.switherParseQrScanResult(null, result);
+	      }, function (error) {
+	        that.switherParseQrScanResult(error);
+	      }, barcodeScannerOptions);
+	    },
+	    switherParseQrScanResult: function switherParseQrScanResult(error, result) {
+	      if (error) {
+	        console.info("Scanning failed: " + error);
+	        this.$route.router.go('/scan-failed');
+	      } else {
+	        this.qr_id = result.text;
+	        this.updateItem();
+	      }
+	    },
+	    requestItem: function requestItem() {
+	      var _this = this;
+
+	      var order_id = this.order.id;
+	      var item_id = 0;
+	      var qr_id = 0;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id
+	      }).then(function (response) {
+
+	        var data = response.data;
+	        _this.switherParseItemRequest(null, data);
+	      }, function (response) {
+
+	        _this.switherParseItemRequest(response);
+	      });
+	    },
+	    switherParseItemRequest: function switherParseItemRequest(error, data) {
+	      console.info('(requestItem) data from ' + ORDER_URL + '/scan-item', data);
+
+	      this.showModal(false);
+
+	      if (error) {
+
+	        console.info(error, 'error callback');
+	        this.$route.router.go('/scan-failed');
+	      } else {
+
+	        var item = data.item;
+	        var user_messages = data.user_messages;
+
+	        /**
+	         * update item
+	         * and placeholders
+	         */
+	        this.item = item; // esto esta bien
+
+	        this.loadData({
+	          type: 'item',
+	          content: item
+	        });
+
+	        if (!item.length) {
+	          this.item_id_info = '';
+	          this.item_name_info = 'No hay mas items que escanear para la orden ' + this.order.id;
+	          return;
+	        }
+
+	        this.item_id_info = 'id ' + item.id;
+	        this.item_name_info = item.name;
+
+	        /**
+	         * all ok here, waiting for user click scan button
+	         */
+	      }
+	    },
+	    updateItem: function updateItem() {
+	      var _this2 = this;
+
+	      var order_id = this.order.id;
+	      var item_id = this.item.id;
+	      var qr_id = this.qr_id;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id
+	      }).then(function (response) {
+
+	        var data = response.data;
+	        _this2.switherParseItemUpdated(null, data);
+	      }, function (response) {
+
+	        switherParseItemUpdated(response);
+	      });
+	    },
+	    switherParseItemUpdated: function switherParseItemUpdated(error, data) {
+	      console.info('(updateItem) data from ' + ORDER_URL + '/scan-item', data);
+
+	      this.showModal(false);
+
+	      if (error) {
+
+	        console.info(error, 'error callback');
+	        this.$route.router.go('/scan-failed');
+	      } else {
+
+	        console.info(data, 'success callback');
+
+	        // centralizar estos mensajes?
+	        var user_messages = data.user_messages;
+	        if (user_messages.length) {
+	          alert(user_messages);
+	        }
+
+	        console.info(data.OK, 'data.OK');
+
+	        if (data.OK) {
+	          if (data.is_last) {
+	            return this.$route.router.go('/scan-finished');
+	          }
+	          return this.$route.router.go('/scan-succesful');
+	        } else {
+
+	          console.info(error, 'error callback');
+	          this.$route.router.go('/scan-failed');
+	        }
+	      }
+	    }
+	  },
+	  ready: function ready() {
+	    console.info('Scan is ready ===================================');
+	    console.info('with this order: ', this.order.id);
+	    this.requestItem();
+	  }
 	};
 	// </script>
 
@@ -17083,7 +17069,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(55);
+	var _getters = __webpack_require__(47);
 
 	exports.default = {
 		name: 'ModalWait',
@@ -17130,7 +17116,7 @@
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(46) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n          </div>\n      </a>\n  </li>\n  <li>\n      <a>\n        <div class=\"ac25-scan-list-content\">\n          <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n      </div>\n  </a>\n</li>\n</ul><!-- end scan-list -->\n<div class=\"container\">\n    <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n</div>\n</div><!-- end content-inner-holder -->\n\n<footer class=\"ac25-newfoot ac25-height-auto\">\n  <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0\">escanear item</a>\n  <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(46) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0\">escanear item</a>\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 77 */
@@ -17284,7 +17270,7 @@
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 83 */
@@ -17368,7 +17354,7 @@
 /* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(48) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 86 */
@@ -17673,7 +17659,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(55);
+	var _getters = __webpack_require__(47);
 
 	exports.default = {
 	    name: 'ScanSuccesful',
@@ -17761,7 +17747,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(55);
+	var _getters = __webpack_require__(47);
 
 	exports.default = {
 	    name: 'ScanFailed',
@@ -17843,7 +17829,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(55);
+	var _getters = __webpack_require__(47);
 
 	exports.default = {
 	    name: 'ScanFinished',
