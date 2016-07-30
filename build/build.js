@@ -16253,23 +16253,6 @@
 
 
 	  methods: {
-	    // print( label ) {
-	    //   console.info( label, 'order #' + this.order.id );
-	    //   this.$http.get( ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label ).then( ( response ) => {
-	    //     console.info( response, 'success callback' );
-	    //     var mac = 'AC:3F:A4:56:66:EC';
-	    //     var text = response.data.text
-	    //     cordova.plugins.zbtprinter.print( mac, text,
-	    //       function( success ) {},
-	    //       function( fail ) {
-	    //         alert( fail );
-	    //       } );
-
-	    //   }, ( response ) => {
-	    //     console.info( response, 'error callback' );
-	    //   } );
-	    // },     
-
 	    print: function print(label) {
 
 	      var setup = _ls2.default.get('setup');
@@ -16289,7 +16272,7 @@
 
 	        var text = response.data.text;
 	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
-	          alert(fail);
+	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
 	        });
 	      }, function (response) {
 	        console.info(response, 'error callback');
@@ -17467,18 +17450,19 @@
 	      if (!setup || !setup.vehicleSelected) {
 	        return this.$route.router.go('/setup');
 	      }
-
 	      var vehicleSelected = setup.vehicleSelected;
+	      var secs = 30000;
 	      var that = this;
 
 	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available').then(function (response) {
 	        console.info(response, 'success callback');
 
-	        if (!response.data.ok) {
+	        if (!response.ok) {
 
+	          console.info('Inform available to central: Retrying in ' + secs + ' seconds');
 	          setTimeout(function () {
 	            that.retry();
-	          }, 5000);
+	          }, secs);
 
 	          return;
 	        }
@@ -17487,6 +17471,7 @@
 
 	        if (result == 'all ok') {
 	          that.message = 'R4';
+
 	          setTimeout(function () {
 	            return that.$route.router.go('/stand-by');
 	          }, 1000);

@@ -41,26 +41,28 @@
         if ( !setup || !setup.vehicleSelected ) {
           return this.$route.router.go( '/setup' )
         }
-
         var vehicleSelected = setup.vehicleSelected
+        var secs = 30000;
         var that = this;
 
         this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )
 
-          if ( !response.data.ok ) {
+          if ( !response.ok ) {
 
+            console.info('Inform available to central: Retrying in ' + secs + ' seconds');
             setTimeout( function() {
               that.retry();
-            }, 5000 )
+            }, secs )
 
             return
           }
 
           var result = response.data.result
-          
+
           if ( result == 'all ok' ) {
             that.message = 'R4'
+            
             setTimeout( function() {
               return that.$route.router.go( '/stand-by' )
             }, 1000 )
