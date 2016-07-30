@@ -16253,11 +16253,40 @@
 
 
 	  methods: {
+	    // print( label ) {
+	    //   console.info( label, 'order #' + this.order.id );
+	    //   this.$http.get( ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label ).then( ( response ) => {
+	    //     console.info( response, 'success callback' );
+	    //     var mac = 'AC:3F:A4:56:66:EC';
+	    //     var text = response.data.text
+	    //     cordova.plugins.zbtprinter.print( mac, text,
+	    //       function( success ) {},
+	    //       function( fail ) {
+	    //         alert( fail );
+	    //       } );
+
+	    //   }, ( response ) => {
+	    //     console.info( response, 'error callback' );
+	    //   } );
+	    // },     
+
 	    print: function print(label) {
-	      console.info(label, 'order #' + this.order.id);
-	      this.$http.get(ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label).then(function (response) {
+
+	      var setup = _ls2.default.get('setup');
+
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
+	      }
+
+	      // var printerMAC = 'AC:3F:A4:56:66:EC';
+	      var mac = $.trim(setup.printerMAC);
+	      var that = this;
+	      var order_id = this.order.id;
+
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
 	        console.info(response, 'success callback');
-	        var mac = 'AC:3F:A4:56:66:EC';
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
+
 	        var text = response.data.text;
 	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
 	          alert(fail);
