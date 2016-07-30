@@ -14,39 +14,67 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-   <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-   <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
-   <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
-    <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
-    <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
-  </footer><!-- end footer -->
-</div><!-- end content-global -->  
+     <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
+     <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
+     <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+     <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+     <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
+   </footer><!-- end footer -->
+ </div><!-- end content-global -->  
 </template>
 
 <script>
-import HeaderUserData from './Partials/HeaderUserData.vue'
+  import HeaderUserData from './Partials/HeaderUserData.vue'
+  import ls from '../libs/ls'
 
-export default {
-  name: 'Call',
-  components: {
-    HeaderUserData
-  },
-  methods: {
-    callCustomer() {
-      alert('Ring ring')
+  var phoneMobile = ''
+  var phoneCentral = ''
+
+  export default {
+    name: 'Call',
+    components: {
+      HeaderUserData
     },
-    callCentralCustomer() {
-      alert('Ring ring')
+    methods: {
+      callCustomer() {
+        var setup = ls.get( 'setup' )
+        if ( !setup || !setup.phoneMobile ) {
+          return this.$route.router.go( '/setup' )
+        }
+        phoneMobile = setup.phoneMobile
+
+        alert('Ring ring')
+      },
+      callCentralCustomer() {
+        var setup = ls.get( 'setup' )
+        if ( !setup || !setup.phoneMobile ) {
+          return this.$route.router.go( '/setup' )
+        }
+        phoneMobile = setup.phoneMobile
+
+        alert('Ring ring')
+      },
+      callCentral() {
+        var setup = ls.get( 'setup' )
+        if ( !setup || !setup.phoneMobile ) {
+          return this.$route.router.go( '/setup' )
+        }
+        phoneMobile = setup.phoneMobile
+
+        alert('Ring ring')
+      },            
+      callDriver() {
+        var setup = ls.get( 'setup' )
+        if ( !setup || !setup.phoneMobile ) {
+          return this.$route.router.go( '/setup' )
+        }
+        phoneMobile = setup.phoneMobile
+                
+        alert('Ring ring')
+      },
     },
-    callCentral() {
-      alert('Ring ring')
-    },            
-    callDriver() {
-      alert('Ring ring')
-    },
-  },
-  ready(){
-    console.info('Call is ready ===================================');
-  }  
-}
+    ready(){
+      console.info('Call is ready ===================================');
+    }  
+  }
 </script>

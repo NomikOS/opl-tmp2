@@ -2,7 +2,7 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-07-23 13:37:45
+ * @Last Modified time: 2016-07-30 13:27:08
  */
 
 import Vue from 'vue'
@@ -16,6 +16,9 @@ Vue.use( Vuex )
 const state = {
   order: { id: 0 },
   item: { id: 0 },
+  counters: {
+    items_to_scan_remaining: 0
+  },
   shipmentNotification: {},
   modalVisible: true,
   urlIframe: ''
@@ -28,9 +31,19 @@ const mutations = {
     var type = data.type
     var content = data.content
     state[ type ] = content
+
+    if ( 'order' == type ) {
+      state.counters.items_to_scan_remaining = content.items_to_scan_remaining
+    }
   },
   HIDE_MODAL( state, data ) {
     state.modalVisible = data
+  },
+
+  SET_COUNTERS( state, data ) {
+    var type = data.type
+    var units = data.units
+    state.counters[ type ] = state.counters[ type ] + units
   },
 }
 

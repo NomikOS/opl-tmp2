@@ -1,0 +1,11 @@
+.ac25-full-red-custom{
+	width: 100%;
+	background: #e61c37;
+	padding:20px 10px;
+	font-size: 28px;
+	display: inline-block;
+	color:#fff !important;
+	text-align: center;
+	border-bottom: 1px solid white;
+	bottom:-32px !important
+}

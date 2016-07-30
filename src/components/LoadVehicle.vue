@@ -53,12 +53,22 @@
       console.info( '=================================== LoadVehicle is ready with this order: ', this.order.id )
     },
     methods: {
+
       finishOrder: function() {
-        this.$http.put( ORDER_URL + '/' + this.order.id + '/finish-pickup' ).then( ( response ) => {
+
+        var shipment_type = 'pickup'; // set al recinbir
+
+        this.$http.post( ORDER_URL + '/finish-shipment', {
+          order_id: order_id,
+          shipment_type: shipment_type
+
+        } ).then( ( response ) => {
           console.info( response, 'success callback' );
           this.$route.router.go( '/available' )
+
         }, ( response ) => {
           console.info( response.data, 'error callback' );
+
         } );
       }
     }

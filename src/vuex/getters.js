@@ -15,3 +15,6 @@ export function getModalVisibility( state ) {
 export function getUrlIframe( state ) {
   return state.urlIframe
 }
+export function getCounters( state ) {
+  return state.counters
+}

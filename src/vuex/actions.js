@@ -7,3 +7,6 @@ export const storeData = function ({ dispatch, state }, data) {
 export const showModal = function ({ dispatch, state }, data) {
   dispatch('HIDE_MODAL', data)
 }
+export const setCounters = function ({ dispatch, state }, data) {
+  dispatch('SET_COUNTERS', data)
+}

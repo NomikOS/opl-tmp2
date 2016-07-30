@@ -10544,8 +10544,13 @@
 								var phonegapid = _message.phonegapid;
 
 								if (phonegapid != phonegapid_stored) {
-									console.info(phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP');
-									return; // and destroy phone
+
+									// revisit wgen update passport
+									//
+									//
+									//
+									// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+									// return // and destroy phone
 								}
 
 								_ls2.default.save('access_token', token);
@@ -10618,7 +10623,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-23 13:37:45
+	 * @Last Modified time: 2016-07-30 13:27:08
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10628,6 +10633,9 @@
 	var state = {
 	  order: { id: 0 },
 	  item: { id: 0 },
+	  counters: {
+	    items_to_scan_remaining: 0
+	  },
 	  shipmentNotification: {},
 	  modalVisible: true,
 	  urlIframe: ''
@@ -10641,9 +10649,18 @@
 	    var type = data.type;
 	    var content = data.content;
 	    state[type] = content;
+
+	    if ('order' == type) {
+	      state.counters.items_to_scan_remaining = content.items_to_scan_remaining;
+	    }
 	  },
 	  HIDE_MODAL: function HIDE_MODAL(state, data) {
 	    state.modalVisible = data;
+	  },
+	  SET_COUNTERS: function SET_COUNTERS(state, data) {
+	    var type = data.type;
+	    var units = data.units;
+	    state.counters[type] = state.counters[type] + units;
 	  }
 	};
 
@@ -14489,6 +14506,12 @@
 
 	  dispatch('HIDE_MODAL', data);
 	};
+	var setCounters = exports.setCounters = function setCounters(_ref3, data) {
+	  var dispatch = _ref3.dispatch;
+	  var state = _ref3.state;
+
+	  dispatch('SET_COUNTERS', data);
+	};
 
 /***/ },
 /* 13 */
@@ -15184,7 +15207,7 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15248,7 +15271,8 @@
 	//       <button-print></button-print>
 	//       <button-scan></button-scan>
 	//       <div class="clearfix"></div>
-	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">cargar</a>
+	//       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">cargar</a>
 	//       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
 	//     </footer><!-- end footer -->
 	//   </div><!-- end content-global -->
@@ -15269,7 +15293,8 @@
 	  },
 	  vuex: {
 	    getters: {
-	      order: _getters.getOrder
+	      order: _getters.getOrder,
+	      counters: _getters.getCounters
 	    }
 	  },
 	  data: function data() {
@@ -15278,6 +15303,7 @@
 	  methods: {},
 	  ready: function ready() {
 	    console.info('=================================== EventPickup is ready with this order: ', this.order.id);
+	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
 	  }
 	};
 	// </script>
@@ -15429,7 +15455,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(44)
-	__vue_template__ = __webpack_require__(45)
+	__vue_template__ = __webpack_require__(46)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15447,41 +15473,37 @@
 
 /***/ },
 /* 44 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+
+	var _getters = __webpack_require__(45);
+
+	exports.default = {
+		name: 'ButtonScan',
+		vuex: {
+			getters: {
+				order: _getters.getOrder,
+				counters: _getters.getCounters
+			}
+		}
+	};
+	// </script>
 	// <template>
 	// 	<a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
 	// 		<img src="../html/images/barcode-big-2.png" />
-	// 		<p class="ac25-no-margin">escanear</p>
+	// 		<p class="ac25-no-margin">escanear ({{counters.items_to_scan_remaining}})</p>
 	// 	</a>
 	// </template>
 	//
 	// <script>
-	exports.default = {
-		name: 'ButtonScan',
-		ready: function ready() {}
-	};
-	// </script>
 
 /***/ },
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(46) + "\" />\n\t\t<p class=\"ac25-no-margin\">escanear</p>\n\t</a>\n";
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	module.exports = "data:image/png;base64,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"
-
-/***/ },
-/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15493,6 +15515,7 @@
 	exports.getItem = getItem;
 	exports.getModalVisibility = getModalVisibility;
 	exports.getUrlIframe = getUrlIframe;
+	exports.getCounters = getCounters;
 	// This getter is a function which just returns the count
 	// With ES6 you can also write it as:
 	// export const getCount = state => state.count
@@ -15510,12 +15533,27 @@
 	function getUrlIframe(state) {
 	  return state.urlIframe;
 	}
+	function getCounters(state) {
+	  return state.counters;
+	}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n\t<a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(47) + "\" />\n\t\t<p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n\t</a>\n";
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
 
 /***/ },
 /* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 49 */
@@ -15579,7 +15617,7 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15643,7 +15681,8 @@
 	//       <button-print></button-print>
 	//       <button-scan></button-scan>
 	//       <div class="clearfix"></div>
-	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">cargar</a>
+	//       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">cargar</a>
 	//       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
 	//     </footer><!-- end footer -->
 	//   </div><!-- end content-global -->
@@ -15664,7 +15703,8 @@
 	  },
 	  vuex: {
 	    getters: {
-	      order: _getters.getOrder
+	      order: _getters.getOrder,
+	      counters: _getters.getCounters
 	    }
 	  },
 	  data: function data() {
@@ -15673,6 +15713,7 @@
 	  methods: {},
 	  ready: function ready() {
 	    console.info('=================================== EventDelivery is ready with this order: ', this.order.id);
+	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
 	  }
 	};
 	// </script>
@@ -15681,7 +15722,7 @@
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 54 */
@@ -15733,7 +15774,7 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15787,10 +15828,17 @@
 	    console.info('=================================== LoadVehicle is ready with this order: ', this.order.id);
 	  },
 	  methods: {
+
 	    finishOrder: function finishOrder() {
 	      var _this = this;
 
-	      this.$http.put(ORDER_URL + '/' + this.order.id + '/finish-pickup').then(function (response) {
+	      var shipment_type = 'pickup'; // set al recinbir
+
+	      this.$http.post(ORDER_URL + '/finish-shipment', {
+	        order_id: order_id,
+	        shipment_type: shipment_type
+
+	      }).then(function (response) {
 	        console.info(response, 'success callback');
 	        _this.$route.router.go('/available');
 	      }, function (response) {
@@ -16113,15 +16161,19 @@
 
 	var _common = __webpack_require__(9);
 
+	var _ls = __webpack_require__(13);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
 	var _HeaderUserData = __webpack_require__(20);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	// <template>
 	//   <header-user-data></header-user-data>
 	//   <ul class="ac25-main-menu">
 	//     <li>
@@ -16180,6 +16232,8 @@
 	// <script>
 
 
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
 	exports.default = {
 	  name: 'Print',
 	  components: {
@@ -16197,14 +16251,27 @@
 	    console.info('=================================== Print is ready with this order: ', this.order.id);
 	  },
 
+
 	  methods: {
 	    print: function print(label) {
-	      console.info(label, 'order #' + this.order.id);
+
+	      var setup = _ls2.default.get('setup');
+
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
+	      }
+
+	      // var printerMAC = 'AC:3F:A4:56:66:EC';
+	      var printerMAC = setup.printerMAC;
+	      var that = this;
+
+	      console.info(label, 'Imprimiendo order #' + this.order.id + ' en impresora MAC: ' + printerMAC);
+
 	      this.$http.get(ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label).then(function (response) {
 	        console.info(response, 'success callback');
-	        var mac = 'AC:3F:A4:56:66:EC';
+
 	        var text = response.data.text;
-	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	        cordova.plugins.zbtprinter.print(printerMAC, text, function (success) {}, function (fail) {
 	          alert(fail);
 	        });
 	      }, function (response) {
@@ -16265,7 +16332,7 @@
 
 	var _actions = __webpack_require__(12);
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16299,7 +16366,7 @@
 	//     </div><!-- end content-inner-holder -->
 	//
 	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
+	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
 	//       <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
@@ -16325,11 +16392,13 @@
 	  vuex: {
 	    actions: {
 	      showModal: _actions.showModal,
-	      storeData: _actions.storeData
+	      storeData: _actions.storeData,
+	      setCounters: _actions.setCounters
 	    },
 	    getters: {
 	      order: _getters.getOrder,
-	      item: _getters.getItem
+	      item: _getters.getItem,
+	      counters: _getters.getCounters
 	    }
 	  },
 	  data: function data() {
@@ -16343,6 +16412,10 @@
 	  },
 
 	  methods: {
+
+	    // really scan
+	    // -----------
+
 	    scan: function scan() {
 	      var that = this;
 
@@ -16363,6 +16436,10 @@
 	        this.updateItem();
 	      }
 	    },
+
+
+	    // get next item to scan
+	    // ---------------------
 	    requestItem: function requestItem() {
 	      var _this = this;
 
@@ -16423,6 +16500,10 @@
 	         */
 	      }
 	    },
+
+
+	    // update item in db, call api
+	    // --------------------------
 	    updateItem: function updateItem() {
 	      var _this2 = this;
 
@@ -16466,6 +16547,14 @@
 	        console.info(data.OK, 'data.OK');
 
 	        if (data.OK) {
+
+	          // update items to scan
+	          console.info('update items to scan < ----------------------------------------------------------------');
+	          this.setCounters({
+	            type: 'items_to_scan_remaining',
+	            content: -1
+	          });
+
 	          if (data.is_last) {
 	            return this.$route.router.go('/scan-finished');
 	          }
@@ -16480,6 +16569,7 @@
 	  },
 	  ready: function ready() {
 	    console.info('=================================== Scan is ready with this order: ', this.order.id);
+	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
 	    this.requestItem();
 	  }
 	};
@@ -16866,7 +16956,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	exports.default = {
 		name: 'ModalWait',
@@ -16913,7 +17003,7 @@
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(46) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0\">escanear item</a>\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 77 */
@@ -17010,32 +17100,12 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
+	var _ls = __webpack_require__(13);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-	  name: 'Call',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default
-	  },
-	  methods: {
-	    callCustomer: function callCustomer() {
-	      alert('Ring ring');
-	    },
-	    callCentralCustomer: function callCentralCustomer() {
-	      alert('Ring ring');
-	    },
-	    callCentral: function callCentral() {
-	      alert('Ring ring');
-	    },
-	    callDriver: function callDriver() {
-	      alert('Ring ring');
-	    }
-	  },
-	  ready: function ready() {
-	    console.info('Call is ready ===================================');
-	  }
-	};
-	// </script>
 	// <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
@@ -17052,22 +17122,76 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//    <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-	//    <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
-	//    <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
-	//     <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
-	//     <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
-	//   </footer><!-- end footer -->
-	// </div><!-- end content-global --> 
+	//      <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
+	//      <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
+	//      <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+	//      <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+	//      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
+	//    </footer><!-- end footer -->
+	//  </div><!-- end content-global --> 
 	// </template>
 	//
 	// <script>
+
+
+	var phoneMobile = '';
+	var phoneCentral = '';
+
+	exports.default = {
+	  name: 'Call',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default
+	  },
+	  methods: {
+	    callCustomer: function callCustomer() {
+	      var setup = _ls2.default.get('setup');
+	      if (!setup || !setup.phoneMobile) {
+	        return this.$route.router.go('/setup');
+	      }
+	      phoneMobile = setup.phoneMobile;
+
+	      alert('Ring ring');
+	    },
+	    callCentralCustomer: function callCentralCustomer() {
+	      var setup = _ls2.default.get('setup');
+	      if (!setup || !setup.phoneMobile) {
+	        return this.$route.router.go('/setup');
+	      }
+	      phoneMobile = setup.phoneMobile;
+
+	      alert('Ring ring');
+	    },
+	    callCentral: function callCentral() {
+	      var setup = _ls2.default.get('setup');
+	      if (!setup || !setup.phoneMobile) {
+	        return this.$route.router.go('/setup');
+	      }
+	      phoneMobile = setup.phoneMobile;
+
+	      alert('Ring ring');
+	    },
+	    callDriver: function callDriver() {
+	      var setup = _ls2.default.get('setup');
+	      if (!setup || !setup.phoneMobile) {
+	        return this.$route.router.go('/setup');
+	      }
+	      phoneMobile = setup.phoneMobile;
+
+	      alert('Ring ring');
+	    }
+	  },
+	  ready: function ready() {
+	    console.info('Call is ready ===================================');
+	  }
+	};
+	// </script>
+	//
 
 /***/ },
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n     <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n     <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n     <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
 /* 83 */
@@ -17138,7 +17262,7 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//    <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la cerrar?</a>
+	//    <a class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la sesión?</a>
 	//     <a @click="yes()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">sí</a>
 	//     <a @click="no()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">no</a>
 	//   </footer><!-- end footer -->
@@ -17151,7 +17275,7 @@
 /* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 86 */
@@ -17390,7 +17514,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	exports.default = {
 	    name: 'ScanSuccesful',
@@ -17438,7 +17562,7 @@
 /* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 95 */
@@ -17478,7 +17602,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	exports.default = {
 	    name: 'ScanFailed',
@@ -17526,7 +17650,7 @@
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(38) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(38) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 99 */
@@ -17560,7 +17684,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(47);
+	var _getters = __webpack_require__(45);
 
 	exports.default = {
 	    name: 'ScanFinished',

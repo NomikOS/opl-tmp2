@@ -58,7 +58,8 @@
       <button-print></button-print>
       <button-scan></button-scan>
       <div class="clearfix"></div>
-      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">cargar</a>
+      <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">cargar</a>
       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
     </footer><!-- end footer -->
   </div><!-- end content-global -->
@@ -70,7 +71,7 @@
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
-  import { getOrder } from '../vuex/getters'
+  import { getOrder, getCounters } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
 
@@ -84,7 +85,8 @@
     },
     vuex: {
       getters: {
-        order: getOrder
+        order: getOrder,
+        counters: getCounters
       }
     },
     data: function() {
@@ -93,6 +95,7 @@
     methods: {},
     ready: function() {
       console.info( '=================================== EventDelivery is ready with this order: ', this.order.id )
+      console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
     },
   }
 </script>

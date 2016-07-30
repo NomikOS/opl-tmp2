@@ -56,6 +56,7 @@
 
 <script>
   import { urls } from '../libs/common'
+  import ls from '../libs/ls'
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import { getOrder } from '../vuex/getters'
 
@@ -74,17 +75,31 @@
     data() {
       return {}
     },
+
     ready() {
       console.info( '=================================== Print is ready with this order: ', this.order.id )
     },
+
     methods: {
       print( label ) {
-        console.info( label, 'order #' + this.order.id );
+
+        var setup = ls.get( 'setup' )
+
+        if ( !setup || !setup.printerMAC ) {
+          return this.$route.router.go( '/setup' )
+        }
+
+        // var printerMAC = 'AC:3F:A4:56:66:EC';
+        var printerMAC = setup.printerMAC
+        var that = this;
+
+        console.info( label, 'Imprimiendo order #' + this.order.id + ' en impresora MAC: ' + printerMAC );
+
         this.$http.get( ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label ).then( ( response ) => {
           console.info( response, 'success callback' );
-          var mac = 'AC:3F:A4:56:66:EC';
+
           var text = response.data.text
-          cordova.plugins.zbtprinter.print( mac, text,
+          cordova.plugins.zbtprinter.print( printerMAC, text,
             function( success ) {},
             function( fail ) {
               alert( fail );

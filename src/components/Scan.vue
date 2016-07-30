@@ -28,7 +28,7 @@
     </div><!-- end content-inner-holder -->
 
     <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0">escanear item</a>
+      <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
       <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 
@@ -40,8 +40,8 @@
   import ModalWait from './Partials/ModalWait.vue'
 
   import { urls } from '../libs/common'
-  import { showModal, storeData } from '../vuex/actions'
-  import { getOrder, getItem } from '../vuex/getters'
+  import { showModal, storeData, setCounters } from '../vuex/actions'
+  import { getOrder, getItem, getCounters } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
   const barcodeScannerOptions = {
@@ -61,11 +61,13 @@
     vuex: {
       actions: {
         showModal: showModal,
-        storeData: storeData
+        storeData: storeData,
+        setCounters: setCounters
       },
       getters: {
         order: getOrder,
-        item: getItem
+        item: getItem,
+        counters: getCounters
       }
     },
     data() {
@@ -78,6 +80,9 @@
       }
     },
     methods: {
+
+      // really scan
+      // -----------
       scan() {
         var that = this
 
@@ -105,6 +110,9 @@
           this.updateItem()
         }
       },
+
+      // get next item to scan
+      // ---------------------
       requestItem() {
         var order_id = this.order.id
         var item_id = 0
@@ -163,8 +171,11 @@
           /**
            * all ok here, waiting for user click scan button
            */
-        }
-      },
+         }
+       },
+
+      // update item in db, call api
+      // --------------------------
       updateItem() {
         var order_id = this.order.id
         var item_id = this.item.id
@@ -208,6 +219,14 @@
           console.info( data.OK, 'data.OK' );
 
           if ( data.OK ) {
+
+            // update items to scan
+            console.info('update items to scan < ----------------------------------------------------------------');
+            this.setCounters( {
+              type: 'items_to_scan_remaining',
+              content: -1
+            } )
+
             if ( data.is_last ) {
               return this.$route.router.go( '/scan-finished' )
             }
@@ -223,6 +242,7 @@
     },
     ready() {
       console.info( '=================================== Scan is ready with this order: ', this.order.id );
+      console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
       this.requestItem()
     }
   }

@@ -70,8 +70,15 @@
 								var phonegapid = message.phonegapid
 
 								if ( phonegapid != phonegapid_stored ) {
-									console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-									return // and destroy phone
+
+
+
+									// revisit wgen update passport
+									// 
+									// 
+									// 
+									// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+									// return // and destroy phone
 								}
 
 								ls.save( 'access_token', token );
