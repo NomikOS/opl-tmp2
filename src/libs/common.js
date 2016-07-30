@@ -17,5 +17,6 @@ export const urls = {
   app: 'http://localhost:8080/#!',
   passport_website: 'http://passport.testing.agente.cl/login2.html',
   passport_api: 'http://passport.api.testing.agente.cl',
-  micro_api: utils.inDev() ? 'http://micro.api.testing.agente.dev' : 'http://ltl-micro.api.testing.agente.cl',
+  // micro_api: utils.inDev() ? 'http://micro.api.testing.agente.dev' : 'http://ltl-micro.api.testing.agente.cl',
+  micro_api: 'http://ltl-micro.api.testing.agente.cl',
 }

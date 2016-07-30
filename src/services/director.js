@@ -62,7 +62,8 @@ export default {
 
   logout() {
     ls.clean();
-    return location.href = PASSPORT_WEBSITE_LOGOUT_URL;
+    return alert('No disponible en hito 1')
+    // return location.href = PASSPORT_WEBSITE_LOGOUT_URL;
   },
 
   getAuthHeader() {

@@ -43,16 +43,27 @@
         }
 
         var vehicleSelected = setup.vehicleSelected
+        var that = this;
 
         this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available' ).then( ( response ) => {
           console.info( response, 'success callback' )
 
           var result = response.data.result
           if ( result != 'OK' ) {
-            return this.retry();
+
+            setTimeout(function(){
+              that.retry();
+            }
+            , 5000)
+            return
           }
 
-          this.message = 'R4'
+          that.message = 'R4'
+
+            setTimeout(function(){
+              return that.$route.router.go( '/stand-by' )
+            }
+            , 1000)
 
         }, ( response ) => {
           console.info( response, 'error callback' );

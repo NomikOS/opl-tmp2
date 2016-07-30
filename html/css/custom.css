@@ -4,6 +4,12 @@
 
 
 	/*-------------------- GENERAL --------------------*/
+	html,body,body *{
+		zoom:94.5%;
+	}
+	body{
+		font-size: 100% !important;
+	}
 	html,body{
 	 margin:0;
    padding:0;
@@ -200,7 +206,7 @@
 	.ac25-top-red-text{
 		color:#e61c37;
 		float:left;
-		font-size: 33px;
+		font-size: 31px !important;
 		margin-bottom: 5px;
 		margin-top: 30px;
 		margin-left: 10px;
@@ -220,16 +226,17 @@
 	width: 50%;
 	background: #000;
 	font-weight: 300;
-	font-size: 28px;
+	font-size: 24px;
 	display: inline-block;
 	color:#fff !important;
 	text-align: center;
-	padding:50px 10px;
+	padding:42px 10px;
 }
 
 .ac25-full-black{
 	width: 100% !important;
 	border-top: 1px solid white;
+	bottom: -32px !important;
 }
 .ac25-half-black.ac25-border{
 	border-right:1px solid #fff;
@@ -237,8 +244,8 @@
 .ac25-half-red{
 	width: 50%;
 	background: #e61c37;
-	padding:50px 10px;
-	font-size: 28px;
+	padding:42px 10px;
+	font-size: 24px;
 	display: inline-block;
 	color:#fff !important;
 	text-align: center;
@@ -248,7 +255,7 @@
 	border-right:1px solid white;
 }
 .ac25-half-black img, .ac25-half-red img, .ac25-full-black img{
-	width:85px;
+	width:70px;
 }
 
 
@@ -290,14 +297,14 @@
 	margin-bottom: 45px;
 	padding-left:20px;
 	position: relative;
-	font-size: 30px;
+	font-size: 32px !important;;
 	line-height: 35px;
 }
 .ac25-red-list li::before{
 		content:counter(item) ". ";
 		counter-increment: item;
 		color:#fff;
-		font-size: 24px;
+		font-size: 26px;
 		text-align: center;
 		background:#e61c37;
 		width: 45px;
@@ -306,7 +313,7 @@
 		left:-45px;
 		top:0;
 		z-index: -1;
-		padding-top: 3px;
+		padding-top: 6px;
 }
 .ac25-large-font{
 	font-size: 40px;
@@ -360,7 +367,7 @@
 	background: black;
 	padding:16px 15px;
 	width: 80%;
-	font-size: 21px;
+	font-size: 21px !important;
 	margin-left: 10%;
 	text-align: center;
 	color:white;
@@ -542,8 +549,7 @@
 	 max-width: 80px;
 }
 .ac25-top-right-hand.ac25-z-1{
-	/* nomikos: jode los click*/
-	/*z-index: -1;*/
+	z-index: -1;
 }
 
 
@@ -629,7 +635,7 @@
 .ac25-mid-page-paragraph{
 	font-size: 28px;
 	float: left;
-	margin-top: 70px;
+	margin-top: 80px;
 	margin-bottom: 40px;
 	width: 100%;
 	text-align: center;
@@ -642,6 +648,7 @@
 	float:left;
 	width: 100%;
 	max-height: 380px;
+	margin-bottom: -32px;
 }
 .ac25-top-check-title{
 	font-size: 35px;
@@ -713,16 +720,4 @@
 		.ac25-top-right-hand.ac25-loading{
 				top:70px;
 		}
-}
-
-
-.ac25-full-red-custom{
-	width: 100%;
-	background: #e61c37;
-	padding:30px 10px;
-	font-size: 28px;
-	display: inline-block;
-	color:#fff !important;
-	text-align: center;
-	border-bottom: 1px solid white;
 }

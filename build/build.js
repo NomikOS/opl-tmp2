@@ -118,45 +118,37 @@
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _LoggedIn = __webpack_require__(86);
-
-	var _LoggedIn2 = _interopRequireDefault(_LoggedIn);
-
-	var _Redirecting = __webpack_require__(89);
+	var _Redirecting = __webpack_require__(86);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(92);
+	var _Available = __webpack_require__(89);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _ScanSuccesful = __webpack_require__(95);
+	var _ScanSuccesful = __webpack_require__(92);
 
 	var _ScanSuccesful2 = _interopRequireDefault(_ScanSuccesful);
 
-	var _ScanFailed = __webpack_require__(99);
+	var _ScanFailed = __webpack_require__(96);
 
 	var _ScanFailed2 = _interopRequireDefault(_ScanFailed);
 
-	var _ScanFinished = __webpack_require__(102);
+	var _ScanFinished = __webpack_require__(99);
 
 	var _ScanFinished2 = _interopRequireDefault(_ScanFinished);
 
-	var _vueRouter = __webpack_require__(105);
+	var _vueRouter = __webpack_require__(102);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(106);
+	var _vueResource = __webpack_require__(103);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
 	var _director = __webpack_require__(22);
 
 	var _director2 = _interopRequireDefault(_director);
-
-	var _ls = __webpack_require__(13);
-
-	var _ls2 = _interopRequireDefault(_ls);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -213,9 +205,6 @@
 	  '/call': {
 	    component: _Call2.default
 	  },
-	  '/logged-in': {
-	    component: _LoggedIn2.default
-	  },
 	  '/redirecting': {
 	    component: _Redirecting2.default
 	  },
@@ -225,68 +214,12 @@
 	  '/available': {
 	    component: _Available2.default
 	  },
-	  // '*': {
-	  //   component: {
-	  //     template: '<div>' +
-	  //       '<center><p>Ruta no existe, Deje el trago.</p></center>' +
-	  //       '</div>'
-	  //   }
 	  '*': {
-	    component: _EventPickup2.default
+	    component: _Available2.default
 	  }
 	});
 
 	router.start(_App2.default, '#app');
-
-	// console.info('Vue.http.interceptors.push< ------------------');
-	// Vue.http.interceptors.push((request, next) => {
-
-	//     // modify request
-	//     request.method = 'POST';
-
-	//     // continue to next interceptor
-	//     next();
-	// });
-
-	/**
-	 * Set Authorization token
-	 */
-
-
-	// Vue.http.interceptors.push( {
-
-	//   request: function( request ) {
-
-	//     var access_token = ls.get( 'access_token' )   
-	//     console.info(access_token, 'access_token inside interceptor');
-
-	//     request.headers[ 'Authorization' ] = 'Bearer: ' + access_token
-	//     // request.headers[ 'Accept' ] = 'application/vnd.mob.v1+json'
-	//     // request.emulateJSON = true;
-	//     return request
-	//   },
-
-	//   response: function( response ) {
-
-	//     if ( response.headers( 'Auth-Token' ) ) {
-	//       auth.actions.setToken( response.headers( 'Auth-Token' ) );
-	//     }
-
-	//     if ( response.status == 500 ) {
-
-	//       if ( response.data.message == 'Token has expired, but is still valid.' ) {
-	//         console.log( 'RETRY', response );
-	//       } else {
-	//         alert( 'Whoops, an unknown error occured.' );
-	//       }
-
-	//     }
-
-	//     return response;
-	//   }
-
-	// } );
-
 	_director2.default.init();
 
 /***/ },
@@ -10558,7 +10491,7 @@
 
 		vuex: {
 			actions: {
-				loadData: _actions.loadData
+				storeData: _actions.storeData
 			}
 		},
 
@@ -10581,18 +10514,13 @@
 					channel: 'notifications-opl',
 
 					message: function message(_message) {
-						console.info(_message, 'notifications-opl arrivando......................');
-
 						var type = _message.type;
-						console.info(type);
+						console.info(_message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type);
 
 						switch (type) {
 
 							case 'order-pickup':
-
-								console.info(_message.order, 'message.order');
-
-								that.loadData({
+								that.storeData({
 									type: 'order',
 									content: _message.order
 								});
@@ -10600,8 +10528,7 @@
 								break;
 
 							case 'order-delivery':
-
-								that.loadData({
+								that.storeData({
 									type: 'order',
 									content: _message.order
 								});
@@ -10617,8 +10544,8 @@
 								var phonegapid = _message.phonegapid;
 
 								if (phonegapid != phonegapid_stored) {
-									console.info(phonegapid, phonegapid_stored, 'not equals!!!!!!!!!!!!!!!!!!!');
-									// return // and destroy phone
+									console.info(phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP');
+									return; // and destroy phone
 								}
 
 								_ls2.default.save('access_token', token);
@@ -10630,8 +10557,6 @@
 									var profile = response.data.data;
 									_ls2.default.save('profile', profile);
 
-									console.info($('#opl_iframe'), '$(#opl_iframe)');
-
 									var setup = _ls2.default.get('setup');
 
 									if (!setup) {
@@ -10639,8 +10564,6 @@
 									} else {
 										that.$route.router.go('/available');
 									}
-
-									$('#opl_iframe').remove();
 								}, function (response) {
 									console.info(response, 'error callback');
 								});
@@ -10648,20 +10571,19 @@
 								break;
 
 							case 'print-order':
+								return 'print-order by pubnub deprecated.';
 
 								var setup = _ls2.default.get('setup');
 								var printerMAC = setup.printerMAC;
 								var mac = printerMAC;
-								// var text = message.order_zpl
-								var text = '';
-
+								var text = _message.order_zpl;
 								cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
 									alert(fail);
 								});
 								break;
 
 							case 'shipment-notification':
-								// that.loadData( message.notification )
+								// that.storeData( message.notification )
 								break;
 						}
 					}
@@ -10696,7 +10618,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-20 15:04:09
+	 * @Last Modified time: 2016-07-23 13:37:45
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10705,7 +10627,7 @@
 	// the app starts up
 	var state = {
 	  order: { id: 0 },
-	  item: {},
+	  item: { id: 0 },
 	  shipmentNotification: {},
 	  modalVisible: true,
 	  urlIframe: ''
@@ -11427,7 +11349,8 @@
 	  app: 'http://localhost:8080/#!',
 	  passport_website: 'http://passport.testing.agente.cl/login2.html',
 	  passport_api: 'http://passport.api.testing.agente.cl',
-	  micro_api: _utils2.default.inDev() ? 'http://micro.api.testing.agente.dev' : 'http://ltl-micro.api.testing.agente.cl'
+	  // micro_api: utils.inDev() ? 'http://micro.api.testing.agente.dev' : 'http://ltl-micro.api.testing.agente.cl',
+	  micro_api: 'http://ltl-micro.api.testing.agente.cl'
 	};
 
 /***/ },
@@ -14554,7 +14477,7 @@
 	// An action will receive the store as the first argument.
 	// Since we are only interested in the dispatch (and optionally the state)
 	// we can pull those two parameters using the ES6 destructuring feature
-	var loadData = exports.loadData = function loadData(_ref, data) {
+	var storeData = exports.storeData = function storeData(_ref, data) {
 	  var dispatch = _ref.dispatch;
 	  var state = _ref.state;
 
@@ -14746,13 +14669,14 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	//     <div class="ac25-top-bar ac25-border-bottom">
-	//        <div class="container">
-	//           <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span>
-	//           <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span>         
-	//           <span class="right">VER: 0.1</span>
-	//        </div><!-- end .container -->
-	//     </div><!-- end .top-bar -->
+	//   <div class="ac25-top-bar ac25-border-bottom">
+	//    <div class="container">
+	//     <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span>
+	//     <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span>
+	//     <span class="right">VER: 0.1</span>
+	//     <span class="right"><a v-link="'setup'" class="" style="color:white">SETUP ADMIN</a> &nbsp; | &nbsp; </span>
+	//   </div><!-- end .container -->
+	// </div><!-- end .top-bar -->
 	// </template>
 	//
 	// <script>
@@ -14777,12 +14701,8 @@
 	    }
 	  },
 
-	  created: function created() {
-	    ;
-	  },
-	  ready: function ready() {
-	    console.info('HeaderUserData is ready ===================================');
-	  }
+	  created: function created() {},
+	  ready: function ready() {}
 	};
 	// </script>
 
@@ -14834,34 +14754,10 @@
 	   * Chek for phone setup and user director
 	   * --------------------------------------
 	   */
-	  //  fixPaths() {
-	  //   if ( !utils.inDev() ) {
-	  //     $( 'img' ).each( function() {
-	  //       var src = $( this ).attr( 'src' )
-
-	  //       console.info(src, 'first images sources');
-
-	  //       if ( src.substr(0,  1 ) === '/' ) {
-	  //         src = src.substr( 1, src.length );
-	  //       }
-	  //       console.info(src, 'after images sources');
-
-	  //       $( this ).attr( 'src', src );
-	  //     } );
-	  //   }
-	  // },
 
 	  init: function init() {
 
-	    // this.fixPaths()
-	    //
-	    //
-	    //
-	    //
-	    //
 	    var access_token = _ls2.default.get('access_token');
-
-	    console.info(access_token, 'access_token');
 
 	    /**
 	     * Access token is needed
@@ -14869,74 +14765,36 @@
 	    if (access_token) {
 
 	      var setup = _ls2.default.get('setup');
-
-	      console.info(setup, 'setup');
+	      console.info('OPL setup:', setup);
 
 	      /**
 	       * Setup is needed
 	       */
 	      if (setup) {} else {
 
-	        console.info('going to setup');
+	        console.info('Going to setup');
 	        return _index.router.go('/setup');
 	      }
 
 	      this.user.authenticated = true;
 
 	      var profile = _ls2.default.get('profile');
+
 	      if (profile) {
 	        this.user.profile = profile;
 	      }
 
-	      /**
-	       *   initPubnub
-	       */
-	      // this.initPubnub()
+	      return _index.router.go('/available');
 	    } else {
 
 	      this.user.authenticated = false;
-	      // this.goPassport()
 	      return _index.router.go('/iframe-external/go-passport');
-	      //
-	      //
-	      //
 	    }
-	  },
-
-
-	  /**
-	   * Save access_token and user_id returned by passport website
-	   * Ex: http://localhost:8080/#!/logged-in/?token=6BIxefKZa8WWMmigflo6aexeUDRL1mwej7Du4j4X&uid=5
-	   */
-	  loggedIn: function loggedIn(context) {
-	    console.info('loggedIn:');
-
-	    var token = _utils2.default.getUrlVariable('token');
-	    var uid = _utils2.default.getUrlVariable('uid');
-
-	    _ls2.default.save('access_token', token);
-	    _ls2.default.save('user_id', uid);
-
-	    context.$http.get(PASSPORT_API_URL + '/user/' + uid + '/profile').then(function (response) {
-	      console.info(response, 'success callback');
-
-	      var profile = response.data.data;
-	      _ls2.default.save('profile', profile);
-
-	      // router.go( '/stand-by' )
-	    }, function (response) {
-	      console.info(response, 'error callback');
-	    });
-	  },
-	  goPassport: function goPassport() {
-
-	    console.info('aqui goPassport()');
-	    // $('#opl_iframe').prop('src', PASSPORT_WEBSITE_LOGIN_URL)
-	    // return location.href = PASSPORT_WEBSITE_LOGIN_URL;
 	  },
 	  logout: function logout() {
 	    _ls2.default.clean();
-	    return location.href = PASSPORT_WEBSITE_LOGOUT_URL;
+	    return alert('No disponible en hito 1');
+	    // return location.href = PASSPORT_WEBSITE_LOGOUT_URL;
 	  },
 	  getAuthHeader: function getAuthHeader() {
 	    return {
@@ -14949,7 +14807,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n    <div class=\"ac25-top-bar ac25-border-bottom\">\n       <div class=\"container\">\n          <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n          <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>          \n          <span class=\"right\">VER: 0.1</span>\n       </div><!-- end .container -->\n    </div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n    <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'setup'\" class=\"\" style=\"color:white\">SETUP ADMIN</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 24 */
@@ -15415,14 +15273,11 @@
 	    }
 	  },
 	  data: function data() {
-	    return {
-	      // order: {} // no sar junto a vuex
-	    };
+	    return {};
 	  },
 	  methods: {},
 	  ready: function ready() {
-	    console.info('EventPickup is ready ===================================');
-	    console.info('with this order: ', this.order.id);
+	    console.info('=================================== EventPickup is ready with this order: ', this.order.id);
 	  }
 	};
 	// </script>
@@ -15552,9 +15407,7 @@
 	// <script>
 	exports.default = {
 		name: 'ButtonPrint',
-		ready: function ready() {
-			console.info('ButtonPrint is ready ===================================');
-		}
+		ready: function ready() {}
 	};
 	// </script>
 
@@ -15599,21 +15452,19 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	// <template>
-	//   <a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
-	//     <img src="../html/images/barcode-big-2.png" />
-	//     <p class="ac25-no-margin">escanear</p>
-	//   </a>
+	// 	<a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
+	// 		<img src="../html/images/barcode-big-2.png" />
+	// 		<p class="ac25-no-margin">escanear</p>
+	// 	</a>
 	// </template>
 	//
 	// <script>
 	exports.default = {
-	  name: 'ButtonScan',
-	  ready: function ready() {
-	    console.info('ButtonScan is ready ===================================');
-	  }
+		name: 'ButtonScan',
+		ready: function ready() {}
 	};
 	// </script>
 
@@ -15621,7 +15472,7 @@
 /* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(46) + "\" />\n    <p class=\"ac25-no-margin\">escanear</p>\n  </a>\n";
+	module.exports = "\n\t<a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(46) + "\" />\n\t\t<p class=\"ac25-no-margin\">escanear</p>\n\t</a>\n";
 
 /***/ },
 /* 46 */
@@ -15633,7 +15484,7 @@
 /* 47 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -15646,9 +15497,11 @@
 	// With ES6 you can also write it as:
 	// export const getCount = state => state.count
 	function getOrder(state) {
+	  console.info('++++++++++++++++ getItem from store now');
 	  return state.order;
 	}
 	function getItem(state) {
+	  console.info('++++++++++++++++ getItem from store now');
 	  return state.item;
 	}
 	function getModalVisibility(state) {
@@ -15815,14 +15668,11 @@
 	    }
 	  },
 	  data: function data() {
-	    return {
-	      // order: {} // no sar junto a vuex
-	    };
+	    return {};
 	  },
 	  methods: {},
 	  ready: function ready() {
-	    console.info('EventDelivery is ready ===================================');
-	    console.info('with this order: ', this.order.id);
+	    console.info('=================================== EventDelivery is ready with this order: ', this.order.id);
 	  }
 	};
 	// </script>
@@ -15888,29 +15738,29 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// <header-user-data></header-user-data>
-	// <div class="ac25-content-global">
-	//   <div class="container">
-	//     <div class="ac25-content-inner-holder ac25-min-height-200">
-	//      <h4 class="ac25-top-red-text">CARGAR EL CAMION</h4>
-	//      <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
-	//      <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
+	//   <header-user-data></header-user-data>
+	//   <div class="ac25-content-global">
+	//     <div class="container">
+	//       <div class="ac25-content-inner-holder ac25-min-height-200">
+	//        <h4 class="ac25-top-red-text">CARGAR EL CAMION</h4>
+	//        <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
+	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
-	//      <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-	//       <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
-	//       <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
-	//       </li>
-	//     </ul>
+	//        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
+	//         <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
+	//         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
+	//         </li>
+	//       </ul>
 	//
-	//     <div class="clearfix"></div>
-	//     <a href="#" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png"  class="left" />  <span>imprimir listado de bultos</span> </a>
-	//   </div><!-- end content-inner-holder -->
-	// </div><!-- end container -->
+	//       <div class="clearfix"></div>
+	//       <a href="#" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png"  class="left" />  <span>imprimir listado de bultos</span> </a>
+	//     </div><!-- end content-inner-holder -->
+	//   </div><!-- end container -->
 	//
-	// <footer class="ac25-content-footer">
-	//   <a onclick="window.history.back()" class="ac25-half-black left waves-effect waves-light">volver</a>
-	//   <a @click="finishOrder()" class="ac25-half-red right waves-effect waves-light">terminar</a>
-	// </footer><!-- end footer -->
+	//   <footer class="ac25-content-footer">
+	//     <a onclick="window.history.back()" class="ac25-half-black left waves-effect waves-light">volver</a>
+	//     <a @click="finishOrder()" class="ac25-half-red right waves-effect waves-light">terminar</a>
+	//   </footer><!-- end footer -->
 	//
 	// </div><!-- end content-global -->
 	// </template>
@@ -15919,9 +15769,6 @@
 
 
 	var ORDER_URL = _common.urls.micro_api + '/order';
-
-	// import { loadOrder } from '../vuex/actions'
-
 
 	exports.default = {
 	  name: 'LoadVehicle',
@@ -15936,41 +15783,15 @@
 	      order: _getters.getOrder
 	    }
 	  },
-	  // vuex: {
-	  //   actions: {
-	  //     loadOrder: loadOrder
-	  //   }
-	  // },
-	  // data: function() {
-	  //   return {
-	  //     order: {}
-	  //   };
-	  // },
 	  ready: function ready() {
-	    console.info('LoadVehicle is ready ===================================');
-	    this.load();
+	    console.info('=================================== LoadVehicle is ready with this order: ', this.order.id);
 	  },
 	  methods: {
-	    load: function load() {
-	      // this.order = this.getOrder()
-	      // this.$http.get( ORDER_URL + '/137' ).then( ( response ) => {
-	      //   console.info( response, 'success callback' );
-	      //   var order = response.data.data
-	      //   this.order = order
-
-	      //   // this.loadOrder(order)
-
-	      // }, ( response ) => {
-	      //   console.info( response, 'error callback' );
-	      // } );
-	    },
 	    finishOrder: function finishOrder() {
 	      var _this = this;
 
-	      this.$http.put(ORDER_URL + '/137/finish-pickup').then(function (response) {
+	      this.$http.put(ORDER_URL + '/' + this.order.id + '/finish-pickup').then(function (response) {
 	        console.info(response, 'success callback');
-	        var order = response.data.data;
-
 	        _this.$route.router.go('/available');
 	      }, function (response) {
 	        console.info(response.data, 'error callback');
@@ -15984,7 +15805,7 @@
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<header-user-data></header-user-data>\n<div class=\"ac25-content-global\">\n  <div class=\"container\">\n    <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n     <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n     <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n     <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n     <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n      <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n      <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n      </li>\n    </ul>\n\n    <div class=\"clearfix\"></div>\n    <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" />  <span>imprimir listado de bultos</span> </a>\n  </div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n        </li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a href=\"#\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\"  class=\"left\" />  <span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n    <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 57 */
@@ -16296,9 +16117,11 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
+	var _getters = __webpack_require__(47);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
 	//   <header-user-data></header-user-data>
 	//   <ul class="ac25-main-menu">
 	//     <li>
@@ -16310,28 +16133,28 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a href="#" class="waves-effect waves-light">
+	//       <a @click="print('invoice')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>factura</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('img2')" class="waves-effect waves-light">
+	//       <a @click="print('internal-order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>orden interna</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('img3')" class="waves-effect waves-light">
+	//       <a @click="print('customer-order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>orden cliente</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('payments_history')" class="waves-effect waves-light">
+	//       <a @click="print('payments-history')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>historial de pago</p>
 	//         </div>
@@ -16357,49 +16180,28 @@
 	// <script>
 
 
-	var ORDER_URL = _common.urls.micro_api + '/order';
-
 	exports.default = {
 	  name: 'Print',
 	  components: {
 	    HeaderUserData: _HeaderUserData2.default
 	  },
-
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder
+	    }
+	  },
 	  data: function data() {
-	    return {
-	      // user: director.user
-	    };
+	    return {};
+	  },
+	  ready: function ready() {
+	    console.info('=================================== Print is ready with this order: ', this.order.id);
 	  },
 
-
 	  methods: {
-
-	    // print() {
-	    //   cordova.plugins.zbtprinter.print("^XA^FO10,10^AFN,26,13^FDWelcome to the new world order, Pak!^FS^XZ",
-	    //     function(success) {
-	    //       console.info("zbtprinter ok !!!!!!!!!");
-	    //     }, function(fail) {
-	    //       console.info(fail, 'zbtprinter fail !!!!!!!!!');
-	    //     });
-	    // },
-	    //
-	    // find() {
-	    //   cordova.plugins.zbtprinter.find( function( mac ) {
-	    //     alert( mac );
-	    //   }, function( fail ) {
-	    //     alert( fail );
-	    //   } )
-	    // },
-
 	    print: function print(label) {
-	      console.info(label);
-
-	      // if ('customer_order' == label) {
-
-	      // }
-	      this.$http.get(ORDER_URL + '/' + label + '/opl-get-zpl').then(function (response) {
+	      console.info(label, 'order #' + this.order.id);
+	      this.$http.get(ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label).then(function (response) {
 	        console.info(response, 'success callback');
-
 	        var mac = 'AC:3F:A4:56:66:EC';
 	        var text = response.data.text;
 	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
@@ -16409,10 +16211,6 @@
 	        console.info(response, 'error callback');
 	      });
 	    }
-	  },
-
-	  ready: function ready() {
-	    console.info('Print is ready ===================================');
 	  }
 	};
 	// </script>
@@ -16421,7 +16219,7 @@
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('img2')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('img3')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('payments_history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>historial de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>historial de pago</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>especial</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 67 */
@@ -16527,7 +16325,7 @@
 	  vuex: {
 	    actions: {
 	      showModal: _actions.showModal,
-	      loadData: _actions.loadData
+	      storeData: _actions.storeData
 	    },
 	    getters: {
 	      order: _getters.getOrder,
@@ -16606,7 +16404,7 @@
 	         */
 	        this.item = item; // esto esta bien
 
-	        this.loadData({
+	        this.storeData({
 	          type: 'item',
 	          content: item
 	        });
@@ -16681,8 +16479,7 @@
 	    }
 	  },
 	  ready: function ready() {
-	    console.info('Scan is ready ===================================');
-	    console.info('with this order: ', this.order.id);
+	    console.info('=================================== Scan is ready with this order: ', this.order.id);
 	    this.requestItem();
 	  }
 	};
@@ -17251,7 +17048,7 @@
 	//          <br />
 	//          Llame a cliente sólo en caso de ser necesario.
 	//        </p>
-	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" />
+	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
@@ -17270,7 +17067,7 @@
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n   <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n   <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n    <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n    <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 83 */
@@ -17337,7 +17134,7 @@
 	//     <div class="container">
 	//       <div class="ac25-content-inner-holder ac25-min-height-200">
 	//        <h4 class="ac25-top-red-text">ECONOCARGO</h4>
-	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" />
+	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
@@ -17354,7 +17151,7 @@
 /* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la cerrar?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 86 */
@@ -17363,79 +17160,6 @@
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(87)
 	__vue_template__ = __webpack_require__(88)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/LoggedIn.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _director = __webpack_require__(22);
-
-	var _director2 = _interopRequireDefault(_director);
-
-	var _HeaderUserData = __webpack_require__(20);
-
-	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	//   <header-user-data></header-user-data>
-	//   <div class="ac25-red-loading-section">
-	//     <div class="container">
-	//       <div class="ac25-loading-content">
-	//        <h5>Autentificado</h5>
-	//        <img src="html/images/loading.gif" />
-	//      </div>
-	//    </div>
-	//  </div><!-- end red-loading-section -->
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  name: 'LoggedIn',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default
-	  },
-	  ready: function ready() {
-	    console.info('LoggedIn is ready =================================== !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-	    _director2.default.loggedIn(this);
-	  }
-	};
-	// </script>
-
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Autentificado</h5>\n       <img src=\"" + __webpack_require__(25) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(90)
-	__vue_template__ = __webpack_require__(91)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17452,7 +17176,7 @@
 	})()}
 
 /***/ },
-/* 90 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17505,18 +17229,18 @@
 	// </script>
 
 /***/ },
-/* 91 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(25) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 92 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(93)
-	__vue_template__ = __webpack_require__(94)
+	__vue_script__ = __webpack_require__(90)
+	__vue_template__ = __webpack_require__(91)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17533,7 +17257,7 @@
 	})()}
 
 /***/ },
-/* 93 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17588,13 +17312,11 @@
 	  ready: function ready() {
 	    console.info('Available is ready ===================================');
 	    this.retry();
-
-	    // centar esto de retry para todos los ajax
+	    // centrar esto de retry para todos los ajax
 	  },
 
 	  methods: {
 	    retry: function retry() {
-	      var _this = this;
 
 	      var setup = _ls2.default.get('setup');
 
@@ -17603,16 +17325,25 @@
 	      }
 
 	      var vehicleSelected = setup.vehicleSelected;
+	      var that = this;
 
 	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available').then(function (response) {
 	        console.info(response, 'success callback');
 
 	        var result = response.data.result;
 	        if (result != 'OK') {
-	          return _this.retry();
+
+	          setTimeout(function () {
+	            that.retry();
+	          }, 5000);
+	          return;
 	        }
 
-	        _this.message = 'R4';
+	        that.message = 'R4';
+
+	        setTimeout(function () {
+	          return that.$route.router.go('/stand-by');
+	        }, 1000);
 	      }, function (response) {
 	        console.info(response, 'error callback');
 	      });
@@ -17622,18 +17353,18 @@
 	// </script>
 
 /***/ },
-/* 94 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(25) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 95 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(96)
-	__vue_template__ = __webpack_require__(97)
+	__vue_script__ = __webpack_require__(93)
+	__vue_template__ = __webpack_require__(94)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17650,7 +17381,7 @@
 	})()}
 
 /***/ },
-/* 96 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17704,24 +17435,24 @@
 	// <script>
 
 /***/ },
-/* 97 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(98) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 98 */
+/* 95 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAvCAYAAABUiRJEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhpJREFUeNrkmt1NwzAQx9OId9igYQKyAX1DPCDBBrABI3QEmIBuQCUeEG9hg3SDdAOYINwVuwohH3Z8ts/xSZbV5sP5/WOf7xwv6rpO5mY3H9c5VCvxs3i7ei+7zlvMCR6gH6HCsmwd2kPZgAjr2cEDdAbVFsrFyKk77BEgwtcs4EUXL6CcKl5yFCCNDDwRvQOHRpJGBi7tPthubwgu7TyNFBwtSyMFT4Ia89TgYFUaKfgepjr+8BbA0dbsvb0l8B289Zz1mLcE/g3llrXDswiOYW0l/zgZSBSw4EPgyVVfWhgYeNmb1UHDK+EMLrs8JB6DG2zmAP4HHhrGePdF4WafOG5kWhgq+BEeGkYn8KrjMZt5cYjgTYf3pHljTAsLeOizUMEP8OKtLyc0YCyAT3D55nODhiYL4Bucap7XFoADOGWQoywAF3DqCG9UAE7gEr5wIQA38AM8XFiIwMWaABzBm0EOxvEldeqY/H4yyjiCt8Nb3ShPVYCMI3hXYqMa3/syMvB/3l5kbA8xgHdOdUwFIAfvneeZCWAFfDDIYSKANfDRCM+zAFbBlcJbTwJYB1eO7R0L4ARcK7FxJIAzcO2szrIATsEnpbSWBHAOPjmfJxbAC7jRYgaRAN7AjeAJBPAKbgxvIIB3cBL4hgB3Akolx899g5PBCwFw+ycuVw0tiT0nrc/EPs3KzozGrme5joewW+qPm6b2I8AAPYVgfoaCtkcAAAAASUVORK5CYII="
 
 /***/ },
-/* 99 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(100)
-	__vue_template__ = __webpack_require__(101)
+	__vue_script__ = __webpack_require__(97)
+	__vue_template__ = __webpack_require__(98)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17738,7 +17469,7 @@
 	})()}
 
 /***/ },
-/* 100 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17792,18 +17523,18 @@
 	// <script>
 
 /***/ },
-/* 101 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(38) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 102 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(103)
-	__vue_template__ = __webpack_require__(104)
+	__vue_script__ = __webpack_require__(100)
+	__vue_template__ = __webpack_require__(101)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17820,7 +17551,7 @@
 	})()}
 
 /***/ },
-/* 103 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17870,13 +17601,13 @@
 	// <script>
 
 /***/ },
-/* 104 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(98) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t{falta icon}\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t{falta icon}\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 105 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -20590,7 +20321,7 @@
 	}));
 
 /***/ },
-/* 106 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20599,11 +20330,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(107)(Vue);
+	    var _ = __webpack_require__(104)(Vue);
 
-	    Vue.url = __webpack_require__(108)(_);
-	    Vue.http = __webpack_require__(109)(_);
-	    Vue.resource = __webpack_require__(113)(_);
+	    Vue.url = __webpack_require__(105)(_);
+	    Vue.http = __webpack_require__(106)(_);
+	    Vue.resource = __webpack_require__(110)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -20635,7 +20366,7 @@
 	module.exports = install;
 
 /***/ },
-/* 107 */
+/* 104 */
 /***/ function(module, exports) {
 
 	/**
@@ -20721,7 +20452,7 @@
 
 
 /***/ },
-/* 108 */
+/* 105 */
 /***/ function(module, exports) {
 
 	/**
@@ -20884,16 +20615,16 @@
 
 
 /***/ },
-/* 109 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(110);
-	var jsonp = __webpack_require__(112);
-	var Promise = __webpack_require__(111);
+	var xhr = __webpack_require__(107);
+	var jsonp = __webpack_require__(109);
+	var Promise = __webpack_require__(108);
 
 	module.exports = function (_) {
 
@@ -21050,14 +20781,14 @@
 
 
 /***/ },
-/* 110 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(111);
+	var Promise = __webpack_require__(108);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -21107,7 +20838,7 @@
 
 
 /***/ },
-/* 111 */
+/* 108 */
 /***/ function(module, exports) {
 
 	/**
@@ -21323,14 +21054,14 @@
 
 
 /***/ },
-/* 112 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(111);
+	var Promise = __webpack_require__(108);
 
 	module.exports = function (_, options) {
 
@@ -21379,7 +21110,7 @@
 
 
 /***/ },
-/* 113 */
+/* 110 */
 /***/ function(module, exports) {
 
 	/**
