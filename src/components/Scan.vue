@@ -227,7 +227,10 @@
               content: -1
             } )
 
-            if ( data.is_last ) {
+            console.info('counters.items_to_scan_remaining: ', counters.items_to_scan_remaining);
+
+            // if ( data.is_last ) {
+            if ( ! counters.items_to_scan_remaining ) {
               return this.$route.router.go( '/scan-finished' )
             }
             return this.$route.router.go( '/scan-succesful' )

@@ -16264,10 +16264,10 @@
 	      // var printerMAC = 'AC:3F:A4:56:66:EC';
 	      var printerMAC = setup.printerMAC;
 	      var that = this;
+	      var order_id = this.order.id;
 
-	      console.info(label, 'Imprimiendo order #' + this.order.id + ' en impresora MAC: ' + printerMAC);
-
-	      this.$http.get(ORDER_URL + '/' + this.order.id + '/opl-get-zpl/' + label).then(function (response) {
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + printerMAC);
 	        console.info(response, 'success callback');
 
 	        var text = response.data.text;
@@ -16555,7 +16555,10 @@
 	            content: -1
 	          });
 
-	          if (data.is_last) {
+	          console.info('counters.items_to_scan_remaining: ', counters.items_to_scan_remaining);
+
+	          // if ( data.is_last ) {
+	          if (!counters.items_to_scan_remaining) {
 	            return this.$route.router.go('/scan-finished');
 	          }
 	          return this.$route.router.go('/scan-succesful');
