@@ -16,7 +16,7 @@
             </p>
             <p>
               <label>MAC impresora portátil</label>
-              <input type="text" v-model="db.printerMAC">
+              <input type="text" v-model="db.printerMAC" style="text-transform: uppercase;">
             </p>            
             <p>
               <label>Teléfono móvil</label>

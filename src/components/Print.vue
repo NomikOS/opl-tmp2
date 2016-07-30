@@ -24,23 +24,23 @@
       </a>
     </li>
     <li>
-      <a @click="print('customer-order')" class="waves-effect waves-light">
+      <a @click="print('customer-pickup-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden cliente</p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="print('payments-history')" class="waves-effect waves-light">
+      <a __click="print('payments-history')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>historial de pago</p>
+          <p><!-- historial de pago --></p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="scan('special')" class="waves-effect waves-light">
+      <a __click="scan('special')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>especial</p>
+          <p><!-- especial --></p>
         </div>
       </a>
     </li>
@@ -90,7 +90,8 @@
         }
 
         // var printerMAC = 'AC:3F:A4:56:66:EC';
-        var mac = $.trim(setup.printerMAC)
+        var mac = $.trim(setup.printerMAC).toUpperCase()
+
         var that = this;
         var order_id = this.order.id;
 
