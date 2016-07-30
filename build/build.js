@@ -17457,20 +17457,25 @@
 	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-available').then(function (response) {
 	        console.info(response, 'success callback');
 
-	        var result = response.data.result;
-	        if (result != 'OK') {
+	        if (!response.data.ok) {
 
 	          setTimeout(function () {
 	            that.retry();
 	          }, 5000);
+
 	          return;
 	        }
 
-	        that.message = 'R4';
+	        var result = response.data.result;
 
-	        setTimeout(function () {
-	          return that.$route.router.go('/stand-by');
-	        }, 1000);
+	        if (result == 'all ok') {
+	          that.message = 'R4';
+	          setTimeout(function () {
+	            return that.$route.router.go('/stand-by');
+	          }, 1000);
+	        } else {
+	          that.message = 'Central informada, pero no se han recibido instrucciones.';
+	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
 	      });
