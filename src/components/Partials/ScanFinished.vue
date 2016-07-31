@@ -16,22 +16,34 @@
 		</div><!-- end container -->
 
 		<footer class="ac25-content-footer">
-			<a v-link="'available'" class="ac25-full-black waves-effect waves-light">terminar</a>
+			<a @click="back()" class="ac25-full-black waves-effect waves-light">terminar</a>
 		</footer><!-- end footer -->
 
 	</div><!-- end content-global -->
 </template>
 
 <script>
-	import { getOrder, getItem } from '../../vuex/getters'
+	import { getOrder, getItem, getAddressType } from '../../vuex/getters'
 
 	export default {
-		name: 'ScanFinished',
-        vuex: {
-            getters: {
-                order: getOrder,
-                item: getItem
-            }
-        },		
+		name: 'ScanFinished',	
+		vuex: {
+			getters: {
+				order: getOrder,
+				item: getItem,
+				addressType: getAddressType
+			}
+		},		
+		methods: {
+
+			back() {
+				if ( 'pickup' == this.addressType ) {
+					this.$route.router.go( '/event-pickup' )
+
+				} else {
+					this.$route.router.go( '/event-delivery' )
+				}
+			}
+		}        
 	}
 </script>

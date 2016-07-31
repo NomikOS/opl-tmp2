@@ -16430,7 +16430,9 @@
 	//         <li>
 	//           <a>
 	//             <div class="ac25-scan-list-content">
-	//               <span class="ac25-sclanlist-scan-id">{{item_id_info}}</span>
+	//               <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{item_id_info}}</span>
+	//
+	//               <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery'">{{item_id_info}}<br />QR #{{item.qr_id}}</span>
 	//             </div>
 	//           </a>
 	//         </li>
@@ -17093,7 +17095,7 @@
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{item_id_info}}</span>\n\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery'\">{{item_id_info}}<br />QR #{{item.qr_id}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 77 */
@@ -17810,19 +17812,29 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+		value: true
 	});
 
 	var _getters = __webpack_require__(45);
 
 	exports.default = {
-	    name: 'ScanFinished',
-	    vuex: {
-	        getters: {
-	            order: _getters.getOrder,
-	            item: _getters.getItem
-	        }
-	    }
+		name: 'ScanFinished',
+		vuex: {
+			getters: {
+				order: _getters.getOrder,
+				item: _getters.getItem,
+				addressType: _getters.getAddressType
+			}
+		},
+		methods: {
+			back: function back() {
+				if ('pickup' == this.addressType) {
+					this.$route.router.go('/event-pickup');
+				} else {
+					this.$route.router.go('/event-delivery');
+				}
+			}
+		}
 	};
 	// </script>
 	// <template>
@@ -17843,7 +17855,7 @@
 	// 		</div><!-- end container -->
 	//
 	// 		<footer class="ac25-content-footer">
-	// 			<a v-link="'available'" class="ac25-full-black waves-effect waves-light">terminar</a>
+	// 			<a @click="back()" class="ac25-full-black waves-effect waves-light">terminar</a>
 	// 		</footer><!-- end footer -->
 	//
 	// 	</div><!-- end content-global -->
@@ -17855,7 +17867,7 @@
 /* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 102 */
