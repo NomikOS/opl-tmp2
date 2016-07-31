@@ -161,7 +161,7 @@
 
           if ( !item.length ) {
             this.item_id_info = ''
-            this.item_name_info = 'No hay mas items que escanear para la orden ' + this.order.id
+            this.item_name_info = 'No hay más items que escanear para la orden ' + this.order.special_id
             return
           }
 

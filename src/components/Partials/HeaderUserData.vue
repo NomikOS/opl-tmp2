@@ -4,6 +4,7 @@
     <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span>
     <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span>
     <span class="right">VER: 0.1</span>
+    <span class="right"><a v-link="'available'" class="" style="color:white">PING</a> &nbsp; | &nbsp; </span>
     <span class="right"><a v-link="'setup'" class="" style="color:white">SETUP ADMIN</a> &nbsp; | &nbsp; </span>
   </div><!-- end .container -->
 </div><!-- end .top-bar -->

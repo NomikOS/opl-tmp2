@@ -14700,6 +14700,7 @@
 	//     <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span>
 	//     <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span>
 	//     <span class="right">VER: 0.1</span>
+	//     <span class="right"><a v-link="'available'" class="" style="color:white">PING</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a v-link="'setup'" class="" style="color:white">SETUP ADMIN</a> &nbsp; | &nbsp; </span>
 	//   </div><!-- end .container -->
 	// </div><!-- end .top-bar -->
@@ -14833,7 +14834,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n    <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'setup'\" class=\"\" style=\"color:white\">SETUP ADMIN</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n    <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'available'\" class=\"\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" class=\"\" style=\"color:white\">SETUP ADMIN</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 24 */
@@ -16533,7 +16534,7 @@
 
 	        if (!item.length) {
 	          this.item_id_info = '';
-	          this.item_name_info = 'No hay mas items que escanear para la orden ' + this.order.id;
+	          this.item_name_info = 'No hay más items que escanear para la orden ' + this.order.special_id;
 	          return;
 	        }
 
