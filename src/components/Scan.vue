@@ -165,7 +165,7 @@
             return
           }
 
-          this.item_id_info = 'id ' + item.id
+          this.item_id_info = 'item id #' + item.id
           this.item_name_info = item.name
 
           /**
