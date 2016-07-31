@@ -10623,7 +10623,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-30 13:27:08
+	 * @Last Modified time: 2016-07-30 23:33:54
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10658,9 +10658,12 @@
 	    state.modalVisible = data;
 	  },
 	  SET_COUNTERS: function SET_COUNTERS(state, data) {
-	    var type = data.type;
-	    var units = data.units;
-	    state.counters[type] = state.counters[type] + units;
+	    // var type = data.type
+	    // var units = data.units
+	    // var x = state.counters[ type ];
+	    // state.counters[ type ] = +x + +units
+	    // console.info(state.counters);
+	    state.counters.items_to_scan_remaining--;
 	  }
 	};
 
@@ -16461,6 +16464,13 @@
 	    scan: function scan() {
 	      var that = this;
 
+	      this.setCounters({
+	        type: 'items_to_scan_remaining',
+	        content: -1
+	      });
+
+	      return;
+
 	      cordova.plugins.barcodeScanner.scan(function (result) {
 	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
 
@@ -16585,8 +16595,6 @@
 	        if (user_messages.length) {
 	          alert(user_messages);
 	        }
-
-	        console.info(data.OK, 'data.OK');
 
 	        if (data.OK) {
 
