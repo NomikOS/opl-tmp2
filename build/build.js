@@ -15875,6 +15875,7 @@
 
 	      this.$http.post(ORDER_URL + '/finish-shipment', {
 	        order_id: order_id,
+	        shipment_type: shipment_type,
 	        address_type: addressType
 
 	      }).then(function (response) {
