@@ -16597,10 +16597,10 @@
 	            content: -1
 	          });
 
-	          console.info('counters.items_to_scan_remaining: ', counters.items_to_scan_remaining);
+	          console.info('counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining);
 
 	          // if ( data.is_last ) {
-	          if (!counters.items_to_scan_remaining) {
+	          if (!this.counters.items_to_scan_remaining) {
 	            return this.$route.router.go('/scan-finished');
 	          }
 	          return this.$route.router.go('/scan-succesful');
