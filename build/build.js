@@ -14709,8 +14709,9 @@
 	// <template>
 	//   <div class="ac25-top-bar ac25-border-bottom">
 	//    <div class="container">
-	//     <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span>
-	//     <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span>
+	//     <!-- <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span> -->
+	//     <!-- <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span> -->
+	//     <span class="left" v-if="user.profile.name">OPERADOR: {{user.profile.name}}</span>
 	//     <span class="right">VER: 0.1</span>
 	//     <span class="right"><a v-link="'available'" class="" style="color:white">PING</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a v-link="'setup'" class="" style="color:white">SETUP ADMIN</a> &nbsp; | &nbsp; </span>
@@ -14846,7 +14847,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span>\n    <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'available'\" class=\"\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" class=\"\" style=\"color:white\">SETUP ADMIN</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'available'\" class=\"\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" class=\"\" style=\"color:white\">SETUP ADMIN</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 24 */
@@ -15812,7 +15813,7 @@
 	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
 	//        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-	//         <li> Cargue los <span class="ac25-large-font">{{counters.items_amount}}</span> bultos.</li>
+	//         <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
 	//         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
 	//         </li>
 	//       </ul>
@@ -15908,7 +15909,7 @@
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{counters.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n        </li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n    <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n        </li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n    <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 57 */

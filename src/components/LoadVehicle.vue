@@ -8,7 +8,7 @@
        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-        <li> Cargue los <span class="ac25-large-font">{{counters.items_amount}}</span> bultos.</li>
+        <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
         </li>
       </ul>
