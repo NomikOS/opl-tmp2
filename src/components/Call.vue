@@ -14,7 +14,8 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-     <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone"></a>
+     <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
+
      <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
 
      <a class="ac25-full-red-custom waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>

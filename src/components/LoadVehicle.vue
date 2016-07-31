@@ -8,13 +8,14 @@
        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-        <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
+        <li> Cargue los <span class="ac25-large-font">{{counters.items_to_scan_remaining}}</span> bultos.</li>
         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
         </li>
       </ul>
 
       <div class="clearfix"></div>
-      <a href="#" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png"  class="left" />  <span>imprimir listado de bultos</span> </a>
+      <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
+
     </div><!-- end content-inner-holder -->
   </div><!-- end container -->
 
@@ -32,7 +33,7 @@
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
-  import { getOrder } from '../vuex/getters'
+  import { getOrder, getCounters } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
 
@@ -46,15 +47,15 @@
     },
     vuex: {
       getters: {
-        order: getOrder
+        order: getOrder,
+        counters: getCounters
       }
     },
     ready: function() {
       console.info( '=================================== LoadVehicle is ready with this order: ', this.order.id )
     },
     methods: {
-
-      finishOrder: function() {
+      finishOrder () {
 
         var shipment_type = 'pickup'; // set al recinbir
 
@@ -70,7 +71,40 @@
           console.info( response.data, 'error callback' );
 
         } );
-      }
+      },
+      print( label ) {
+
+        var setup = ls.get( 'setup' )
+
+        if ( !setup || !setup.printerMAC ) {
+          return this.$route.router.go( '/setup' )
+        }
+
+        // var printerMAC = 'AC:3F:A4:56:66:EC';
+        var mac = $.trim(setup.printerMAC).toUpperCase()
+
+        var that = this;
+        var order_id = this.order.id;
+
+        this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+          console.info( response, 'success callback' );
+          console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
+
+          var text = response.data.text
+          if (!text) {
+            return alert('Texto no ha arrivado. Abortando impresión.')
+          }
+
+          cordova.plugins.zbtprinter.print( mac, text,
+            function( success ) {},
+            function( fail ) {
+              alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
+            } );
+
+        }, ( response ) => {
+          console.info( response, 'error callback' );
+        } );
+      },      
     }
   }
 </script>
