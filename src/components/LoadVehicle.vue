@@ -34,7 +34,7 @@
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
-  import { getOrder, getCounters } from '../vuex/getters'
+  import { getOrder, getCounters, getAddressType } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
 
@@ -49,7 +49,8 @@
     vuex: {
       getters: {
         order: getOrder,
-        counters: getCounters
+        counters: getCounters,
+        addressType: getAddressType
       }
     },
     ready: function() {
@@ -60,11 +61,12 @@
 
         var that = this;
         var order_id = this.order.id;
-        var shipment_type = 'pickup'; // set al recinbir
+        // var addressType = 'pickup'; // set al recinbir
+        var addressType = this.addressType
 
         this.$http.post( ORDER_URL + '/finish-shipment', {
           order_id: order_id,
-          shipment_type: shipment_type
+          address_type: addressType
 
         } ).then( ( response ) => {
           console.info( response, 'success callback' );

@@ -62,8 +62,8 @@
       actions: {
         showModal: showModal,
         storeData: storeData,
-        setCounters: setCounters,
-        getAddressType: getAddressType
+        setCounters: setCounters
+        // getAddressType: getAddressType
       },
       getters: {
         order: getOrder,
@@ -128,12 +128,14 @@
         var order_id = this.order.id
         var item_id = 0
         var qr_id = 0
+        var addressType = this.addressType
 
         this.showModal( true )
         this.$http.post( ORDER_URL + '/scan-item', {
           order_id: order_id,
           item_id: item_id,
-          qr_id: qr_id
+          qr_id: qr_id,
+          address_type: addressType
         } ).then( ( response ) => {
 
           var data = response.data
@@ -191,12 +193,15 @@
         var order_id = this.order.id
         var item_id = this.item.id
         var qr_id = this.qr_id
+        var addressType = this.addressType
 
         this.showModal( true )
         this.$http.post( ORDER_URL + '/scan-item', {
           order_id: order_id,
           item_id: item_id,
-          qr_id: qr_id
+          qr_id: qr_id,
+          address_type: addressType
+
         } ).then( ( response ) => {
 
           var data = response.data

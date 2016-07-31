@@ -6,7 +6,7 @@
 
         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
-        <img class="ac25-page-top-logo" src="html/images/pickup.png" />
+        <img class="ac25-page-top-logo" src="html/images/pickup.png" /> (icono delivery)
         <p class="ac25-order-number-info">
           <span>orden {{order.special_id}}</span>
           <notification-icon></notification-icon>
@@ -59,7 +59,7 @@
       <button-scan></button-scan>
       <div class="clearfix"></div>
       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
-      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">cargar</a>
+      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">descargar</a>
       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
     </footer><!-- end footer -->
   </div><!-- end content-global -->

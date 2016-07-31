@@ -65,11 +65,22 @@
 		 					break;
 
 		 					case 'order-delivery':
+
 		 					that.storeData( {
 		 						type: 'order',
 		 						content: message.order
 		 					} )
+
+		 					var address_type = type.split('-')
+		 					address_type = address_type[1]
+
+		 					that.storeData( {
+		 						type: 'addressType',
+		 						content: address_type
+		 					} )
+
 		 					that.$route.router.go( '/event-delivery' )
+		 					
 		 					break;
 
 		 					case 'user-authenticated':
