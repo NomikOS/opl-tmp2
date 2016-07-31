@@ -14,10 +14,15 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-     <a  href="tel:+56964249765" __click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-     <a  href="tel:{{order.pickupAddress_person_phone}}" __click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
-     <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
-     <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+     <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone"></a>
+     <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
+
+     <a class="ac25-full-red-custom waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
+
+     <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+
+     <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+
      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
    </footer><!-- end footer -->
  </div><!-- end content-global -->  
@@ -41,6 +46,12 @@
         order: getOrder
       }
     },    
+    data: function() {
+      return {
+        setup:{}
+      }
+    },
+
     methods: {
       callCustomer() {
         var setup = ls.get( 'setup' )
@@ -81,6 +92,13 @@
     },
     ready(){
       console.info('Call is ready ===================================');
+      var setup = ls.get( 'setup' )      
+      this.setup = setup
+
+      console.info(this.order.pickupAddress_person_phone, 'order.pickupAddress_person_phone');
+      console.info(setup.phoneCentral, 'phoneCentral');
+      console.info(setup.phoneMobile, 'phoneMobile');
+      console.info(this.setup, 'this.setup:');
     }  
   }
 </script>

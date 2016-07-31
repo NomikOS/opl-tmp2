@@ -50,7 +50,7 @@
 
           if ( !response.ok ) {
 
-            console.info( 'Inform available to central: Retrying in ' + secs + ' seconds' );
+            console.info( 'Informing i\'m available to central failed. Retrying in ' + secs + ' seconds' );
             setTimeout( function() {
               that.retry();
             }, secs )
@@ -70,9 +70,13 @@
           } else {
 
             that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...'
-            setTimeout( function() {
-              return that.$route.router.go( '/stand-by' )
-            }, 5000 )
+            return that.$route.router.go( '/stand-by' )
+
+            // esto causa mucho ...
+            // no usar:
+            // setTimeout( function() {
+            //   return that.$route.router.go( '/stand-by' )
+            // }, 5000 )
           }
 
         }, ( response ) => {

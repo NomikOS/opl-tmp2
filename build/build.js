@@ -17134,10 +17134,15 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//      <a  href="tel:+56964249765" __click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-	//      <a  href="tel:{{order.pickupAddress_person_phone}}" __click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
-	//      <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
-	//      <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+	//      <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone"></a>
+	//      <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
+	//
+	//      <a class="ac25-full-red-custom waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
+	//
+	//      <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+	//
+	//      <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+	//
 	//      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
 	//    </footer><!-- end footer -->
 	//  </div><!-- end content-global --> 
@@ -17157,6 +17162,12 @@
 	      order: _getters.getOrder
 	    }
 	  },
+	  data: function data() {
+	    return {
+	      setup: {}
+	    };
+	  },
+
 	  methods: {
 	    callCustomer: function callCustomer() {
 	      var setup = _ls2.default.get('setup');
@@ -17197,6 +17208,13 @@
 	  },
 	  ready: function ready() {
 	    console.info('Call is ready ===================================');
+	    var setup = _ls2.default.get('setup');
+	    this.setup = setup;
+
+	    console.info(this.order.pickupAddress_person_phone, 'order.pickupAddress_person_phone');
+	    console.info(setup.phoneCentral, 'phoneCentral');
+	    console.info(setup.phoneMobile, 'phoneMobile');
+	    console.info(this.setup, 'this.setup:');
 	  }
 	};
 	// </script>
@@ -17206,7 +17224,7 @@
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a  href=\"tel:+56964249765\" __click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n     <a  href=\"tel:{{order.pickupAddress_person_phone}}\" __click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n     <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n     <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\"></a>\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
 /* 83 */
@@ -17471,7 +17489,7 @@
 
 	        if (!response.ok) {
 
-	          console.info('Inform available to central: Retrying in ' + secs + ' seconds');
+	          console.info('Informing i\'m available to central failed. Retrying in ' + secs + ' seconds');
 	          setTimeout(function () {
 	            that.retry();
 	          }, secs);
@@ -17490,9 +17508,13 @@
 	        } else {
 
 	          that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...';
-	          setTimeout(function () {
-	            return that.$route.router.go('/stand-by');
-	          }, 5000);
+	          return that.$route.router.go('/stand-by');
+
+	          // esto causa mucho ...
+	          // no usar:
+	          // setTimeout( function() {
+	          //   return that.$route.router.go( '/stand-by' )
+	          // }, 5000 )
 	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
