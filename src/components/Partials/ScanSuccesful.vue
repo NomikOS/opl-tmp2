@@ -15,7 +15,7 @@
 
 					<div class="clearfix"></div>
 
-					<p class="ac25-red-id-text ac25-no-margin">id {{item.id}}</p>
+					<p class="ac25-red-id-text ac25-no-margin">item id #{{item.id}}</p>
 				</p>
 			</div><!-- end content-inner-holder -->
 		</div><!-- end container -->

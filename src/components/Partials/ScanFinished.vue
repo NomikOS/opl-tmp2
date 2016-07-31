@@ -10,8 +10,6 @@
 
 					<div class="clearfix"></div>
 
-					{falta icon}
-
 					<div class="clearfix"></div>
 				</p>
 			</div><!-- end content-inner-holder -->

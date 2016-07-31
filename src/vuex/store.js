@@ -2,7 +2,7 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-07-30 23:33:54
+ * @Last Modified time: 2016-07-31 13:18:52
  */
 
 import Vue from 'vue'
@@ -19,6 +19,7 @@ const state = {
   counters: {
     items_to_scan_remaining: 0
   },
+  addressType: '',
   shipmentNotification: {},
   modalVisible: true,
   urlIframe: ''

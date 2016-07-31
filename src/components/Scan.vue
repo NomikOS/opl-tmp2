@@ -29,7 +29,7 @@
 
     <footer class="ac25-newfoot ac25-height-auto">
       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
-      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
+      <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 
   </div><!-- end content-global -->
@@ -41,7 +41,7 @@
 
   import { urls } from '../libs/common'
   import { showModal, storeData, setCounters } from '../vuex/actions'
-  import { getOrder, getItem, getCounters } from '../vuex/getters'
+  import { getOrder, getItem, getCounters, getAddressType } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
   const barcodeScannerOptions = {
@@ -62,12 +62,14 @@
       actions: {
         showModal: showModal,
         storeData: storeData,
-        setCounters: setCounters
+        setCounters: setCounters,
+        getAddressType: getAddressType
       },
       getters: {
         order: getOrder,
         item: getItem,
-        counters: getCounters
+        counters: getCounters,
+        addressType: getAddressType
       }
     },
     data() {
@@ -80,6 +82,15 @@
       }
     },
     methods: {
+
+      back() {
+        if ( 'pickup' == this.addressType ) {
+          this.$route.router.go( '/event-pickup' )
+
+        } else {
+          this.$route.router.go( '/event-delivery' )
+        }
+      },
 
       // really scan
       // -----------
@@ -219,32 +230,32 @@
           if ( data.OK ) {
 
             // update items to scan
-            console.info('update items to scan < ----------------------------------------------------------------');
+            console.info( 'update items to scan < ----------------------------------------------------------------' );
             this.setCounters( {
               type: 'items_to_scan_remaining',
               content: -1
             } )
 
-            console.info('counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining);
+            console.info( 'counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining );
 
             // if ( data.is_last ) {
-            if ( ! this.counters.items_to_scan_remaining ) {
-              return this.$route.router.go( '/scan-finished' )
+              if ( !this.counters.items_to_scan_remaining ) {
+                return this.$route.router.go( '/scan-finished' )
+              }
+              return this.$route.router.go( '/scan-succesful' )
+
+            } else {
+
+              console.info( error, 'error callback' )
+              this.$route.router.go( '/scan-failed' )
             }
-            return this.$route.router.go( '/scan-succesful' )
-
-          } else {
-
-            console.info( error, 'error callback' )
-            this.$route.router.go( '/scan-failed' )
           }
-        }
+        },
       },
-    },
-    ready() {
-      console.info( '=================================== Scan is ready with this order: ', this.order.id );
-      console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
-      this.requestItem()
+      ready() {
+        console.info( '=================================== Scan is ready with this order: ', this.order.id );
+        console.info( 'order', this.order, 'counters', this.counters.items_to_scan_remaining );
+        this.requestItem()
+      }
     }
-  }
-</script>
+  </script>

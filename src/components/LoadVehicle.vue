@@ -83,7 +83,7 @@
           return this.$route.router.go( '/setup' )
         }
 
-        // var printerMAC = 'AC:3F:A4:56:66:EC';
+        // var printerMAC 1039 = 'AC:3F:A4:56:66:EC';
         var mac = $.trim(setup.printerMAC).toUpperCase()
 
         var that = this;

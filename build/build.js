@@ -10520,11 +10520,22 @@
 						switch (type) {
 
 							case 'order-pickup':
+
 								that.storeData({
 									type: 'order',
 									content: _message.order
 								});
+
+								var address_type = type.split('-');
+								address_type = address_type[1];
+
+								that.storeData({
+									type: 'addressType',
+									content: address_type
+								});
+
 								that.$route.router.go('/event-pickup');
+
 								break;
 
 							case 'order-delivery':
@@ -10623,7 +10634,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-07-30 23:33:54
+	 * @Last Modified time: 2016-07-31 13:18:52
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -10636,6 +10647,7 @@
 	  counters: {
 	    items_to_scan_remaining: 0
 	  },
+	  addressType: '',
 	  shipmentNotification: {},
 	  modalVisible: true,
 	  urlIframe: ''
@@ -15512,13 +15524,14 @@
 /* 45 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.getOrder = getOrder;
 	exports.getItem = getItem;
+	exports.getAddressType = getAddressType;
 	exports.getModalVisibility = getModalVisibility;
 	exports.getUrlIframe = getUrlIframe;
 	exports.getCounters = getCounters;
@@ -15526,12 +15539,13 @@
 	// With ES6 you can also write it as:
 	// export const getCount = state => state.count
 	function getOrder(state) {
-	  console.info('++++++++++++++++ getItem from store now');
 	  return state.order;
 	}
 	function getItem(state) {
-	  console.info('++++++++++++++++ getItem from store now');
 	  return state.item;
+	}
+	function getAddressType(state) {
+	  return state.addressType;
 	}
 	function getModalVisibility(state) {
 	  return state.modalVisible;
@@ -15864,7 +15878,7 @@
 	        return this.$route.router.go('/setup');
 	      }
 
-	      // var printerMAC = 'AC:3F:A4:56:66:EC';
+	      // var printerMAC 1039 = 'AC:3F:A4:56:66:EC';
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
 
 	      var that = this;
@@ -16413,7 +16427,7 @@
 	//
 	//     <footer class="ac25-newfoot ac25-height-auto">
 	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
-	//       <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">volver</a>
+	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
 	//   </div><!-- end content-global -->
@@ -16439,12 +16453,14 @@
 	    actions: {
 	      showModal: _actions.showModal,
 	      storeData: _actions.storeData,
-	      setCounters: _actions.setCounters
+	      setCounters: _actions.setCounters,
+	      getAddressType: _getters.getAddressType
 	    },
 	    getters: {
 	      order: _getters.getOrder,
 	      item: _getters.getItem,
-	      counters: _getters.getCounters
+	      counters: _getters.getCounters,
+	      addressType: _getters.getAddressType
 	    }
 	  },
 	  data: function data() {
@@ -16458,10 +16474,17 @@
 	  },
 
 	  methods: {
+	    back: function back() {
+	      if ('pickup' == this.addressType) {
+	        this.$route.router.go('/event-pickup');
+	      } else {
+	        this.$route.router.go('/event-delivery');
+	      }
+	    },
+
 
 	    // really scan
 	    // -----------
-
 	    scan: function scan() {
 	      var that = this;
 
@@ -17050,7 +17073,7 @@
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\">{{item_id_info}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 77 */
@@ -17629,7 +17652,7 @@
 	//
 	// 					<div class="clearfix"></div>
 	//
-	// 					<p class="ac25-red-id-text ac25-no-margin">id {{item.id}}</p>
+	// 					<p class="ac25-red-id-text ac25-no-margin">item id #{{item.id}}</p>
 	// 				</p>
 	// 			</div><!-- end content-inner-holder -->
 	// 		</div><!-- end container -->
@@ -17648,7 +17671,7 @@
 /* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 95 */
@@ -17717,7 +17740,7 @@
 	//
 	// 					<div class="clearfix"></div>
 	//
-	// 					<p class="ac25-red-id-text ac25-no-margin">id {{item.id}}</p>
+	// 					<p class="ac25-red-id-text ac25-no-margin">item id #{{item.id}}</p>
 	// 				</p>
 	// 			</div><!-- end content-inner-holder -->
 	// 		</div><!-- end container -->
@@ -17736,7 +17759,7 @@
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(38) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">id {{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(38) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 99 */
@@ -17794,8 +17817,6 @@
 	//
 	// 					<div class="clearfix"></div>
 	//
-	// 					{falta icon}
-	//
 	// 					<div class="clearfix"></div>
 	// 				</p>
 	// 			</div><!-- end content-inner-holder -->
@@ -17814,7 +17835,7 @@
 /* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t{falta icon}\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 102 */

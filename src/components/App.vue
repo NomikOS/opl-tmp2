@@ -24,59 +24,70 @@
 		/**
 		 * Make this and all child components aware of the new store
 		 */
-		store: store,
+		 store: store,
 
-		ready: function() {
-			console.info( 'APP is ready ===================================' );
-			this.initPubnub()
-		},
+		 ready: function() {
+		 	console.info( 'APP is ready ===================================' );
+		 	this.initPubnub()
+		 },
 
-		methods: {
-			initPubnub: function() {
-				console.info( 'pubnub cargado y listo para disparar' );
+		 methods: {
+		 	initPubnub: function() {
+		 		console.info( 'pubnub cargado y listo para disparar' );
 
-				var that = this;
-				pubnub.subscribe( {
-					channel: 'notifications-opl',
+		 		var that = this;
+		 		pubnub.subscribe( {
+		 			channel: 'notifications-opl',
 
-					message: function( message ) {
-						var type = message.type
-						console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
+		 			message: function( message ) {
+		 				var type = message.type
+		 				console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
 
-						switch ( type ) {
+		 				switch ( type ) {
 
-							case 'order-pickup':
-								that.storeData( {
-									type: 'order',
-									content: message.order
-								} )
-								that.$route.router.go( '/event-pickup' )
-								break;
+		 					case 'order-pickup':
 
-							case 'order-delivery':
-								that.storeData( {
-									type: 'order',
-									content: message.order
-								} )
-								that.$route.router.go( '/event-delivery' )
-								break;
+		 					that.storeData( {
+		 						type: 'order',
+		 						content: message.order
+		 					} )
 
-							case 'user-authenticated':
+		 					var address_type = type.split('-')
+		 					address_type = address_type[1]
 
-								var phonegapid_stored = ls.get( 'phonegapid' )
+		 					that.storeData( {
+		 						type: 'addressType',
+		 						content: address_type
+		 					} )
 
-								var token = message.token
-								var uid = message.uid
-								var phonegapid = message.phonegapid
+		 					that.$route.router.go( '/event-pickup' )
 
-								if ( phonegapid != phonegapid_stored ) {
+		 					break;
+
+		 					case 'order-delivery':
+		 					that.storeData( {
+		 						type: 'order',
+		 						content: message.order
+		 					} )
+		 					that.$route.router.go( '/event-delivery' )
+		 					break;
+
+		 					case 'user-authenticated':
+
+		 					var phonegapid_stored = ls.get( 'phonegapid' )
+
+		 					var token = message.token
+		 					var uid = message.uid
+		 					var phonegapid = message.phonegapid
+
+		 					if ( phonegapid != phonegapid_stored ) {
 
 
 
 									// revisit wgen update passport
-									// 
-									// 
-									// 
+									//
+									//
+									//
 									// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
 									// return // and destroy phone
 								}
@@ -104,9 +115,9 @@
 
 								break;
 
-							case 'print-order':
+								case 'print-order':
 								return 'print-order by pubnub deprecated.';
-								
+
 								var setup = ls.get( 'setup' )
 								var printerMAC = setup.printerMAC
 								var mac = printerMAC
@@ -118,15 +129,15 @@
 									} );
 								break;
 
-							case 'shipment-notification':
+								case 'shipment-notification':
 								// that.storeData( message.notification )
 								break;
+							}
+
 						}
+					} )
 
-					}
-				} )
-
-			},
+		 	},
+		 }
 		}
-	}
-</script>
+	</script>
