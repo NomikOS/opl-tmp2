@@ -29,6 +29,7 @@
 
 <script>
   import { urls } from '../libs/common'
+  import ls from '../libs/ls'
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
@@ -57,6 +58,8 @@
     methods: {
       finishOrder () {
 
+        var that = this;
+        var order_id = this.order.id;
         var shipment_type = 'pickup'; // set al recinbir
 
         this.$http.post( ORDER_URL + '/finish-shipment', {

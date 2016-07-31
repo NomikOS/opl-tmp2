@@ -17,7 +17,7 @@
       </a>
     </li>
     <li>
-      <a click="print('internal-order')" class="waves-effect waves-light">
+      <a @click="print('internal-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden interna</p>
         </div>
