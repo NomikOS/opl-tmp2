@@ -86,13 +86,6 @@
       scan() {
         var that = this
 
-            this.setCounters( {
-              type: 'items_to_scan_remaining',
-              content: -1
-            } )
-
-            return        
-
         cordova.plugins.barcodeScanner.scan(
           function( result ) {
             console.info( "RESULT\n" +
