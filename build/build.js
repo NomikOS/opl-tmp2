@@ -14984,7 +14984,9 @@
 
 	      this.$route.router.go('/available');
 	    },
-	    cancel: function cancel() {}
+	    cancel: function cancel() {
+	      this.$route.router.go('/available');
+	    }
 	  }
 	};
 	// </script>
@@ -16185,16 +16187,16 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('invoice')" class="waves-effect waves-light">
+	//       <a __click="print('invoice')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>factura</p>
+	//           <p><!-- factura --></p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('internal-order')" class="waves-effect waves-light">
+	//       <a __click="print('internal-order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>orden interna</p>
+	//           <p><!-- orden interna --></p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -16272,6 +16274,10 @@
 	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
 
 	        var text = response.data.text;
+	        if (!text) {
+	          return alert('Texto no ha arrivado. Abortando impresión.');
+	        }
+
 	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
 	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
 	        });
@@ -16287,7 +16293,7 @@
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>factura</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- orden interna --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 67 */
@@ -17108,9 +17114,11 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
+	var _getters = __webpack_require__(45);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var phoneMobile = ''; // <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
 	//     <div class="container">
@@ -17126,8 +17134,8 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//      <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-	//      <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
+	//      <a  href="tel:+56964249765" __click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
+	//      <a  href="tel:{{order.pickupAddress_person_phone}}" __click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
 	//      <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
 	//      <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
 	//      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
@@ -17137,14 +17145,17 @@
 	//
 	// <script>
 
-
-	var phoneMobile = '';
 	var phoneCentral = '';
 
 	exports.default = {
 	  name: 'Call',
 	  components: {
 	    HeaderUserData: _HeaderUserData2.default
+	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder
+	    }
 	  },
 	  methods: {
 	    callCustomer: function callCustomer() {
@@ -17195,7 +17206,7 @@
 /* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a @click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n     <a @click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n     <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n     <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a  href=\"tel:+56964249765\" __click=\"callCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al cliente</a>\n     <a  href=\"tel:{{order.pickupAddress_person_phone}}\" __click=\"callCentralCustomer()\" class=\"ac25-full-red-custom waves-effect waves-light\">central llama a cliente</a>\n     <a @click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n     <a @click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
 /* 83 */
@@ -17477,7 +17488,11 @@
 	            return that.$route.router.go('/stand-by');
 	          }, 1000);
 	        } else {
-	          that.message = 'Central informada, pero no se han recibido instrucciones.';
+
+	          that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...';
+	          setTimeout(function () {
+	            return that.$route.router.go('/stand-by');
+	          }, 5000);
 	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');

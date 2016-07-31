@@ -10,16 +10,16 @@
       </a>
     </li>
     <li>
-      <a @click="print('invoice')" class="waves-effect waves-light">
+      <a __click="print('invoice')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>factura</p>
+          <p><!-- factura --></p>
         </div>
       </a>
     </li>
     <li>
-      <a @click="print('internal-order')" class="waves-effect waves-light">
+      <a __click="print('internal-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>orden interna</p>
+          <p><!-- orden interna --></p>
         </div>
       </a>
     </li>
@@ -100,6 +100,10 @@
           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 
           var text = response.data.text
+          if (!text) {
+            return alert('Texto no ha arrivado. Abortando impresión.')
+          }
+
           cordova.plugins.zbtprinter.print( mac, text,
             function( success ) {},
             function( fail ) {

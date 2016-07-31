@@ -14,8 +14,8 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-     <a @click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
-     <a @click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
+     <a  href="tel:+56964249765" __click="callCustomer()" class="ac25-full-red-custom waves-effect waves-light">llamar al cliente</a>
+     <a  href="tel:{{order.pickupAddress_person_phone}}" __click="callCentralCustomer()" class="ac25-full-red-custom waves-effect waves-light">central llama a cliente</a>
      <a @click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
      <a @click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
@@ -26,6 +26,7 @@
 <script>
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import ls from '../libs/ls'
+  import { getOrder } from '../vuex/getters'
 
   var phoneMobile = ''
   var phoneCentral = ''
@@ -35,6 +36,11 @@
     components: {
       HeaderUserData
     },
+    vuex: {
+      getters: {
+        order: getOrder
+      }
+    },    
     methods: {
       callCustomer() {
         var setup = ls.get( 'setup' )
@@ -69,7 +75,7 @@
           return this.$route.router.go( '/setup' )
         }
         phoneMobile = setup.phoneMobile
-                
+
         alert('Ring ring')
       },
     },

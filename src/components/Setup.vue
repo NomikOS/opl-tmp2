@@ -97,6 +97,7 @@
 
       },
       cancel: function() {
+        this.$route.router.go( '/available' )
       }    
     }
   }
