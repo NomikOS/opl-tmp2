@@ -29,7 +29,7 @@
     </div><!-- end content-inner-holder -->
 
     <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+      <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 

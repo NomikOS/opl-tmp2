@@ -14,15 +14,15 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-     <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
+     <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
 
-     <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
+     <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
 
-     <a class="ac25-full-red-custom waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
+     <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
 
-     <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+     <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar a la central</a>
 
-     <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+     <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a>
 
      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
    </footer><!-- end footer -->

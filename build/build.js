@@ -16805,7 +16805,7 @@
 	// 	}	
 	// </style>
 	// <template>
-	// 	<div class="ac25-red-loading-section" style="z-index:10;position:absolute" v-show="modalVisible" transition="modal">
+	// 	<div class="ac25-red-loading-section modal-custom-dev" style="z-index:10;position:absolute" v-show="modalVisible" transition="modal">
 	// 		<div class="container">
 	// 			<div class="ac25-loading-content">
 	// 				<h5>Comunicando con central...</h5>
@@ -16821,7 +16821,7 @@
 /* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-red-loading-section\" style=\"z-index:10;position:absolute\" v-show=\"modalVisible\" transition=\"modal\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5>Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(25) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" v-show=\"modalVisible\" transition=\"modal\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5>Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(25) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
 
 /***/ },
 /* 74 */
@@ -16908,7 +16908,7 @@
 	//     </div><!-- end content-inner-holder -->
 	//
 	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
 	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
@@ -17138,7 +17138,7 @@
 /* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{item_id_info}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery'\">{{item_id_info}}<br />QR #{{item.qr_id}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(47) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{item_id_info}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery'\">{{item_id_info}}<br />QR #{{item.qr_id}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 78 */
@@ -17259,15 +17259,15 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//      <a class="ac25-full-red-custom waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
+	//      <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
 	//
-	//      <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
+	//      <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
 	//
-	//      <a class="ac25-full-red-custom waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
+	//      <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
 	//
-	//      <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom waves-effect waves-light">llamar a la central</a>
+	//      <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar a la central</a>
 	//
-	//      <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom waves-effect waves-light">llamar al chofer</a>
+	//      <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a>
 	//
 	//      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
 	//    </footer><!-- end footer -->
@@ -17350,7 +17350,7 @@
 /* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
 /* 84 */
@@ -17421,7 +17421,7 @@
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
 	//    <footer class="ac25-content-footer">
-	//    <a class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la sesión?</a>
+	//    <a class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la sesión?</a>
 	//     <a @click="yes()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">sí</a>
 	//     <a @click="no()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">no</a>
 	//   </footer><!-- end footer -->
@@ -17434,7 +17434,7 @@
 /* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->  \n";
 
 /***/ },
 /* 87 */

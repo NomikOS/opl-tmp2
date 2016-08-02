@@ -8,7 +8,7 @@
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
    <footer class="ac25-content-footer">
-   <a class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la sesión?</a>
+   <a class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 20px">Esta seguro que desea cerrar la sesión?</a>
     <a @click="yes()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">sí</a>
     <a @click="no()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">no</a>
   </footer><!-- end footer -->

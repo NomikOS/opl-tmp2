@@ -1,4 +1,4 @@
-.ac25-full-red-custom{
+.ac25-full-red-custom-dev {
 	width: 100%;
 	background: #e61c37;
 	padding:20px 10px;
@@ -9,6 +9,10 @@
 	border-bottom: 1px solid white;
 	bottom:-32px !important
 }
-.ac25-top-right-hand.ac25-z-1{
+.ac25-top-right-hand.ac25-z-1 {
 	z-index: 10 !important;
+}
+
+.modal-custom-dev {
+	display: none
 }
