@@ -103,7 +103,11 @@
               "Format: " + result.format + "\n" +
               "Cancelled: " + result.cancelled )
 
-            that.switherParseQrScanResult( null, result )
+            if (result.cancelled) {
+              that.switherParseQrScanResult( 'Scan cancelled >:' )
+            } else {
+              that.switherParseQrScanResult( null, result )
+            }
           },
           function( error ) {
             that.switherParseQrScanResult( error )
