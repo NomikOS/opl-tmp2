@@ -15527,7 +15527,7 @@
 	// 	<a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
 	// 		<img src="../html/images/barcode-big-2.png" />
 	// 		<p class="ac25-no-margin" v-if="counters.items_to_scan_remaining > 0">escanear ({{counters.items_to_scan_remaining}})</p>
-	// 		<p class="ac25-no-margin" v-if="counters.items_to_scan_remaining <= 0">&nbsp;</p>
+	// 		<p class="ac25-no-margin" v-if="counters.items_to_scan_remaining <= 0">escaneo listo</p>
 	// 	</a>
 	// </template>
 	//
@@ -15574,7 +15574,7 @@
 /* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(47) + "\" />\n\t\t<p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n\t\t<p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">&nbsp;</p>\n\t</a>\n";
+	module.exports = "\n\t<a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(47) + "\" />\n\t\t<p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n\t\t<p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n\t</a>\n";
 
 /***/ },
 /* 47 */
@@ -16352,42 +16352,49 @@
 	  },
 	  ready: function ready() {
 	    console.info('=================================== Print is ready with this order: ', this.order.id);
+	    console.info(1222);
 	  },
 
 
 	  methods: {
 	    print: function print(label) {
-	      var _this = this;
+	      console.info(label);
 
-	      var setup = _ls2.default.get('setup');
+	      //         var setup = ls.get( 'setup' )
 
-	      if (!setup || !setup.printerMAC) {
-	        return this.$route.router.go('/setup');
-	      }
+	      //         console.info(setup, '--------------------------');
 
-	      // var printerMAC = 'AC:3F:A4:56:66:EC';
-	      var mac = $.trim(setup.printerMAC).toUpperCase();
-	      var that = this;
-	      var order_id = this.order.id;
+	      //         if ( !setup || !setup.printerMAC ) {
+	      //           return this.$route.router.go( '/setup' )
+	      //         }
 
-	      this.showModal(true);
-	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
-	        _this.showModal(false);
+	      //         // var printerMAC = 'AC:3F:A4:56:66:EC';
+	      //         var mac = $.trim(setup.printerMAC).toUpperCase()
+	      //         var that = this;
+	      //         var order_id = this.order.id;
 
-	        console.info(response, 'success callback');
-	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
+	      // console.info(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label);
+	      //         // this.showModal( true )
+	      //         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+	      //           this.showModal( false )
 
-	        var text = response.data.text;
-	        if (!text) {
-	          return alert('Texto no ha arrivado. Abortando impresión.');
-	        }
+	      //           console.info( response, 'success callback' );
+	      //           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 
-	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
-	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
-	        });
-	      }, function (response) {
-	        console.info(response, 'error callback');
-	      });
+	      //           var text = response.data.text
+	      //           if (!text) {
+	      //             return alert('Texto no ha arrivado. Abortando impresión.')
+	      //           }
+
+	      //           cordova.plugins.zbtprinter.print( mac, text,
+	      //             function( success ) {},
+	      //             function( fail ) {
+	      //               alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
+	      //             } );
+
+	      //         }, ( response ) => {
+	      //           console.info( response, 'error callback' );
+	      //         } );
 	    }
 	  }
 	};
