@@ -102,7 +102,7 @@
 
 	var _Print2 = _interopRequireDefault(_Print);
 
-	var _Scan = __webpack_require__(67);
+	var _Scan = __webpack_require__(74);
 
 	var _Scan2 = _interopRequireDefault(_Scan);
 
@@ -15661,7 +15661,7 @@
 	//
 	//         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
-	//         <img class="ac25-page-top-logo" src="html/images/pickup.png" /> (icono delivery)
+	//         <img class="ac25-page-top-logo" src="html/images/delivery.png" />
 	//         <p class="ac25-order-number-info">
 	//           <span>orden {{order.special_id}}</span>
 	//           <notification-icon></notification-icon>
@@ -15754,7 +15754,7 @@
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(50) + "\" /> (icono delivery)\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(111) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_name}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_person_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">{{order.items_weight}}</p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 54 */
@@ -15818,29 +15818,43 @@
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
 	//     <div class="container">
-	//       <div class="ac25-content-inner-holder ac25-min-height-200">
+	//
+	//       <div class="ac25-content-inner-holder ac25-min-height-200" v-if="addressType == 'pickup'">
 	//        <h4 class="ac25-top-red-text">CARGAR EL CAMION</h4>
 	//        <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
 	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
-	//        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-	//         <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
-	//         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.
-	//         </li>
-	//       </ul>
+	//         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
+	//           <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
+	//           <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+	//         </ul>
 	//
-	//       <div class="clearfix"></div>
-	//       <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
+	//         <div class="clearfix"></div>
+	//           <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
+	//         </div><!-- end content-inner-holder -->
+	//       </div><!-- end container -->
 	//
-	//     </div><!-- end content-inner-holder -->
-	//   </div><!-- end container -->
+	//       <div class="ac25-content-inner-holder ac25-min-height-200" v-if="addressType == 'delivery'">
+	//        <h4 class="ac25-top-red-text">DESCARGAR EL CAMION</h4>
+	//        <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
+	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
-	//   <footer class="ac25-content-footer">
-	//     <a onclick="window.history.back()" class="ac25-half-black left waves-effect waves-light">volver</a>
-	//     <a @click="finishOrder()" class="ac25-half-red right waves-effect waves-light">terminar</a>
-	//   </footer><!-- end footer -->
+	//         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
+	//           <li> Desargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
+	//           <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+	//         </ul>
 	//
-	// </div><!-- end content-global -->
+	//         <div class="clearfix"></div>
+	//           <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
+	//         </div><!-- end content-inner-holder -->
+	//       </div><!-- end container -->
+	//
+	//       <footer class="ac25-content-footer">
+	//         <a onclick="window.history.back()" class="ac25-half-black left waves-effect waves-light">volver</a>
+	//         <a @click="finishOrder()" class="ac25-half-red right waves-effect waves-light">terminar</a>
+	//       </footer><!-- end footer -->
+	//
+	//   </div><!-- end content-global -->
 	// </template>
 	//
 	// <script>
@@ -15923,7 +15937,7 @@
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.\n        </li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n    <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n    \n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n       <h4 class=\"ac25-top-red-text\">DESCARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(49) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Desargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(57) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <footer class=\"ac25-content-footer\">\n        <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n        <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n      </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 57 */
@@ -16203,7 +16217,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(65)
-	__vue_template__ = __webpack_require__(66)
+	__vue_template__ = __webpack_require__(73)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16229,15 +16243,21 @@
 	  value: true
 	});
 
+	var _HeaderUserData = __webpack_require__(20);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	var _ModalWait = __webpack_require__(66);
+
+	var _ModalWait2 = _interopRequireDefault(_ModalWait);
+
 	var _common = __webpack_require__(9);
 
 	var _ls = __webpack_require__(13);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _HeaderUserData = __webpack_require__(20);
-
-	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+	var _actions = __webpack_require__(12);
 
 	var _getters = __webpack_require__(45);
 
@@ -16245,6 +16265,8 @@
 
 	// <template>
 	//   <header-user-data></header-user-data>
+	//   <modal-wait></modal-wait>
+	//
 	//   <ul class="ac25-main-menu">
 	//     <li>
 	//       <a class="waves-effect waves-light">
@@ -16307,9 +16329,13 @@
 	exports.default = {
 	  name: 'Print',
 	  components: {
-	    HeaderUserData: _HeaderUserData2.default
+	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default
 	  },
 	  vuex: {
+	    actions: {
+	      showModal: _actions.showModal
+	    },
 	    getters: {
 	      order: _getters.getOrder
 	    }
@@ -16324,6 +16350,7 @@
 
 	  methods: {
 	    print: function print(label) {
+	      var _this = this;
 
 	      var setup = _ls2.default.get('setup');
 
@@ -16333,11 +16360,13 @@
 
 	      // var printerMAC = 'AC:3F:A4:56:66:EC';
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
-
 	      var that = this;
 	      var order_id = this.order.id;
 
+	      this.showModal(true);
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        _this.showModal(false);
+
 	        console.info(response, 'success callback');
 	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
 
@@ -16361,319 +16390,10 @@
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(68)
-	__vue_template__ = __webpack_require__(76)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Scan.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _HeaderUserData = __webpack_require__(20);
-
-	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
-
-	var _ModalWait = __webpack_require__(69);
-
-	var _ModalWait2 = _interopRequireDefault(_ModalWait);
-
-	var _common = __webpack_require__(9);
-
-	var _actions = __webpack_require__(12);
-
-	var _getters = __webpack_require__(45);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
-	//   <header-user-data></header-user-data>
-	//   <modal-wait></modal-wait>
-	//
-	//   <div class="ac25-content-global">
-	//     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
-	//       <ul class="ac25-scan-list">
-	//         <li>
-	//           <a class="waves-effect waves-light">
-	//             <div class="ac25-scan-list-content">
-	//               <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
-	//               <div class="clearfix"></div>
-	//               <span class="ac25-scanlist-scan-text">escanear</span>
-	//             </div>
-	//           </a>
-	//         </li>
-	//         <li>
-	//           <a>
-	//             <div class="ac25-scan-list-content">
-	//               <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{item_id_info}}</span>
-	//               <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery'">{{item_id_info}}<br />QR #{{item.qr_id}}</span>
-	//             </div>
-	//           </a>
-	//         </li>
-	//       </ul><!-- end scan-list -->
-	//       <div class="container">
-	//         <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
-	//       </div>
-	//     </div><!-- end content-inner-holder -->
-	//
-	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
-	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
-	//     </footer><!-- end footer -->
-	//
-	//   </div><!-- end content-global -->
-	// </template>
-	//
-	// <script>
-
-	var barcodeScannerOptions = {
-	  "preferFrontCamera": true, // iOS and Android
-	  "showFlipCameraButton": true, // iOS and Android
-	  "prompt": "Apuntar a codigo QR", // supported on Android only
-	  "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-	  "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
-	};
-
-	exports.default = {
-	  name: 'Scan',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default,
-	    ModalWait: _ModalWait2.default
-	  },
-	  vuex: {
-	    actions: {
-	      showModal: _actions.showModal,
-	      storeData: _actions.storeData,
-	      setCounters: _actions.setCounters
-	      // getAddressType: getAddressType
-	    },
-	    getters: {
-	      order: _getters.getOrder,
-	      item: _getters.getItem,
-	      counters: _getters.getCounters,
-	      addressType: _getters.getAddressType
-	    }
-	  },
-	  data: function data() {
-	    return {
-	      // order : {},
-	      item: [],
-	      qr_id: 0,
-	      item_id_info: '',
-	      item_name_info: ''
-	    };
-	  },
-
-	  methods: {
-	    back: function back() {
-	      if ('pickup' == this.addressType) {
-	        this.$route.router.go('/event-pickup');
-	      } else {
-	        this.$route.router.go('/event-delivery');
-	      }
-	    },
-
-
-	    // really scan
-	    // -----------
-	    scan: function scan() {
-	      var that = this;
-
-	      cordova.plugins.barcodeScanner.scan(function (result) {
-	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
-
-	        that.switherParseQrScanResult(null, result);
-	      }, function (error) {
-	        that.switherParseQrScanResult(error);
-	      }, barcodeScannerOptions);
-	    },
-	    switherParseQrScanResult: function switherParseQrScanResult(error, result) {
-	      if (error) {
-	        console.info("Scanning failed: " + error);
-	        this.$route.router.go('/scan-failed');
-	      } else {
-	        this.qr_id = result.text;
-	        this.updateItem();
-	      }
-	    },
-
-
-	    // get next item to scan
-	    // ---------------------
-	    requestItem: function requestItem() {
-	      var _this = this;
-
-	      var order_id = this.order.id;
-	      var item_id = 0;
-	      var qr_id = 0;
-	      var addressType = this.addressType;
-
-	      this.showModal(true);
-	      this.$http.post(ORDER_URL + '/scan-item', {
-	        order_id: order_id,
-	        item_id: item_id,
-	        qr_id: qr_id,
-	        address_type: addressType
-	      }).then(function (response) {
-
-	        var data = response.data;
-	        _this.switherParseItemRequest(null, data);
-	      }, function (response) {
-
-	        _this.switherParseItemRequest(response);
-	      });
-	    },
-	    switherParseItemRequest: function switherParseItemRequest(error, data) {
-	      console.info('(requestItem) data from ' + ORDER_URL + '/scan-item', data);
-
-	      this.showModal(false);
-
-	      if (error) {
-
-	        console.info(error, 'error callback');
-	        this.$route.router.go('/scan-failed');
-	      } else {
-
-	        var item = data.item;
-	        var user_messages = data.user_messages;
-
-	        /**
-	         * update item
-	         * and placeholders
-	         */
-	        this.item = item; // esto esta bien
-
-	        this.storeData({
-	          type: 'item',
-	          content: item
-	        });
-
-	        if (!item.length) {
-	          this.item_id_info = '';
-	          this.item_name_info = 'No hay más items que escanear para la orden ' + this.order.special_id;
-	          return;
-	        }
-
-	        this.item_id_info = 'item id #' + item.id;
-	        this.item_name_info = item.name;
-
-	        /**
-	         * all ok here, waiting for user click scan button
-	         */
-	      }
-	    },
-
-
-	    // update item in db, call api
-	    // --------------------------
-	    updateItem: function updateItem() {
-	      var _this2 = this;
-
-	      var order_id = this.order.id;
-	      var item_id = this.item.id;
-	      var qr_id = this.qr_id;
-	      var addressType = this.addressType;
-
-	      this.showModal(true);
-	      this.$http.post(ORDER_URL + '/scan-item', {
-	        order_id: order_id,
-	        item_id: item_id,
-	        qr_id: qr_id,
-	        address_type: addressType
-
-	      }).then(function (response) {
-
-	        var data = response.data;
-	        _this2.switherParseItemUpdated(null, data);
-	      }, function (response) {
-
-	        switherParseItemUpdated(response);
-	      });
-	    },
-	    switherParseItemUpdated: function switherParseItemUpdated(error, data) {
-	      console.info('(updateItem) data from ' + ORDER_URL + '/scan-item', data);
-
-	      this.showModal(false);
-
-	      if (error) {
-
-	        console.info(error, 'error callback');
-	        this.$route.router.go('/scan-failed');
-	      } else {
-
-	        console.info(data, 'success callback');
-
-	        // centralizar estos mensajes?
-	        var user_messages = data.user_messages;
-	        if (user_messages.length) {
-	          alert(user_messages);
-	        }
-
-	        if (data.OK) {
-
-	          // update items to scan
-	          console.info('update items to scan < ----------------------------------------------------------------');
-	          this.setCounters({
-	            type: 'items_to_scan_remaining',
-	            content: -1
-	          });
-
-	          console.info('counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining);
-
-	          // if ( data.is_last ) {
-	          if (!this.counters.items_to_scan_remaining) {
-	            return this.$route.router.go('/scan-finished');
-	          }
-	          return this.$route.router.go('/scan-succesful');
-	        } else {
-
-	          console.info(error, 'error callback');
-	          this.$route.router.go('/scan-failed');
-	        }
-	      }
-	    }
-	  },
-	  ready: function ready() {
-	    console.info('=================================== Scan is ready with this order: ', this.order.id);
-	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
-	    this.requestItem();
-	  }
-	};
-	// </script>
-
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(70)
-	__vue_script__ = __webpack_require__(74)
-	__vue_template__ = __webpack_require__(75)
+	__webpack_require__(67)
+	__vue_script__ = __webpack_require__(71)
+	__vue_template__ = __webpack_require__(72)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16690,16 +16410,16 @@
 	})()}
 
 /***/ },
-/* 70 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(71);
+	var content = __webpack_require__(68);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(73)(content, {});
+	var update = __webpack_require__(70)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -16716,21 +16436,21 @@
 	}
 
 /***/ },
-/* 71 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(72)();
+	exports = module.exports = __webpack_require__(69)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\n.modal-enter, .modal-leave {\n  opacity:0;\n}\n\n.modal-enter .container,\n.modal-leave .container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n\t\n", ""]);
+	exports.push([module.id, "\n\t.modal-enter, .modal-leave {\n\t\topacity:0;\n\t}\n\n\t.modal-enter .container,\n\t.modal-leave .container {\n\t\t-webkit-transform: scale(1.1);\n\t\ttransform: scale(1.1);\n\t}\t\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 72 */
+/* 69 */
 /***/ function(module, exports) {
 
 	/*
@@ -16786,7 +16506,7 @@
 
 
 /***/ },
-/* 73 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -17038,7 +16758,7 @@
 
 
 /***/ },
-/* 74 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17060,16 +16780,15 @@
 	// </script>
 	//
 	// <style type="text/css">
-	// .modal-enter, .modal-leave {
-	//   opacity:0;
-	// }
+	// 	.modal-enter, .modal-leave {
+	// 		opacity:0;
+	// 	}
 	//
-	// .modal-enter .container,
-	// .modal-leave .container {
-	//   -webkit-transform: scale(1.1);
-	//   transform: scale(1.1);
-	// }
-	//
+	// 	.modal-enter .container,
+	// 	.modal-leave .container {
+	// 		-webkit-transform: scale(1.1);
+	// 		transform: scale(1.1);
+	// 	}	
 	// </style>
 	// <template>
 	// 	<div class="ac25-red-loading-section" style="z-index:10;position:absolute" v-show="modalVisible" transition="modal">
@@ -17085,10 +16804,317 @@
 	// <script>
 
 /***/ },
-/* 75 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-red-loading-section\" style=\"z-index:10;position:absolute\" v-show=\"modalVisible\" transition=\"modal\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5>Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(25) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(42) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+
+/***/ },
+/* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(75)
+	__vue_template__ = __webpack_require__(76)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Scan.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _HeaderUserData = __webpack_require__(20);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	var _ModalWait = __webpack_require__(66);
+
+	var _ModalWait2 = _interopRequireDefault(_ModalWait);
+
+	var _common = __webpack_require__(9);
+
+	var _actions = __webpack_require__(12);
+
+	var _getters = __webpack_require__(45);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	//   <header-user-data></header-user-data>
+	//   <modal-wait></modal-wait>
+	//
+	//   <div class="ac25-content-global">
+	//     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
+	//       <ul class="ac25-scan-list">
+	//         <li>
+	//           <a class="waves-effect waves-light">
+	//             <div class="ac25-scan-list-content">
+	//               <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
+	//               <div class="clearfix"></div>
+	//               <span class="ac25-scanlist-scan-text">escanear</span>
+	//             </div>
+	//           </a>
+	//         </li>
+	//         <li>
+	//           <a>
+	//             <div class="ac25-scan-list-content">
+	//               <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{item_id_info}}</span>
+	//               <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery'">{{item_id_info}}<br />QR #{{item.qr_id}}</span>
+	//             </div>
+	//           </a>
+	//         </li>
+	//       </ul><!-- end scan-list -->
+	//       <div class="container">
+	//         <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
+	//       </div>
+	//     </div><!-- end content-inner-holder -->
+	//
+	//     <footer class="ac25-newfoot ac25-height-auto">
+	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
+	//     </footer><!-- end footer -->
+	//
+	//   </div><!-- end content-global -->
+	// </template>
+	//
+	// <script>
+
+	var barcodeScannerOptions = {
+	  "preferFrontCamera": true, // iOS and Android
+	  "showFlipCameraButton": true, // iOS and Android
+	  "prompt": "Apuntar a codigo QR", // supported on Android only
+	  "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+	  "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
+	};
+
+	exports.default = {
+	  name: 'Scan',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default
+	  },
+	  vuex: {
+	    actions: {
+	      showModal: _actions.showModal,
+	      storeData: _actions.storeData,
+	      setCounters: _actions.setCounters
+	    },
+	    getters: {
+	      order: _getters.getOrder,
+	      item: _getters.getItem,
+	      counters: _getters.getCounters,
+	      addressType: _getters.getAddressType
+	    }
+	  },
+	  data: function data() {
+	    return {
+	      item: [],
+	      qr_id: 0,
+	      item_id_info: '',
+	      item_name_info: ''
+	    };
+	  },
+
+	  methods: {
+	    back: function back() {
+	      if ('pickup' == this.addressType) {
+	        this.$route.router.go('/event-pickup');
+	      } else {
+	        this.$route.router.go('/event-delivery');
+	      }
+	    },
+
+
+	    // really scan
+	    // -----------
+	    scan: function scan() {
+	      var that = this;
+
+	      cordova.plugins.barcodeScanner.scan(function (result) {
+	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
+
+	        that.switherParseQrScanResult(null, result);
+	      }, function (error) {
+	        that.switherParseQrScanResult(error);
+	      }, barcodeScannerOptions);
+	    },
+	    switherParseQrScanResult: function switherParseQrScanResult(error, result) {
+	      if (error) {
+	        console.info("Scanning failed: " + error);
+	        this.$route.router.go('/scan-failed');
+	      } else {
+	        var qr_id = result.text;
+	        this.item.qr_id = qr_id;
+	        this.qr_id = qr_id;
+	        this.updateItem();
+	      }
+	    },
+
+
+	    // get next item to scan
+	    // ---------------------
+	    requestItem: function requestItem() {
+	      var _this = this;
+
+	      var order_id = this.order.id;
+	      var item_id = 0;
+	      var qr_id = 0;
+	      var addressType = this.addressType;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id,
+	        address_type: addressType
+	      }).then(function (response) {
+
+	        var data = response.data;
+	        _this.switherParseItemRequest(null, data);
+	      }, function (response) {
+
+	        _this.switherParseItemRequest(response);
+	      });
+	    },
+	    switherParseItemRequest: function switherParseItemRequest(error, data) {
+	      this.showModal(false);
+	      console.info('(requestItem) data from ' + ORDER_URL + '/scan-item', data);
+
+	      if (error) {
+
+	        console.info(error, 'error callback');
+	        this.$route.router.go('/scan-failed');
+	      } else {
+
+	        var item = data.item;
+	        var user_messages = data.user_messages;
+
+	        /**
+	         * update item
+	         * and placeholders
+	         */
+	        this.item = item; // esto esta bien
+
+	        this.storeData({
+	          type: 'item',
+	          content: item
+	        });
+
+	        if (!item.length) {
+	          this.item_id_info = '';
+	          this.item_name_info = 'No hay más items que escanear para la orden ' + this.order.special_id;
+	          return;
+	        }
+
+	        this.item_id_info = 'item id #' + item.id;
+	        this.item_name_info = item.name;
+
+	        /**
+	         * all ok here, waiting for user click scan button
+	         */
+	      }
+	    },
+
+
+	    // update item in db, call api
+	    // --------------------------
+	    updateItem: function updateItem() {
+	      var _this2 = this;
+
+	      var order_id = this.order.id;
+	      var item_id = this.item.id;
+	      var qr_id = this.qr_id;
+	      var addressType = this.addressType;
+
+	      this.showModal(true);
+	      this.$http.post(ORDER_URL + '/scan-item', {
+	        order_id: order_id,
+	        item_id: item_id,
+	        qr_id: qr_id,
+	        address_type: addressType
+
+	      }).then(function (response) {
+
+	        var data = response.data;
+	        _this2.switherParseItemUpdated(null, data);
+	      }, function (response) {
+
+	        switherParseItemUpdated(response);
+	      });
+	    },
+	    switherParseItemUpdated: function switherParseItemUpdated(error, data) {
+	      this.showModal(false);
+	      console.info('(updateItem) data from ' + ORDER_URL + '/scan-item', data);
+
+	      if (error) {
+
+	        console.info(error, 'error callback');
+	        this.$route.router.go('/scan-failed');
+	      } else {
+
+	        console.info(data, 'success callback');
+
+	        // centralizar estos mensajes?
+	        var user_messages = data.user_messages;
+	        if (user_messages.length) {
+	          alert(user_messages);
+	        }
+
+	        if (data.OK) {
+
+	          // update items to scan
+	          console.info('update items to scan < ----------------------------------------------------------------');
+	          this.setCounters({
+	            type: 'items_to_scan_remaining',
+	            content: -1
+	          });
+
+	          console.info('counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining);
+
+	          // if ( data.is_last ) {
+	          if (!this.counters.items_to_scan_remaining) {
+	            return this.$route.router.go('/scan-finished');
+	          }
+	          return this.$route.router.go('/scan-succesful');
+	        } else {
+
+	          console.info(error, 'error callback');
+	          this.$route.router.go('/scan-failed');
+	        }
+	      }
+	    }
+	  },
+	  ready: function ready() {
+	    console.info('=================================== Scan is ready with this order: ', this.order.id);
+	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
+	    this.requestItem();
+	  }
+	};
+	// </script>
 
 /***/ },
 /* 76 */
@@ -17673,7 +17699,7 @@
 	//
 	// 					<div class="clearfix"></div>
 	//
-	// 					<p class="ac25-red-id-text ac25-no-margin">item id #{{item.id}}</p>
+	// 					<p class="ac25-red-id-text ac25-no-margin">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>
 	// 				</p>
 	// 			</div><!-- end content-inner-holder -->
 	// 		</div><!-- end container -->
@@ -17692,7 +17718,7 @@
 /* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 95 */
@@ -17845,9 +17871,8 @@
 	// 					<img src="../html/images/green-check.png" />
 	// 					<div class="clearfix"></div>
 	// 					<span class="ac25-top-check-title"> escaneo terminado </span>
-	//
 	// 					<div class="clearfix"></div>
-	//
+	// 					<img src="../html/images/tasklist.png" />
 	// 					<div class="clearfix"></div>
 	// 				</p>
 	// 			</div><!-- end content-inner-holder -->
@@ -17866,7 +17891,7 @@
 /* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(95) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(112) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 102 */
@@ -21487,6 +21512,18 @@
 	    return _.resource = Resource;
 	};
 
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAA+CAYAAAAClQafAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzN0YzQkFBNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzN0YzQkFCNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjM3RjNCQTg1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjM3RjNCQTk1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5+vUb5AAATkElEQVR42uxd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"
+
+/***/ },
+/* 112 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAADeCAYAAAC65wucAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzNzIzQTY0NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzNzIzQTY1NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDM3MjNBNjI1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDM3MjNBNjM1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xCOYfAAATc0lEQVR42uxd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"
 
 /***/ }
 /******/ ]);

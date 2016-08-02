@@ -22,14 +22,13 @@
 </script>
 
 <style type="text/css">
-.modal-enter, .modal-leave {
-  opacity:0;
-}
+	.modal-enter, .modal-leave {
+		opacity:0;
+	}
 
-.modal-enter .container,
-.modal-leave .container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-	
-</style>
+	.modal-enter .container,
+	.modal-leave .container {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}	
+</style> 

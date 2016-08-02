@@ -7,9 +7,8 @@
 					<img src="../html/images/green-check.png" />
 					<div class="clearfix"></div>
 					<span class="ac25-top-check-title"> escaneo terminado </span>
-
 					<div class="clearfix"></div>
-
+					<img src="../html/images/tasklist.png" />
 					<div class="clearfix"></div>
 				</p>
 			</div><!-- end content-inner-holder -->

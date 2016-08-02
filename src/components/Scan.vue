@@ -64,7 +64,6 @@
         showModal: showModal,
         storeData: storeData,
         setCounters: setCounters
-        // getAddressType: getAddressType
       },
       getters: {
         order: getOrder,
@@ -75,7 +74,6 @@
     },
     data() {
       return {
-        // order : {},
         item: [],
         qr_id: 0,
         item_id_info: '',
@@ -118,7 +116,9 @@
           this.$route.router.go( '/scan-failed' )
 
         } else {
-          this.qr_id = result.text
+          var qr_id = result.text
+          this.item.qr_id = qr_id
+          this.qr_id = qr_id
           this.updateItem()
         }
       },
@@ -148,9 +148,8 @@
         } );
       },
       switherParseItemRequest( error, data ) {
+        this.showModal( false )        
         console.info( '(requestItem) data from ' + ORDER_URL + '/scan-item', data );
-
-        this.showModal( false )
 
         if ( error ) {
 
@@ -214,9 +213,8 @@
         } );
       },
       switherParseItemUpdated( error, data ) {
+        this.showModal( false )        
         console.info( '(updateItem) data from ' + ORDER_URL + '/scan-item', data );
-
-        this.showModal( false )
 
         if ( error ) {
 

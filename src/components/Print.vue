@@ -1,5 +1,7 @@
 <template>
   <header-user-data></header-user-data>
+  <modal-wait></modal-wait>
+
   <ul class="ac25-main-menu">
     <li>
       <a class="waves-effect waves-light">
@@ -55,9 +57,12 @@
 </template>
 
 <script>
+  import HeaderUserData from './Partials/HeaderUserData.vue'
+  import ModalWait from './Partials/ModalWait.vue'
+
   import { urls } from '../libs/common'
   import ls from '../libs/ls'
-  import HeaderUserData from './Partials/HeaderUserData.vue'
+  import { showModal } from '../vuex/actions'
   import { getOrder } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
@@ -66,8 +71,12 @@
     name: 'Print',
     components: {
       HeaderUserData,
+      ModalWait,
     },
     vuex: {
+      actions: {
+        showModal: showModal
+      },
       getters: {
         order: getOrder
       }
@@ -91,11 +100,13 @@
 
         // var printerMAC = 'AC:3F:A4:56:66:EC';
         var mac = $.trim(setup.printerMAC).toUpperCase()
-
         var that = this;
         var order_id = this.order.id;
 
+        this.showModal( true )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+          this.showModal( false )
+
           console.info( response, 'success callback' );
           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 
