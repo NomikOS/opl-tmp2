@@ -16352,49 +16352,44 @@
 	  },
 	  ready: function ready() {
 	    console.info('=================================== Print is ready with this order: ', this.order.id);
-	    console.info(1222);
 	  },
 
 
 	  methods: {
 	    print: function print(label) {
-	      console.info(label);
+	      var _this = this;
 
-	      //         var setup = ls.get( 'setup' )
+	      var setup = _ls2.default.get('setup');
 
-	      //         console.info(setup, '--------------------------');
+	      console.info(setup, '--------------------------');
 
-	      //         if ( !setup || !setup.printerMAC ) {
-	      //           return this.$route.router.go( '/setup' )
-	      //         }
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
+	      }
 
-	      //         // var printerMAC = 'AC:3F:A4:56:66:EC';
-	      //         var mac = $.trim(setup.printerMAC).toUpperCase()
-	      //         var that = this;
-	      //         var order_id = this.order.id;
+	      // var printerMAC = 'AC:3F:A4:56:66:EC';
+	      var mac = $.trim(setup.printerMAC).toUpperCase();
+	      var that = this;
+	      var order_id = this.order.id;
 
-	      // console.info(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label);
-	      //         // this.showModal( true )
-	      //         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
-	      //           this.showModal( false )
+	      this.showModal(true);
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        _this.showModal(false);
 
-	      //           console.info( response, 'success callback' );
-	      //           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
+	        console.info(response, 'success callback');
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
 
-	      //           var text = response.data.text
-	      //           if (!text) {
-	      //             return alert('Texto no ha arrivado. Abortando impresión.')
-	      //           }
+	        var text = response.data.text;
+	        if (!text) {
+	          return alert('Texto no ha arrivado. Abortando impresión.');
+	        }
 
-	      //           cordova.plugins.zbtprinter.print( mac, text,
-	      //             function( success ) {},
-	      //             function( fail ) {
-	      //               alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
-	      //             } );
-
-	      //         }, ( response ) => {
-	      //           console.info( response, 'error callback' );
-	      //         } );
+	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
+	        });
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	      });
 	    }
 	  }
 	};
