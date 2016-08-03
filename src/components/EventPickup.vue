@@ -49,7 +49,7 @@
           </li>
           <li>
             <p class="ac25-info-list-title"> peso </p>
-            <p class="ac25-info-list-content">{{order.items_weight}}</p>
+            <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
           </li>
         </ul><!-- end steps3 -->
       </div><!-- end content-inner-holder -->
