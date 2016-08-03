@@ -104,10 +104,10 @@
         var mac = $.trim( setup.printerMAC ).toUpperCase()
         var that = this;
         var order_id = this.order.id;
-
-        this.showModal( true )
+        
+        ModalWait.showIt( true )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
-          this.showModal( false )
+          ModalWait.showIt( false )
 
           console.info( response, 'success callback' );
           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );

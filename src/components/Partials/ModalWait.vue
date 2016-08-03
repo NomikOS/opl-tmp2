@@ -1,5 +1,5 @@
 <template>
-	<div class="ac25-red-loading-section modal-custom-dev" style="z-index:10;position:absolute" v-show="modalVisible" transition="modal">
+	<div class="ac25-red-loading-section modal-custom-dev" style="z-index:10;position:absolute" id="modalCustomDev">
 		<div class="container">
 			<div class="ac25-loading-content">
 				<h5>Comunicando con central...</h5>
@@ -17,18 +17,19 @@
 			getters: {
 				modalVisible: getModalVisibility
 			}
-		}
+		},
+		showIt(visible) {
+			console.info(visible, 'visible w jquery');
+			$('#modalCustomDev').toggle(visible)
+		},		
+		methods: {
+			// showIt(visible) {
+			// 	console.info(visible, 'visible');
+			// 	$('#modalCustomDev').toggle(visible)
+			// }
+		},
+		ready: function() {
+			console.info(this.modalVisible, 'modalVisible')
+		}		
 	}
-</script>
-
-<style type="text/css">
-	.modal-enter, .modal-leave {
-		opacity:0;
-	}
-
-	.modal-enter .container,
-	.modal-leave .container {
-		-webkit-transform: scale(1.1);
-		transform: scale(1.1);
-	}	
-</style> 
+</script> 

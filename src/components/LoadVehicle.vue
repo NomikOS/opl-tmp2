@@ -1,5 +1,7 @@
 <template>
   <header-user-data></header-user-data>
+  <modal-wait></modal-wait>
+
   <div class="ac25-content-global">
     <div class="container">
     
@@ -42,12 +44,13 @@
 </template>
 
 <script>
-  import { urls } from '../libs/common'
-  import ls from '../libs/ls'
   import HeaderUserData from './Partials/HeaderUserData.vue'
+  import ModalWait from './Partials/ModalWait.vue'
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
+  import { urls } from '../libs/common'
+  import ls from '../libs/ls'  
   import { getOrder, getCounters, getAddressType } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
@@ -56,6 +59,7 @@
     name: 'LoadVehicle',
     components: {
       HeaderUserData,
+      ModalWait,
       NotificationIcon,
       ButtonPrint,
       ButtonScan
@@ -75,7 +79,6 @@
 
         var that = this;
         var order_id = this.order.id;
-        // var addressType = 'pickup'; // set al recinbir
         var addressType = this.addressType
 
         this.$http.post( ORDER_URL + '/finish-shipment', {
@@ -106,7 +109,10 @@
         var that = this;
         var order_id = this.order.id;
 
+        ModalWait.showIt( true )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+          ModalWait.showIt( false )
+          
           console.info( response, 'success callback' );
           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 

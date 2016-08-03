@@ -5,8 +5,8 @@
     <!-- <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span> -->
     <span class="left" v-if="user.profile.name">OPERADOR: {{user.profile.name}}</span>
     <span class="right">VER: 0.1</span>
-    <span class="right"><a v-link="'available'" class="" style="color:white">PING</a> &nbsp; | &nbsp; </span>
-    <span class="right"><a v-link="'setup'" class="" style="color:white">SETUP ADMIN</a> &nbsp; | &nbsp; </span>
+    <span class="right"><a v-link="'available'" style="color:white">PING</a> &nbsp; | &nbsp; </span>
+    <span class="right"><a v-link="'setup'" style="color:white">SETUP</a> &nbsp; | &nbsp; </span>
   </div><!-- end .container -->
 </div><!-- end .top-bar -->
 </template>
@@ -16,28 +16,28 @@
   import { pubnub } from '../../libs/global'
 
   export default {
-
     name: 'HeaderUserData',
+    data() {
+      return {
+        user: director.user
+      }
+    },
 
-  // props: {
-  //   comment: Object
-  // },
+    methods: {
 
-  data() {
-    return {
-      user: director.user
-    }
-  },
+      logout() {
+        director.logout()
+      }
+    },
 
-  methods: {
+    created() {  },
 
-    logout() {
-      director.logout()
-    }
-  },
-
-  created() {  },
-
-  ready(){  }
-}
+    ready(){  }
+  }
 </script>
+
+<style type="text/css">
+  .container span {
+    font-size: 1.2em;
+  }
+</style>
