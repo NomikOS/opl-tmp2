@@ -21,7 +21,7 @@
       </div><!-- end container -->
 
       <div class="ac25-content-inner-holder ac25-min-height-200" v-if="addressType == 'delivery'">
-       <h4 class="ac25-top-red-text">DESCARGAR EL CAMION</h4>
+       <h4 class="ac25-top-red-text">DESCARGAR<br />EL CAMION</h4>
        <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
