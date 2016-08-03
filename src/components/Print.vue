@@ -105,7 +105,7 @@
         var that = this;
         var order_id = this.order.id;
         
-        ModalWait.showIt( true )
+        ModalWait.showIt( true, 'printing' )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
           ModalWait.showIt( false )
 

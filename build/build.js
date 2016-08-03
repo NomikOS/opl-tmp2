@@ -16277,7 +16277,7 @@
 	      var that = this;
 	      var order_id = this.order.id;
 
-	      _ModalWait2.default.showIt(true);
+	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
@@ -16341,8 +16341,14 @@
 				modalVisible: _getters.getModalVisibility
 			}
 		},
-		showIt: function showIt(visible) {
-			console.info(visible, 'visible w jquery');
+		showIt: function showIt(visible, action) {
+			var text = 'Comunicando con central...';
+			switch (action) {
+				case 'printing':
+					text = 'Espere mientras se inicia impresión...';
+					break;
+			}
+			$('#modalCustomDevText').html(text);
 			$('#modalCustomDev').toggle(visible);
 		},
 
@@ -16361,7 +16367,7 @@
 	// 	<div class="ac25-red-loading-section modal-custom-dev" style="z-index:10;position:absolute" id="modalCustomDev">
 	// 		<div class="container">
 	// 			<div class="ac25-loading-content">
-	// 				<h5>Comunicando con central...</h5>
+	// 				<h5 id="modalCustomDevText">Comunicando con central...</h5>
 	// 				<img src="../html/images/loading.gif" />
 	// 			</div>
 	// 		</div>
@@ -16374,7 +16380,7 @@
 /* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5>Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(29) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(29) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
 
 /***/ },
 /* 64 */
@@ -16807,7 +16813,7 @@
 	      var that = this;
 	      var order_id = this.order.id;
 
-	      _ModalWait2.default.showIt(true);
+	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
