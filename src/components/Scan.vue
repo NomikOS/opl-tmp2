@@ -17,8 +17,8 @@
         <li>
           <a>
             <div class="ac25-scan-list-content">
-              <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{item_id_info}}</span>
-              <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery' && item.qr_id > 0">{{item_id_info}}</span>
+              <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{{item_id_info}}}</span>
+              <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery' && item.qr_id > 0">{{{item_id_info}}}</span>
             </div>
           </a>
         </li>
