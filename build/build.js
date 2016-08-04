@@ -10520,10 +10520,30 @@
 						switch (type) {
 
 							case 'order-pickup':
+								//----------------
+
+								var setup = _ls2.default.get('setup');
+								if (!setup || !setup.vehicleSelected) {
+									return this.$route.router.go('/setup');
+								}
+
+								var vehicleSelected = setup.vehicleSelected;
+								var vehicle_id = _message.vehicle_id;
+
+								console.info(vehicleSelected, 'vehicleSelected', vehicle_id, 'vehicle_id');
+
+								if (vehicleSelected != vehicle_id) {
+
+									// no es para este vehiculo
+									console.info('Data for another OPL, bye');
+									return;
+								}
+
+								var order = _message.order;
 
 								that.storeData({
 									type: 'order',
-									content: _message.order
+									content: order
 								});
 
 								var address_type = type.split('-');
@@ -10539,10 +10559,28 @@
 								break;
 
 							case 'order-delivery':
+								//----------------
+
+								var setup = _ls2.default.get('setup');
+								if (!setup || !setup.vehicleSelected) {
+									return this.$route.router.go('/setup');
+								}
+
+								var vehicleSelected = setup.vehicleSelected;
+								var vehicle_id = _message.vehicle_id;
+
+								if (vehicleSelected != vehicle_id) {
+
+									// no es para este vehiculo
+									console.info('Data for another OPL, bye');
+									return;
+								}
+
+								var order = _message.order;
 
 								that.storeData({
 									type: 'order',
-									content: _message.order
+									content: order
 								});
 
 								var address_type = type.split('-');
@@ -10558,6 +10596,7 @@
 								break;
 
 							case 'user-authenticated':
+								//----------------
 
 								var phonegapid_stored = _ls2.default.get('phonegapid');
 
@@ -17647,6 +17686,7 @@
 	      if (!setup || !setup.vehicleSelected) {
 	        return this.$route.router.go('/setup');
 	      }
+
 	      var vehicleSelected = setup.vehicleSelected;
 	      var secs = 30000;
 	      var that = this;

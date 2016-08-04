@@ -41,6 +41,7 @@
         if ( !setup || !setup.vehicleSelected ) {
           return this.$route.router.go( '/setup' )
         }
+        
         var vehicleSelected = setup.vehicleSelected
         var secs = 30000;
         var that = this;
