@@ -70,6 +70,7 @@
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <!-- <plugin name="it.zenitlab.cordova.plugins.zbtprinter" spec="1.0" source="pgb" /> -->
     <gap:plugin name="cordova-plugin-zbtprinter" source="npm" />
+    <!-- <gap:plugin name="cordova-plugin-uniquedeviceid" source="npm" /> -->
 
     <!-- Define app icon for each platform. -->
     <icon src="res/icon.png" />

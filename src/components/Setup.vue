@@ -95,6 +95,31 @@
 
         this.$route.router.go( '/available' )
 
+        // // Get UUID
+        // window.plugins.uniqueDeviceID.get(function(){
+
+        //   // store phonegap uuid vehicle table
+        //   var that = this       
+
+        //   this.$http.post( ORDER_URL + '/phone-setup-data' ).then( ( response ) => {
+        //     console.info( response, 'success callback' )
+
+        //     that.vehicleOptions = response.data.vehicles
+        //     $( 'select' ).show()
+
+        //   }, ( response ) => {
+        //     console.info( response, 'error callback' );
+        //   } );
+
+
+        // }, function(){});
+
+        // var setup = this.db
+        // ls.save( 'setup', setup )
+
+        // this.$route.router.go( '/available' )
+                
+
       },
       cancel: function() {
         this.$route.router.go( '/available' )
