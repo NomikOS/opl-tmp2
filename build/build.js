@@ -15231,8 +15231,8 @@
 	    }
 	  },
 	  logout: function logout() {
-	    _ls2.default.clean();
 	    return alert('No disponible en hito 1');
+	    _ls2.default.clean();
 	    // return location.href = PASSPORT_WEBSITE_LOGOUT_URL;
 	  },
 	  getAuthHeader: function getAuthHeader() {
