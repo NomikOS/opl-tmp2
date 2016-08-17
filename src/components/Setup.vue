@@ -101,14 +101,14 @@
         }
 
         // Recognize phone
-        window.plugins.uniqueDeviceID.get( function(uuid){
+        window.plugins.uniqueDeviceID.get( (uuid) => {
 
           // Save uuid as phonegapid
           ls.save( 'phonegapid', uuid )
 
           this.$route.router.go( '/available' )
 
-        },  function(){
+        },  () => {
           alert('No he podido identificar el teléfono. Por favor aprete guardar de nuevo')
         });
 

@@ -90,15 +90,15 @@
 
 	var _LoadVehicle2 = _interopRequireDefault(_LoadVehicle);
 
-	var _HubReception = __webpack_require__(69);
+	var _HubReception = __webpack_require__(66);
 
 	var _HubReception2 = _interopRequireDefault(_HubReception);
 
-	var _HubTransfer = __webpack_require__(72);
+	var _HubTransfer = __webpack_require__(69);
 
 	var _HubTransfer2 = _interopRequireDefault(_HubTransfer);
 
-	var _Print = __webpack_require__(64);
+	var _Print = __webpack_require__(72);
 
 	var _Print2 = _interopRequireDefault(_Print);
 
@@ -15380,6 +15380,7 @@
 	      });
 	    },
 	    save: function save() {
+	      var _this = this;
 
 	      var setup = this.db;
 	      _ls2.default.save('setup', setup);
@@ -15398,7 +15399,7 @@
 	        // Save uuid as phonegapid
 	        _ls2.default.save('phonegapid', uuid);
 
-	        this.$route.router.go('/available');
+	        _this.$route.router.go('/available');
 	      }, function () {
 	        alert('No he podido identificar el teléfono. Por favor aprete guardar de nuevo');
 	      });
@@ -16089,7 +16090,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(60)
-	__vue_template__ = __webpack_require__(67)
+	__vue_template__ = __webpack_require__(64)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16135,10 +16136,6 @@
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _Print = __webpack_require__(64);
-
-	var _Print2 = _interopRequireDefault(_Print);
-
 	var _common = __webpack_require__(7);
 
 	var _ls = __webpack_require__(9);
@@ -16149,7 +16146,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
+	// <template>
 	//   <header-user-data></header-user-data>
 	//   <modal-wait></modal-wait>
 	//
@@ -16197,6 +16194,8 @@
 	// <script>
 
 
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
 	exports.default = {
 	  name: 'LoadVehicle',
 	  components: {
@@ -16204,8 +16203,7 @@
 	    ModalWait: _ModalWait2.default,
 	    NotificationIcon: _NotificationIcon2.default,
 	    ButtonPrint: _ButtonPrint2.default,
-	    ButtonScan: _ButtonScan2.default,
-	    Print: _Print2.default
+	    ButtonScan: _ButtonScan2.default
 	  },
 	  vuex: {
 	    getters: {
@@ -16238,41 +16236,34 @@
 	      });
 	    },
 	    print: function print(label) {
-	      _Print2.default.print(label);
 
-	      // var setup = ls.get( 'setup' )
+	      var setup = _ls2.default.get('setup');
 
-	      // if ( !setup || !setup.printerMAC ) {
-	      //   return this.$route.router.go( '/setup' )
-	      // }
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
+	      }
 
-	      // // var printerMAC 1039 = 'AC:3F:A4:56:66:EC';
-	      // var mac = $.trim(setup.printerMAC).toUpperCase()
+	      var mac = $.trim(setup.printerMAC).toUpperCase();
+	      var order_id = this.order.id;
 
-	      // var that = this;
-	      // var order_id = this.order.id;
+	      _ModalWait2.default.showIt(true, 'printing');
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        _ModalWait2.default.showIt(false);
 
-	      // ModalWait.showIt( true, 'printing' )
-	      // this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
-	      //   ModalWait.showIt( false )
+	        console.info(response, 'success callback');
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
 
-	      //   console.info( response, 'success callback' );
-	      //   console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
+	        var text = response.data.text;
+	        if (!text) {
+	          return alert('Texto no ha arrivado. Abortando impresión.');
+	        }
 
-	      //   var text = response.data.text
-	      //   if (!text) {
-	      //     return alert('Texto no ha arrivado. Abortando impresión.')
-	      //   }
-
-	      //   cordova.plugins.zbtprinter.print( mac, text,
-	      //     function( success ) {},
-	      //     function( fail ) {
-	      //       alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
-	      //     } );
-
-	      // }, ( response ) => {
-	      //   console.info( response, 'error callback' );
-	      // } );
+	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
+	        });
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	      });
 	    }
 	  }
 	};
@@ -16365,9 +16356,325 @@
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n       <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Desargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <footer class=\"ac25-content-footer\">\n        <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n        <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n      </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAclJREFUeNrsWO1tgzAQNVH+wwZlg7JBzQYdgRGaCUImaEagE7SdoIxANmAEOoFro0NCyBiffRja5klPkRIwL8e7DzsSQjALJJIZc0MN93fMF0rsAl8kO+EOtUYjmVg8y8jIIrIqIrFHPCIVE8mbJPeJ8JJYtfiX58sbxDJfwQcWFo8jD6NxdLjnJNkQCEZH2MUGkUsea75DWyK0DbwssaVYtOCtxaIEhxJ7oRAcKsEYtOt0IaFaIFnpckWjKXkpkGQ24DO9norlZO3SdP0eEgw9dWWIyWrNyM6hn9pUgmWQiTFRZmOgEvjJ8tpciaWYrEIg13n2E6J325taXem6gi2GYr1rsdnkc9diX/dq2l9VZ+9i72JnEuzNNKYFRiH5YBJbwcyZTMa7bmVhpUYHXxI7NIZxz85HjeKZqAa3IGjAWXNG5jV8q3/6ThjNVBPRv5tgJtRgCU5kg4+1j49qnZ9C1dnOIWsFATsoTTb4Vm/iAGXphNhOn4kCFSPE8t42M3ujerIH4qPfKkEDtecrRusKwzN7uni2QERkk9kgWVlHQlkNKuZ3gGzTHMjExogt878cEVtbsdeNhWrHVNORZ7pR1jdzbfhHgAEABTm5f8wP3PEAAAAASUVORK5CYII="
+
+/***/ },
+/* 66 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(65)
-	__vue_template__ = __webpack_require__(66)
+	__vue_script__ = __webpack_require__(67)
+	__vue_template__ = __webpack_require__(68)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubReception.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _common = __webpack_require__(7);
+
+	var _HeaderUserData = __webpack_require__(21);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	var _ButtonPrint = __webpack_require__(43);
+
+	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
+
+	var _ButtonScan = __webpack_require__(47);
+
+	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
+
+	var _getters = __webpack_require__(49);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var MICRO_API_URL = _common.urls.micro_api; // <template>
+	//   <header-user-data></header-user-data>
+	//   <div class="ac25-content-global">
+	//     <div class="container">
+	//       <div class="ac25-content-inner-holder ac25-min-height-200">
+	//        <h4 class="ac25-top-red-text">RECEPCIÓN DE CARGA</h4>
+	//        <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
+	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
+	//
+	//        <div class="clearfix" style="height:100px"></div>
+	//
+	//        <span class="ac25-top-check-title">
+	//         Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}}
+	//       </span>
+	//
+	//       <div class="clearfix" style="height:100px"></div>
+	//
+	//       <h4 class="ac25-top-red-text">IMPORTANTE!</h4>
+	//       <p class="left clearfix ac25-subtitle"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>
+	//
+	//       <div class="clearfix"></div>
+	//
+	//     </div><!-- end content-inner-holder -->
+	//   </div><!-- end container -->
+	//
+	//   <footer class="ac25-content-footer">
+	//     <button-print></button-print>
+	//     <button-scan></button-scan>
+	//     <div class="clearfix"></div>
+	//   </footer><!-- end footer -->
+	//
+	// </div><!-- end content-global -->
+	// </template>
+	//
+	// <script>
+
+
+	exports.default = {
+	  name: 'HubReception',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default,
+	    ButtonPrint: _ButtonPrint2.default,
+	    ButtonScan: _ButtonScan2.default
+	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder,
+	      counters: _getters.getCounters,
+	      addressType: _getters.getAddressType
+	    }
+	  },
+	  ready: function ready() {
+	    console.info('HubReception is ready ===================================');
+	    this.load();
+	  },
+	  methods: {
+	    load: function load() {
+
+	      var order_id = this.order.id;
+	      var addressType = this.addressType;
+	    },
+
+	    finishOrder: function finishOrder() {
+	      var _this = this;
+
+	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
+	        console.info(response, 'success callback');
+	        var order = response.data.data;
+
+	        _this.$route.router.go('/available');
+	      }, function (response) {
+	        console.info(response.data, 'error callback');
+	      });
+	    }
+	  }
+	};
+	// </script>
+	//
+
+/***/ },
+/* 68 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+
+/***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(70)
+	__vue_template__ = __webpack_require__(71)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubTransfer.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 70 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _common = __webpack_require__(7);
+
+	var _HeaderUserData = __webpack_require__(21);
+
+	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
+
+	var _ModalWait = __webpack_require__(61);
+
+	var _ModalWait2 = _interopRequireDefault(_ModalWait);
+
+	var _getters = __webpack_require__(49);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <header-user-data></header-user-data>
+	//   <modal-wait></modal-wait>
+	//
+	//   <div class="ac25-content-global">
+	//     <div class="container">
+	//       <div class="ac25-content-inner-holder ac25-min-height-200">
+	//         <h4 class="ac25-top-red-text">TRASBORDO DE ENTREGA</h4>
+	//         <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
+	//         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
+	//
+	//         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
+	//           <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
+	//           <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>
+	//         </ul>
+	//
+	//         <div class="clearfix"></div>
+	//         <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
+	//       </div><!-- end content-inner-holder -->
+	//     </div><!-- end container -->
+	//
+	//     <footer class="ac25-content-footer">
+	//       <a @click="finishOrder()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
+	//     </footer><!-- end footer -->
+	//
+	//   </div><!-- end content-global -->
+	// </template>
+	//
+	// <script>
+
+
+	var MICRO_API_URL = _common.urls.micro_api;
+
+	exports.default = {
+	  name: 'HubReception',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default
+	  },
+	  data: function data() {
+	    return {
+	      order: {}
+	    };
+	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder,
+	      counters: _getters.getCounters,
+	      addressType: _getters.getAddressType
+	    }
+	  },
+	  ready: function ready() {
+	    console.info('HubReception is ready ===================================');
+	    this.load();
+	  },
+	  methods: {
+	    load: function load() {
+	      var _this = this;
+
+	      this.$http.get(MICRO_API_URL + '/137').then(function (response) {
+	        console.info(response, 'success callback');
+	        var order = response.data.data;
+	        _this.order = order;
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	      });
+	    },
+
+	    print: function print(label) {
+
+	      var setup = ls.get('setup');
+
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
+	      }
+
+	      var mac = $.trim(setup.printerMAC).toUpperCase();
+	      var order_id = this.order.id;
+
+	      _ModalWait2.default.showIt(true, 'printing');
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        _ModalWait2.default.showIt(false);
+
+	        console.info(response, 'success callback');
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
+
+	        var text = response.data.text;
+	        if (!text) {
+	          return alert('Texto no ha arrivado. Abortando impresión.');
+	        }
+
+	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
+	        });
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	      });
+	    },
+
+
+	    finishOrder: function finishOrder() {
+	      var _this2 = this;
+
+	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
+	        console.info(response, 'success callback');
+	        var order = response.data.data;
+
+	        _this2.$route.router.go('/available');
+	      }, function (response) {
+	        console.info(response.data, 'error callback');
+	      });
+	    }
+	  }
+	};
+	// </script>
+	//
+
+/***/ },
+/* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishOrder()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 72 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(73)
+	__vue_template__ = __webpack_require__(74)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16384,7 +16691,7 @@
 	})()}
 
 /***/ },
-/* 65 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16496,328 +16803,37 @@
 	  ready: function ready() {
 	    console.info('=================================== Print is ready with this order: ', this.order.id);
 	  },
-	  print: function print(label) {
 
-	    var setup = _ls2.default.get('setup');
 
-	    console.info(setup, '--------------------------');
+	  methods: {
+	    print: function print(label) {
 
-	    if (!setup || !setup.printerMAC) {
-	      return this.$route.router.go('/setup');
-	    }
+	      var setup = _ls2.default.get('setup');
 
-	    // var printerMAC = 'AC:3F:A4:56:66:EC';
-	    var mac = $.trim(setup.printerMAC).toUpperCase();
-	    var that = this;
-	    var order_id = this.order.id;
-
-	    _ModalWait2.default.showIt(true, 'printing');
-	    this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
-	      _ModalWait2.default.showIt(false);
-
-	      console.info(response, 'success callback');
-	      console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
-
-	      var text = response.data.text;
-	      if (!text) {
-	        return alert('Texto no ha arrivado. Abortando impresión.');
+	      if (!setup || !setup.printerMAC) {
+	        return this.$route.router.go('/setup');
 	      }
 
-	      cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
-	        alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
-	      });
-	    }, function (response) {
-	      console.info(response, 'error callback');
-	    });
-	  },
-
-	  methods: {}
-	};
-	// </script>
-	//
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(46) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(68) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n       <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Desargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(68) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <footer class=\"ac25-content-footer\">\n        <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n        <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n      </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAclJREFUeNrsWO1tgzAQNVH+wwZlg7JBzQYdgRGaCUImaEagE7SdoIxANmAEOoFro0NCyBiffRja5klPkRIwL8e7DzsSQjALJJIZc0MN93fMF0rsAl8kO+EOtUYjmVg8y8jIIrIqIrFHPCIVE8mbJPeJ8JJYtfiX58sbxDJfwQcWFo8jD6NxdLjnJNkQCEZH2MUGkUsea75DWyK0DbwssaVYtOCtxaIEhxJ7oRAcKsEYtOt0IaFaIFnpckWjKXkpkGQ24DO9norlZO3SdP0eEgw9dWWIyWrNyM6hn9pUgmWQiTFRZmOgEvjJ8tpciaWYrEIg13n2E6J325taXem6gi2GYr1rsdnkc9diX/dq2l9VZ+9i72JnEuzNNKYFRiH5YBJbwcyZTMa7bmVhpUYHXxI7NIZxz85HjeKZqAa3IGjAWXNG5jV8q3/6ThjNVBPRv5tgJtRgCU5kg4+1j49qnZ9C1dnOIWsFATsoTTb4Vm/iAGXphNhOn4kCFSPE8t42M3ujerIH4qPfKkEDtecrRusKwzN7uni2QERkk9kgWVlHQlkNKuZ3gGzTHMjExogt878cEVtbsdeNhWrHVNORZ7pR1jdzbfhHgAEABTm5f8wP3PEAAAAASUVORK5CYII="
-
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(70)
-	__vue_template__ = __webpack_require__(71)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubReception.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _common = __webpack_require__(7);
-
-	var _HeaderUserData = __webpack_require__(21);
-
-	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
-
-	var _ButtonPrint = __webpack_require__(43);
-
-	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
-
-	var _ButtonScan = __webpack_require__(47);
-
-	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
-
-	var _getters = __webpack_require__(49);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var MICRO_API_URL = _common.urls.micro_api; // <template>
-	//   <header-user-data></header-user-data>
-	//   <div class="ac25-content-global">
-	//     <div class="container">
-	//       <div class="ac25-content-inner-holder ac25-min-height-200">
-	//        <h4 class="ac25-top-red-text">RECEPCIÓN DE CARGA</h4>
-	//        <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
-	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
-	//
-	//        <div class="clearfix" style="height:100px"></div>
-	//
-	//        <span class="ac25-top-check-title">
-	//         Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}}
-	//       </span>
-	//
-	//       <div class="clearfix" style="height:100px"></div>
-	//
-	//       <h4 class="ac25-top-red-text">IMPORTANTE!</h4>
-	//       <p class="left clearfix ac25-subtitle"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>
-	//
-	//       <div class="clearfix"></div>
-	//
-	//     </div><!-- end content-inner-holder -->
-	//   </div><!-- end container -->
-	//
-	//   <footer class="ac25-content-footer">
-	//     <button-print></button-print>
-	//     <button-scan></button-scan>
-	//     <div class="clearfix"></div>
-	//   </footer><!-- end footer -->
-	//
-	// </div><!-- end content-global -->
-	// </template>
-	//
-	// <script>
-
-
-	exports.default = {
-	  name: 'HubReception',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default,
-	    ButtonPrint: _ButtonPrint2.default,
-	    ButtonScan: _ButtonScan2.default
-	  },
-	  vuex: {
-	    getters: {
-	      order: _getters.getOrder,
-	      counters: _getters.getCounters,
-	      addressType: _getters.getAddressType
-	    }
-	  },
-	  ready: function ready() {
-	    console.info('HubReception is ready ===================================');
-	    this.load();
-	  },
-	  methods: {
-	    load: function load() {
-
+	      var mac = $.trim(setup.printerMAC).toUpperCase();
 	      var order_id = this.order.id;
-	      var addressType = this.addressType;
-	    },
 
-	    finishOrder: function finishOrder() {
-	      var _this = this;
+	      _ModalWait2.default.showIt(true, 'printing');
+	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
+	        _ModalWait2.default.showIt(false);
 
-	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
 	        console.info(response, 'success callback');
-	        var order = response.data.data;
+	        console.info(label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac);
 
-	        _this.$route.router.go('/available');
-	      }, function (response) {
-	        console.info(response.data, 'error callback');
-	      });
-	    }
-	  }
-	};
-	// </script>
-	//
+	        var text = response.data.text;
+	        if (!text) {
+	          return alert('Texto no ha arrivado. Abortando impresión.');
+	        }
 
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
-
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(73)
-	__vue_template__ = __webpack_require__(74)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubTransfer.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _common = __webpack_require__(7);
-
-	var _HeaderUserData = __webpack_require__(21);
-
-	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
-
-	var _NotificationIcon = __webpack_require__(39);
-
-	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
-
-	var _ButtonPrint = __webpack_require__(43);
-
-	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
-
-	var _ButtonScan = __webpack_require__(47);
-
-	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
-
-	var _Print = __webpack_require__(64);
-
-	var _Print2 = _interopRequireDefault(_Print);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	//   <header-user-data></header-user-data>
-	//   <div class="ac25-content-global">
-	//     <div class="container">
-	//       <div class="ac25-content-inner-holder ac25-min-height-200">
-	//       <h4 class="ac25-top-red-text">TRASBORDO DE ENTREGA</h4>
-	//        <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
-	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
-	//
-	//        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-	//         <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
-	//         <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>
-	//       </ul>
-	//
-	//       <div class="clearfix"></div>
-	//       <a @click="print('items-list')" class="ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light"> <img src="html/images/print.png" class="left" /><span>imprimir listado de bultos</span> </a>
-	//     </div><!-- end content-inner-holder -->
-	//   </div><!-- end container -->
-	//
-	//   <footer class="ac25-content-footer">
-	//     <a @click="finishOrder()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
-	//   </footer><!-- end footer -->
-	//
-	// </div><!-- end content-global -->
-	// </template>
-	//
-	// <script>
-
-
-	var MICRO_API_URL = _common.urls.micro_api;
-
-	exports.default = {
-	  name: 'HubReception',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default,
-	    NotificationIcon: _NotificationIcon2.default,
-	    Print: _Print2.default
-	  },
-	  data: function data() {
-	    return {
-	      order: {}
-	    };
-	  },
-	  ready: function ready() {
-	    console.info('HubReception is ready ===================================');
-	    this.load();
-	  },
-	  methods: {
-	    load: function load() {
-	      var _this = this;
-
-	      this.$http.get(MICRO_API_URL + '/137').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-	        _this.order = order;
+	        cordova.plugins.zbtprinter.print(mac, text, function (success) {}, function (fail) {
+	          alert('Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail);
+	        });
 	      }, function (response) {
 	        console.info(response, 'error callback');
-	      });
-	    },
-	    print: function print(label) {
-	      _Print2.default.print(label);
-	    },
-
-	    finishOrder: function finishOrder() {
-	      var _this2 = this;
-
-	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-
-	        _this2.$route.router.go('/available');
-	      }, function (response) {
-	        console.info(response.data, 'error callback');
 	      });
 	    }
 	  }
@@ -16829,7 +16845,7 @@
 /* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n      <h4 class=\"ac25-top-red-text\">TRASBORDO DE ENTREGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n        <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(68) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <a @click=\"finishOrder()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(46) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 75 */
