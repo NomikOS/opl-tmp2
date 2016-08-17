@@ -10561,6 +10561,11 @@
 									content: address_type
 								});
 
+								/**
+	        * safeguard
+	        */
+								_ls2.default.save('order_id', order.id);
+
 								that.$route.router.go('/event-' + address_type);
 
 								break;
@@ -16590,8 +16595,8 @@
 	  methods: {
 	    print: function print(label) {
 
-	      console.info(this.order, 'this.order ----------------');
-	      console.info(this.order.id, 'this.order.id ----------------');
+	      console.info(this.order, 'this.order de vuex----------------');
+	      console.info(this.order.id, 'this.order.id de vuex ----------------');
 
 	      var setup = _ls2.default.get('setup');
 
@@ -16600,7 +16605,10 @@
 	      }
 
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
-	      var order_id = this.order.id;
+	      var order_id = this.order.id; // fail
+
+	      var order_id = _ls2.default.get('order_id');
+	      console.info(order_id, 'order_id de ls ----------------');
 
 	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
@@ -16624,10 +16632,13 @@
 	    finishTransfer: function finishTransfer() {
 	      var _this = this;
 
-	      console.info(this.order, 'this.order ----------------');
-	      console.info(this.order.id, 'this.order.id ----------------');
+	      console.info(this.order, 'this.order de vuex----------------');
+	      console.info(this.order.id, 'this.order.id de vuex ----------------');
 
-	      var order_id = this.order.id;
+	      var order_id = this.order.id; // fail
+
+	      var order_id = _ls2.default.get('order_id');
+	      console.info(order_id, 'order_id de ls ----------------');
 
 	      this.$http.post(ORDER_URL + '/finish-transfer', {
 	        order_id: order_id

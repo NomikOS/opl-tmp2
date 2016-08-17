@@ -83,6 +83,11 @@
 								content: address_type
 							} )
 
+              /**
+               * safeguard
+               */
+              ls.save( 'order_id', order.id );
+
 							that.$route.router.go( '/event-' + address_type )
 
 							break;
