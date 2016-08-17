@@ -41,11 +41,6 @@
       HeaderUserData,
       ModalWait,
     },
-    data: function() {
-      return {
-        order: {}
-      };
-    },
     vuex: {
       getters: {
         order: getOrder,
