@@ -10567,8 +10567,6 @@
 
 							case 'user-authenticated':
 								//----------------
-								// const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in';
-
 								var phonegapid_stored = _ls2.default.get('phonegapid');
 
 								var token = _message.token;
@@ -10576,12 +10574,8 @@
 								var phonegapid = _message.phonegapid;
 
 								if (phonegapid != phonegapid_stored) {
-									// revisit wgen update passport
-									//
-									//
-									//
-									// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-									// return // and destroy phone
+									console.info(phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP');
+									return; // and destroy phone
 								}
 
 								_ls2.default.save('access_token', token);
@@ -16230,6 +16224,7 @@
 	      var _this = this;
 
 	      var order_id = this.order.id;
+	      console.info(order_id, 'order_id <    ------------------');
 	      var addressType = this.addressType;
 
 	      this.$http.post(ORDER_URL + '/finish-shipment', {
@@ -16254,6 +16249,8 @@
 
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
 	      var order_id = this.order.id;
+
+	      console.info(order_id, 'order_id <    ------------------');
 
 	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
@@ -16522,6 +16519,10 @@
 
 	var _common = __webpack_require__(7);
 
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
 	var _HeaderUserData = __webpack_require__(21);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
@@ -16534,7 +16535,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
 	//   <header-user-data></header-user-data>
 	//   <modal-wait></modal-wait>
 	//
@@ -16565,8 +16566,6 @@
 	// <script>
 
 
-	var ORDER_URL = _common.urls.micro_api + '/order';
-
 	exports.default = {
 	  name: 'HubReception',
 	  components: {
@@ -16591,7 +16590,10 @@
 	  methods: {
 	    print: function print(label) {
 
-	      var setup = ls.get('setup');
+	      console.info(this.order, 'this.order ----------------');
+	      console.info(this.order.id, 'this.order.id ----------------');
+
+	      var setup = _ls2.default.get('setup');
 
 	      if (!setup || !setup.printerMAC) {
 	        return this.$route.router.go('/setup');
@@ -16619,10 +16621,11 @@
 	        console.info(response, 'error callback');
 	      });
 	    },
-
-
 	    finishTransfer: function finishTransfer() {
 	      var _this = this;
+
+	      console.info(this.order, 'this.order ----------------');
+	      console.info(this.order.id, 'this.order.id ----------------');
 
 	      var order_id = this.order.id;
 

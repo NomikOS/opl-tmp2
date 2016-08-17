@@ -89,8 +89,6 @@
 
 							case 'user-authenticated':
 							//----------------
-							// const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in';
-
 							var phonegapid_stored = ls.get( 'phonegapid' )
 
 							var token = message.token
@@ -98,12 +96,8 @@
 							var phonegapid = message.phonegapid
 
 							if ( phonegapid != phonegapid_stored ) {
-								// revisit wgen update passport
-								//
-								//
-								//
-								// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-								// return // and destroy phone
+								console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+								return // and destroy phone
 							}
 
 							ls.save( 'access_token', token );

@@ -78,6 +78,7 @@
       finishOrder () {
 
         var order_id = this.order.id;
+        console.info(order_id, 'order_id <    ------------------');
         var addressType = this.addressType
 
         this.$http.post( ORDER_URL + '/finish-shipment', {
@@ -104,6 +105,8 @@
 
         var mac = $.trim(setup.printerMAC).toUpperCase()
         var order_id = this.order.id;
+
+        console.info(order_id, 'order_id <    ------------------');
 
         ModalWait.showIt( true, 'printing' )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {

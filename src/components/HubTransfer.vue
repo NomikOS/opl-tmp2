@@ -28,6 +28,7 @@
 
 <script>
   import { urls } from '../libs/common'
+  import ls from '../libs/ls'
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import ModalWait from './Partials/ModalWait.vue'
   import { getOrder, getCounters, getAddressType } from '../vuex/getters'
@@ -58,6 +59,9 @@
     methods: {
 
       print( label ) {
+
+        console.info(this.order, 'this.order ----------------');
+        console.info(this.order.id, 'this.order.id ----------------');
 
         var setup = ls.get( 'setup' )
 
@@ -91,7 +95,10 @@
         } );
       },
 
-      finishTransfer: function() {
+      finishTransfer () {
+
+        console.info(this.order, 'this.order ----------------');
+        console.info(this.order.id, 'this.order.id ----------------');
 
         var order_id = this.order.id;
 
