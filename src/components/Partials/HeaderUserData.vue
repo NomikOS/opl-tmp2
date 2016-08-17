@@ -28,11 +28,7 @@
       logout() {
         director.logout()
       }
-    },
-
-    created() {  },
-
-    ready(){  }
+    }
   }
 </script>
 

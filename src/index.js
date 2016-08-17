@@ -42,10 +42,10 @@ router.map( {
   },
   '/scan-finished': {
     component: ScanFinished
-  },  
+  },
   '/iframe-external/:url': {
     component: IframeExternal
-  },  
+  },
   '/setup': {
     component: Setup
   },
@@ -93,5 +93,8 @@ router.map( {
   }
 } )
 
-router.start( App, '#app' )
+console.info('DIRECTOR.INIT....');
 director.init()
+
+console.info('START APP....');
+router.start( App, '#app' )

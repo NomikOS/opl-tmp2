@@ -4,7 +4,7 @@
 
   <div class="ac25-content-global">
     <div class="container">
-    
+
       <div class="ac25-content-inner-holder ac25-min-height-200" v-if="addressType == 'pickup'">
        <h4 class="ac25-top-red-text">CARGAR EL CAMION</h4>
        <p class="left clearfix ac25-subtitle"> Orden {{order.special_id}} </p>
@@ -49,8 +49,9 @@
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
+  import Print from './Print.vue'
   import { urls } from '../libs/common'
-  import ls from '../libs/ls'  
+  import ls from '../libs/ls'
   import { getOrder, getCounters, getAddressType } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
@@ -62,7 +63,8 @@
       ModalWait,
       NotificationIcon,
       ButtonPrint,
-      ButtonScan
+      ButtonScan,
+      Print
     },
     vuex: {
       getters: {
@@ -96,41 +98,42 @@
         } );
       },
       print( label ) {
+        Print.print(label)
 
-        var setup = ls.get( 'setup' )
+        // var setup = ls.get( 'setup' )
 
-        if ( !setup || !setup.printerMAC ) {
-          return this.$route.router.go( '/setup' )
-        }
+        // if ( !setup || !setup.printerMAC ) {
+        //   return this.$route.router.go( '/setup' )
+        // }
 
-        // var printerMAC 1039 = 'AC:3F:A4:56:66:EC';
-        var mac = $.trim(setup.printerMAC).toUpperCase()
+        // // var printerMAC 1039 = 'AC:3F:A4:56:66:EC';
+        // var mac = $.trim(setup.printerMAC).toUpperCase()
 
-        var that = this;
-        var order_id = this.order.id;
+        // var that = this;
+        // var order_id = this.order.id;
 
-        ModalWait.showIt( true, 'printing' )
-        this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
-          ModalWait.showIt( false )
-          
-          console.info( response, 'success callback' );
-          console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
+        // ModalWait.showIt( true, 'printing' )
+        // this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+        //   ModalWait.showIt( false )
 
-          var text = response.data.text
-          if (!text) {
-            return alert('Texto no ha arrivado. Abortando impresión.')
-          }
+        //   console.info( response, 'success callback' );
+        //   console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 
-          cordova.plugins.zbtprinter.print( mac, text,
-            function( success ) {},
-            function( fail ) {
-              alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
-            } );
+        //   var text = response.data.text
+        //   if (!text) {
+        //     return alert('Texto no ha arrivado. Abortando impresión.')
+        //   }
 
-        }, ( response ) => {
-          console.info( response, 'error callback' );
-        } );
-      },      
+        //   cordova.plugins.zbtprinter.print( mac, text,
+        //     function( success ) {},
+        //     function( fail ) {
+        //       alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
+        //     } );
+
+        // }, ( response ) => {
+        //   console.info( response, 'error callback' );
+        // } );
+      },
     }
   }
 </script>

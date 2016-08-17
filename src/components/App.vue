@@ -3,191 +3,122 @@
 </template>
 
 <script>
-	import store from '../vuex/store'
-	import { router } from '../index'
-	import { pubnub } from '../libs/global'
-	import { urls } from '../libs/common'
-	import { storeData } from '../vuex/actions'
-	import ls from '../libs/ls'
+  import director from '../services/director'
+  import store from '../vuex/store'
+  import { router } from '../index'
+  import { pubnub } from '../libs/global'
+  import { urls } from '../libs/common'
+  import { storeData } from '../vuex/actions'
+  import ls from '../libs/ls'
 
-	const PASSPORT_API_URL = urls.passport_api
+  const PASSPORT_API_URL = urls.passport_api
+  const GATEWAY_API_URL = urls.gateway_api
 
-	export default {
-		components: {},
+  export default {
+    components: {},
 
-		vuex: {
-			actions: {
-				storeData: storeData
-			}
-		},
+    vuex: {
+     actions: {
+      storeData: storeData
+    }
+  },
 
-		/**
-		 * Make this and all child components aware of the new store
-		 */
-		 store: store,
+	/**
+	 * Make this and all child components aware of the new store
+	 */
+	 store: store,
 
-		 ready: function() {
-		 	console.info( 'APP is ready ===================================' );
-		 	this.initPubnub()
-		 },
+	 ready: function() {
+	 	console.info( 'APP is ready ===================================' );
+	 	this.initPubnub()
+	 },
 
-		 methods: {
-		 	initPubnub: function() {
-		 		console.info( 'pubnub cargado y listo para disparar' );
+	 methods: {
+	 	initPubnub: function() {
+	 		console.info( 'pubnub cargado' );
 
-		 		var that = this;
-		 		pubnub.subscribe( {
-		 			channel: 'notifications-opl',
+	 		var that = this;
+	 		pubnub.subscribe( {
+	 			channel: 'notifications-opl',
 
-		 			message: function( message ) {
-		 				var type = message.type
-		 				console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
+	 			message: function( message ) {
+	 				var type = message.type
+	 				console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
 
-		 				switch ( type ) {
+	 				switch ( type ) {
 
-		 					case 'order-pickup':
-		 					//----------------
+	 					case 'order-pickup':
+            case 'order-delivery':            
+							//----------------
 
-		 					var setup = ls.get( 'setup' )
-		 					if ( !setup || !setup.vehicleSelected ) {
-		 						return this.$route.router.go( '/setup' )
-		 					}
-
-		 					var vehicleSelected = setup.vehicleSelected
-		 					var vehicle_id = message.vehicle_id
-
-		 					console.info(vehicleSelected, 'vehicleSelected', vehicle_id, 'vehicle_id');
-
-		 					if (vehicleSelected != vehicle_id) {
-
-		 						// no es para este vehiculo
-		 						console.info('Data for another OPL, bye');
-		 						return;
-		 					}
-
-		 					var order = message.order
-
-		 					that.storeData( {
-		 						type: 'order',
-		 						content: order
-		 					} )
-
-		 					var address_type = type.split('-')
-		 					address_type = address_type[1]
-
-		 					that.storeData( {
-		 						type: 'addressType',
-		 						content: address_type
-		 					} )
-
-		 					that.$route.router.go( '/event-pickup' )
-
-		 					break;
-
-		 					case 'order-delivery':
-		 					//----------------
-
-		 					var setup = ls.get( 'setup' )
-		 					if ( !setup || !setup.vehicleSelected ) {
-		 						return this.$route.router.go( '/setup' )
-		 					}
-
-		 					var vehicleSelected = setup.vehicleSelected
-		 					var vehicle_id = message.vehicle_id
-
-		 					if (vehicleSelected != vehicle_id) {
-
-		 						// no es para este vehiculo
-		 						console.info('Data for another OPL, bye');
-		 						return;
-		 					}
-
-		 					var order = message.order
-
-		 					that.storeData( {
-		 						type: 'order',
-		 						content: order
-		 					} )
-
-		 					var address_type = type.split('-')
-		 					address_type = address_type[1]
-
-		 					that.storeData( {
-		 						type: 'addressType',
-		 						content: address_type
-		 					} )
-
-		 					that.$route.router.go( '/event-delivery' )
-		 					
-		 					break;
-
-		 					case 'user-authenticated':
-		 					//----------------
-
-		 					var phonegapid_stored = ls.get( 'phonegapid' )
-
-		 					var token = message.token
-		 					var uid = message.uid
-		 					var phonegapid = message.phonegapid
-
-		 					if ( phonegapid != phonegapid_stored ) {
-
-
-
-									// revisit wgen update passport
-									//
-									//
-									//
-									// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-									// return // and destroy phone
-								}
-
-								ls.save( 'access_token', token );
-								ls.save( 'user_id', uid );
-
-								that.$http.get( PASSPORT_API_URL + '/user/' + uid + '/profile' ).then( ( response ) => {
-									console.info( response, 'success callback' );
-
-									var profile = response.data.data
-									ls.save( 'profile', profile );
-
-									var setup = ls.get( 'setup' )
-
-									if ( !setup ) {
-										that.$route.router.go( '/setup' )
-									} else {
-										that.$route.router.go( '/available' )
-									}
-
-								}, ( response ) => {
-									console.info( response, 'error callback' );
-								} );
-
-								break;
-
-								case 'print-order':
-								return 'print-order by pubnub deprecated.';
-
-								var setup = ls.get( 'setup' )
-								var printerMAC = setup.printerMAC
-								var mac = printerMAC
-								var text = message.order_zpl
-								cordova.plugins.zbtprinter.print( mac, text,
-									function( success ) {},
-									function( fail ) {
-										alert( fail );
-									} );
-								break;
-
-								case 'shipment-notification':
-								// that.storeData( message.notification )
-								break;
+							var setup = ls.get( 'setup' )
+							if ( !setup || !setup.vehicleSelected ) {
+								return this.$route.router.go( '/setup' )
 							}
 
-						}
-					} )
+							var vehicleSelected = setup.vehicleSelected
+							var vehicle_id = message.vehicle_id
 
-		 	},
-		 }
-		}
-	</script>
+							if ( vehicleSelected != vehicle_id ) {
+
+								// no es para este vehiculo
+								console.info( 'Data for another OPL, bye' );
+								return;
+							}
+
+							var order = message.order
+
+							that.storeData( {
+								type: 'order',
+								content: order
+							} )
+
+							var address_type = type.split( '-' )
+							address_type = address_type[ 1 ]
+
+							that.storeData( {
+								type: 'addressType',
+								content: address_type
+							} )
+
+							that.$route.router.go( '/event-' + address_type )
+
+							break;
+
+							case 'user-authenticated':
+							//----------------
+							// const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in';
+
+							var phonegapid_stored = ls.get( 'phonegapid' )
+
+							var token = message.token
+							var uid = message.uid
+							var phonegapid = message.phonegapid
+
+							if ( phonegapid != phonegapid_stored ) {
+								// revisit wgen update passport
+								//
+								//
+								//
+								// console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+								// return // and destroy phone
+							}
+
+							ls.save( 'access_token', token );
+							ls.save( 'user_id', uid );
+
+              console.info('DIRECTOR.INIT AFTER USER-AUTHENTICATED....');
+              director.init()
+              break;
+
+              case 'shipment-notification':
+							// that.storeData( message.notification )
+							break;
+						}
+
+					}
+				} )
+	 	},
+	 }
+	}
+</script>

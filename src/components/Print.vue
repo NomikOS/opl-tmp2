@@ -89,45 +89,44 @@
       console.info( '=================================== Print is ready with this order: ', this.order.id )
     },
 
-    methods: {
-      print( label ) {
 
-        var setup = ls.get( 'setup' )
+    print( label ) {
 
-        console.info( setup, '--------------------------' );
+      var setup = ls.get( 'setup' )
 
-        if ( !setup || !setup.printerMAC ) {
-          return this.$route.router.go( '/setup' )
+      console.info( setup, '--------------------------' );
+
+      if ( !setup || !setup.printerMAC ) {
+        return this.$route.router.go( '/setup' )
+      }
+
+      // var printerMAC = 'AC:3F:A4:56:66:EC';
+      var mac = $.trim( setup.printerMAC ).toUpperCase()
+      var that = this;
+      var order_id = this.order.id;
+
+      ModalWait.showIt( true, 'printing' )
+      this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+        ModalWait.showIt( false )
+
+        console.info( response, 'success callback' );
+        console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
+
+        var text = response.data.text
+        if ( !text ) {
+          return alert( 'Texto no ha arrivado. Abortando impresión.' )
         }
 
-        // var printerMAC = 'AC:3F:A4:56:66:EC';
-        var mac = $.trim( setup.printerMAC ).toUpperCase()
-        var that = this;
-        var order_id = this.order.id;
-        
-        ModalWait.showIt( true, 'printing' )
-        this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
-          ModalWait.showIt( false )
+        cordova.plugins.zbtprinter.print( mac, text,
+          function( success ) {},
+          function( fail ) {
+            alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail );
+          } );
 
-          console.info( response, 'success callback' );
-          console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
-
-          var text = response.data.text
-          if ( !text ) {
-            return alert( 'Texto no ha arrivado. Abortando impresión.' )
-          }
-
-          cordova.plugins.zbtprinter.print( mac, text,
-            function( success ) {},
-            function( fail ) {
-              alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail );
-            } );
-
-        }, ( response ) => {
-          console.info( response, 'error callback' );
-        } );
-      },
-
+      }, ( response ) => {
+        console.info( response, 'error callback' );
+      } );
     },
+    methods: {}
   }
 </script>

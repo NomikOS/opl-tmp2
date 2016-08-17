@@ -17,7 +17,7 @@
             <p>
               <label>MAC impresora portátil</label>
               <input type="text" v-model="db.printerMAC" style="text-transform: uppercase;">
-            </p>            
+            </p>
             <p>
               <label>Teléfono móvil</label>
               <input type="text" v-model="db.phoneMobile">
@@ -25,7 +25,7 @@
             <p>
               <label>Teléfono central</label>
               <input type="text" v-model="db.phoneCentral">
-            </p>            
+            </p>
           </form>
         </ul>
 
@@ -70,13 +70,12 @@
       load: function() {
 
         var setup = ls.get( 'setup' )
-        console.info(setup, 'setup')
 
         if ( setup ) {
           this.db = setup
         }
 
-        var that = this       
+        var that = this
 
         this.$http.get( ORDER_URL + '/get-setup-data' ).then( ( response ) => {
           console.info( response, 'success callback' )
@@ -87,43 +86,36 @@
         }, ( response ) => {
           console.info( response, 'error callback' );
         } );
-      },    
+      },
       save: function() {
 
         var setup = this.db
         ls.save( 'setup', setup )
 
-        this.$route.router.go( '/available' )
+        if (typeof window.plugins == 'undefined') {
+          return alert('Me parece que no estamos en un teléfono. Funcionalidad limitada')
+        }
 
-        // // Get UUID
-        // window.plugins.uniqueDeviceID.get(function(){
+        if (typeof window.plugins.uniqueDeviceID == 'undefined') {
+          return alert('Plugin uniqueDeviceID necesario. Funcionalidad limitada')
+        }
 
-        //   // store phonegap uuid vehicle table
-        //   var that = this       
+        // Recognize phone
+        window.plugins.uniqueDeviceID.get( function(uuid){
 
-        //   this.$http.post( ORDER_URL + '/phone-setup-data' ).then( ( response ) => {
-        //     console.info( response, 'success callback' )
+          // Save uuid as phonegapid
+          ls.save( 'phonegapid', uuid )
 
-        //     that.vehicleOptions = response.data.vehicles
-        //     $( 'select' ).show()
+          this.$route.router.go( '/available' )
 
-        //   }, ( response ) => {
-        //     console.info( response, 'error callback' );
-        //   } );
-
-
-        // }, function(){});
-
-        // var setup = this.db
-        // ls.save( 'setup', setup )
-
-        // this.$route.router.go( '/available' )
-                
+        },  function(){
+          alert('No he podido identificar el teléfono. Por favor aprete guardar de nuevo')
+        });
 
       },
       cancel: function() {
         this.$route.router.go( '/available' )
-      }    
+      }
     }
   }
 </script>
