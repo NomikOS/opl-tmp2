@@ -10916,7 +10916,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _stringify = __webpack_require__(10);
@@ -10931,23 +10931,27 @@
 	 * init global db
 	 */
 	if (localStorage.getItem(name_db) === null) {
-	    localStorage.setItem(name_db, (0, _stringify2.default)({}));
+	  localStorage.setItem(name_db, (0, _stringify2.default)({}));
 	}
 
 	exports.default = {
-	    name_db: name_db,
-	    save: function save(name, value) {
-	        var db = JSON.parse(localStorage.getItem(name_db));
-	        db[name] = value;
-	        localStorage.setItem(name_db, (0, _stringify2.default)(db));
-	    },
-	    get: function get(name) {
-	        var db = JSON.parse(localStorage.getItem(name_db));
-	        return db[name];
-	    },
-	    clean: function clean(name) {
-	        localStorage.setItem(name_db, (0, _stringify2.default)({}));
+	  name_db: name_db,
+	  save: function save(name, value) {
+	    var db = JSON.parse(localStorage.getItem(name_db));
+	    if (!db) {
+	      localStorage.setItem(name_db, (0, _stringify2.default)({}));
+	      db = JSON.parse(localStorage.getItem(name_db));
 	    }
+	    db[name] = value;
+	    localStorage.setItem(name_db, (0, _stringify2.default)(db));
+	  },
+	  get: function get(name) {
+	    var db = JSON.parse(localStorage.getItem(name_db));
+	    return db[name];
+	  },
+	  clean: function clean(name) {
+	    localStorage.setItem(name_db, (0, _stringify2.default)({}));
+	  }
 	};
 
 /***/ },
