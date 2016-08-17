@@ -36,7 +36,7 @@
   const ORDER_URL = urls.micro_api + '/order'
 
   export default {
-    name: 'HubReception',
+    name: 'HubTransfer',
     components: {
       HeaderUserData,
       ModalWait,
@@ -54,7 +54,7 @@
       }
     },
     ready: function() {
-      console.info( 'HubReception is ready ===================================' );
+      console.info( 'HubTransfer is ready ===================================' );
     },
     methods: {
 

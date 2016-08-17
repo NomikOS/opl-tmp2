@@ -16567,7 +16567,7 @@
 
 
 	exports.default = {
-	  name: 'HubReception',
+	  name: 'HubTransfer',
 	  components: {
 	    HeaderUserData: _HeaderUserData2.default,
 	    ModalWait: _ModalWait2.default
@@ -16585,7 +16585,7 @@
 	    }
 	  },
 	  ready: function ready() {
-	    console.info('HubReception is ready ===================================');
+	    console.info('HubTransfer is ready ===================================');
 	  },
 	  methods: {
 	    print: function print(label) {
