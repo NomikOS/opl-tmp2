@@ -8,7 +8,7 @@
 
         <img class="ac25-page-top-logo" src="html/images/pickup.png" />
         <p class="ac25-order-number-info">
-          <span>orden {{order.special_id}}</span>
+          <span>orden {{order.special_id_pickup}}</span>
           <notification-icon></notification-icon>
         </p>
 

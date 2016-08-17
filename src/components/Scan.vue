@@ -40,6 +40,7 @@
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import ModalWait from './Partials/ModalWait.vue'
 
+  import ls from '../libs/ls'
   import { urls } from '../libs/common'
   import { showModal, storeData, setCounters } from '../vuex/actions'
   import { getOrder, getItem, getCounters, getAddressType } from '../vuex/getters'
@@ -83,11 +84,16 @@
     methods: {
 
       back() {
+        var addressType = ls.get( 'addressType' )
+
         if ( 'pickup' == this.addressType ) {
-          this.$route.router.go( '/event-pickup' )
+          return this.$route.router.go( '/event-pickup' )
+
+        } if ( 'delivery' == this.addressType ) {
+          return this.$route.router.go( '/event-delivery' )
 
         } else {
-          this.$route.router.go( '/event-delivery' )
+          return this.$route.router.go( '/available' )
         }
       },
 
@@ -137,6 +143,7 @@
 
         this.showModal( true )
         this.$http.post( ORDER_URL + '/scan-item', {
+          // ------------------------------------------
           order_id: order_id,
           item_id: item_id,
           qr_id: qr_id,
@@ -152,7 +159,7 @@
         } );
       },
       switherParseItemRequest( error, data ) {
-        this.showModal( false )        
+        this.showModal( false )
         console.info( '(requestItem) data from ' + ORDER_URL + '/scan-item', data );
 
         if ( error ) {
@@ -206,6 +213,7 @@
 
         this.showModal( true )
         this.$http.post( ORDER_URL + '/scan-item', {
+          // ------------------------------------------
           order_id: order_id,
           item_id: item_id,
           qr_id: qr_id,
@@ -222,7 +230,7 @@
         } );
       },
       switherParseItemUpdated( error, data ) {
-        this.showModal( false )        
+        this.showModal( false )
         console.info( '(updateItem) data from ' + ORDER_URL + '/scan-item', data );
 
         if ( error ) {

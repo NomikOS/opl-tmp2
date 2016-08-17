@@ -25,24 +25,27 @@
 	import { getOrder, getItem, getAddressType } from '../../vuex/getters'
 
 	export default {
-		name: 'ScanFinished',	
+		name: 'ScanFinished',
 		vuex: {
 			getters: {
 				order: getOrder,
 				item: getItem,
 				addressType: getAddressType
 			}
-		},		
+		},
 		methods: {
 
 			back() {
-				if ( 'pickup' == this.addressType ) {
-					this.$route.router.go( '/event-pickup' )
+        if ( 'pickup' == this.addressType ) {
+          return this.$route.router.go( '/event-pickup' )
 
-				} else {
-					this.$route.router.go( '/event-delivery' )
-				}
+        } if ( 'delivery' == this.addressType ) {
+          return this.$route.router.go( '/event-delivery' )
+
+        } else {
+          return this.$route.router.go( '/available' )
+        }
 			}
-		}        
+		}
 	}
 </script>

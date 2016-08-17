@@ -84,9 +84,10 @@
 							} )
 
               /**
-               * safeguard
+               * safeguards
                */
               ls.save( 'order_id', order.id );
+              ls.save( 'address_type', address_type );
 
 							that.$route.router.go( '/event-' + address_type )
 

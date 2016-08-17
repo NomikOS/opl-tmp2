@@ -84,7 +84,7 @@
           $( 'select' ).show()
 
         }, ( response ) => {
-          console.info( response, 'error callback' );
+          console.info( response, 'error callback' )
         } );
       },
       save: function() {

@@ -33,11 +33,11 @@
 
 	export default {
 		name: 'ScanSuccesful',
-        vuex: {
-            getters: {
-                order: getOrder,
-                item: getItem
-            }
-        },		
-	}
+    vuex: {
+      getters: {
+        order: getOrder,
+        item: getItem
+      }
+    },
+  }
 </script>
