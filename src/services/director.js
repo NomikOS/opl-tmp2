@@ -19,6 +19,8 @@ export default {
     this.user.authenticated = false
     this.user.profile = {}
 
+    this.setPhonegapid()
+
     /**
      * We'll check all these data.
      * We need it for full functionality
@@ -63,6 +65,35 @@ export default {
     this.checkSetup()
   },
 
+  setPhonegapid() {
+    var phonegapid = ls.get( 'phonegapid' )
+
+    if ( !phonegapid ) {
+
+      var uuid = utils.randomCode( 64 )
+
+      if ( typeof window.plugins == 'undefined' ) {
+        ls.save( 'phonegapid', uuid )
+        return console.info( 'Me parece que no estamos en un teléfono. Usaremos un phonegapid aleatorio' )
+      }
+
+      if ( typeof window.plugins.uniqueDeviceID == 'undefined' ) {
+        ls.save( 'phonegapid', uuid )
+        return console.info( 'Plugin uniqueDeviceID necesario. Usaremos un phonegapid aleatorio' )
+      }
+
+      // Recognize phone
+      window.plugins.uniqueDeviceID.get( ( uuid ) => {
+
+        // Save uuid as phonegapid
+        ls.save( 'phonegapid', uuid )
+
+      }, () => {
+        return alert( 'No he podido identificar el teléfono. Reinicie aplicación o informe a la central' )
+      } );
+    }
+  },
+
   checkSetup() {
     var setup = ls.get( 'setup' )
 
@@ -72,8 +103,7 @@ export default {
       return router.go( '/setup' )
     }
 
-    // return router.go( '/available' )
-    // invalida relaods
+    return router.go( '/available' )
   },
 
   getProfile() {

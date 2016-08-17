@@ -92,26 +92,7 @@
         var setup = this.db
         ls.save( 'setup', setup )
 
-        if (typeof window.plugins == 'undefined') {
-          return alert('Me parece que no estamos en un teléfono. Funcionalidad limitada')
-        }
-
-        if (typeof window.plugins.uniqueDeviceID == 'undefined') {
-          return alert('Plugin uniqueDeviceID necesario. Funcionalidad limitada')
-        }
-
-        // Recognize phone
-        window.plugins.uniqueDeviceID.get( (uuid) => {
-
-          // Save uuid as phonegapid
-          ls.save( 'phonegapid', uuid )
-
-          this.$route.router.go( '/available' )
-
-        },  () => {
-          alert('No he podido identificar el teléfono. Por favor aprete guardar de nuevo')
-        });
-
+        this.$route.router.go( '/available' )
       },
       cancel: function() {
         this.$route.router.go( '/available' )

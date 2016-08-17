@@ -187,10 +187,10 @@
 	  '/load-vehicle': {
 	    component: _LoadVehicle2.default
 	  },
-	  '/hub-reception': {
+	  '/event-reception': {
 	    component: _HubReception2.default
 	  },
-	  '/hub-transfer': {
+	  '/event-transfer': {
 	    component: _HubTransfer2.default
 	  },
 	  '/print': {
@@ -10527,6 +10527,8 @@
 
 							case 'order-pickup':
 							case 'order-delivery':
+							case 'order-reception':
+							case 'order-transfer':
 								//----------------
 
 								var setup = _ls2.default.get('setup');
@@ -10649,6 +10651,8 @@
 	    this.user.authenticated = false;
 	    this.user.profile = {};
 
+	    this.setPhonegapid();
+
 	    /**
 	     * We'll check all these data.
 	     * We need it for full functionality
@@ -10692,6 +10696,33 @@
 	     */
 	    this.checkSetup();
 	  },
+	  setPhonegapid: function setPhonegapid() {
+	    var phonegapid = _ls2.default.get('phonegapid');
+
+	    if (!phonegapid) {
+
+	      var uuid = _utils2.default.randomCode(64);
+
+	      if (typeof window.plugins == 'undefined') {
+	        _ls2.default.save('phonegapid', uuid);
+	        return console.info('Me parece que no estamos en un teléfono. Usaremos un phonegapid aleatorio');
+	      }
+
+	      if (typeof window.plugins.uniqueDeviceID == 'undefined') {
+	        _ls2.default.save('phonegapid', uuid);
+	        return console.info('Plugin uniqueDeviceID necesario. Usaremos un phonegapid aleatorio');
+	      }
+
+	      // Recognize phone
+	      window.plugins.uniqueDeviceID.get(function (uuid) {
+
+	        // Save uuid as phonegapid
+	        _ls2.default.save('phonegapid', uuid);
+	      }, function () {
+	        return alert('No he podido identificar el teléfono. Reinicie aplicación o informe a la central');
+	      });
+	    }
+	  },
 	  checkSetup: function checkSetup() {
 	    var setup = _ls2.default.get('setup');
 
@@ -10701,8 +10732,7 @@
 	      return _index.router.go('/setup');
 	    }
 
-	    // return router.go( '/available' )
-	    // invalida relaods
+	    return _index.router.go('/available');
 	  },
 	  getProfile: function getProfile() {
 	    var _this = this;
@@ -10790,96 +10820,93 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.default = {
-		objBtn: function objBtn(type) {
-			appECBase.loadingPage(false);
-			$('#landingErrorGeofencePickUp').hide();
-			$('#landingErrorGeofenceDropOff').hide();
-			$('#landingErrorGeofence' + type).show();
-			return $("#microModalErrorGeoFEcnce").modal("show");
-		},
-		showMessages: function showMessages(user_messages) {
-			var msgErr = '';
-			$.each(user_messages, function (k, v) {
-				msgErr += v + '<br />';
-			});
-			return appECBase.showModal(msgErr);
-		},
-		showModal: function showModal(msg, $srcObject) {
-			appECBase.loadingPage(false);
-			appUtilidades.creamodal('modalErrorGeo', '', 'Información', msg, '', null, function () {
-				if ($srcObject) {
-					$srcObject.focus();
-				}
-			});
-		},
-		showModalCoolTitle: function showModalCoolTitle(idModal, title, cb) {
-			appECBase.loadingPage(false);
-			var msg = '<div class="text-center" style="height: 185px; margin-top: 50px;">' + '<img src="assets/img/circle-loading.gif" style="height: 80%;">' + '</div>';
-			appUtilidades.creamodal(idModal, '', title, msg, ' ', cb);
-		},
-		getUrl: function getUrl() {
-			var urlTemplate = 'ltl-micro.api.testing.agente.cl';
-			if (/(agente\.dev)/.test(location.href)) {
-				urlTemplate = 'micro.api.testing.agente.dev';
-			}
-			return urlTemplate;
-		},
+	  objBtn: function objBtn(type) {
+	    appECBase.loadingPage(false);
+	    $('#landingErrorGeofencePickUp').hide();
+	    $('#landingErrorGeofenceDropOff').hide();
+	    $('#landingErrorGeofence' + type).show();
+	    return $("#microModalErrorGeoFEcnce").modal("show");
+	  },
+	  showMessages: function showMessages(user_messages) {
+	    var msgErr = '';
+	    $.each(user_messages, function (k, v) {
+	      msgErr += v + '<br />';
+	    });
+	    return appECBase.showModal(msgErr);
+	  },
+	  showModal: function showModal(msg, $srcObject) {
+	    appECBase.loadingPage(false);
+	    appUtilidades.creamodal('modalErrorGeo', '', 'Información', msg, '', null, function () {
+	      if ($srcObject) {
+	        $srcObject.focus();
+	      }
+	    });
+	  },
+	  showModalCoolTitle: function showModalCoolTitle(idModal, title, cb) {
+	    appECBase.loadingPage(false);
+	    var msg = '<div class="text-center" style="height: 185px; margin-top: 50px;">' + '<img src="assets/img/circle-loading.gif" style="height: 80%;">' + '</div>';
+	    appUtilidades.creamodal(idModal, '', title, msg, ' ', cb);
+	  },
+	  getUrl: function getUrl() {
+	    var urlTemplate = 'ltl-micro.api.testing.agente.cl';
+	    if (/(agente\.dev)/.test(location.href)) {
+	      urlTemplate = 'micro.api.testing.agente.dev';
+	    }
+	    return urlTemplate;
+	  },
 
-		inDev: function inDev() {
-			if (/(localhost\:8080)/.test(location.href)) {
-				return true;
-			}
-			return false;
-		},
-		getDistance: function getDistance(lat1, lon1, lat2, lon2, unit) {
-			var radlat1 = Math.PI * lat1 / 180;
-			var radlat2 = Math.PI * lat2 / 180;
-			var radlon1 = Math.PI * lon1 / 180;
-			var radlon2 = Math.PI * lon2 / 180;
-			var theta = lon1 - lon2;
-			var radtheta = Math.PI * theta / 180;
-			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-			dist = Math.acos(dist);
-			dist = dist * 180 / Math.PI;
-			dist = dist * 60 * 1.1515;
-			if (unit == "K") {
-				dist = dist * 1.609344;
-			}
-			if (unit == "N") {
-				dist = dist * 0.8684;
-			}
-			return dist;
-		},
-		getUrlVariable: function getUrlVariable(name, theurl) {
+	  inDev: function inDev() {
+	    if (/(localhost\:8080)/.test(location.href)) {
+	      return true;
+	    }
+	    return false;
+	  },
+	  getDistance: function getDistance(lat1, lon1, lat2, lon2, unit) {
+	    var radlat1 = Math.PI * lat1 / 180;
+	    var radlat2 = Math.PI * lat2 / 180;
+	    var radlon1 = Math.PI * lon1 / 180;
+	    var radlon2 = Math.PI * lon2 / 180;
+	    var theta = lon1 - lon2;
+	    var radtheta = Math.PI * theta / 180;
+	    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	    dist = Math.acos(dist);
+	    dist = dist * 180 / Math.PI;
+	    dist = dist * 60 * 1.1515;
+	    if (unit == "K") {
+	      dist = dist * 1.609344;
+	    }
+	    if (unit == "N") {
+	      dist = dist * 0.8684;
+	    }
+	    return dist;
+	  },
+	  getUrlVariable: function getUrlVariable(name, theurl) {
 
-			var url = '';
+	    var url = '';
 
-			if (theurl) {
-				url = theurl;
-			} else {
-				url = window.location.href;
-			}
+	    if (theurl) {
+	      url = theurl;
+	    } else {
+	      url = window.location.href;
+	    }
 
-			console.info(url, 'window.location.href -------------------');
-			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
-			if (!results) {
-				return '';
-			}
-			return results[1] || 0;
-
-			// var query = window.location.search.substring( 1 );
-			// var vars = query.split( "&" );
-			// for ( var i = 0; i < vars.length; i++ ) {
-			// 	var pair = vars[ i ].split( "=" );
-			// 	if ( pair[ 0 ] == variable ) {
-			// 		return pair[ 1 ];
-			// 	}
-			// }
-			// return ( false );
-		}
+	    console.info(url, 'window.location.href -------------------');
+	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+	    if (!results) {
+	      return '';
+	    }
+	    return results[1] || 0;
+	  },
+	  randomCode: function randomCode(length) {
+	    var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    var result = '';
+	    for (var i = length; i > 0; --i) {
+	      result += chars[Math.round(Math.random() * (chars.length - 1))];
+	    }return result;
+	  }
 	};
 
 /***/ },
@@ -15380,29 +15407,11 @@
 	      });
 	    },
 	    save: function save() {
-	      var _this = this;
 
 	      var setup = this.db;
 	      _ls2.default.save('setup', setup);
 
-	      if (typeof window.plugins == 'undefined') {
-	        return alert('Me parece que no estamos en un teléfono. Funcionalidad limitada');
-	      }
-
-	      if (typeof window.plugins.uniqueDeviceID == 'undefined') {
-	        return alert('Plugin uniqueDeviceID necesario. Funcionalidad limitada');
-	      }
-
-	      // Recognize phone
-	      window.plugins.uniqueDeviceID.get(function (uuid) {
-
-	        // Save uuid as phonegapid
-	        _ls2.default.save('phonegapid', uuid);
-
-	        _this.$route.router.go('/available');
-	      }, function () {
-	        alert('No he podido identificar el teléfono. Por favor aprete guardar de nuevo');
-	      });
+	      this.$route.router.go('/available');
 	    },
 	    cancel: function cancel() {
 	      this.$route.router.go('/available');
@@ -15487,13 +15496,10 @@
 
 	    switch (url_action) {
 	      case 'go-passport':
-	        console.info(phonegapid, 'phonegapid');
-	        console.info(PASSPORT_WEBSITE_LOGIN_URL, 'PASSPORT_WEBSITE_LOGIN_URL');
-	        url = PASSPORT_WEBSITE_LOGIN_URL.replace('\{phonegapid\}', phonegapid);
+	        url = PASSPORT_WEBSITE_LOGIN_URL.replace(/{phonegapid}/, phonegapid);
+	        console.info(url, 'going to url, see ya');
 	        break;
 	    }
-
-	    console.info(PASSPORT_WEBSITE_LOGIN_URL, 'PASSPORT_WEBSITE_LOGIN_URL');
 
 	    var $opl_iframe = $('#opl_iframe');
 	    $opl_iframe.prop('src', url);
@@ -16219,7 +16225,6 @@
 	    finishOrder: function finishOrder() {
 	      var _this = this;
 
-	      var that = this;
 	      var order_id = this.order.id;
 	      var addressType = this.addressType;
 
@@ -16467,28 +16472,8 @@
 	  },
 	  ready: function ready() {
 	    console.info('HubReception is ready ===================================');
-	    this.load();
 	  },
-	  methods: {
-	    load: function load() {
-
-	      var order_id = this.order.id;
-	      var addressType = this.addressType;
-	    },
-
-	    finishOrder: function finishOrder() {
-	      var _this = this;
-
-	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-
-	        _this.$route.router.go('/available');
-	      }, function (response) {
-	        console.info(response.data, 'error callback');
-	      });
-	    }
-	  }
+	  methods: {}
 	};
 	// </script>
 	//
@@ -16567,7 +16552,7 @@
 	//     </div><!-- end container -->
 	//
 	//     <footer class="ac25-content-footer">
-	//       <a @click="finishOrder()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
+	//       <a @click="finishTransfer()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
 	//     </footer><!-- end footer -->
 	//
 	//   </div><!-- end content-global -->
@@ -16576,7 +16561,7 @@
 	// <script>
 
 
-	var MICRO_API_URL = _common.urls.micro_api;
+	var ORDER_URL = _common.urls.micro_api + '/order';
 
 	exports.default = {
 	  name: 'HubReception',
@@ -16598,21 +16583,8 @@
 	  },
 	  ready: function ready() {
 	    console.info('HubReception is ready ===================================');
-	    this.load();
 	  },
 	  methods: {
-	    load: function load() {
-	      var _this = this;
-
-	      this.$http.get(MICRO_API_URL + '/137').then(function (response) {
-	        console.info(response, 'success callback');
-	        var order = response.data.data;
-	        _this.order = order;
-	      }, function (response) {
-	        console.info(response, 'error callback');
-	      });
-	    },
-
 	    print: function print(label) {
 
 	      var setup = ls.get('setup');
@@ -16645,14 +16617,17 @@
 	    },
 
 
-	    finishOrder: function finishOrder() {
-	      var _this2 = this;
+	    finishTransfer: function finishTransfer() {
+	      var _this = this;
 
-	      this.$http.put(MICRO_API_URL + '/137/finish-pickup').then(function (response) {
+	      var order_id = this.order.id;
+
+	      this.$http.post(ORDER_URL + '/finish-transfer', {
+	        order_id: order_id
+
+	      }).then(function (response) {
 	        console.info(response, 'success callback');
-	        var order = response.data.data;
-
-	        _this2.$route.router.go('/available');
+	        _this.$route.router.go('/available');
 	      }, function (response) {
 	        console.info(response.data, 'error callback');
 	      });
@@ -16666,7 +16641,7 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishOrder()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 72 */

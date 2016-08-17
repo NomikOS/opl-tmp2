@@ -20,7 +20,7 @@
     </div><!-- end container -->
 
     <footer class="ac25-content-footer">
-      <a @click="finishOrder()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
+      <a @click="finishTransfer()" class="ac25-full-red-custom-dev right waves-effect waves-light" style="padding:100px 20px">terminar</a>
     </footer><!-- end footer -->
 
   </div><!-- end content-global -->
@@ -32,7 +32,7 @@
   import ModalWait from './Partials/ModalWait.vue'
   import { getOrder, getCounters, getAddressType } from '../vuex/getters'
 
-  const MICRO_API_URL = urls.micro_api
+  const ORDER_URL = urls.micro_api + '/order'
 
   export default {
     name: 'HubReception',
@@ -54,18 +54,8 @@
     },
     ready: function() {
       console.info( 'HubReception is ready ===================================' );
-      this.load();
     },
     methods: {
-      load: function() {
-        this.$http.get( MICRO_API_URL + '/137' ).then( ( response ) => {
-          console.info( response, 'success callback' );
-          var order = response.data.data
-          this.order = order
-        }, ( response ) => {
-          console.info( response, 'error callback' );
-        } );
-      },
 
       print( label ) {
 
@@ -101,25 +91,20 @@
         } );
       },
 
-      finishOrder: function() {
-        this.$http.put( MICRO_API_URL + '/137/finish-pickup' ).then( ( response ) => {
+      finishTransfer: function() {
+
+        var order_id = this.order.id;
+
+        this.$http.post( ORDER_URL + '/finish-transfer', {
+          order_id: order_id,
+
+        } ).then( ( response ) => {
           console.info( response, 'success callback' );
-          var order = response.data.data
-
-
-
-
-
           this.$route.router.go( '/available' )
-
-
-
-
-
-
 
         }, ( response ) => {
           console.info( response.data, 'error callback' );
+
         } );
       }
     }

@@ -77,7 +77,6 @@
     methods: {
       finishOrder () {
 
-        var that = this;
         var order_id = this.order.id;
         var addressType = this.addressType
 

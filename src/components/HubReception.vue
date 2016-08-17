@@ -57,38 +57,8 @@
     },
     ready: function() {
       console.info( 'HubReception is ready ===================================' );
-      this.load();
     },
     methods: {
-      load: function() {
-
-        var order_id = this.order.id;
-        var addressType = this.addressType
-
-
-      },
-
-      finishOrder: function() {
-        this.$http.put( MICRO_API_URL + '/137/finish-pickup' ).then( ( response ) => {
-          console.info( response, 'success callback' );
-          var order = response.data.data
-
-
-
-
-
-          this.$route.router.go( '/available' )
-
-
-
-
-
-
-
-        }, ( response ) => {
-          console.info( response.data, 'error callback' );
-        } );
-      }
     }
   }
 </script>

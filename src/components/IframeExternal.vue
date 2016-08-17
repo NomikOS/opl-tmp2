@@ -22,14 +22,11 @@
 
       switch ( url_action ) {
         case 'go-passport':
-        console.info(phonegapid, 'phonegapid');
-        console.info(PASSPORT_WEBSITE_LOGIN_URL, 'PASSPORT_WEBSITE_LOGIN_URL');
-        url = PASSPORT_WEBSITE_LOGIN_URL.replace('\{phonegapid\}', phonegapid)
+        url = PASSPORT_WEBSITE_LOGIN_URL.replace(/{phonegapid}/, phonegapid)
+        console.info(url, 'going to url, see ya');
         break;
       }
-
-      console.info(PASSPORT_WEBSITE_LOGIN_URL, 'PASSPORT_WEBSITE_LOGIN_URL');
-
+      
       var $opl_iframe = $( '#opl_iframe' )
       $opl_iframe.prop( 'src', url )
     }

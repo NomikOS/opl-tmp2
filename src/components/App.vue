@@ -48,7 +48,9 @@
 	 				switch ( type ) {
 
 	 					case 'order-pickup':
-            case 'order-delivery':            
+            case 'order-delivery':
+            case 'order-reception':
+            case 'order-transfer':
 							//----------------
 
 							var setup = ls.get( 'setup' )

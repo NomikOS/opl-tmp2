@@ -61,10 +61,10 @@ router.map( {
   '/load-vehicle': {
     component: LoadVehicle
   },
-  '/hub-reception': {
+  '/event-reception': {
     component: HubReception
   },
-  '/hub-transfer': {
+  '/event-transfer': {
     component: HubTransfer
   },
   '/print': {
