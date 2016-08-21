@@ -5,11 +5,11 @@
       <div class="ac25-loading-content">
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
-    <div v-if="grocer" style="margin-top:200px">
-      <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
-      <br />
-      <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
-    </div>
+        <div v-if="grocer" style="margin-top:200px">
+          <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
+          <br />
+          <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
+        </div>
       </div>
     </div>
     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
@@ -23,7 +23,12 @@
 
 <script>
   import HeaderUserData from './Partials/HeaderUserData.vue'
+  import { urls } from '../libs/common'
   import ls from '../libs/ls'
+  import { getOrder, getCounters, getAddressType } from '../vuex/getters'
+  import { storeData } from '../vuex/actions'
+
+  const ORDER_URL = urls.micro_api + '/order'
 
   export default {
     name: 'StandBy',
@@ -35,6 +40,16 @@
         grocer:false
       }
     },
+    vuex: {
+      getters: {
+        order: getOrder,
+        counters: getCounters,
+        addressType: getAddressType
+      },
+      actions: {
+        storeData: storeData
+      }
+    },
     ready() {
       console.info( 'StandBy is ready ===================================' );
       var setup = ls.get( 'setup' )
@@ -43,15 +58,45 @@
     methods: {
       goto(address_type) {
 
-       var order_id_input = prompt("Ingrese orden", "");
+        var order_id_input = prompt('Ingrese ID orden:', this.order && this.order.id > 0 ? this.order.id : '')
        if (!order_id_input || !$.isNumeric( order_id_input )) {
         return
       }
 
-      ls.save( 'order_id', order_id_input )
-      ls.save( 'address_type', address_type )
+      this.$http.get( ORDER_URL + '/' + order_id_input + '/grocer-publish').then( ( response ) => {
+        console.info( response, 'success callback' )
 
-      this.$route.router.go( '/event-' + address_type )
+        if (!response.data || ! response.data.order) {
+          return
+        }
+
+        var order = response.data.order
+        console.info(order);
+
+        this.storeData( {
+          type: 'order',
+          content: order
+        } )
+
+        this.storeData( {
+          type: 'addressType',
+          content: address_type
+        } )
+
+
+        // ls.save( 'order_id', order_id_input )
+        // ls.save( 'address_type', address_type )
+
+        this.$route.router.go( '/event-' + address_type )
+
+
+      }, ( response ) => {
+        console.info( response, 'error callback' )
+        var data = response.data
+        if (data.status_code && data.status_code == 404) {
+          alert('Orden no existe')
+        }
+      } )
     }
   }
 }

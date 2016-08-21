@@ -70,15 +70,15 @@
 
 	var _StandBy2 = _interopRequireDefault(_StandBy);
 
-	var _Setup = __webpack_require__(31);
+	var _Setup = __webpack_require__(32);
 
 	var _Setup2 = _interopRequireDefault(_Setup);
 
-	var _IframeExternal = __webpack_require__(34);
+	var _IframeExternal = __webpack_require__(35);
 
 	var _IframeExternal2 = _interopRequireDefault(_IframeExternal);
 
-	var _EventPickup = __webpack_require__(37);
+	var _EventPickup = __webpack_require__(38);
 
 	var _EventPickup2 = _interopRequireDefault(_EventPickup);
 
@@ -14770,7 +14770,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(20)
-	__vue_template__ = __webpack_require__(28)
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -14800,24 +14800,30 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
+	var _common = __webpack_require__(7);
+
 	var _ls = __webpack_require__(9);
 
 	var _ls2 = _interopRequireDefault(_ls);
 
+	var _getters = __webpack_require__(28);
+
+	var _actions = __webpack_require__(17);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-red-loading-section">
 	//     <div class="container">
 	//       <div class="ac25-loading-content">
 	//         <h5>Esperando Evento...</h5>
 	//         <img src="html/images/loading.gif" alt="" />
-	//     <div v-if="grocer" style="margin-top:200px">
-	//       <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
-	//       <br />
-	//       <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
-	//     </div>
+	//         <div v-if="grocer" style="margin-top:200px">
+	//           <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
+	//           <br />
+	//           <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
+	//         </div>
 	//       </div>
 	//     </div>
 	//     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
@@ -14830,6 +14836,8 @@
 	// </template>
 	//
 	// <script>
+
+
 	exports.default = {
 	  name: 'StandBy',
 	  components: {
@@ -14840,6 +14848,16 @@
 	      grocer: false
 	    };
 	  },
+	  vuex: {
+	    getters: {
+	      order: _getters.getOrder,
+	      counters: _getters.getCounters,
+	      addressType: _getters.getAddressType
+	    },
+	    actions: {
+	      storeData: _actions.storeData
+	    }
+	  },
 	  ready: function ready() {
 	    console.info('StandBy is ready ===================================');
 	    var setup = _ls2.default.get('setup');
@@ -14848,16 +14866,44 @@
 
 	  methods: {
 	    goto: function goto(address_type) {
+	      var _this = this;
 
-	      var order_id_input = prompt("Ingrese orden", "");
+	      var order_id_input = prompt('Ingrese ID orden:', this.order && this.order.id > 0 ? this.order.id : '');
 	      if (!order_id_input || !$.isNumeric(order_id_input)) {
 	        return;
 	      }
 
-	      _ls2.default.save('order_id', order_id_input);
-	      _ls2.default.save('address_type', address_type);
+	      this.$http.get(ORDER_URL + '/' + order_id_input + '/grocer-publish').then(function (response) {
+	        console.info(response, 'success callback');
 
-	      this.$route.router.go('/event-' + address_type);
+	        if (!response.data || !response.data.order) {
+	          return;
+	        }
+
+	        var order = response.data.order;
+	        console.info(order);
+
+	        _this.storeData({
+	          type: 'order',
+	          content: order
+	        });
+
+	        _this.storeData({
+	          type: 'addressType',
+	          content: address_type
+	        });
+
+	        // ls.save( 'order_id', order_id_input )
+	        // ls.save( 'address_type', address_type )
+
+	        _this.$route.router.go('/event-' + address_type);
+	      }, function (response) {
+	        console.info(response, 'error callback');
+	        var data = response.data;
+	        if (data.status_code && data.status_code == 404) {
+	          alert('Orden no existe');
+	        }
+	      });
 	    }
 	  }
 	};
@@ -15299,29 +15345,66 @@
 
 /***/ },
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(29) + "\" alt=\"\" />\n    <div v-if=\"grocer\" style=\"margin-top:200px\">\n      <center><a @click=\"goto('transfer')\" style=\"color:white;font-size: 20px;\">ENTREGAR CARGA</a> </center>\n      <br />\n      <center><a @click=\"goto('reception')\" style=\"color:white;font-size: 20px;\">RECIBIR CARGA</a> </center>\n    </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(30) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getOrder = getOrder;
+	exports.getItem = getItem;
+	exports.getAddressType = getAddressType;
+	exports.getModalVisibility = getModalVisibility;
+	exports.getUrlIframe = getUrlIframe;
+	exports.getCounters = getCounters;
+	// This getter is a function which just returns the count
+	// With ES6 you can also write it as:
+	// export const getCount = state => state.count
+	function getOrder(state) {
+	  return state.order;
+	}
+	function getItem(state) {
+	  return state.item;
+	}
+	function getAddressType(state) {
+	  return state.addressType;
+	}
+	function getModalVisibility(state) {
+	  return state.modalVisible;
+	}
+	function getUrlIframe(state) {
+	  return state.urlIframe;
+	}
+	function getCounters(state) {
+	  return state.counters;
+	}
 
 /***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/loading.gif?2bc07f4e6f25ebc7fa55be51f32e9251";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(30) + "\" alt=\"\" />\n        <div v-if=\"grocer\" style=\"margin-top:200px\">\n          <center><a @click=\"goto('transfer')\" style=\"color:white;font-size: 20px;\">ENTREGAR CARGA</a> </center>\n          <br />\n          <center><a @click=\"goto('reception')\" style=\"color:white;font-size: 20px;\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
 
 /***/ },
 /* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/loading.gif?2bc07f4e6f25ebc7fa55be51f32e9251";
+
+/***/ },
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(32)
-	__vue_template__ = __webpack_require__(33)
+	__vue_script__ = __webpack_require__(33)
+	__vue_template__ = __webpack_require__(34)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15338,7 +15421,7 @@
 	})()}
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15461,18 +15544,18 @@
 	//
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>MAC impresora portátil</label>\n              <input type=\"text\" v-model=\"db.printerMAC\" style=\"text-transform: uppercase;\">\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>\n            <p>\n            <input class=\"filled-in\" type=\"checkbox\" id=\"grocer\" v-model=\"db.grocer\" />\n              <label for=\"grocer\">Bodeguero</label>\n            </p>\n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(35)
-	__vue_template__ = __webpack_require__(36)
+	__vue_script__ = __webpack_require__(36)
+	__vue_template__ = __webpack_require__(37)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15489,7 +15572,7 @@
 	})()}
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15522,7 +15605,7 @@
 
 
 	var MICRO_API_URL = _common.urls.micro_api;
-	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=8f2ef6b08e3863680b3d04f0d39a7abf';
+	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=65a8ace68efa5f34dace1e87612bd5cd';
 
 	exports.default = {
 	  name: 'IframeExternal',
@@ -15548,17 +15631,17 @@
 	//
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <iframe id=\"opl_iframe\" style=\"width:100%;height:100%\"></iframe>\n";
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(38)
+	__vue_script__ = __webpack_require__(39)
 	__vue_template__ = __webpack_require__(52)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -15576,7 +15659,7 @@
 	})()}
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15591,19 +15674,19 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(39);
+	var _NotificationIcon = __webpack_require__(40);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(43);
+	var _ButtonPrint = __webpack_require__(44);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(47);
+	var _ButtonScan = __webpack_require__(48);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15706,12 +15789,12 @@
 	//
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(40)
-	__vue_template__ = __webpack_require__(41)
+	__vue_script__ = __webpack_require__(41)
+	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15728,7 +15811,7 @@
 	})()}
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15778,24 +15861,24 @@
 	// </script>
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<a v-if=\"notification\" @click=\"popup()\"><img class=\"\" src=\"" + __webpack_require__(42) + "\" /></a>\n";
+	module.exports = "\n<a v-if=\"notification\" @click=\"popup()\"><img class=\"\" src=\"" + __webpack_require__(43) + "\" /></a>\n";
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAYAAABXuSs3AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA/9JREFUeNrUmk1oE0EUx1+CiGAbgxexH7SVkt5s2vp5qQu2IEKxYKvGqkSvIuaiiKAExK9be/DjULVSsR4qpCJ+YGvTgl/Q6urJItqI1ra3NK1UEFznxdl1djPJbnY36ebBI5l8zP7m7ZuZl//EJUkS2Gkul8tLHvyal2PkOjFbr2MVnIAK5KGVwm7T+fh74iLxKPEIuXbc9IURPFsnVkk8jJHELix4hLhghiGriNM0QODjmT7XtnsHeDwrlPbNWxG9rkewX8IStT1VCDSmQw/xVezrVVXr4EBgMzSsB9jin4A1JW+531+YL4WJT/Uw9MIDg8Pf4NngKO9jXXQAcVtShQKrbnNzU6MUuReQ5qdKJSkBWftYtEU6criVlz44B/y6TDrAXtqR0jGJsNTb3WEKNt0ASGpp4eN68FlBY4RmPtbbBs361a4OXvQFM+Aq6DOnAzkB1kYf76iRyBvK6XxAyz4xtp0H79UFp5vJkkCz8Nr1PiM4zes4m9P5hpYdFwANfGsm8DC7euRqIhr10LF2FjzGsro1u2JIbp8IbU27mehZ/8B+2LlHgJPhvbCQKDNdjpw6+jm5wVGrIIzBlA2IjTZuLlYi5fP5lEjduNZh5zIZS4k4MWU0h/aVW6oY6+qqledla39b6utgm6p8qaDV6L9ahTSwJH0nv0u2cSgqnjJ9senvG+DxSA14iiRo23XXcu199lIAzl3oU+oZwhxKSROcEEs5IXn+/GHqJF1GRyHIw2moXQ5Os411L7Xp4pVzXPmptck/4zhwTFus8RnzyxFXamyfb8j670EPUzYn7IEvKylWgbtJ2CuhAMxXrUrhZKoo4GSLh0IxNxSouWlRlbTh6IfCASdroig3Jie/OBZ0evZP5lSZ/VHvSPCp6UW2GXUzukbSXos1jgTXaDMxGVxJl3EHpvn42xa2OYc6pAyulGB3+t44DhxFJMYiSo6TEWBjTp6gA48CjgK/3v1Kld/ayakk0YOni46BxiAyqx2mSY8WPMxOhOHR9iWHRr3xSrfqd0FnynJIhffbcvti52zyi0tpvf0CK47OseA83duypsL2YUXV0sgTYT1BKMx+ARXZfIOjAqxRs0SjEpxoFd6sIzRHvfUbBVcpWvmCTwMdzFat9WvhUePIo1KbFtqIsJ8CjxFBUdLOKF8+z9XGg6ZPJJiVRtR2jCuOFW0RgfEOcqIc14M2BM7kfCfvyA8VXcx/o4NAjQQHzQE2fP5j5rhQoAOo5b3f3NQI5eWroaZ6JRQX/X99TPwJicQv6L//JF3Xyc2FsIRzfUAbpMWOZNFjdN/w5vSAlnMHKukgBAPH4bJ9ZY7EI6avbeefEGgqcf+EQF20dH7P2F8BBgDi96xrflkLdwAAAABJRU5ErkJggg=="
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(44)
-	__vue_template__ = __webpack_require__(45)
+	__vue_script__ = __webpack_require__(45)
+	__vue_template__ = __webpack_require__(46)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15812,7 +15895,7 @@
 	})()}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15835,23 +15918,23 @@
 	// </script>
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<a v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(46) + "\" alt=\"\" />\n\t\t<p class=\"ac25-no-margin\">imprimir</p>\n\t</a>\n";
+	module.exports = "\n\t<a v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(47) + "\" alt=\"\" />\n\t\t<p class=\"ac25-no-margin\">imprimir</p>\n\t</a>\n";
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAYAAAAdp2cRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA/FJREFUeNrsnf9x2jAUgB++/B82qDcIG8TZwJ2g7gTJBmWDZoO4GzCCswHdgGxAJqBWEXccZwK20a/n77vTXeASIPrQ05MsybPdbieOqdpStmUu8bJuy8vR44V9LlnuHL62Edm05SHBenltS21LkmRIPcubjTaIPfnGpyw1ebmuxJaihyTluhBbtOVedJGc3ExApVwXYnPkIha5hGLkIha5iNUq9y6Cz/BHhk/dmRmuxQ0+w2akXJHIph9jEDv2G7+KpOVGJZdQrDQsI1apXMQqlYtYpXIRq1QuYpXKRaxSuYhVKhexSuUiVqlcxHazTV0uYrtZpd5yEXte7EfKchF7PhT76AudyUXseZq2PLXlM0W5d/i7KDeX/QL40v78YGX32bQ1l693RrzZKLFCrN+wXEtiG7QIxUpBLGIhJehj3VL1yHhPd9UjNmJMFv1IKAbEAmIRC3qzYpPBLWTcfpicah1cb8sRf9/Y8p+ZPcDLiKwlzEkvM8WyjKhfHt/PXGo0c9rrQygOJRVuyzfbavPMGkaqHsyJPctMbrO/FOKiiGHmaYeH24dkhjuMYwGxEJy+fezpWp9HqjB9sd+le7GVOcL2mapMNxSvej4PifexDdWYrti/VJVOsV9NOc6pRp2hmCnJxMXWsj8WPj9qqebxkmpMe7jzwxaYSCgGxAJiAbGAWMQCYgGxgFhALCAWsYBYQCz4os9lu/crfieX/Y4vSESsWfNUUF3RsJQL+26vDcVb6pI+FhLrY48xq/+vXcRWS2Inh3piYevxWgofYs2HunbfToPDTubicO8ToZg+1hmVTc52ispWAi/LDS3W9Bvm2PR7ZQ3m3g5HqimL1UyJWL0J0iTFrgWciS0Q64xNoPf9CN1izW54rXtvPwNmxpvQB3htbcSoPPVHufg5nbWR/WxbqBYbxT0BjNxXAXUTFIBYQOzEieW+O76SGl85wzoGsSZzC3l0nsketR2BcBjqBEsKMwl7vbQUnedamIsAvyXcRYBNJn7uR34O7UcJvQR63zqzfUIZUK5mQtxr4aeJwofkaW2Tl0K65443OBqEq+lS4+N0nffaRt+mKytuPPe52r8wrk6GreXCAsHQ49hartthkGprDZYVxzCOLWwSNe94PlU2trVupyxWzgzoG4FR41hALCAWEDtR5qmL5Wj5bpxOp/rIip8v/BNTzX6dziMf7vg8ZJzGkQR+mfkQy61BIxdL8kRWDFMQy7VbpWLZTOWXd19iuQOlX3oPCYdmxYdW+0CdO8eseMyl5yXAMclTZd8U3FLJgOu6Y8SaFrsQvSsgQmMS1Keh3d6YUHyMEVxK90oI6MfWyqzHvMg/AQYADYXlUoEuObwAAAAASUVORK5CYII="
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(48)
+	__vue_script__ = __webpack_require__(49)
 	__vue_template__ = __webpack_require__(50)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -15869,7 +15952,7 @@
 	})()}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15878,7 +15961,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	exports.default = {
 		name: 'ButtonScan',
@@ -15899,43 +15982,6 @@
 	// </template>
 	//
 	// <script>
-
-/***/ },
-/* 49 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getOrder = getOrder;
-	exports.getItem = getItem;
-	exports.getAddressType = getAddressType;
-	exports.getModalVisibility = getModalVisibility;
-	exports.getUrlIframe = getUrlIframe;
-	exports.getCounters = getCounters;
-	// This getter is a function which just returns the count
-	// With ES6 you can also write it as:
-	// export const getCount = state => state.count
-	function getOrder(state) {
-	  return state.order;
-	}
-	function getItem(state) {
-	  return state.item;
-	}
-	function getAddressType(state) {
-	  return state.addressType;
-	}
-	function getModalVisibility(state) {
-	  return state.modalVisible;
-	}
-	function getUrlIframe(state) {
-	  return state.urlIframe;
-	}
-	function getCounters(state) {
-	  return state.counters;
-	}
 
 /***/ },
 /* 50 */
@@ -16005,19 +16051,19 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(39);
+	var _NotificationIcon = __webpack_require__(40);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(43);
+	var _ButtonPrint = __webpack_require__(44);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(47);
+	var _ButtonScan = __webpack_require__(48);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16170,15 +16216,15 @@
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
-	var _NotificationIcon = __webpack_require__(39);
+	var _NotificationIcon = __webpack_require__(40);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(43);
+	var _ButtonPrint = __webpack_require__(44);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(47);
+	var _ButtonScan = __webpack_require__(48);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -16188,7 +16234,7 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16350,7 +16396,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	exports.default = {
 		name: 'ModalWait',
@@ -16398,7 +16444,7 @@
 /* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(29) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
 
 /***/ },
 /* 64 */
@@ -16450,15 +16496,15 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ButtonPrint = __webpack_require__(43);
+	var _ButtonPrint = __webpack_require__(44);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(47);
+	var _ButtonScan = __webpack_require__(48);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16474,7 +16520,7 @@
 	//        <div class="clearfix" style="height:100px"></div>
 	//
 	//        <span class="ac25-top-check-title">
-	//         Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}}
+	//         Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}} / Orden #{{order.id}}
 	//       </span>
 	//
 	//       <div class="clearfix" style="height:100px"></div>
@@ -16525,7 +16571,7 @@
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}} / Orden #{{order.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 69 */
@@ -16573,7 +16619,7 @@
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16589,7 +16635,7 @@
 	//         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
 	//         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-	//           <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
+	//           <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>
 	//           <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>
 	//         </ul>
 	//
@@ -16638,9 +16684,7 @@
 
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
 	      var order_id = this.order.id; // fail
-
-	      var order_id = _ls2.default.get('order_id');
-	      console.info(order_id, 'order_id de ls ----------------');
+	      // var order_id = ls.get( 'order_id' )
 
 	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
@@ -16691,7 +16735,7 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 72 */
@@ -16741,7 +16785,7 @@
 
 	var _actions = __webpack_require__(17);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16870,7 +16914,7 @@
 /* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(46) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(47) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 75 */
@@ -16920,7 +16964,7 @@
 
 	var _actions = __webpack_require__(17);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17300,7 +17344,7 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17576,7 +17620,7 @@
 /* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(29) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(30) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
 /* 90 */
@@ -17716,7 +17760,7 @@
 /* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(29) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(30) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
 /* 93 */
@@ -17750,7 +17794,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	exports.default = {
 	  name: 'ScanSuccesful',
@@ -17839,7 +17883,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	exports.default = {
 	    name: 'ScanFailed',
@@ -17887,7 +17931,7 @@
 /* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(42) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(51) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(43) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(51) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
 /* 100 */
@@ -17921,7 +17965,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(49);
+	var _getters = __webpack_require__(28);
 
 	exports.default = {
 		name: 'ScanFinished',

@@ -10,7 +10,7 @@
        <div class="clearfix" style="height:100px"></div>
 
        <span class="ac25-top-check-title">
-        Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}}
+        Bultos a recibir: <span class="ac25-large-font">{{order.items_amount}} / Orden #{{order.id}}
       </span>
 
       <div class="clearfix" style="height:100px"></div>

@@ -10,7 +10,7 @@
         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 
         <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
-          <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos. </li>
+          <li> Entregue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>
           <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>
         </ul>
 
@@ -66,9 +66,7 @@
 
         var mac = $.trim(setup.printerMAC).toUpperCase()
         var order_id = this.order.id; // fail
-
-        var order_id = ls.get( 'order_id' )
-        console.info(order_id, 'order_id de ls ----------------');
+        // var order_id = ls.get( 'order_id' )
 
         ModalWait.showIt( true, 'printing' )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
