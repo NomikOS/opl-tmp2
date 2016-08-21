@@ -90,7 +90,6 @@
               ls.save( 'address_type', address_type );
 
 							that.$route.router.go( '/event-' + address_type )
-
 							break;
 
 							case 'user-authenticated':

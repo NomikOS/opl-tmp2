@@ -26,6 +26,10 @@
               <label>Teléfono central</label>
               <input type="text" v-model="db.phoneCentral">
             </p>
+            <p>
+            <input class="filled-in" type="checkbox" id="grocer" v-model="db.grocer" />
+              <label for="grocer">Bodeguero</label>
+            </p>
           </form>
         </ul>
 

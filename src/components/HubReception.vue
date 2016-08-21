@@ -3,7 +3,7 @@
   <div class="ac25-content-global">
     <div class="container">
       <div class="ac25-content-inner-holder ac25-min-height-200">
-       <h4 class="ac25-top-red-text">RECEPCIÓN DE CARGA</h4>
+       <h4 class="ac25-top-red-text">RECEPCIÓN DE<br />CARGA</h4>
        <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 

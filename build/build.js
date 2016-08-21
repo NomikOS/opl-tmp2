@@ -10568,7 +10568,6 @@
 								_ls2.default.save('address_type', address_type);
 
 								that.$route.router.go('/event-' + address_type);
-
 								break;
 
 							case 'user-authenticated':
@@ -10765,14 +10764,11 @@
 	    console.info('Going to iframe-external/go-passport after logout');
 	    return _index.router.go('/iframe-external/go-passport');
 	  },
-
-
-	  // The object to be passed as a header for authenticated requests
-	  // Not good place to check for existence of access_token
-	  // as here we just return a string
 	  getAuthHeader: function getAuthHeader() {
 	    var access_token = _ls2.default.get('access_token');
-	    return 'Bearer ' + access_token;
+	    if (access_token) {
+	      return 'Bearer ' + access_token;
+	    }
 	  }
 	};
 
@@ -10947,6 +10943,10 @@
 	  },
 	  get: function get(name) {
 	    var db = JSON.parse(localStorage.getItem(name_db));
+	    if (!db) {
+	      localStorage.setItem(name_db, (0, _stringify2.default)({}));
+	      db = JSON.parse(localStorage.getItem(name_db));
+	    }
 	    return db[name];
 	  },
 	  clean: function clean(name) {
@@ -14800,21 +14800,12 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-	  name: 'StandBy',
-	  components: {
-	    HeaderUserData: _HeaderUserData2.default
-	  },
-	  ready: function ready() {
-	    console.info('StandBy is ready ===================================');
-	  },
-	  destroyed: function destroyed() {
-	    console.info('StandBy is destroyed ===================================');
-	  }
-	};
-	// </script>
 	// <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-red-loading-section">
@@ -14822,16 +14813,56 @@
 	//       <div class="ac25-loading-content">
 	//         <h5>Esperando Evento...</h5>
 	//         <img src="html/images/loading.gif" alt="" />
+	//     <div v-if="grocer" style="margin-top:200px">
+	//       <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
+	//       <br />
+	//       <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
+	//     </div>
 	//       </div>
 	//     </div>
 	//     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
 	//   </div><!-- end red-loading-section -->
+	//
 	//   <footer class="ac25-newfoot">
 	//     <a v-link="'logout'" class="ac25-full-black waves-effect waves-light">CERRAR SESSION</a>
 	//   </footer><!-- end footer -->
+	//
 	// </template>
 	//
 	// <script>
+	exports.default = {
+	  name: 'StandBy',
+	  components: {
+	    HeaderUserData: _HeaderUserData2.default
+	  },
+	  data: function data() {
+	    return {
+	      grocer: false
+	    };
+	  },
+	  ready: function ready() {
+	    console.info('StandBy is ready ===================================');
+	    var setup = _ls2.default.get('setup');
+	    this.grocer = setup.grocer;
+	  },
+
+	  methods: {
+	    goto: function goto(address_type) {
+
+	      var order_id_input = prompt("Ingrese orden", "");
+	      if (!order_id_input || !$.isNumeric(order_id_input)) {
+	        return;
+	      }
+
+	      _ls2.default.save('order_id', order_id_input);
+	      _ls2.default.save('address_type', address_type);
+
+	      this.$route.router.go('/event-' + address_type);
+	    }
+	  }
+	};
+	// </script>
+	//
 
 /***/ },
 /* 21 */
@@ -15270,7 +15301,7 @@
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(29) + "\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(30) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(29) + "\" alt=\"\" />\n    <div v-if=\"grocer\" style=\"margin-top:200px\">\n      <center><a @click=\"goto('transfer')\" style=\"color:white;font-size: 20px;\">ENTREGAR CARGA</a> </center>\n      <br />\n      <center><a @click=\"goto('reception')\" style=\"color:white;font-size: 20px;\">RECIBIR CARGA</a> </center>\n    </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(30) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
 
 /***/ },
 /* 29 */
@@ -15352,6 +15383,10 @@
 	//               <label>Teléfono central</label>
 	//               <input type="text" v-model="db.phoneCentral">
 	//             </p>
+	//             <p>
+	//             <input class="filled-in" type="checkbox" id="grocer" v-model="db.grocer" />
+	//               <label for="grocer">Bodeguero</label>
+	//             </p>
 	//           </form>
 	//         </ul>
 	//
@@ -15429,7 +15464,7 @@
 /* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>MAC impresora portátil</label>\n              <input type=\"text\" v-model=\"db.printerMAC\" style=\"text-transform: uppercase;\">\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>\n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>MAC impresora portátil</label>\n              <input type=\"text\" v-model=\"db.printerMAC\" style=\"text-transform: uppercase;\">\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>\n            <p>\n            <input class=\"filled-in\" type=\"checkbox\" id=\"grocer\" v-model=\"db.grocer\" />\n              <label for=\"grocer\">Bodeguero</label>\n            </p>\n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 34 */
@@ -16432,7 +16467,7 @@
 	//   <div class="ac25-content-global">
 	//     <div class="container">
 	//       <div class="ac25-content-inner-holder ac25-min-height-200">
-	//        <h4 class="ac25-top-red-text">RECEPCIÓN DE CARGA</h4>
+	//        <h4 class="ac25-top-red-text">RECEPCIÓN DE<br />CARGA</h4>
 	//        <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
 	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
@@ -16490,7 +16525,7 @@
 /* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 69 */
@@ -16549,7 +16584,7 @@
 	//   <div class="ac25-content-global">
 	//     <div class="container">
 	//       <div class="ac25-content-inner-holder ac25-min-height-200">
-	//         <h4 class="ac25-top-red-text">TRASBORDO DE ENTREGA</h4>
+	//         <h4 class="ac25-top-red-text">TRASBORDO DE<br />ENTREGA</h4>
 	//         <p class="left clearfix ac25-subtitle"> Hub: Bodega Huechuraba </p>
 	//         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//
@@ -16656,7 +16691,7 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(53) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos. </li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(65) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 72 */

@@ -138,13 +138,10 @@ export default {
     return router.go( '/iframe-external/go-passport' )
   },
 
-  // The object to be passed as a header for authenticated requests
-  // Not good place to check for existence of access_token
-  // as here we just return a string
   getAuthHeader() {
     var access_token = ls.get( 'access_token' )
-    return 'Bearer ' + access_token
+    if ( access_token ) {
+      return 'Bearer ' + access_token
+    }
   }
-
-
 }

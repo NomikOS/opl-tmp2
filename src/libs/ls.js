@@ -20,6 +20,10 @@ export default {
   },
   get: function( name ) {
     var db = JSON.parse( localStorage.getItem( name_db ) )
+    if ( !db ) {
+      localStorage.setItem( name_db, JSON.stringify( {} ) )
+      db = JSON.parse( localStorage.getItem( name_db ) )
+    }
     return db[ name ]
   },
   clean: function( name ) {
