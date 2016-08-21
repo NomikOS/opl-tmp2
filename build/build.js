@@ -14819,7 +14819,7 @@
 	//       <div class="ac25-loading-content">
 	//         <h5>Esperando Evento...</h5>
 	//         <img src="html/images/loading.gif" alt="" />
-	//         <div v-if="grocer" style="margin-top:200px">
+	//         <div v-if="grocer" style="margin-top:100px">
 	//           <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
 	//           <br />
 	//           <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
@@ -14877,11 +14877,15 @@
 	        console.info(response, 'success callback');
 
 	        if (!response.data || !response.data.order) {
-	          return;
+	          return alert('Orden no existe');
 	        }
 
 	        var order = response.data.order;
 	        console.info(order);
+
+	        if (order.commercial_status_id != 4) {
+	          return alert('La orden no está en estado de transporte');
+	        }
 
 	        _this.storeData({
 	          type: 'order',
@@ -14899,6 +14903,7 @@
 	        _this.$route.router.go('/event-' + address_type);
 	      }, function (response) {
 	        console.info(response, 'error callback');
+
 	        var data = response.data;
 	        if (data.status_code && data.status_code == 404) {
 	          alert('Orden no existe');
@@ -15384,7 +15389,7 @@
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(30) + "\" alt=\"\" />\n        <div v-if=\"grocer\" style=\"margin-top:200px\">\n          <center><a @click=\"goto('transfer')\" style=\"color:white;font-size: 20px;\">ENTREGAR CARGA</a> </center>\n          <br />\n          <center><a @click=\"goto('reception')\" style=\"color:white;font-size: 20px;\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(30) + "\" alt=\"\" />\n        <div v-if=\"grocer\" style=\"margin-top:100px\">\n          <center><a @click=\"goto('transfer')\" style=\"color:white;font-size: 20px;\">ENTREGAR CARGA</a> </center>\n          <br />\n          <center><a @click=\"goto('reception')\" style=\"color:white;font-size: 20px;\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
 
 /***/ },
 /* 30 */

@@ -5,7 +5,7 @@
       <div class="ac25-loading-content">
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
-        <div v-if="grocer" style="margin-top:200px">
+        <div v-if="grocer" style="margin-top:100px">
           <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
           <br />
           <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
@@ -67,11 +67,15 @@
         console.info( response, 'success callback' )
 
         if (!response.data || ! response.data.order) {
-          return
+          return alert('Orden no existe')
         }
 
         var order = response.data.order
         console.info(order);
+
+        if (order.commercial_status_id != 4) {
+          return alert('La orden no está en estado de transporte')
+        }
 
         this.storeData( {
           type: 'order',
@@ -92,6 +96,7 @@
 
       }, ( response ) => {
         console.info( response, 'error callback' )
+
         var data = response.data
         if (data.status_code && data.status_code == 404) {
           alert('Orden no existe')
