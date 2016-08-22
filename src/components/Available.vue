@@ -30,8 +30,16 @@
     },
     ready() {
       console.info( 'Available is ready ===================================' );
-      this.retry();
-      // centrar esto de retry para todos los ajax
+
+      var grocer = ls.get( 'grocer' )
+
+      if ( grocer ) {
+        return this.$route.router.go( '/stand-by-grocer' )
+
+      } else {
+        this.retry();
+
+      }
     },
     methods: {
       retry: function() {
@@ -41,7 +49,7 @@
         if ( !setup || !setup.vehicleSelected ) {
           return this.$route.router.go( '/setup' )
         }
-        
+
         var vehicleSelected = setup.vehicleSelected
         var secs = 30000;
         var that = this;
@@ -73,11 +81,6 @@
             that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...'
             return that.$route.router.go( '/stand-by' )
 
-            // esto causa mucho ...
-            // no usar:
-            // setTimeout( function() {
-            //   return that.$route.router.go( '/stand-by' )
-            // }, 5000 )
           }
 
         }, ( response ) => {

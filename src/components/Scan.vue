@@ -226,7 +226,7 @@
 
         }, ( response ) => {
 
-          switherParseItemUpdated( response )
+          this.switherParseItemUpdated( response )
         } );
       },
       switherParseItemUpdated( error, data ) {

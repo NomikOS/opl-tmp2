@@ -19,3 +19,14 @@ export function getUrlIframe( state ) {
 export function getCounters( state ) {
   return state.counters
 }
+
+export function getTrip( state ) {
+  return state.trip
+}
+export function getOperationType( state ) {
+  return state.operation_type
+}
+export function getTripItemsRemainingCounter( state ) {
+  return state.trip_items_remaining_counter
+}
+

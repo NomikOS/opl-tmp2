@@ -27,7 +27,7 @@
               <input type="text" v-model="db.phoneCentral">
             </p>
             <p>
-            <input class="filled-in" type="checkbox" id="grocer" v-model="db.grocer" />
+              <input class="filled-in" type="checkbox" id="grocer" v-model="grocer" />
               <label for="grocer">Bodeguero</label>
             </p>
           </form>
@@ -58,6 +58,7 @@
     data: function() {
       return {
         vehicleOptions: [],
+        grocer:  false,
         db: {
           vehicleSelected: '',
           printerMAC: '',
@@ -73,31 +74,37 @@
     methods: {
       load: function() {
 
+        var grocer = ls.get( 'grocer' )
+        this.grocer = !!grocer
+
         var setup = ls.get( 'setup' )
 
         if ( setup ) {
           this.db = setup
         }
 
-        var that = this
-
         this.$http.get( ORDER_URL + '/get-setup-data' ).then( ( response ) => {
           console.info( response, 'success callback' )
 
-          that.vehicleOptions = response.data.vehicles
+          this.vehicleOptions = response.data.vehicles
           $( 'select' ).show()
 
         }, ( response ) => {
           console.info( response, 'error callback' )
         } );
       },
+
       save: function() {
 
         var setup = this.db
         ls.save( 'setup', setup )
 
+        var grocer = !!this.grocer
+        ls.save( 'grocer', grocer )
+
         this.$route.router.go( '/available' )
       },
+
       cancel: function() {
         this.$route.router.go( '/available' )
       }

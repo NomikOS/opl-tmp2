@@ -5,11 +5,6 @@
       <div class="ac25-loading-content">
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
-        <div v-if="grocer" style="margin-top:100px">
-          <center><a @click="goto('transfer')" style="color:white;font-size: 20px;">ENTREGAR CARGA</a> </center>
-          <br />
-          <center><a @click="goto('reception')" style="color:white;font-size: 20px;">RECIBIR CARGA</a> </center>
-        </div>
       </div>
     </div>
     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
@@ -37,7 +32,6 @@
     },
     data: function () {
       return {
-        grocer:false
       }
     },
     vuex: {
@@ -52,57 +46,8 @@
     },
     ready() {
       console.info( 'StandBy is ready ===================================' );
-      var setup = ls.get( 'setup' )
-      this.grocer = setup.grocer
     },
     methods: {
-      goto(address_type) {
-
-        var order_id_input = prompt('Ingrese ID orden:', this.order && this.order.id > 0 ? this.order.id : '')
-       if (!order_id_input || !$.isNumeric( order_id_input )) {
-        return
-      }
-
-      this.$http.get( ORDER_URL + '/' + order_id_input + '/grocer-publish').then( ( response ) => {
-        console.info( response, 'success callback' )
-
-        if (!response.data || ! response.data.order) {
-          return alert('Orden no existe')
-        }
-
-        var order = response.data.order
-        console.info(order);
-
-        if (order.commercial_status_id != 4) {
-          return alert('La orden no está en estado de transporte')
-        }
-
-        this.storeData( {
-          type: 'order',
-          content: order
-        } )
-
-        this.storeData( {
-          type: 'addressType',
-          content: address_type
-        } )
-
-
-        // ls.save( 'order_id', order_id_input )
-        // ls.save( 'address_type', address_type )
-
-        this.$route.router.go( '/event-' + address_type )
-
-
-      }, ( response ) => {
-        console.info( response, 'error callback' )
-
-        var data = response.data
-        if (data.status_code && data.status_code == 404) {
-          alert('Orden no existe')
-        }
-      } )
     }
   }
-}
 </script>

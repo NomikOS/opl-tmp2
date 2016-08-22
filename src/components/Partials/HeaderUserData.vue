@@ -24,7 +24,6 @@
     },
 
     methods: {
-
       logout() {
         director.logout()
       }

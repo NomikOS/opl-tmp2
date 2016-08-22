@@ -2,7 +2,7 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-07-31 13:18:52
+ * @Last Modified time: 2016-08-21 21:27:51
  */
 
 import Vue from 'vue'
@@ -22,7 +22,11 @@ const state = {
   addressType: '',
   shipmentNotification: {},
   modalVisible: true,
-  urlIframe: ''
+  urlIframe: '',
+
+  trip: { id: 0 },
+  operation_type: '',
+  trip_items_remaining_counter : 0,
 }
 
 const mutations = {

@@ -47,11 +47,57 @@
 
 	 				switch ( type ) {
 
+            /**
+             * Operaciones de recepcion/transferencia de carga para OPL
+             * --------------------------------------------------------
+             */
+            case 'reception-opl':
+            case 'transfer-opl':
+
+              var setup = ls.get( 'setup' )
+              if ( !setup || !setup.vehicleSelected ) {
+                return this.$route.router.go( '/setup' )
+              }
+
+              var vehicleSelected = setup.vehicleSelected
+              var vehicle_id = message.vehicle_id
+
+              if ( vehicleSelected != vehicle_id ) {
+
+                // no es para este vehiculo
+                console.info( 'Data for another OPL, bye' );
+                return;
+              }
+
+              var trip = message.trip
+
+              that.storeData( {
+                type: 'trip',
+                content: trip
+              } )
+
+              var operation_type = type
+
+              that.storeData( {
+                type: 'operation_type',
+                content: operation_type
+              } )
+
+              /**
+               * safeguards
+               */
+              ls.save( 'trip_id', trip.id );
+              ls.save( 'operation_type', operation_type );
+
+              that.$route.router.go( '/trip-reception' )
+              break;
+
+            /**
+             * Operaciones de tenciona cliente en pickup/delivery para OPL
+             * ------------------------------------------------------------
+             */
 	 					case 'order-pickup':
             case 'order-delivery':
-            case 'order-reception':
-            case 'order-transfer':
-							//----------------
 
 							var setup = ls.get( 'setup' )
 							if ( !setup || !setup.vehicleSelected ) {

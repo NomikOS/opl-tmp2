@@ -22,26 +22,29 @@
 </template>
 
 <script>
-	import { getAddressType } from '../../vuex/getters'
 
 	export default {
-		name: 'ScanFinished',
-		vuex: {
-			getters: {
-				addressType: getAddressType
-			}
-		},
+		name: 'ScanFinishedTrip',
+    data: function() {
+      return {
+        grocer: false
+      }
+    },
+    ready() {
+      var grocer = ls.get( 'grocer' )
+      this.grocer = grocer
+
+      console.info( 'ScanFinishedTrip is ready for ' + ( grocer ? 'Grocer' : 'OPL' ) + ' ===================================' );
+    },
 		methods: {
 
 			back() {
-        if ( 'pickup' == this.addressType ) {
-          return this.$route.router.go( '/event-pickup' )
-
-        } if ( 'delivery' == this.addressType ) {
-          return this.$route.router.go( '/event-delivery' )
+        if ( this.grocer ) {
+          return this.$route.router.go( '/stand-by-grocer' )
 
         } else {
-          return this.$route.router.go( '/available' )
+          return this.$route.router.go( '/stand-by' )
+
         }
 			}
 		}

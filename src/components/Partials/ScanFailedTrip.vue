@@ -21,23 +21,44 @@
 		</div><!-- end container -->
 
 		<footer class="ac25-content-footer">
-			<a v-link="'available'" class="ac25-half-black left waves-effect waves-light">cancelar</a>
-			<a v-link="'scan'" class="ac25-half-red right waves-effect waves-light">reintentar</a>
+			<a @click="back()" class="ac25-half-black left waves-effect waves-light">cancelar</a>
+			<a v-link="'scan-trip'" class="ac25-half-red right waves-effect waves-light">reintentar</a>
 		</footer><!-- end footer -->
 
 	</div><!-- end content-global -->
 </template>
 
 <script>
-	import { getOrder, getItem } from '../../vuex/getters'
+	import { getItem } from '../../vuex/getters'
 
 	export default {
-		name: 'ScanFailed',
-        vuex: {
-            getters: {
-                order: getOrder,
-                item: getItem
-            }
-        },
-	}
+		name: 'ScanFailedTrip',
+    data: function() {
+      return {
+        grocer: false
+      }
+    },
+    vuex: {
+      getters: {
+        item: getItem,
+      }
+    },
+    ready() {
+      var grocer = ls.get( 'grocer' )
+      this.grocer = grocer
+      console.info( 'ScanFinishedTrip is ready for ' + ( grocer ? 'Grocer' : 'OPL' ) + ' ===================================' );
+    },
+    methods: {
+
+      back() {
+        if ( this.grocer ) {
+          return this.$route.router.go( '/stand-by-grocer' )
+
+        } else {
+          return this.$route.router.go( '/stand-by' )
+
+        }
+      }
+    }
+  }
 </script>

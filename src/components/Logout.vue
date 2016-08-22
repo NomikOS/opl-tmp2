@@ -12,7 +12,7 @@
     <a @click="yes()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">sí</a>
     <a @click="no()" class="ac25-half-black left waves-effect waves-light" style="border:1px solid white">no</a>
   </footer><!-- end footer -->
-</div><!-- end content-global -->  
+</div><!-- end content-global -->
 </template>
 
 <script>
@@ -21,14 +21,14 @@ import director from '../services/director'
 import HeaderUserData from './Partials/HeaderUserData.vue'
 
 export default {
-  name: 'Call',
+  name: 'Logout',
   components: {
     HeaderUserData
   },
   methods: {
     yes() {
       director.logout()
-    },    
+    },
     no() {
       router.go(window.history.back())
     }

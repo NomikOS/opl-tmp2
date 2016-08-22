@@ -7,6 +7,7 @@ import ls from '../libs/ls'
 const PASSPORT_WEBSITE_LOGOUT_URL = urls.passport_website + '?action=logout';
 const PASSPORT_API_URL = urls.passport_api
 const GATEWAY_API_URL = urls.gateway_api
+const MICRO_API_URL = urls.micro_api
 
 export default {
   user: {
@@ -26,14 +27,22 @@ export default {
      * We need it for full functionality
      * ---------------------------------
      */
-    var access_token = ls.get( 'access_token' )
-    var user_id = ls.get( 'user_id' )
-    var profile = ls.get( 'profile' )
+     var access_token = ls.get( 'access_token' )
+     var user_id = ls.get( 'user_id' )
+     var profile = ls.get( 'profile' )
+
+    /**
+     * Now grocer is very important
+     * we needit well set it form start
+     * --------------------------------
+     */
+     var grocer = ls.get( 'grocer' )
+     ls.save( 'grocer', !!grocer )
 
     /**
      * Access token is needed
      */
-    if ( !access_token || !user_id ) {
+     if ( !access_token || !user_id ) {
 
       console.info( 'Going to iframe-external/go-passport' );
       return router.go( '/iframe-external/go-passport' )
@@ -49,23 +58,23 @@ export default {
     /**
      * Profile is needed
      */
-    if ( !profile || !profile.id ) {
+     if ( !profile || !profile.id ) {
 
       /**
        * Get profile
        */
-      return this.getProfile();
-    }
+       return this.getProfile();
+     }
 
-    this.user.profile = profile
+     this.user.profile = profile
 
     /**
      * Setup is needed
      */
-    this.checkSetup()
-  },
+     this.checkSetup()
+   },
 
-  setPhonegapid() {
+   setPhonegapid() {
     var phonegapid = ls.get( 'phonegapid' )
 
     if ( !phonegapid ) {
@@ -96,6 +105,11 @@ export default {
 
   checkSetup() {
     var setup = ls.get( 'setup' )
+    var grocer = ls.get( 'grocer' )
+
+    if ( grocer ) {
+      return router.go( '/stand-by-grocer' )
+    }
 
     if ( !setup || !setup.vehicleSelected ) {
 
@@ -114,17 +128,17 @@ export default {
       /**
        * Set and save profile
        */
-      var profile = response.data.data
-      ls.save( 'profile', profile )
+       var profile = response.data.data
+       ls.save( 'profile', profile )
 
-      this.user.profile = profile
+       this.user.profile = profile
 
       /**
        * Setup is needed
        */
-      this.checkSetup()
+       this.checkSetup()
 
-    }, ( response ) => {
+     }, ( response ) => {
       console.info( response, 'error callback' );
     } );
   },
@@ -134,8 +148,39 @@ export default {
     ls.save( 'user_id', '' );
     ls.save( 'profile', '' );
 
-    console.info( 'Going to iframe-external/go-passport after logout' );
-    return router.go( '/iframe-external/go-passport' )
+    var setup = ls.get( 'setup' )
+    var grocer = ls.get( 'grocer' )
+
+    if ( !grocer ) {
+
+      if ( !setup || !setup.vehicleSelected ) {
+        return this.$route.router.go( '/setup' )
+      }
+
+      var vehicleSelected = setup.vehicleSelected
+
+      /**
+       * Vehicle a estado = 1
+       */
+       Vue.http.post( MICRO_API_URL + '/vehicle/' + vehicleSelected ).then( ( response ) => {
+        var data = response.data
+
+        if ( data.success && data.success == true ) {
+
+          console.info( 'Going to iframe-external/go-passport AFTER LOGOUT' );
+          return router.go( '/iframe-external/go-passport' )
+        }
+
+      }, ( response ) => {
+        console.info( response );
+
+      } )
+
+     } else {
+
+      console.info( 'Going to iframe-external/go-passport AFTER LOGOUT' );
+      return router.go( '/iframe-external/go-passport' )
+    }
   },
 
   getAuthHeader() {
