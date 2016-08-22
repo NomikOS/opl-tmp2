@@ -162,7 +162,7 @@ export default {
       /**
        * Vehicle a estado = 1
        */
-       Vue.http.post( MICRO_API_URL + '/vehicle/' + vehicleSelected ).then( ( response ) => {
+       Vue.http.post( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-logout' ).then( ( response ) => {
         var data = response.data
 
         if ( data.success && data.success == true ) {

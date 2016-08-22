@@ -10898,7 +10898,7 @@
 	      /**
 	       * Vehicle a estado = 1
 	       */
-	      _vue2.default.http.post(MICRO_API_URL + '/vehicle/' + vehicleSelected).then(function (response) {
+	      _vue2.default.http.post(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-logout').then(function (response) {
 	        var data = response.data;
 
 	        if (data.success && data.success == true) {
