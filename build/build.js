@@ -18385,6 +18385,8 @@
 	    back: function back() {
 	      var _this = this;
 
+	      var trip_id = this.trip.id;
+
 	      if (this.grocer) {
 	        return this.$route.router.go('/stand-by-grocer');
 	      } else {

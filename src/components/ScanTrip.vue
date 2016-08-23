@@ -83,6 +83,8 @@
     methods: {
 
       back() {
+        var trip_id = this.trip.id
+
         if ( this.grocer ) {
           return this.$route.router.go( '/stand-by-grocer' )
 
