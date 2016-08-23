@@ -17503,7 +17503,7 @@
 	      var trip_id = this.trip.id;
 
 	      _ModalWait2.default.showIt(true, 'printing');
-	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type).then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type + '/' + (this.grocer ? 'grocer' : 'opl')).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
 	        console.info(response, 'success callback');
@@ -18200,10 +18200,14 @@
 	    }
 	  },
 	  data: function data() {
-	    return {};
+	    return {
+	      grocer: false
+	    };
 	  },
 	  ready: function ready() {
 	    console.info('=================================== Print is ready with this trip: ', this.trip.id);
+	    var grocer = _ls2.default.get('grocer');
+	    this.grocer = grocer;
 	  },
 
 
@@ -18220,7 +18224,7 @@
 	      var trip_id = this.trip.id;
 
 	      _ModalWait2.default.showIt(true, 'printing');
-	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type).then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type + '/' + (this.grocer ? 'grocer' : 'opl')).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
 	        console.info(response, 'success callback');

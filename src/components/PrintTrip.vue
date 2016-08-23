@@ -83,11 +83,15 @@
       }
     },
     data() {
-      return {}
+      return {
+        grocer: false
+      }
     },
 
     ready() {
       console.info( '=================================== Print is ready with this trip: ', this.trip.id )
+      var grocer = ls.get( 'grocer' )
+      this.grocer = grocer
     },
 
     methods: {
@@ -103,7 +107,7 @@
         var trip_id = this.trip.id;
 
         ModalWait.showIt( true, 'printing' )
-        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type ).then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type + '/' + (this.grocer ? 'grocer' : 'opl') ).then( ( response ) => {
           ModalWait.showIt( false )
 
           console.info( response, 'success callback' );

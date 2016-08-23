@@ -58,7 +58,6 @@
       this.grocer = grocer
 
       console.info( 'TripTransfer is ready for ' + ( grocer ? 'Grocer' : 'OPL' ) + ' ===================================' )
-
     },
     methods: {
 
@@ -73,7 +72,7 @@
         var trip_id = this.trip.id;
 
         ModalWait.showIt( true, 'printing' )
-        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type ).then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type + '/' + (this.grocer ? 'grocer' : 'opl') ).then( ( response ) => {
           ModalWait.showIt( false )
 
           console.info( response, 'success callback' );
