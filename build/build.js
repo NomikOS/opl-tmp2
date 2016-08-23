@@ -16199,8 +16199,29 @@
 
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	exports.default = (0, _defineProperty3.default)({
+	  name: 'ButtonPrint',
+	  ready: function ready() {},
+
+	  data: function data() {
+	    return {
+	      grocer: false
+	    };
+	  }
+	}, 'ready', function ready() {
+	  var grocer = _ls2.default.get('grocer');
+	  this.grocer = grocer;
+
+	  console.info('ButtonPrint is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
+	});
+	// </script>
+	//
 	// <template>
 	// 	<a v-if="!grocer" v-link="'print'" class="ac25-half-red ac25-half-border-right left waves-effect waves-light">
 	// 		<img src="../html/images/print-big.png" alt="" />
@@ -16213,23 +16234,6 @@
 	// </template>
 	//
 	// <script>
-	exports.default = (0, _defineProperty3.default)({
-	  name: 'ButtonPrint',
-	  ready: function ready() {},
-
-	  data: function data() {
-	    return {
-	      grocer: false
-	    };
-	  }
-	}, 'ready', function ready() {
-	  var grocer = ls.get('grocer');
-	  this.grocer = grocer;
-
-	  console.info('ButtonPrint is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
-	});
-	// </script>
-	//
 
 /***/ },
 /* 49 */
@@ -19584,13 +19588,46 @@
 
 /***/ },
 /* 136 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  name: 'ScanFinishedTrip',
+	  data: function data() {
+	    return {
+	      grocer: false
+	    };
+	  },
+	  ready: function ready() {
+	    var grocer = _ls2.default.get('grocer');
+	    this.grocer = grocer;
+
+	    console.info('ScanFinishedTrip is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
+	  },
+
+	  methods: {
+	    back: function back() {
+	      if (this.grocer) {
+	        return this.$route.router.go('/stand-by-grocer');
+	      } else {
+	        return this.$route.router.go('/stand-by');
+	      }
+	    }
+	  }
+	};
+	// </script>
+	//
 	// <template>
 	// 	<div class="ac25-content-global">
 	//
@@ -19615,33 +19652,6 @@
 	// </template>
 	//
 	// <script>
-
-	exports.default = {
-	  name: 'ScanFinishedTrip',
-	  data: function data() {
-	    return {
-	      grocer: false
-	    };
-	  },
-	  ready: function ready() {
-	    var grocer = ls.get('grocer');
-	    this.grocer = grocer;
-
-	    console.info('ScanFinishedTrip is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
-	  },
-
-	  methods: {
-	    back: function back() {
-	      if (this.grocer) {
-	        return this.$route.router.go('/stand-by-grocer');
-	      } else {
-	        return this.$route.router.go('/stand-by');
-	      }
-	    }
-	  }
-	};
-	// </script>
-	//
 
 /***/ },
 /* 137 */

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+  import ls from '../../libs/ls'
 
 	export default {
 		name: 'ScanFinishedTrip',
