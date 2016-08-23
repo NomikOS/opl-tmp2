@@ -7,8 +7,10 @@
         <hr />
 
         <div style="margin-top:100px">
+        <!-- quiero poner items en transito -->
           <center><a @click="goto('trip-transfer')" style="color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%">ENTREGAR CARGA</a> </center>
           <br />
+          <!-- quiero poner items en hub -->
           <center><a @click="goto('trip-reception')" style="color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%">RECIBIR CARGA</a> </center>
         </div>
       </div>
@@ -59,7 +61,7 @@
           return alert('Ingrese un ID numérico')
         }
 
-        this.$http.get( TRIP_URL + '/' + trip_id_input + '/grocer-publish').then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type).then( ( response ) => {
 
           if (!response.data || ! response.data.trip) {
             return alert('Viaje no existe')

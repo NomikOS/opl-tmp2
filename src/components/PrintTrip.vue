@@ -63,7 +63,7 @@
   import { urls } from '../libs/common'
   import ls from '../libs/ls'
   import { showModal } from '../vuex/actions'
-  import { getTrip } from '../vuex/getters'
+  import { getTrip, getOperationType } from '../vuex/getters'
 
   const TRIP_URL = urls.micro_api + '/trip'
 
@@ -78,6 +78,7 @@
         showModal: showModal
       },
       getters: {
+        operation_type: getOperationType,
         trip: getTrip,
       }
     },
@@ -102,7 +103,7 @@
         var trip_id = this.trip.id;
 
         ModalWait.showIt( true, 'printing' )
-        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label ).then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type ).then( ( response ) => {
           ModalWait.showIt( false )
 
           console.info( response, 'success callback' );

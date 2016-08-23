@@ -15585,8 +15585,10 @@
 	//         <hr />
 	//
 	//         <div style="margin-top:100px">
+	//         <!-- quiero poner items en transito -->
 	//           <center><a @click="goto('trip-transfer')" style="color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%">ENTREGAR CARGA</a> </center>
 	//           <br />
+	//           <!-- quiero poner items en hub -->
 	//           <center><a @click="goto('trip-reception')" style="color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%">RECIBIR CARGA</a> </center>
 	//         </div>
 	//       </div>
@@ -15632,7 +15634,7 @@
 	        return alert('Ingrese un ID numérico');
 	      }
 
-	      this.$http.get(TRIP_URL + '/' + trip_id_input + '/grocer-publish').then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type).then(function (response) {
 
 	        if (!response.data || !response.data.trip) {
 	          return alert('Viaje no existe');
@@ -15677,7 +15679,7 @@
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Preparado para operaciones en hub</h5>\n        <hr />\n\n        <div style=\"margin-top:100px\">\n          <center><a @click=\"goto('trip-transfer')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">ENTREGAR CARGA</a> </center>\n          <br />\n          <center><a @click=\"goto('trip-reception')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Preparado para operaciones en hub</h5>\n        <hr />\n\n        <div style=\"margin-top:100px\">\n        <!-- quiero poner items en transito -->\n          <center><a @click=\"goto('trip-transfer')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">ENTREGAR CARGA</a> </center>\n          <br />\n          <!-- quiero poner items en hub -->\n          <center><a @click=\"goto('trip-reception')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
 
 /***/ },
 /* 35 */
@@ -17501,7 +17503,7 @@
 	      var trip_id = this.trip.id;
 
 	      _ModalWait2.default.showIt(true, 'printing');
-	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label).then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
 	        console.info(response, 'success callback');
@@ -18193,6 +18195,7 @@
 	      showModal: _actions.showModal
 	    },
 	    getters: {
+	      operation_type: _getters.getOperationType,
 	      trip: _getters.getTrip
 	    }
 	  },
@@ -18217,7 +18220,7 @@
 	      var trip_id = this.trip.id;
 
 	      _ModalWait2.default.showIt(true, 'printing');
-	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label).then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id + '/opl-get-zpl/' + label + '/' + this.operation_type).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
 	        console.info(response, 'success callback');
