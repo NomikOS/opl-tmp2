@@ -10592,8 +10592,8 @@
 	             * Operaciones de recepcion/transferencia de carga para OPL
 	             * --------------------------------------------------------
 	             */
-	            case 'reception-opl':
-	            case 'transfer-opl':
+	            case 'trip-transfer':
+	            case 'trip-reception':
 
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
@@ -10630,7 +10630,7 @@
 	              _ls2.default.save('trip_id', trip.id);
 	              _ls2.default.save('operation_type', operation_type);
 
-	              that.$route.router.go('/trip-reception');
+	              that.$route.router.go('/' + operation_type);
 	              break;
 
 	            /**
@@ -16345,10 +16345,8 @@
 	// <template>
 	//   <a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
 	//     <img src="../html/images/barcode-big-2.png" />
-	//     <div style="margin-top:100px">
 	//       <p class="ac25-no-margin" v-if="counters.items_to_scan_remaining > 0">escanear ({{counters.items_to_scan_remaining}})</p>
 	//       <p class="ac25-no-margin" v-if="counters.items_to_scan_remaining <= 0">escaneo listo</p>
-	//     </div>
 	//   </a>
 	// </template>
 	//
@@ -16358,7 +16356,7 @@
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(58) + "\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n    </div>\n  </a>\n";
+	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(58) + "\" />\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n  </a>\n";
 
 /***/ },
 /* 58 */

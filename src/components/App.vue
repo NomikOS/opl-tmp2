@@ -51,8 +51,8 @@
              * Operaciones de recepcion/transferencia de carga para OPL
              * --------------------------------------------------------
              */
-            case 'reception-opl':
-            case 'transfer-opl':
+            case 'trip-transfer':
+            case 'trip-reception':
 
               var setup = ls.get( 'setup' )
               if ( !setup || !setup.vehicleSelected ) {
@@ -89,7 +89,7 @@
               ls.save( 'trip_id', trip.id );
               ls.save( 'operation_type', operation_type );
 
-              that.$route.router.go( '/trip-reception' )
+              that.$route.router.go( '/' + operation_type )
               break;
 
             /**
