@@ -18398,9 +18398,10 @@
 
 	        var vehicleSelected = setup.vehicleSelected;
 
-	        this.$http.post(TRIP_URL + '/finish-transfer', {
+	        this.$http.post(TRIP_URL + '/finish-scan', {
 	          trip_id: trip_id,
-	          vehicle_id: vehicleSelected
+	          vehicle_id: vehicleSelected,
+	          operator_type: this.grocer ? 'grocer' : 'opl'
 
 	        }).then(function (response) {
 	          console.info(response, 'success callback');
