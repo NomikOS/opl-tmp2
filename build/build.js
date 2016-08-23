@@ -18346,6 +18346,7 @@
 
 
 	var TRIP_URL = _common.urls.micro_api + '/trip';
+
 	var barcodeScannerOptions = {
 	  "preferFrontCamera": true, // iOS and Android
 	  "showFlipCameraButton": true, // iOS and Android
@@ -18382,10 +18383,29 @@
 
 	  methods: {
 	    back: function back() {
+	      var _this = this;
+
 	      if (this.grocer) {
 	        return this.$route.router.go('/stand-by-grocer');
 	      } else {
-	        return this.$route.router.go('/stand-by');
+
+	        var setup = _ls2.default.get('setup');
+	        if (!setup || !setup.vehicleSelected) {
+	          return this.$route.router.go('/setup');
+	        }
+
+	        var vehicleSelected = setup.vehicleSelected;
+
+	        this.$http.post(TRIP_URL + '/finish-transfer', {
+	          trip_id: trip_id,
+	          vehicle_id: vehicleSelected
+
+	        }).then(function (response) {
+	          console.info(response, 'success callback');
+	          _this.$route.router.go('/stand-by');
+	        }, function (response) {
+	          console.info(response.data, 'error callback');
+	        });
 	      }
 	    },
 
@@ -18430,7 +18450,7 @@
 	     * ---------------------
 	     */
 	    requestItem: function requestItem() {
-	      var _this = this;
+	      var _this2 = this;
 
 	      var trip_id = this.trip.id;
 	      var operation_type = this.operation_type;
@@ -18445,17 +18465,17 @@
 	        var trip = response.data.trip;
 	        var items_remaining = response.data.items_remaining;
 
-	        _this.storeData({
+	        _this2.storeData({
 	          type: 'trip',
 	          content: trip
 	        });
 
-	        _this.storeData({
+	        _this2.storeData({
 	          type: 'trip_items_remaining_counter',
 	          content: items_remaining.length
 	        });
 	      }, function (response) {
-	        _this.switherParseItemRequest(response);
+	        _this2.switherParseItemRequest(response);
 	      });
 	    },
 
@@ -18465,7 +18485,7 @@
 	     * ----------------
 	     */
 	    updateItem: function updateItem() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      var trip_id = this.trip.id;
 	      var qr_id = this.qr_id;
@@ -18494,21 +18514,21 @@
 	         * Update item is store
 	         * to show in ScanSuccesfulTrip
 	         */
-	        _this2.item = item;
+	        _this3.item = item;
 
-	        _this2.storeData({
+	        _this3.storeData({
 	          type: 'item',
 	          content: item
 	        });
 
 	        if (success) {
-	          return _this2.$route.router.go('/scan-succesful-trip');
+	          return _this3.$route.router.go('/scan-succesful-trip');
 	        }
 
-	        return _this2.$route.router.go('/scan-failed-trip');
+	        return _this3.$route.router.go('/scan-failed-trip');
 	      }, function (response) {
 
-	        _this2.switherParseItemUpdated(response);
+	        _this3.switherParseItemUpdated(response);
 	      });
 	    }
 	  },

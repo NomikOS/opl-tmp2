@@ -46,6 +46,7 @@
   import { getTrip, getItem, getTripItemsRemainingCounter, getOperationType } from '../vuex/getters'
 
   const TRIP_URL = urls.micro_api + '/trip'
+
   const barcodeScannerOptions = {
     "preferFrontCamera": true, // iOS and Android
     "showFlipCameraButton": true, // iOS and Android
@@ -86,7 +87,26 @@
           return this.$route.router.go( '/stand-by-grocer' )
 
         } else {
-          return this.$route.router.go( '/stand-by' )
+
+          var setup = ls.get( 'setup' )
+          if ( !setup || !setup.vehicleSelected ) {
+            return this.$route.router.go( '/setup' )
+          }
+
+          var vehicleSelected = setup.vehicleSelected
+
+          this.$http.post( TRIP_URL + '/finish-transfer', {
+            trip_id: trip_id,
+            vehicle_id: vehicleSelected
+
+          } ).then( ( response ) => {
+            console.info( response, 'success callback' );
+            this.$route.router.go( '/stand-by' )
+
+          }, ( response ) => {
+            console.info( response.data, 'error callback' );
+
+          } );
 
         }
       },
