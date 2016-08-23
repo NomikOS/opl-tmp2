@@ -18,154 +18,166 @@
     components: {},
 
     vuex: {
-     actions: {
-      storeData: storeData
-    }
-  },
+      actions: {
+        storeData: storeData
+      }
+    },
 
-	/**
-	 * Make this and all child components aware of the new store
-	 */
-	 store: store,
+    /**
+     * Make this and all child components aware of the new store
+     */
+    store: store,
 
-	 ready: function() {
-	 	console.info( 'APP is ready ===================================' );
-	 	this.initPubnub()
-	 },
+    ready: function() {
+      console.info( 'APP is ready ===================================' );
+      this.initPubnub()
+    },
 
-	 methods: {
-	 	initPubnub: function() {
-	 		console.info( 'pubnub cargado' );
+    methods: {
+      initPubnub: function() {
+        console.info( 'pubnub cargado' );
 
-	 		var that = this;
-	 		pubnub.subscribe( {
-	 			channel: 'notifications-opl',
+        var that = this;
+        pubnub.subscribe( {
+          channel: 'notifications-opl',
 
-	 			message: function( message ) {
-	 				var type = message.type
-	 				console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
+          message: function( message ) {
+            var type = message.type
+            console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
 
-	 				switch ( type ) {
+            var grocer = ls.get( 'grocer' )
 
-            /**
-             * Operaciones de recepcion/transferencia de carga para OPL
-             * --------------------------------------------------------
-             */
-            case 'trip-transfer':
-            case 'trip-reception':
-
-              var setup = ls.get( 'setup' )
-              if ( !setup || !setup.vehicleSelected ) {
-                return this.$route.router.go( '/setup' )
-              }
-
-              var vehicleSelected = setup.vehicleSelected
-              var vehicle_id = message.vehicle_id
-
-              if ( vehicleSelected != vehicle_id ) {
-
-                // no es para este vehiculo
-                console.info( 'Data for another OPL, bye' );
-                return;
-              }
-
-              var trip = message.trip
-
-              that.storeData( {
-                type: 'trip',
-                content: trip
-              } )
-
-              var operation_type = type
-
-              that.storeData( {
-                type: 'operation_type',
-                content: operation_type
-              } )
+            switch ( type ) {
 
               /**
-               * safeguards
+               * Operaciones de recepcion/transferencia de carga para OPL
+               * Rechazar para grocer
+               * --------------------------------------------------------
                */
-              ls.save( 'trip_id', trip.id );
-              ls.save( 'operation_type', operation_type );
+              case 'trip-transfer':
+              case 'trip-reception':
 
-              that.$route.router.go( '/' + operation_type )
-              break;
+                if (grocer) {
+                  return;
+                }
 
-            /**
-             * Operaciones de tenciona cliente en pickup/delivery para OPL
-             * ------------------------------------------------------------
-             */
-	 					case 'order-pickup':
-            case 'order-delivery':
+                var setup = ls.get( 'setup' )
+                if ( !setup || !setup.vehicleSelected ) {
+                  return this.$route.router.go( '/setup' )
+                }
 
-							var setup = ls.get( 'setup' )
-							if ( !setup || !setup.vehicleSelected ) {
-								return this.$route.router.go( '/setup' )
-							}
+                var vehicleSelected = setup.vehicleSelected
+                var vehicle_id = message.vehicle_id
 
-							var vehicleSelected = setup.vehicleSelected
-							var vehicle_id = message.vehicle_id
+                if ( vehicleSelected != vehicle_id ) {
 
-							if ( vehicleSelected != vehicle_id ) {
+                  // No es para este vehiculo
+                  console.info( 'Data for another OPL, bye' );
+                  return;
+                }
 
-								// no es para este vehiculo
-								console.info( 'Data for another OPL, bye' );
-								return;
-							}
+                var operation_type = type
+                var trip = message.trip
+                var items_remaining = message.items_remaining
 
-							var order = message.order
+                that.storeData( {
+                  type: 'trip',
+                  content: trip
+                } )
 
-							that.storeData( {
-								type: 'order',
-								content: order
-							} )
+                that.storeData( {
+                  type: 'trip_items_remaining_counter',
+                  content: items_remaining.length
+                } )
 
-							var address_type = type.split( '-' )
-							address_type = address_type[ 1 ]
+                that.storeData( {
+                  type: 'operation_type',
+                  content: operation_type
+                } )
 
-							that.storeData( {
-								type: 'addressType',
-								content: address_type
-							} )
+                /**
+                 * safeguards
+                 */
+                ls.save( 'trip_id', trip.id );
+                ls.save( 'operation_type', operation_type );
 
-              /**
-               * safeguards
-               */
-              ls.save( 'order_id', order.id );
-              ls.save( 'address_type', address_type );
+                that.$route.router.go( '/' + operation_type )
+                break;
 
-							that.$route.router.go( '/event-' + address_type )
-							break;
+                /**
+                 * Operaciones de tenciona cliente en pickup/delivery para OPL
+                 * ------------------------------------------------------------
+                 */
+              case 'order-pickup':
+              case 'order-delivery':
 
-							case 'user-authenticated':
-							//----------------
-							var phonegapid_stored = ls.get( 'phonegapid' )
+                var setup = ls.get( 'setup' )
+                if ( !setup || !setup.vehicleSelected ) {
+                  return this.$route.router.go( '/setup' )
+                }
 
-							var token = message.token
-							var uid = message.uid
-							var phonegapid = message.phonegapid
+                var vehicleSelected = setup.vehicleSelected
+                var vehicle_id = message.vehicle_id
 
-							if ( phonegapid != phonegapid_stored ) {
-								console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-								return // and destroy phone
-							}
+                if ( vehicleSelected != vehicle_id ) {
 
-							ls.save( 'access_token', token );
-							ls.save( 'user_id', uid );
+                  // no es para este vehiculo
+                  console.info( 'Data for another OPL, bye' );
+                  return;
+                }
 
-              console.info('DIRECTOR.INIT AFTER USER-AUTHENTICATED....');
-              director.init()
-              break;
+                var order = message.order
+
+                that.storeData( {
+                  type: 'order',
+                  content: order
+                } )
+
+                var address_type = type.split( '-' )
+                address_type = address_type[ 1 ]
+
+                that.storeData( {
+                  type: 'addressType',
+                  content: address_type
+                } )
+
+                /**
+                 * safeguards
+                 */
+                ls.save( 'order_id', order.id );
+                ls.save( 'address_type', address_type );
+
+                that.$route.router.go( '/event-' + address_type )
+                break;
+
+              case 'user-authenticated':
+                //----------------
+                var phonegapid_stored = ls.get( 'phonegapid' )
+
+                var token = message.token
+                var uid = message.uid
+                var phonegapid = message.phonegapid
+
+                if ( phonegapid != phonegapid_stored ) {
+                  console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+                  return // and destroy phone
+                }
+
+                ls.save( 'access_token', token );
+                ls.save( 'user_id', uid );
+
+                console.info( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
+                director.init()
+                break;
 
               case 'shipment-notification':
-							// that.storeData( message.notification )
-							break;
-						}
+                // that.storeData( message.notification )
+                break;
+            }
 
-					}
-				} )
-	 	},
-	 }
-	}
+          }
+        } )
+      },
+    }
+  }
 </script>

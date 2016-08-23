@@ -10586,14 +10586,21 @@
 	          var type = _message.type;
 	          console.info(_message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type);
 
+	          var grocer = _ls2.default.get('grocer');
+
 	          switch (type) {
 
 	            /**
 	             * Operaciones de recepcion/transferencia de carga para OPL
+	             * Rechazar para grocer
 	             * --------------------------------------------------------
 	             */
 	            case 'trip-transfer':
 	            case 'trip-reception':
+
+	              if (grocer) {
+	                return;
+	              }
 
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
@@ -10605,19 +10612,24 @@
 
 	              if (vehicleSelected != vehicle_id) {
 
-	                // no es para este vehiculo
+	                // No es para este vehiculo
 	                console.info('Data for another OPL, bye');
 	                return;
 	              }
 
+	              var operation_type = type;
 	              var trip = _message.trip;
+	              var items_remaining = _message.items_remaining;
 
 	              that.storeData({
 	                type: 'trip',
 	                content: trip
 	              });
 
-	              var operation_type = type;
+	              that.storeData({
+	                type: 'trip_items_remaining_counter',
+	                content: items_remaining.length
+	              });
 
 	              that.storeData({
 	                type: 'operation_type',
