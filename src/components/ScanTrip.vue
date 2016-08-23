@@ -140,7 +140,7 @@
         var operation_type = this.operation_type
 
         this.showModal( true )
-        this.$http.get( TRIP_URL + '/' + trip_id + '/grocer-publish').then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id + '/grocer-publish/' + operation_type + '/' + (this.grocer ? 'grocer' : 'opl')).then( ( response ) => {
 
           if (!response.data || ! response.data.trip) {
             return alert('Viaje no existe')
@@ -180,7 +180,8 @@
 
           trip_id: trip_id,
           qr_id: qr_id,
-          operation_type: operation_type
+          operation_type: operation_type,
+          operator_type: this.grocer ? 'grocer' : 'opl'
 
         } ).then( ( response ) => {
 
@@ -197,14 +198,14 @@
            * Update item is store
            * to show in ScanSuccesfulTrip
            */
-          this.item = item
+           this.item = item
 
-          this.storeData( {
+           this.storeData( {
             type: 'item',
             content: item
           } )
 
-          if ( success ) {
+           if ( success ) {
             return this.$route.router.go( '/scan-succesful-trip' )
           }
 
@@ -221,7 +222,7 @@
      * Ready
      * -----
      */
-    ready() {
+     ready() {
 
       var grocer = ls.get( 'grocer' )
       this.grocer = grocer

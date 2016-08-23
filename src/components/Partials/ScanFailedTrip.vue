@@ -30,6 +30,7 @@
 
 <script>
 	import { getItem } from '../../vuex/getters'
+  import ls from '../../libs/ls'
 
 	export default {
 		name: 'ScanFailedTrip',

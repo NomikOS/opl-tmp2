@@ -61,7 +61,7 @@
           return alert('Ingrese un ID numérico')
         }
 
-        this.$http.get( TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type).then( ( response ) => {
+        this.$http.get( TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type + '/grocer').then( ( response ) => {
 
           if (!response.data || ! response.data.trip) {
             return alert('Viaje no existe')

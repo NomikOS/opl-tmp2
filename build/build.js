@@ -15634,7 +15634,7 @@
 	        return alert('Ingrese un ID numérico');
 	      }
 
-	      this.$http.get(TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type).then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id_input + '/grocer-publish/' + operation_type + '/grocer').then(function (response) {
 
 	        if (!response.data || !response.data.trip) {
 	          return alert('Viaje no existe');
@@ -17536,11 +17536,10 @@
 	        }
 
 	        var vehicleSelected = setup.vehicleSelected;
-	        var vehicle_id = message.vehicle_id;
 
 	        this.$http.post(TRIP_URL + '/finish-transfer', {
 	          trip_id: trip_id,
-	          vehicle_id: vehicle_id
+	          vehicle_id: vehicleSelected
 
 	        }).then(function (response) {
 	          console.info(response, 'success callback');
@@ -18437,7 +18436,7 @@
 	      var operation_type = this.operation_type;
 
 	      this.showModal(true);
-	      this.$http.get(TRIP_URL + '/' + trip_id + '/grocer-publish').then(function (response) {
+	      this.$http.get(TRIP_URL + '/' + trip_id + '/grocer-publish/' + operation_type + '/' + (this.grocer ? 'grocer' : 'opl')).then(function (response) {
 
 	        if (!response.data || !response.data.trip) {
 	          return alert('Viaje no existe');
@@ -18477,7 +18476,8 @@
 
 	        trip_id: trip_id,
 	        qr_id: qr_id,
-	        operation_type: operation_type
+	        operation_type: operation_type,
+	        operator_type: this.grocer ? 'grocer' : 'opl'
 
 	      }).then(function (response) {
 
@@ -19463,36 +19463,12 @@
 
 	var _getters = __webpack_require__(28);
 
-	exports.default = {
-	  name: 'ScanFailedTrip',
-	  data: function data() {
-	    return {
-	      grocer: false
-	    };
-	  },
-	  vuex: {
-	    getters: {
-	      item: _getters.getItem
-	    }
-	  },
-	  ready: function ready() {
-	    var grocer = ls.get('grocer');
-	    this.grocer = grocer;
-	    console.info('ScanFinishedTrip is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
-	  },
+	var _ls = __webpack_require__(9);
 
-	  methods: {
-	    back: function back() {
-	      if (this.grocer) {
-	        return this.$route.router.go('/stand-by-grocer');
-	      } else {
-	        return this.$route.router.go('/stand-by');
-	      }
-	    }
-	  }
-	};
-	// </script>
-	//
+	var _ls2 = _interopRequireDefault(_ls);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	// <template>
 	// 	<div class="ac25-content-global">
 	//
@@ -19524,6 +19500,36 @@
 	// </template>
 	//
 	// <script>
+	exports.default = {
+	  name: 'ScanFailedTrip',
+	  data: function data() {
+	    return {
+	      grocer: false
+	    };
+	  },
+	  vuex: {
+	    getters: {
+	      item: _getters.getItem
+	    }
+	  },
+	  ready: function ready() {
+	    var grocer = _ls2.default.get('grocer');
+	    this.grocer = grocer;
+	    console.info('ScanFinishedTrip is ready for ' + (grocer ? 'Grocer' : 'OPL') + ' ===================================');
+	  },
+
+	  methods: {
+	    back: function back() {
+	      if (this.grocer) {
+	        return this.$route.router.go('/stand-by-grocer');
+	      } else {
+	        return this.$route.router.go('/stand-by');
+	      }
+	    }
+	  }
+	};
+	// </script>
+	//
 
 /***/ },
 /* 134 */

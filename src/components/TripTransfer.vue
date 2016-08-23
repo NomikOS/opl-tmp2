@@ -109,11 +109,10 @@
           }
 
           var vehicleSelected = setup.vehicleSelected
-          var vehicle_id = message.vehicle_id
 
           this.$http.post( TRIP_URL + '/finish-transfer', {
             trip_id: trip_id,
-            vehicle_id: vehicle_id
+            vehicle_id: vehicleSelected
 
           } ).then( ( response ) => {
             console.info( response, 'success callback' );
