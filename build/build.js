@@ -18482,7 +18482,7 @@
 	      }).then(function (response) {
 
 	        var data = response.data;
-	        var success = response.success;
+	        var success = data.success;
 	        var item = data.item;
 
 	        var user_messages = data.user_messages;
