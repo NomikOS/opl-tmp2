@@ -10586,18 +10586,18 @@
 	          var type = _message.type;
 	          console.info(_message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type);
 
-	          var grocer = _ls2.default.get('grocer');
-	          if (grocer) {
-	            return;
-	          }
-
 	          switch (type) {
 
 	            case 'autoping':
 
+	              var grocer = _ls2.default.get('grocer');
+	              if (grocer) {
+	                return;
+	              }
+
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
-	                return this.$route.router.go('/setup');
+	                return that.$route.router.go('/setup');
 	              }
 
 	              var vehicleSelected = setup.vehicleSelected;
@@ -10610,7 +10610,7 @@
 	                return;
 	              }
 
-	              return this.$route.router.go('/available');
+	              return that.$route.router.go('/available');
 
 	              break;
 
@@ -10622,9 +10622,14 @@
 	            case 'trip-transfer':
 	            case 'trip-reception':
 
+	              var grocer = _ls2.default.get('grocer');
+	              if (grocer) {
+	                return;
+	              }
+
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
-	                return this.$route.router.go('/setup');
+	                return that.$route.router.go('/setup');
 	              }
 
 	              var vehicleSelected = setup.vehicleSelected;
@@ -10672,9 +10677,14 @@
 	            case 'order-pickup':
 	            case 'order-delivery':
 
+	              var grocer = _ls2.default.get('grocer');
+	              if (grocer) {
+	                return;
+	              }
+
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
-	                return this.$route.router.go('/setup');
+	                return that.$route.router.go('/setup');
 	              }
 
 	              var vehicleSelected = setup.vehicleSelected;
