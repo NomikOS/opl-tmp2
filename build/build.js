@@ -10587,8 +10587,32 @@
 	          console.info(_message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type);
 
 	          var grocer = _ls2.default.get('grocer');
+	          if (grocer) {
+	            return;
+	          }
 
 	          switch (type) {
+
+	            case 'autoping':
+
+	              var setup = _ls2.default.get('setup');
+	              if (!setup || !setup.vehicleSelected) {
+	                return this.$route.router.go('/setup');
+	              }
+
+	              var vehicleSelected = setup.vehicleSelected;
+	              var vehicle_id = _message.vehicle_id;
+
+	              if (vehicleSelected != vehicle_id) {
+
+	                // No es para este vehiculo
+	                console.info('Data for another OPL, bye');
+	                return;
+	              }
+
+	              return this.$route.router.go('/available');
+
+	              break;
 
 	            /**
 	             * Operaciones de recepcion/transferencia de carga para OPL
@@ -10597,10 +10621,6 @@
 	             */
 	            case 'trip-transfer':
 	            case 'trip-reception':
-
-	              if (grocer) {
-	                return;
-	              }
 
 	              var setup = _ls2.default.get('setup');
 	              if (!setup || !setup.vehicleSelected) {
@@ -17630,9 +17650,10 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a __click="print('invoice')" class="waves-effect waves-light">
+	//       <a click="print('invoice')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p><!-- factura --></p>
+	//           <p v-if="order.dte_type == 33">factura</p>
+	//           <p v-if="order.dte_type == 39">boleta</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -17741,7 +17762,7 @@
 /* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 94 */
@@ -18044,7 +18065,6 @@
 
 	          console.info('counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining);
 
-	          // if ( data.is_last ) {
 	          if (!this.counters.items_to_scan_remaining) {
 	            return this.$route.router.go('/scan-finished');
 	          }

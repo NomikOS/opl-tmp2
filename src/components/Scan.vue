@@ -259,24 +259,23 @@
 
             console.info( 'counters.items_to_scan_remaining: ', this.counters.items_to_scan_remaining );
 
-            // if ( data.is_last ) {
-              if ( !this.counters.items_to_scan_remaining ) {
-                return this.$route.router.go( '/scan-finished' )
-              }
-              return this.$route.router.go( '/scan-succesful' )
-
-            } else {
-
-              console.info( error, 'error callback' )
-              this.$route.router.go( '/scan-failed' )
+            if ( !this.counters.items_to_scan_remaining ) {
+              return this.$route.router.go( '/scan-finished' )
             }
+            return this.$route.router.go( '/scan-succesful' )
+
+          } else {
+
+            console.info( error, 'error callback' )
+            this.$route.router.go( '/scan-failed' )
           }
-        },
+        }
       },
-      ready() {
-        console.info( '=================================== Scan is ready with this order: ', this.order.id );
-        console.info( 'order', this.order, 'counters', this.counters.items_to_scan_remaining );
-        this.requestItem()
-      }
+    },
+    ready() {
+      console.info( '=================================== Scan is ready with this order: ', this.order.id );
+      console.info( 'order', this.order, 'counters', this.counters.items_to_scan_remaining );
+      this.requestItem()
     }
-  </script>
+  }
+</script>

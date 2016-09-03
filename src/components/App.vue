@@ -46,20 +46,41 @@
             console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
 
             var grocer = ls.get( 'grocer' )
+            if ( grocer ) {
+              return;
+            }
 
             switch ( type ) {
 
-              /**
-               * Operaciones de recepcion/transferencia de carga para OPL
-               * Rechazar para grocer
-               * --------------------------------------------------------
-               */
-              case 'trip-transfer':
-              case 'trip-reception':
 
-                if (grocer) {
+              case 'autoping':
+
+                var setup = ls.get( 'setup' )
+                if ( !setup || !setup.vehicleSelected ) {
+                  return this.$route.router.go( '/setup' )
+                }
+
+                var vehicleSelected = setup.vehicleSelected
+                var vehicle_id = message.vehicle_id
+
+                if ( vehicleSelected != vehicle_id ) {
+
+                  // No es para este vehiculo
+                  console.info( 'Data for another OPL, bye' );
                   return;
                 }
+
+                return this.$route.router.go( '/available' )
+
+                break;
+
+                /**
+                 * Operaciones de recepcion/transferencia de carga para OPL
+                 * Rechazar para grocer
+                 * --------------------------------------------------------
+                 */
+              case 'trip-transfer':
+              case 'trip-reception':
 
                 var setup = ls.get( 'setup' )
                 if ( !setup || !setup.vehicleSelected ) {
