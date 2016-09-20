@@ -9,7 +9,7 @@
   import ls from '../libs/ls'
 
   const MICRO_API_URL = urls.micro_api
-  const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=65a8ace68efa5f34dace1e87612bd5cd';
+  const PASSPORT_WEBSITE_LOGIN_URL = urls.passport_website + '?continue=' + urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=1e54d678ffef7a44c9ad676c9a578acc';
 
   export default {
     name: 'IframeExternal',
