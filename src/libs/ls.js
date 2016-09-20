@@ -3,7 +3,7 @@ var name_db = 'agenteOPL';
 /**
  * init global db
  */
-if ( localStorage.getItem( name_db ) === null ) {
+if ( localStorage.getItem( name_db ) === null || ! localStorage.getItem( name_db )) {
   localStorage.setItem( name_db, JSON.stringify( {} ) )
 }
 
