@@ -15993,7 +15993,7 @@
 
 
 	var MICRO_API_URL = _common.urls.micro_api;
-	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=65a8ace68efa5f34dace1e87612bd5cd';
+	var PASSPORT_WEBSITE_LOGIN_URL = _common.urls.passport_website + '?continue=' + _common.urls.passport_api + '/auth/{phonegapid}/phonegap-logged-in&client_id=1e54d678ffef7a44c9ad676c9a578acc';
 
 	exports.default = {
 	  name: 'IframeExternal',
