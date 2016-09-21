@@ -12,7 +12,7 @@
       </a>
     </li>
     <li>
-      <a click="print('invoice')" class="waves-effect waves-light">
+      <a @click="print('invoice')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p v-if="order.dte_type == 33">factura</p>
           <p v-if="order.dte_type == 39">boleta</p>
