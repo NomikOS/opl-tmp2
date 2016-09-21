@@ -50,7 +50,8 @@
     "preferFrontCamera": true, // iOS and Android
     "showFlipCameraButton": true, // iOS and Android
     "prompt": "Apuntar a codigo QR", // supported on Android only
-    "formats": "QR_CODE,PDF_417" // default: all but PDF_417 and RSS_EXPANDED
+    "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+    "orientation": "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
   }
 
   export default {
