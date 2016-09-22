@@ -69,17 +69,24 @@
 
           var result = response.data.result
 
+          console.info('resultado desde api a estoy disponible:', result);
+
           if ( result == 'all ok' ) {
             that.message = 'R4'
 
             setTimeout( function() {
+              console.info('/stand-by despues de 1 second !!!!!!!!!!!!!!!!!!!!!');
               return that.$route.router.go( '/stand-by' )
             }, 1000 )
 
           } else {
 
-            that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...'
-            return that.$route.router.go( '/stand-by' )
+            if ( result != 'shipment dispatched' ) {
+
+              that.message = 'Central informada, pero no se han recibido instrucciones. Nos pondremos en espera dentro de 5 segundos...'
+              console.info('/stand-by despues de retry !!!!!!!!!!!!!!!!!!!!!');
+              return that.$route.router.go( '/stand-by' )
+            }
 
           }
 

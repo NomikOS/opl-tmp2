@@ -15,11 +15,11 @@
         <ul class="ac25-info-list ac25-w100">
           <li>
             <p class="ac25-info-list-title"> nombre </p>
-            <p class="ac25-info-list-content"> {{order.pickupAddress_person_name}}  </p>
+            <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
           </li>
           <li>
             <p class="ac25-info-list-title"> telefono </p>
-            <p class="ac25-info-list-content"> {{order.pickupAddress_person_phone}} </p>
+            <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
           </li>
           <li>
             <p class="ac25-info-list-title"> direccion </p>

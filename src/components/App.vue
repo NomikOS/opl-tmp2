@@ -126,7 +126,7 @@
                 ls.save( 'trip_id', trip.id );
                 ls.save( 'operation_type', operation_type );
 
-                that.$route.router.go( '/' + operation_type )
+                return that.$route.router.go( '/' + operation_type )
                 break;
 
                 /**
@@ -177,7 +177,9 @@
                 ls.save( 'order_id', order.id );
                 ls.save( 'address_type', address_type );
 
-                that.$route.router.go( '/event-' + address_type )
+                console.info('/event-' + address_type, '-------------------------------------');
+
+                return that.$route.router.go( '/event-' + address_type )
                 break;
 
               case 'user-authenticated':
