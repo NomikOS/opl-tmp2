@@ -172,7 +172,8 @@ export default {
         }
 
       }, ( response ) => {
-        console.info( response );
+          console.info( 'Going to iframe-external/go-passport AFTER LOGOUT failed' );
+          return router.go( '/iframe-external/go-passport' )
 
       } )
 
