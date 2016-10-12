@@ -182,6 +182,10 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
+	var _geo = __webpack_require__(147);
+
+	var _geo2 = _interopRequireDefault(_geo);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.config.debug = true;
@@ -10507,7 +10511,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/App.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/App.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -10588,6 +10592,11 @@
 
 	          switch (type) {
 
+	            /**
+	             * Operacion para interceptar viaje
+	             * Rechazar para grocer
+	             * --------------------------------------------------------
+	             */
 	            case 'autoping':
 
 	              var grocer = _ls2.default.get('grocer');
@@ -10611,7 +10620,6 @@
 	              }
 
 	              return that.$route.router.go('/available');
-
 	              break;
 
 	            /**
@@ -10671,8 +10679,8 @@
 	              break;
 
 	            /**
-	             * Operaciones de tenciona cliente en pickup/delivery para OPL
-	             * ------------------------------------------------------------
+	             * Operaciones de atencion a cliente en pickup/delivery para OPL
+	             * -------------------------------------------------------------
 	             */
 	            case 'order-pickup':
 	            case 'order-delivery':
@@ -10720,13 +10728,15 @@
 
 	              console.info('/event-' + address_type, '-------------------------------------');
 
+	              console.info('GEO.START....');
+	              geo.start(order, address_type);
+
 	              return that.$route.router.go('/event-' + address_type);
 	              break;
 
 	            case 'user-authenticated':
-	              //----------------
-	              var phonegapid_stored = _ls2.default.get('phonegapid');
 
+	              var phonegapid_stored = _ls2.default.get('phonegapid');
 	              var token = _message.token;
 	              var uid = _message.uid;
 	              var phonegapid = _message.phonegapid;
@@ -10997,61 +11007,10 @@
 	  logglyKey: '7c87aa29-08f3-429f-9df7-a4c224bc9114'
 	};
 
-	// export const urls = {
-	//   passport_website: 'http://passport.testing.agente.cl',
-	//   passport_api: 'http://passport.api.testing.agente.cl',
-	//   gateway_api: 'http://api.testing.agente.cl',
-	//   micro_api: 'http://api.testing.agente.cl/ltl-micro',
-	// }
-
-	var APP_ENV = function () {
-	  if (/(econocargo\-testing\.agente\.cl)/.test(location.href)) {
-	    return 'testing';
-	  }
-	  if (/(econocargo\-staging\.agente\.cl)/.test(location.href)) {
-	    return 'staging';
-	  }
-	  if (/(econocargo\-hotfix\.agente\.cl)/.test(location.href)) {
-	    return 'hotfix';
-	  }
-	  if (/(econocargo\.cl)/.test(location.href)) {
-	    return 'production';
-	  }
-	}();
+	var APP_ENV = 'production';
 
 	var urls2 = {};
 	switch (APP_ENV) {
-	  case 'testing':
-	    urls2 = {
-	      passport_website: 'https://passport-testing.agente.cl/#!',
-	      passport_api: 'https://api-testing.agente.cl/passport',
-	      econocargo_website: 'https://econocargo-testing.agente.cl',
-	      gateway_api: 'https://api-testing.agente.cl',
-	      micro_api: 'https://api-testing.agente.cl/ltl',
-	      public_docs: 'http://docs-econocargo.agente.cl'
-	    };
-	    break;
-	  case 'staging':
-	    urls2 = {
-	      passport_website: 'https://passport-staging.agente.cl/#!',
-	      passport_api: 'https://api-staging.agente.cl/passport',
-	      econocargo_website: 'https://econocargo-staging.agente.cl',
-	      gateway_api: 'https://api-staging.agente.cl',
-	      micro_api: 'https://api-staging.agente.cl/ltl',
-	      public_docs: 'http://docs-econocargo.agente.cl'
-	    };
-	    break;
-	  case 'hotfix':
-	    urls2 = {
-	      passport_website: 'https://passport-hotfix.agente.cl/#!',
-	      passport_api: 'https://api-hotfix.agente.cl/passport',
-	      econocargo_website: 'https://econocargo-hotfix.agente.cl',
-	      gateway_api: 'https://api-hotfix.agente.cl',
-	      micro_api: 'https://api-hotfix.agente.cl/ltl',
-	      public_docs: 'http://docs-econocargo.agente.cl'
-	    };
-	    break;
-
 	  default:
 	  case 'production':
 	    urls2 = {
@@ -11061,7 +11020,7 @@
 	      econocargo_website: 'https://econocargo.cl',
 	      gateway_api: 'https://api.agente.cl',
 	      micro_api: 'https://api.agente.cl/ltl',
-	      public_docs: 'http://docs-econocargo.agente.cl'
+	      public_docs: 'https://docs-econocargo.agente.cl'
 	    };
 	    break;
 	}
@@ -15044,7 +15003,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/StandBy.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/StandBy.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15141,7 +15100,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/HeaderUserData.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/HeaderUserData.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15165,8 +15124,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-06802119&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-06802119&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -15641,7 +15600,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/StandByGrocer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/StandByGrocer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15794,7 +15753,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Setup.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Setup.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15953,7 +15912,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/IframeExternal.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/IframeExternal.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16040,7 +15999,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/EventPickup.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/EventPickup.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16192,7 +16151,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/NotificationIcon.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/NotificationIcon.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16276,7 +16235,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ButtonPrint.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonPrint.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16422,7 +16381,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ButtonScan.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonScan.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16513,7 +16472,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/EventDelivery.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/EventDelivery.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16677,7 +16636,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/LoadVehicle.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/LoadVehicle.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16865,7 +16824,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ModalWait.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ModalWait.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -16959,7 +16918,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubReception.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/HubReception.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17074,7 +17033,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/HubTransfer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/HubTransfer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17238,7 +17197,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/TripReception.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/TripReception.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17347,7 +17306,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ButtonPrintTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonPrintTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17418,7 +17377,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ButtonScanTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonScanTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17503,7 +17462,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/TripTransfer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/TripTransfer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17678,7 +17637,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Print.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Print.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17858,7 +17817,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Scan.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Scan.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18186,7 +18145,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/PrintTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/PrintTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18238,16 +18197,17 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a __click="print('invoice')" class="waves-effect waves-light">
+	//       <a @click="print('invoice')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p><!-- factura --></p>
+	//           <p v-if="order.dte_type == 33">factura</p>
+	//           <p v-if="order.dte_type == 39">boleta</p>
 	//         </div>
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a __click="print('internal-order')" class="waves-effect waves-light">
+	//       <a @click="print('internal-order')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p><!-- orden interna --></p>
+	//           <p>orden interna</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -18354,7 +18314,7 @@
 /* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- factura --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- orden interna --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('items-list-trip')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>lista de bultos</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('items-list-trip')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>lista de bultos</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 100 */
@@ -18370,7 +18330,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/ScanTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/ScanTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18678,7 +18638,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Payment.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Payment.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18737,7 +18697,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Call.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Call.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18890,7 +18850,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Logout.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Logout.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18975,7 +18935,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Redirecting.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Redirecting.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19056,7 +19016,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Available.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Available.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19177,6 +19137,11 @@
 	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
+
+	        var data = response.data;
+	        if (401 == data.status_code) {
+	          _director2.default.logout();
+	        }
 	      });
 	    }
 	  }
@@ -19204,7 +19169,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanSuccesful.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanSuccesful.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19293,7 +19258,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanFailed.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFailed.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19376,7 +19341,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanFinished.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFinished.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19468,7 +19433,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanSuccesfulTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanSuccesfulTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19577,7 +19542,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanFailedTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFailedTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19685,7 +19650,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/nomikos/dev/econocargo/opl3/src/components/Partials/ScanFinishedTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFinishedTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -23385,6 +23350,94 @@
 	    return _.resource = Resource;
 	};
 
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(2);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _common = __webpack_require__(7);
+
+	var _utils = __webpack_require__(8);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
+	var _global = __webpack_require__(15);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// import un objecto default
+	// modules are singletons!!!
+
+
+	var MICRO_API_URL = _common.urls.micro_api; // import una variable
+
+	var ORDER_URL = _common.urls.micro_api + '/order';
+
+	exports.default = {
+	  position: {},
+
+	  start: function start(order, addressType) {
+
+	    if (!navigator.geolocation) {
+	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
+	    }
+
+	    var targetPos = {};
+
+	    if (addressType == 'pickup') {
+	      targetPos.latitude = order.pickupAddress_lat;
+	      targetPos.latitude = order.pickupAddress_lon;
+	    } else {
+	      targetPos.latitude = order.deliveryAddress_lat;
+	      targetPos.latitude = order.deliveryAddress_lon;
+	    }
+
+	    navigator.geolocation.watchPosition(function (position) {
+
+	      currPos.latitude = position.coords.latitude;
+	      currPos.longitude = position.coords.longitude;
+
+	      d = _utils2.default.getDistance(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
+	      console.info(d);
+
+	      if (d < 10) {
+	        var meters = (d - 0.01) * 1000;
+	        console.info('Recorridos: ' + meters + ' mts.');
+	        this.helloShipment();
+	      }
+	    }, function (err) {
+	      console.warn('geolocation error (' + err.code + '): ' + err.message);
+	    }, {
+	      enableHighAccuracy: true
+	    });
+	  },
+	  helloShipment: function helloShipment(order_id, addressType) {
+	    this.$http.post(ORDER_URL + '/hello-shipment', {
+	      order_id: order_id,
+	      shipment_type: addressType,
+	      address_type: addressType
+
+	    }).then(function (response) {
+	      console.info(response, 'success callback');
+	    }, function (response) {
+	      console.info(response.data, 'error callback');
+	    });
+	  }
+	};
 
 /***/ }
 /******/ ]);
