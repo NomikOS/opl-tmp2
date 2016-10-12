@@ -42,6 +42,7 @@ Vue.use( VueResource )
 Vue.use( VueRouter )
 
 import director from './services/director'
+import geo from './services/geo'
 
 export var router = new VueRouter()
 

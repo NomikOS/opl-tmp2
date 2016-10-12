@@ -13,13 +13,6 @@ export const credentials = {
   logglyKey: '7c87aa29-08f3-429f-9df7-a4c224bc9114'
 }
 
-// export const urls = {
-//   passport_website: 'http://passport.testing.agente.cl',
-//   passport_api: 'http://passport.api.testing.agente.cl',
-//   gateway_api: 'http://api.testing.agente.cl',
-//   micro_api: 'http://api.testing.agente.cl/ltl-micro',
-// }
-
 var APP_ENV = ( function() {
   if ( /(econocargo\-testing\.agente\.cl)/.test( location.href ) ) {
     return 'testing'

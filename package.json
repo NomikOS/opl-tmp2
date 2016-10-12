@@ -4,7 +4,8 @@
   "description": "Aplicación de operador logístico",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
-    "build": "webpack --watch"
+    "build-dev": "webpack --progress --colors --watch",
+    "build": "webpack"
   },
   "author": "igor.parra@agente.cl",
   "license": "MIT",

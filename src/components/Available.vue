@@ -92,6 +92,12 @@
 
         }, ( response ) => {
           console.info( response, 'error callback' );
+
+          var data = response.data
+          if ( 401 == data.status_code ) {
+            director.logout()
+          }
+
         } )
       }
     }

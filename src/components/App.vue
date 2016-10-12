@@ -26,9 +26,9 @@
     /**
      * Make this and all child components aware of the new store
      */
-    store: store,
+     store: store,
 
-    ready: function() {
+     ready: function() {
       console.info( 'APP is ready ===================================' );
       this.initPubnub()
     },
@@ -47,10 +47,15 @@
 
             switch ( type ) {
 
-              case 'autoping':
+                /**
+                 * Operacion para interceptar viaje
+                 * Rechazar para grocer
+                 * --------------------------------------------------------
+                 */
+                 case 'autoping':
 
-                var grocer = ls.get( 'grocer' )
-                if ( grocer ) {
+                 var grocer = ls.get( 'grocer' )
+                 if ( grocer ) {
                   return;
                 }
 
@@ -65,24 +70,23 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // No es para este vehiculo
-                  console.info( 'Data for another OPL, bye' );
+                  console.info( 'Data for another OPL, bye' )
                   return;
                 }
 
                 return that.$route.router.go( '/available' )
-
-                break;
+                break
 
                 /**
                  * Operaciones de recepcion/transferencia de carga para OPL
                  * Rechazar para grocer
                  * --------------------------------------------------------
                  */
-              case 'trip-transfer':
-              case 'trip-reception':
+                 case 'trip-transfer':
+                 case 'trip-reception':
 
-                var grocer = ls.get( 'grocer' )
-                if ( grocer ) {
+                 var grocer = ls.get( 'grocer' )
+                 if ( grocer ) {
                   return;
                 }
 
@@ -123,21 +127,21 @@
                 /**
                  * safeguards
                  */
-                ls.save( 'trip_id', trip.id );
-                ls.save( 'operation_type', operation_type );
+                 ls.save( 'trip_id', trip.id );
+                 ls.save( 'operation_type', operation_type );
 
-                return that.$route.router.go( '/' + operation_type )
-                break;
+                 return that.$route.router.go( '/' + operation_type )
+                 break
 
                 /**
-                 * Operaciones de tenciona cliente en pickup/delivery para OPL
-                 * ------------------------------------------------------------
+                 * Operaciones de atencion a cliente en pickup/delivery para OPL
+                 * -------------------------------------------------------------
                  */
-              case 'order-pickup':
-              case 'order-delivery':
+                 case 'order-pickup':
+                 case 'order-delivery':
 
-                var grocer = ls.get( 'grocer' )
-                if ( grocer ) {
+                 var grocer = ls.get( 'grocer' )
+                 if ( grocer ) {
                   return;
                 }
 
@@ -152,7 +156,7 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // no es para este vehiculo
-                  console.info( 'Data for another OPL, bye' );
+                  console.info( 'Data for another OPL, bye' )
                   return;
                 }
 
@@ -174,23 +178,25 @@
                 /**
                  * safeguards
                  */
-                ls.save( 'order_id', order.id );
-                ls.save( 'address_type', address_type );
+                 ls.save( 'order_id', order.id );
+                 ls.save( 'address_type', address_type )
 
-                console.info('/event-' + address_type, '-------------------------------------');
+                 console.info('/event-' + address_type, '-------------------------------------');
 
-                return that.$route.router.go( '/event-' + address_type )
-                break;
+                 console.info( 'GEO.START....' );
+                 geo.start(order, address_type)
 
-              case 'user-authenticated':
-                //----------------
-                var phonegapid_stored = ls.get( 'phonegapid' )
+                 return that.$route.router.go( '/event-' + address_type )
+                 break
 
-                var token = message.token
-                var uid = message.uid
-                var phonegapid = message.phonegapid
+                 case 'user-authenticated':
 
-                if ( phonegapid != phonegapid_stored ) {
+                 var phonegapid_stored = ls.get( 'phonegapid' )
+                 var token = message.token
+                 var uid = message.uid
+                 var phonegapid = message.phonegapid
+
+                 if ( phonegapid != phonegapid_stored ) {
                   console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
                   return // and destroy phone
                 }
@@ -200,16 +206,16 @@
 
                 console.info( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
                 director.init()
-                break;
+                break
 
-              case 'shipment-notification':
+                case 'shipment-notification':
                 // that.storeData( message.notification )
-                break;
-            }
+                break
+              }
 
-          }
-        } )
-      },
-    }
-  }
+            }
+          } )
+},
+}
+}
 </script>
