@@ -88,6 +88,11 @@
               return that.$route.router.go( '/stand-by' )
             }
 
+            /**
+             * NO enrutar aqui a ninguna parte ya que
+             * se espera un notificacion via pubnub que
+             * manejara el siguiente paso a seguir, asshole!!!
+             */
           }
 
         }, ( response ) => {

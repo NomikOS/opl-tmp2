@@ -19,16 +19,21 @@ export default {
     }
 
     var targetPos = {}
+    var currPos = {}
+    var that = this
+
+    console.info(order.pickupAddress_lat);
+    console.info(order.deliveryAddress_lat);
 
     if (addressType == 'pickup')
     {
       targetPos.latitude = order.pickupAddress_lat
-      targetPos.latitude = order.pickupAddress_lon
+      targetPos.longitude = order.pickupAddress_lon
     }
     else
     {
       targetPos.latitude = order.deliveryAddress_lat
-      targetPos.latitude = order.deliveryAddress_lon
+      targetPos.longitude = order.deliveryAddress_lon
     }
 
     navigator.geolocation.watchPosition( function( position ) {
@@ -36,13 +41,16 @@ export default {
         currPos.latitude = position.coords.latitude
         currPos.longitude = position.coords.longitude
 
-        d = utils.getDistance( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' )
+        console.info('currPos', currPos);
+        console.info(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
+
+        var d = utils.getDistance( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' )
         console.info(d);
 
         if ( d < 10 ) {
           var meters = ( d - 0.01 ) * 1000
           console.info( 'Recorridos: ' + meters + ' mts.' )
-          this.helloShipment()
+          that.helloShipment(order.id, addressType)
         }
       },
       function( err ) {
@@ -55,7 +63,7 @@ export default {
   },
 
   helloShipment( order_id, addressType ) {
-    this.$http.post( ORDER_URL + '/hello-shipment', {
+    Vue.http.post( ORDER_URL + '/hello-shipment', {
       order_id: order_id,
       shipment_type: addressType,
       address_type: addressType

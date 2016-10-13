@@ -66,115 +66,115 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _StandBy = __webpack_require__(19);
+	var _StandBy = __webpack_require__(20);
 
 	var _StandBy2 = _interopRequireDefault(_StandBy);
 
-	var _StandByGrocer = __webpack_require__(32);
+	var _StandByGrocer = __webpack_require__(33);
 
 	var _StandByGrocer2 = _interopRequireDefault(_StandByGrocer);
 
-	var _Setup = __webpack_require__(35);
+	var _Setup = __webpack_require__(36);
 
 	var _Setup2 = _interopRequireDefault(_Setup);
 
-	var _IframeExternal = __webpack_require__(38);
+	var _IframeExternal = __webpack_require__(39);
 
 	var _IframeExternal2 = _interopRequireDefault(_IframeExternal);
 
-	var _EventPickup = __webpack_require__(41);
+	var _EventPickup = __webpack_require__(42);
 
 	var _EventPickup2 = _interopRequireDefault(_EventPickup);
 
-	var _EventDelivery = __webpack_require__(62);
+	var _EventDelivery = __webpack_require__(63);
 
 	var _EventDelivery2 = _interopRequireDefault(_EventDelivery);
 
-	var _LoadVehicle = __webpack_require__(66);
+	var _LoadVehicle = __webpack_require__(67);
 
 	var _LoadVehicle2 = _interopRequireDefault(_LoadVehicle);
 
-	var _HubReception = __webpack_require__(73);
+	var _HubReception = __webpack_require__(74);
 
 	var _HubReception2 = _interopRequireDefault(_HubReception);
 
-	var _HubTransfer = __webpack_require__(76);
+	var _HubTransfer = __webpack_require__(77);
 
 	var _HubTransfer2 = _interopRequireDefault(_HubTransfer);
 
-	var _TripReception = __webpack_require__(79);
+	var _TripReception = __webpack_require__(80);
 
 	var _TripReception2 = _interopRequireDefault(_TripReception);
 
-	var _TripTransfer = __webpack_require__(88);
+	var _TripTransfer = __webpack_require__(89);
 
 	var _TripTransfer2 = _interopRequireDefault(_TripTransfer);
 
-	var _Print = __webpack_require__(91);
+	var _Print = __webpack_require__(92);
 
 	var _Print2 = _interopRequireDefault(_Print);
 
-	var _Scan = __webpack_require__(94);
+	var _Scan = __webpack_require__(95);
 
 	var _Scan2 = _interopRequireDefault(_Scan);
 
-	var _PrintTrip = __webpack_require__(97);
+	var _PrintTrip = __webpack_require__(98);
 
 	var _PrintTrip2 = _interopRequireDefault(_PrintTrip);
 
-	var _ScanTrip = __webpack_require__(100);
+	var _ScanTrip = __webpack_require__(101);
 
 	var _ScanTrip2 = _interopRequireDefault(_ScanTrip);
 
-	var _Payment = __webpack_require__(103);
+	var _Payment = __webpack_require__(104);
 
 	var _Payment2 = _interopRequireDefault(_Payment);
 
-	var _Call = __webpack_require__(106);
+	var _Call = __webpack_require__(107);
 
 	var _Call2 = _interopRequireDefault(_Call);
 
-	var _Logout = __webpack_require__(109);
+	var _Logout = __webpack_require__(110);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _Redirecting = __webpack_require__(112);
+	var _Redirecting = __webpack_require__(113);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(115);
+	var _Available = __webpack_require__(116);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _ScanSuccesful = __webpack_require__(118);
+	var _ScanSuccesful = __webpack_require__(119);
 
 	var _ScanSuccesful2 = _interopRequireDefault(_ScanSuccesful);
 
-	var _ScanFailed = __webpack_require__(122);
+	var _ScanFailed = __webpack_require__(123);
 
 	var _ScanFailed2 = _interopRequireDefault(_ScanFailed);
 
-	var _ScanFinished = __webpack_require__(125);
+	var _ScanFinished = __webpack_require__(126);
 
 	var _ScanFinished2 = _interopRequireDefault(_ScanFinished);
 
-	var _ScanSuccesfulTrip = __webpack_require__(129);
+	var _ScanSuccesfulTrip = __webpack_require__(130);
 
 	var _ScanSuccesfulTrip2 = _interopRequireDefault(_ScanSuccesfulTrip);
 
-	var _ScanFailedTrip = __webpack_require__(132);
+	var _ScanFailedTrip = __webpack_require__(133);
 
 	var _ScanFailedTrip2 = _interopRequireDefault(_ScanFailedTrip);
 
-	var _ScanFinishedTrip = __webpack_require__(135);
+	var _ScanFinishedTrip = __webpack_require__(136);
 
 	var _ScanFinishedTrip2 = _interopRequireDefault(_ScanFinishedTrip);
 
-	var _vueRouter = __webpack_require__(138);
+	var _vueRouter = __webpack_require__(139);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(139);
+	var _vueResource = __webpack_require__(140);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
@@ -182,7 +182,7 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _geo = __webpack_require__(147);
+	var _geo = __webpack_require__(13);
 
 	var _geo2 = _interopRequireDefault(_geo);
 
@@ -10503,7 +10503,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(5)
-	__vue_template__ = __webpack_require__(18)
+	__vue_template__ = __webpack_require__(19)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -10533,17 +10533,21 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _store = __webpack_require__(13);
+	var _geo = __webpack_require__(13);
+
+	var _geo2 = _interopRequireDefault(_geo);
+
+	var _store = __webpack_require__(16);
 
 	var _store2 = _interopRequireDefault(_store);
 
 	var _index = __webpack_require__(1);
 
-	var _global = __webpack_require__(15);
+	var _global = __webpack_require__(14);
 
 	var _common = __webpack_require__(7);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
 	var _ls = __webpack_require__(9);
 
@@ -10551,12 +10555,14 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var PASSPORT_API_URL = _common.urls.passport_api; // <template>
+	// <template>
 	// 	<router-view></router-view>
 	// </template>
 	//
 	// <script>
 
+
+	var PASSPORT_API_URL = _common.urls.passport_api;
 	var GATEWAY_API_URL = _common.urls.gateway_api;
 
 	exports.default = {
@@ -10729,7 +10735,7 @@
 	              console.info('/event-' + address_type, '-------------------------------------');
 
 	              console.info('GEO.START....');
-	              geo.start(order, address_type);
+	              _geo2.default.start(order, address_type);
 
 	              return that.$route.router.go('/event-' + address_type);
 	              break;
@@ -10961,7 +10967,8 @@
 	          return _index.router.go('/iframe-external/go-passport');
 	        }
 	      }, function (response) {
-	        console.info(response);
+	        console.info('Going to iframe-external/go-passport AFTER LOGOUT failed');
+	        return _index.router.go('/iframe-external/go-passport');
 	      });
 	    } else {
 
@@ -11211,718 +11218,90 @@
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vuex = __webpack_require__(14);
+	var _common = __webpack_require__(7);
 
-	var _vuex2 = _interopRequireDefault(_vuex);
+	var _utils = __webpack_require__(8);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
+	var _ls = __webpack_require__(9);
+
+	var _ls2 = _interopRequireDefault(_ls);
+
+	var _global = __webpack_require__(14);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Make vue aware of Vuex
-	/*
-	 * @Author: Igor Parra
-	 * @Date:   2016-07-15 12:20:57
-	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-08-21 21:27:51
-	 */
+	// import un objecto default
+	// modules are singletons!!!
 
-	_vue2.default.use(_vuex2.default);
 
-	// Create an object to hold the initial state when
-	// the app starts up
-	var state = {
-	  order: { id: 0 },
-	  item: { id: 0 },
-	  counters: {
-	    items_to_scan_remaining: 0
-	  },
-	  addressType: '',
-	  shipmentNotification: {},
-	  modalVisible: true,
-	  urlIframe: '',
+	var MICRO_API_URL = _common.urls.micro_api; // import una variable
 
-	  trip: { id: 0 },
-	  operation_type: '',
-	  trip_items_remaining_counter: 0
-	};
+	var ORDER_URL = _common.urls.micro_api + '/order';
 
-	var mutations = {
-	  // A mutation receives the current state as the first argument
-	  // You can make any modifications you want inside this function
+	exports.default = {
+	  position: {},
 
-	  LOAD_DATA: function LOAD_DATA(state, data) {
-	    var type = data.type;
-	    var content = data.content;
-	    state[type] = content;
+	  start: function start(order, addressType) {
 
-	    if ('order' == type) {
-	      state.counters.items_to_scan_remaining = content.items_to_scan_remaining;
+	    if (!navigator.geolocation) {
+	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
 	    }
+
+	    var targetPos = {};
+	    var currPos = {};
+	    var that = this;
+
+	    console.info(order.pickupAddress_lat);
+	    console.info(order.deliveryAddress_lat);
+
+	    if (addressType == 'pickup') {
+	      targetPos.latitude = order.pickupAddress_lat;
+	      targetPos.longitude = order.pickupAddress_lon;
+	    } else {
+	      targetPos.latitude = order.deliveryAddress_lat;
+	      targetPos.longitude = order.deliveryAddress_lon;
+	    }
+
+	    navigator.geolocation.watchPosition(function (position) {
+
+	      currPos.latitude = position.coords.latitude;
+	      currPos.longitude = position.coords.longitude;
+
+	      console.info('currPos', currPos);
+	      console.info(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
+
+	      var d = _utils2.default.getDistance(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
+	      console.info(d);
+
+	      if (d < 10) {
+	        var meters = (d - 0.01) * 1000;
+	        console.info('Recorridos: ' + meters + ' mts.');
+	        that.helloShipment(order.id, addressType);
+	      }
+	    }, function (err) {
+	      console.warn('geolocation error (' + err.code + '): ' + err.message);
+	    }, {
+	      enableHighAccuracy: true
+	    });
 	  },
-	  HIDE_MODAL: function HIDE_MODAL(state, data) {
-	    state.modalVisible = data;
-	  },
-	  SET_COUNTERS: function SET_COUNTERS(state, data) {
-	    // var type = data.type
-	    // var units = data.units
-	    // var x = state.counters[ type ];
-	    // state.counters[ type ] = +x + +units
-	    // console.info(state.counters);
-	    state.counters.items_to_scan_remaining--;
+	  helloShipment: function helloShipment(order_id, addressType) {
+	    _vue2.default.http.post(ORDER_URL + '/hello-shipment', {
+	      order_id: order_id,
+	      shipment_type: addressType,
+	      address_type: addressType
+
+	    }).then(function (response) {
+	      console.info(response, 'success callback');
+	    }, function (response) {
+	      console.info(response.data, 'error callback');
+	    });
 	  }
 	};
-
-	// Combine the initial state and the mutations to create a Vuex store.
-	// This store can be linked to our app.
-	exports.default = new _vuex2.default.Store({
-	  state: state,
-	  mutations: mutations
-	});
 
 /***/ },
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*!
-	 * Vuex v0.8.2
-	 * (c) 2016 Evan You
-	 * Released under the MIT License.
-	 */
-	(function (global, factory) {
-	   true ? module.exports = factory() :
-	  typeof define === 'function' && define.amd ? define(factory) :
-	  (global.Vuex = factory());
-	}(this, function () { 'use strict';
-
-	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-	    return typeof obj;
-	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
-	  };
-
-	  var classCallCheck = function (instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	    }
-	  };
-
-	  var createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
-
-	  var toConsumableArray = function (arr) {
-	    if (Array.isArray(arr)) {
-	      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-	      return arr2;
-	    } else {
-	      return Array.from(arr);
-	    }
-	  };
-
-	  /**
-	   * Merge an array of objects into one.
-	   *
-	   * @param {Array<Object>} arr
-	   * @return {Object}
-	   */
-
-	  function mergeObjects(arr) {
-	    return arr.reduce(function (prev, obj) {
-	      Object.keys(obj).forEach(function (key) {
-	        var existing = prev[key];
-	        if (existing) {
-	          // allow multiple mutation objects to contain duplicate
-	          // handlers for the same mutation type
-	          if (Array.isArray(existing)) {
-	            existing.push(obj[key]);
-	          } else {
-	            prev[key] = [prev[key], obj[key]];
-	          }
-	        } else {
-	          prev[key] = obj[key];
-	        }
-	      });
-	      return prev;
-	    }, {});
-	  }
-
-	  /**
-	   * Deep clone an object. Faster than JSON.parse(JSON.stringify()).
-	   *
-	   * @param {*} obj
-	   * @return {*}
-	   */
-
-	  function deepClone(obj) {
-	    if (Array.isArray(obj)) {
-	      return obj.map(deepClone);
-	    } else if (obj && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object') {
-	      var cloned = {};
-	      var keys = Object.keys(obj);
-	      for (var i = 0, l = keys.length; i < l; i++) {
-	        var key = keys[i];
-	        cloned[key] = deepClone(obj[key]);
-	      }
-	      return cloned;
-	    } else {
-	      return obj;
-	    }
-	  }
-
-	  /**
-	   * Hacks to get access to Vue internals.
-	   * Maybe we should expose these...
-	   */
-
-	  var Watcher = void 0;
-	  function getWatcher(vm) {
-	    if (!Watcher) {
-	      var noop = function noop() {};
-	      var unwatch = vm.$watch(noop, noop);
-	      Watcher = vm._watchers[0].constructor;
-	      unwatch();
-	    }
-	    return Watcher;
-	  }
-
-	  var Dep = void 0;
-	  function getDep(vm) {
-	    if (!Dep) {
-	      Dep = vm._data.__ob__.dep.constructor;
-	    }
-	    return Dep;
-	  }
-
-	  var hook = typeof window !== 'undefined' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-
-	  var devtoolMiddleware = {
-	    onInit: function onInit(state, store) {
-	      if (!hook) return;
-	      hook.emit('vuex:init', store);
-	      hook.on('vuex:travel-to-state', function (targetState) {
-	        store._dispatching = true;
-	        store._vm.state = targetState;
-	        store._dispatching = false;
-	      });
-	    },
-	    onMutation: function onMutation(mutation, state) {
-	      if (!hook) return;
-	      hook.emit('vuex:mutation', mutation, state);
-	    }
-	  };
-
-	  function override (Vue) {
-	    var version = Number(Vue.version.split('.')[0]);
-
-	    if (version >= 2) {
-	      var usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1;
-	      Vue.mixin(usesInit ? { init: vuexInit } : { beforeCreate: vuexInit });
-	    } else {
-	      (function () {
-	        // override init and inject vuex init procedure
-	        // for 1.x backwards compatibility.
-	        var _init = Vue.prototype._init;
-	        Vue.prototype._init = function () {
-	          var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	          options.init = options.init ? [vuexInit].concat(options.init) : vuexInit;
-	          _init.call(this, options);
-	        };
-	      })();
-	    }
-
-	    /**
-	     * Vuex init hook, injected into each instances init hooks list.
-	     */
-
-	    function vuexInit() {
-	      var options = this.$options;
-	      var store = options.store;
-	      var vuex = options.vuex;
-	      // store injection
-
-	      if (store) {
-	        this.$store = store;
-	      } else if (options.parent && options.parent.$store) {
-	        this.$store = options.parent.$store;
-	      }
-	      // vuex option handling
-	      if (vuex) {
-	        if (!this.$store) {
-	          console.warn('[vuex] store not injected. make sure to ' + 'provide the store option in your root component.');
-	        }
-	        var state = vuex.state;
-	        var actions = vuex.actions;
-	        var getters = vuex.getters;
-	        // handle deprecated state option
-
-	        if (state && !getters) {
-	          console.warn('[vuex] vuex.state option will been deprecated in 1.0. ' + 'Use vuex.getters instead.');
-	          getters = state;
-	        }
-	        // getters
-	        if (getters) {
-	          options.computed = options.computed || {};
-	          for (var key in getters) {
-	            defineVuexGetter(this, key, getters[key]);
-	          }
-	        }
-	        // actions
-	        if (actions) {
-	          options.methods = options.methods || {};
-	          for (var _key in actions) {
-	            options.methods[_key] = makeBoundAction(this.$store, actions[_key], _key);
-	          }
-	        }
-	      }
-	    }
-
-	    /**
-	     * Setter for all getter properties.
-	     */
-
-	    function setter() {
-	      throw new Error('vuex getter properties are read-only.');
-	    }
-
-	    /**
-	     * Define a Vuex getter on an instance.
-	     *
-	     * @param {Vue} vm
-	     * @param {String} key
-	     * @param {Function} getter
-	     */
-
-	    function defineVuexGetter(vm, key, getter) {
-	      if (typeof getter !== 'function') {
-	        console.warn('[vuex] Getter bound to key \'vuex.getters.' + key + '\' is not a function.');
-	      } else {
-	        Object.defineProperty(vm, key, {
-	          enumerable: true,
-	          configurable: true,
-	          get: makeComputedGetter(vm.$store, getter),
-	          set: setter
-	        });
-	      }
-	    }
-
-	    /**
-	     * Make a computed getter, using the same caching mechanism of computed
-	     * properties. In addition, it is cached on the raw getter function using
-	     * the store's unique cache id. This makes the same getter shared
-	     * across all components use the same underlying watcher, and makes
-	     * the getter evaluated only once during every flush.
-	     *
-	     * @param {Store} store
-	     * @param {Function} getter
-	     */
-
-	    function makeComputedGetter(store, getter) {
-	      var id = store._getterCacheId;
-
-	      // cached
-	      if (getter[id]) {
-	        return getter[id];
-	      }
-	      var vm = store._vm;
-	      var Watcher = getWatcher(vm);
-	      var Dep = getDep(vm);
-	      var watcher = new Watcher(vm, function (vm) {
-	        return getter(vm.state);
-	      }, null, { lazy: true });
-	      var computedGetter = function computedGetter() {
-	        if (watcher.dirty) {
-	          watcher.evaluate();
-	        }
-	        if (Dep.target) {
-	          watcher.depend();
-	        }
-	        return watcher.value;
-	      };
-	      getter[id] = computedGetter;
-	      return computedGetter;
-	    }
-
-	    /**
-	     * Make a bound-to-store version of a raw action function.
-	     *
-	     * @param {Store} store
-	     * @param {Function} action
-	     * @param {String} key
-	     */
-
-	    function makeBoundAction(store, action, key) {
-	      if (typeof action !== 'function') {
-	        console.warn('[vuex] Action bound to key \'vuex.actions.' + key + '\' is not a function.');
-	      }
-	      return function vuexBoundAction() {
-	        for (var _len = arguments.length, args = Array(_len), _key2 = 0; _key2 < _len; _key2++) {
-	          args[_key2] = arguments[_key2];
-	        }
-
-	        return action.call.apply(action, [this, store].concat(args));
-	      };
-	    }
-
-	    // option merging
-	    var merge = Vue.config.optionMergeStrategies.computed;
-	    Vue.config.optionMergeStrategies.vuex = function (toVal, fromVal) {
-	      if (!toVal) return fromVal;
-	      if (!fromVal) return toVal;
-	      return {
-	        getters: merge(toVal.getters, fromVal.getters),
-	        state: merge(toVal.state, fromVal.state),
-	        actions: merge(toVal.actions, fromVal.actions)
-	      };
-	    };
-	  }
-
-	  var Vue = void 0;
-	  var uid = 0;
-
-	  var Store = function () {
-
-	    /**
-	     * @param {Object} options
-	     *        - {Object} state
-	     *        - {Object} actions
-	     *        - {Object} mutations
-	     *        - {Array} middlewares
-	     *        - {Boolean} strict
-	     */
-
-	    function Store() {
-	      var _this = this;
-
-	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	      var _ref$state = _ref.state;
-	      var state = _ref$state === undefined ? {} : _ref$state;
-	      var _ref$mutations = _ref.mutations;
-	      var mutations = _ref$mutations === undefined ? {} : _ref$mutations;
-	      var _ref$modules = _ref.modules;
-	      var modules = _ref$modules === undefined ? {} : _ref$modules;
-	      var _ref$middlewares = _ref.middlewares;
-	      var middlewares = _ref$middlewares === undefined ? [] : _ref$middlewares;
-	      var _ref$strict = _ref.strict;
-	      var strict = _ref$strict === undefined ? false : _ref$strict;
-	      classCallCheck(this, Store);
-
-	      this._getterCacheId = 'vuex_store_' + uid++;
-	      this._dispatching = false;
-	      this._rootMutations = this._mutations = mutations;
-	      this._modules = modules;
-	      // bind dispatch to self
-	      var dispatch = this.dispatch;
-	      this.dispatch = function () {
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	          args[_key] = arguments[_key];
-	        }
-
-	        dispatch.apply(_this, args);
-	      };
-	      // use a Vue instance to store the state tree
-	      // suppress warnings just in case the user has added
-	      // some funky global mixins
-	      if (!Vue) {
-	        throw new Error('[vuex] must call Vue.use(Vuex) before creating a store instance.');
-	      }
-	      var silent = Vue.config.silent;
-	      Vue.config.silent = true;
-	      this._vm = new Vue({
-	        data: {
-	          state: state
-	        }
-	      });
-	      Vue.config.silent = silent;
-	      this._setupModuleState(state, modules);
-	      this._setupModuleMutations(modules);
-	      this._setupMiddlewares(middlewares, state);
-	      // add extra warnings in strict mode
-	      if (strict) {
-	        this._setupMutationCheck();
-	      }
-	    }
-
-	    /**
-	     * Getter for the entire state tree.
-	     * Read only.
-	     *
-	     * @return {Object}
-	     */
-
-	    createClass(Store, [{
-	      key: 'dispatch',
-
-
-	      /**
-	       * Dispatch an action.
-	       *
-	       * @param {String} type
-	       */
-
-	      value: function dispatch(type) {
-	        for (var _len2 = arguments.length, payload = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-	          payload[_key2 - 1] = arguments[_key2];
-	        }
-
-	        var silent = false;
-	        // compatibility for object actions, e.g. FSA
-	        if ((typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type.type && arguments.length === 1) {
-	          payload = [type.payload];
-	          if (type.silent) silent = true;
-	          type = type.type;
-	        }
-	        var mutation = this._mutations[type];
-	        var state = this.state;
-	        if (mutation) {
-	          this._dispatching = true;
-	          // apply the mutation
-	          if (Array.isArray(mutation)) {
-	            mutation.forEach(function (m) {
-	              return m.apply(undefined, [state].concat(toConsumableArray(payload)));
-	            });
-	          } else {
-	            mutation.apply(undefined, [state].concat(toConsumableArray(payload)));
-	          }
-	          this._dispatching = false;
-	          if (!silent) this._applyMiddlewares(type, payload);
-	        } else {
-	          console.warn('[vuex] Unknown mutation: ' + type);
-	        }
-	      }
-
-	      /**
-	       * Watch state changes on the store.
-	       * Same API as Vue's $watch, except when watching a function,
-	       * the function gets the state as the first argument.
-	       *
-	       * @param {Function} fn
-	       * @param {Function} cb
-	       * @param {Object} [options]
-	       */
-
-	    }, {
-	      key: 'watch',
-	      value: function watch(fn, cb, options) {
-	        var _this2 = this;
-
-	        if (typeof fn !== 'function') {
-	          console.error('Vuex store.watch only accepts function.');
-	          return;
-	        }
-	        return this._vm.$watch(function () {
-	          return fn(_this2.state);
-	        }, cb, options);
-	      }
-
-	      /**
-	       * Hot update mutations & modules.
-	       *
-	       * @param {Object} options
-	       *        - {Object} [mutations]
-	       *        - {Object} [modules]
-	       */
-
-	    }, {
-	      key: 'hotUpdate',
-	      value: function hotUpdate() {
-	        var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	        var mutations = _ref2.mutations;
-	        var modules = _ref2.modules;
-
-	        this._rootMutations = this._mutations = mutations || this._rootMutations;
-	        this._setupModuleMutations(modules || this._modules);
-	      }
-
-	      /**
-	       * Attach sub state tree of each module to the root tree.
-	       *
-	       * @param {Object} state
-	       * @param {Object} modules
-	       */
-
-	    }, {
-	      key: '_setupModuleState',
-	      value: function _setupModuleState(state, modules) {
-	        Object.keys(modules).forEach(function (key) {
-	          Vue.set(state, key, modules[key].state || {});
-	        });
-	      }
-
-	      /**
-	       * Bind mutations for each module to its sub tree and
-	       * merge them all into one final mutations map.
-	       *
-	       * @param {Object} updatedModules
-	       */
-
-	    }, {
-	      key: '_setupModuleMutations',
-	      value: function _setupModuleMutations(updatedModules) {
-	        var modules = this._modules;
-	        var allMutations = [this._rootMutations];
-	        Object.keys(updatedModules).forEach(function (key) {
-	          modules[key] = updatedModules[key];
-	        });
-	        Object.keys(modules).forEach(function (key) {
-	          var module = modules[key];
-	          if (!module || !module.mutations) return;
-	          // bind mutations to sub state tree
-	          var mutations = {};
-	          Object.keys(module.mutations).forEach(function (name) {
-	            var original = module.mutations[name];
-	            mutations[name] = function (state) {
-	              for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-	                args[_key3 - 1] = arguments[_key3];
-	              }
-
-	              original.apply(undefined, [state[key]].concat(args));
-	            };
-	          });
-	          allMutations.push(mutations);
-	        });
-	        this._mutations = mergeObjects(allMutations);
-	      }
-
-	      /**
-	       * Setup mutation check: if the vuex instance's state is mutated
-	       * outside of a mutation handler, we throw en error. This effectively
-	       * enforces all mutations to the state to be trackable and hot-reloadble.
-	       * However, this comes at a run time cost since we are doing a deep
-	       * watch on the entire state tree, so it is only enalbed with the
-	       * strict option is set to true.
-	       */
-
-	    }, {
-	      key: '_setupMutationCheck',
-	      value: function _setupMutationCheck() {
-	        var _this3 = this;
-
-	        var Watcher = getWatcher(this._vm);
-	        /* eslint-disable no-new */
-	        new Watcher(this._vm, 'state', function () {
-	          if (!_this3._dispatching) {
-	            throw new Error('[vuex] Do not mutate vuex store state outside mutation handlers.');
-	          }
-	        }, { deep: true, sync: true });
-	        /* eslint-enable no-new */
-	      }
-
-	      /**
-	       * Setup the middlewares. The devtools middleware is always
-	       * included, since it does nothing if no devtool is detected.
-	       *
-	       * A middleware can demand the state it receives to be
-	       * "snapshots", i.e. deep clones of the actual state tree.
-	       *
-	       * @param {Array} middlewares
-	       * @param {Object} state
-	       */
-
-	    }, {
-	      key: '_setupMiddlewares',
-	      value: function _setupMiddlewares(middlewares, state) {
-	        var _this4 = this;
-
-	        this._middlewares = [devtoolMiddleware].concat(middlewares);
-	        this._needSnapshots = middlewares.some(function (m) {
-	          return m.snapshot;
-	        });
-	        if (this._needSnapshots) {
-	          console.log('[vuex] One or more of your middlewares are taking state snapshots ' + 'for each mutation. Make sure to use them only during development.');
-	        }
-	        var initialSnapshot = this._prevSnapshot = this._needSnapshots ? deepClone(state) : null;
-	        // call init hooks
-	        this._middlewares.forEach(function (m) {
-	          if (m.onInit) {
-	            m.onInit(m.snapshot ? initialSnapshot : state, _this4);
-	          }
-	        });
-	      }
-
-	      /**
-	       * Apply the middlewares on a given mutation.
-	       *
-	       * @param {String} type
-	       * @param {Array} payload
-	       */
-
-	    }, {
-	      key: '_applyMiddlewares',
-	      value: function _applyMiddlewares(type, payload) {
-	        var _this5 = this;
-
-	        var state = this.state;
-	        var prevSnapshot = this._prevSnapshot;
-	        var snapshot = void 0,
-	            clonedPayload = void 0;
-	        if (this._needSnapshots) {
-	          snapshot = this._prevSnapshot = deepClone(state);
-	          clonedPayload = deepClone(payload);
-	        }
-	        this._middlewares.forEach(function (m) {
-	          if (m.onMutation) {
-	            if (m.snapshot) {
-	              m.onMutation({ type: type, payload: clonedPayload }, snapshot, prevSnapshot, _this5);
-	            } else {
-	              m.onMutation({ type: type, payload: payload }, state, _this5);
-	            }
-	          }
-	        });
-	      }
-	    }, {
-	      key: 'state',
-	      get: function get() {
-	        return this._vm.state;
-	      },
-	      set: function set(v) {
-	        throw new Error('[vuex] Vuex root state is read only.');
-	      }
-	    }]);
-	    return Store;
-	  }();
-
-	  function install(_Vue) {
-	    if (Vue) {
-	      console.warn('[vuex] already installed. Vue.use(Vuex) should be called only once.');
-	      return;
-	    }
-	    Vue = _Vue;
-	    override(Vue);
-	  }
-
-	  // auto install in dist mode
-	  if (typeof window !== 'undefined' && window.Vue) {
-	    install(window.Vue);
-	  }
-
-	  var index = {
-	    Store: Store,
-	    install: install
-	  };
-
-	  return index;
-
-	}));
-
-/***/ },
-/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11934,13 +11313,13 @@
 
 	var _common = __webpack_require__(7);
 
-	var pubnub = exports.pubnub = __webpack_require__(16)({
+	var pubnub = exports.pubnub = __webpack_require__(15)({
 	  publish_key: _common.credentials.pubnub.publishKey,
 	  subscribe_key: _common.credentials.pubnub.subscribeKey
 	});
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*! 3.15.2 / modern */
@@ -14953,7 +14332,731 @@
 	;
 
 /***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vue = __webpack_require__(2);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _vuex = __webpack_require__(17);
+
+	var _vuex2 = _interopRequireDefault(_vuex);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Make vue aware of Vuex
+	/*
+	 * @Author: Igor Parra
+	 * @Date:   2016-07-15 12:20:57
+	 * @Last Modified by:   Igor Parra
+	 * @Last Modified time: 2016-08-21 21:27:51
+	 */
+
+	_vue2.default.use(_vuex2.default);
+
+	// Create an object to hold the initial state when
+	// the app starts up
+	var state = {
+	  order: { id: 0 },
+	  item: { id: 0 },
+	  counters: {
+	    items_to_scan_remaining: 0
+	  },
+	  addressType: '',
+	  shipmentNotification: {},
+	  modalVisible: true,
+	  urlIframe: '',
+
+	  trip: { id: 0 },
+	  operation_type: '',
+	  trip_items_remaining_counter: 0
+	};
+
+	var mutations = {
+	  // A mutation receives the current state as the first argument
+	  // You can make any modifications you want inside this function
+
+	  LOAD_DATA: function LOAD_DATA(state, data) {
+	    var type = data.type;
+	    var content = data.content;
+	    state[type] = content;
+
+	    if ('order' == type) {
+	      state.counters.items_to_scan_remaining = content.items_to_scan_remaining;
+	    }
+	  },
+	  HIDE_MODAL: function HIDE_MODAL(state, data) {
+	    state.modalVisible = data;
+	  },
+	  SET_COUNTERS: function SET_COUNTERS(state, data) {
+	    // var type = data.type
+	    // var units = data.units
+	    // var x = state.counters[ type ];
+	    // state.counters[ type ] = +x + +units
+	    // console.info(state.counters);
+	    state.counters.items_to_scan_remaining--;
+	  }
+	};
+
+	// Combine the initial state and the mutations to create a Vuex store.
+	// This store can be linked to our app.
+	exports.default = new _vuex2.default.Store({
+	  state: state,
+	  mutations: mutations
+	});
+
+/***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * Vuex v0.8.2
+	 * (c) 2016 Evan You
+	 * Released under the MIT License.
+	 */
+	(function (global, factory) {
+	   true ? module.exports = factory() :
+	  typeof define === 'function' && define.amd ? define(factory) :
+	  (global.Vuex = factory());
+	}(this, function () { 'use strict';
+
+	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	  };
+
+	  var classCallCheck = function (instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  };
+
+	  var createClass = function () {
+	    function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	        var descriptor = props[i];
+	        descriptor.enumerable = descriptor.enumerable || false;
+	        descriptor.configurable = true;
+	        if ("value" in descriptor) descriptor.writable = true;
+	        Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	    }
+
+	    return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	      if (staticProps) defineProperties(Constructor, staticProps);
+	      return Constructor;
+	    };
+	  }();
+
+	  var toConsumableArray = function (arr) {
+	    if (Array.isArray(arr)) {
+	      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+	      return arr2;
+	    } else {
+	      return Array.from(arr);
+	    }
+	  };
+
+	  /**
+	   * Merge an array of objects into one.
+	   *
+	   * @param {Array<Object>} arr
+	   * @return {Object}
+	   */
+
+	  function mergeObjects(arr) {
+	    return arr.reduce(function (prev, obj) {
+	      Object.keys(obj).forEach(function (key) {
+	        var existing = prev[key];
+	        if (existing) {
+	          // allow multiple mutation objects to contain duplicate
+	          // handlers for the same mutation type
+	          if (Array.isArray(existing)) {
+	            existing.push(obj[key]);
+	          } else {
+	            prev[key] = [prev[key], obj[key]];
+	          }
+	        } else {
+	          prev[key] = obj[key];
+	        }
+	      });
+	      return prev;
+	    }, {});
+	  }
+
+	  /**
+	   * Deep clone an object. Faster than JSON.parse(JSON.stringify()).
+	   *
+	   * @param {*} obj
+	   * @return {*}
+	   */
+
+	  function deepClone(obj) {
+	    if (Array.isArray(obj)) {
+	      return obj.map(deepClone);
+	    } else if (obj && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object') {
+	      var cloned = {};
+	      var keys = Object.keys(obj);
+	      for (var i = 0, l = keys.length; i < l; i++) {
+	        var key = keys[i];
+	        cloned[key] = deepClone(obj[key]);
+	      }
+	      return cloned;
+	    } else {
+	      return obj;
+	    }
+	  }
+
+	  /**
+	   * Hacks to get access to Vue internals.
+	   * Maybe we should expose these...
+	   */
+
+	  var Watcher = void 0;
+	  function getWatcher(vm) {
+	    if (!Watcher) {
+	      var noop = function noop() {};
+	      var unwatch = vm.$watch(noop, noop);
+	      Watcher = vm._watchers[0].constructor;
+	      unwatch();
+	    }
+	    return Watcher;
+	  }
+
+	  var Dep = void 0;
+	  function getDep(vm) {
+	    if (!Dep) {
+	      Dep = vm._data.__ob__.dep.constructor;
+	    }
+	    return Dep;
+	  }
+
+	  var hook = typeof window !== 'undefined' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+	  var devtoolMiddleware = {
+	    onInit: function onInit(state, store) {
+	      if (!hook) return;
+	      hook.emit('vuex:init', store);
+	      hook.on('vuex:travel-to-state', function (targetState) {
+	        store._dispatching = true;
+	        store._vm.state = targetState;
+	        store._dispatching = false;
+	      });
+	    },
+	    onMutation: function onMutation(mutation, state) {
+	      if (!hook) return;
+	      hook.emit('vuex:mutation', mutation, state);
+	    }
+	  };
+
+	  function override (Vue) {
+	    var version = Number(Vue.version.split('.')[0]);
+
+	    if (version >= 2) {
+	      var usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1;
+	      Vue.mixin(usesInit ? { init: vuexInit } : { beforeCreate: vuexInit });
+	    } else {
+	      (function () {
+	        // override init and inject vuex init procedure
+	        // for 1.x backwards compatibility.
+	        var _init = Vue.prototype._init;
+	        Vue.prototype._init = function () {
+	          var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	          options.init = options.init ? [vuexInit].concat(options.init) : vuexInit;
+	          _init.call(this, options);
+	        };
+	      })();
+	    }
+
+	    /**
+	     * Vuex init hook, injected into each instances init hooks list.
+	     */
+
+	    function vuexInit() {
+	      var options = this.$options;
+	      var store = options.store;
+	      var vuex = options.vuex;
+	      // store injection
+
+	      if (store) {
+	        this.$store = store;
+	      } else if (options.parent && options.parent.$store) {
+	        this.$store = options.parent.$store;
+	      }
+	      // vuex option handling
+	      if (vuex) {
+	        if (!this.$store) {
+	          console.warn('[vuex] store not injected. make sure to ' + 'provide the store option in your root component.');
+	        }
+	        var state = vuex.state;
+	        var actions = vuex.actions;
+	        var getters = vuex.getters;
+	        // handle deprecated state option
+
+	        if (state && !getters) {
+	          console.warn('[vuex] vuex.state option will been deprecated in 1.0. ' + 'Use vuex.getters instead.');
+	          getters = state;
+	        }
+	        // getters
+	        if (getters) {
+	          options.computed = options.computed || {};
+	          for (var key in getters) {
+	            defineVuexGetter(this, key, getters[key]);
+	          }
+	        }
+	        // actions
+	        if (actions) {
+	          options.methods = options.methods || {};
+	          for (var _key in actions) {
+	            options.methods[_key] = makeBoundAction(this.$store, actions[_key], _key);
+	          }
+	        }
+	      }
+	    }
+
+	    /**
+	     * Setter for all getter properties.
+	     */
+
+	    function setter() {
+	      throw new Error('vuex getter properties are read-only.');
+	    }
+
+	    /**
+	     * Define a Vuex getter on an instance.
+	     *
+	     * @param {Vue} vm
+	     * @param {String} key
+	     * @param {Function} getter
+	     */
+
+	    function defineVuexGetter(vm, key, getter) {
+	      if (typeof getter !== 'function') {
+	        console.warn('[vuex] Getter bound to key \'vuex.getters.' + key + '\' is not a function.');
+	      } else {
+	        Object.defineProperty(vm, key, {
+	          enumerable: true,
+	          configurable: true,
+	          get: makeComputedGetter(vm.$store, getter),
+	          set: setter
+	        });
+	      }
+	    }
+
+	    /**
+	     * Make a computed getter, using the same caching mechanism of computed
+	     * properties. In addition, it is cached on the raw getter function using
+	     * the store's unique cache id. This makes the same getter shared
+	     * across all components use the same underlying watcher, and makes
+	     * the getter evaluated only once during every flush.
+	     *
+	     * @param {Store} store
+	     * @param {Function} getter
+	     */
+
+	    function makeComputedGetter(store, getter) {
+	      var id = store._getterCacheId;
+
+	      // cached
+	      if (getter[id]) {
+	        return getter[id];
+	      }
+	      var vm = store._vm;
+	      var Watcher = getWatcher(vm);
+	      var Dep = getDep(vm);
+	      var watcher = new Watcher(vm, function (vm) {
+	        return getter(vm.state);
+	      }, null, { lazy: true });
+	      var computedGetter = function computedGetter() {
+	        if (watcher.dirty) {
+	          watcher.evaluate();
+	        }
+	        if (Dep.target) {
+	          watcher.depend();
+	        }
+	        return watcher.value;
+	      };
+	      getter[id] = computedGetter;
+	      return computedGetter;
+	    }
+
+	    /**
+	     * Make a bound-to-store version of a raw action function.
+	     *
+	     * @param {Store} store
+	     * @param {Function} action
+	     * @param {String} key
+	     */
+
+	    function makeBoundAction(store, action, key) {
+	      if (typeof action !== 'function') {
+	        console.warn('[vuex] Action bound to key \'vuex.actions.' + key + '\' is not a function.');
+	      }
+	      return function vuexBoundAction() {
+	        for (var _len = arguments.length, args = Array(_len), _key2 = 0; _key2 < _len; _key2++) {
+	          args[_key2] = arguments[_key2];
+	        }
+
+	        return action.call.apply(action, [this, store].concat(args));
+	      };
+	    }
+
+	    // option merging
+	    var merge = Vue.config.optionMergeStrategies.computed;
+	    Vue.config.optionMergeStrategies.vuex = function (toVal, fromVal) {
+	      if (!toVal) return fromVal;
+	      if (!fromVal) return toVal;
+	      return {
+	        getters: merge(toVal.getters, fromVal.getters),
+	        state: merge(toVal.state, fromVal.state),
+	        actions: merge(toVal.actions, fromVal.actions)
+	      };
+	    };
+	  }
+
+	  var Vue = void 0;
+	  var uid = 0;
+
+	  var Store = function () {
+
+	    /**
+	     * @param {Object} options
+	     *        - {Object} state
+	     *        - {Object} actions
+	     *        - {Object} mutations
+	     *        - {Array} middlewares
+	     *        - {Boolean} strict
+	     */
+
+	    function Store() {
+	      var _this = this;
+
+	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	      var _ref$state = _ref.state;
+	      var state = _ref$state === undefined ? {} : _ref$state;
+	      var _ref$mutations = _ref.mutations;
+	      var mutations = _ref$mutations === undefined ? {} : _ref$mutations;
+	      var _ref$modules = _ref.modules;
+	      var modules = _ref$modules === undefined ? {} : _ref$modules;
+	      var _ref$middlewares = _ref.middlewares;
+	      var middlewares = _ref$middlewares === undefined ? [] : _ref$middlewares;
+	      var _ref$strict = _ref.strict;
+	      var strict = _ref$strict === undefined ? false : _ref$strict;
+	      classCallCheck(this, Store);
+
+	      this._getterCacheId = 'vuex_store_' + uid++;
+	      this._dispatching = false;
+	      this._rootMutations = this._mutations = mutations;
+	      this._modules = modules;
+	      // bind dispatch to self
+	      var dispatch = this.dispatch;
+	      this.dispatch = function () {
+	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	          args[_key] = arguments[_key];
+	        }
+
+	        dispatch.apply(_this, args);
+	      };
+	      // use a Vue instance to store the state tree
+	      // suppress warnings just in case the user has added
+	      // some funky global mixins
+	      if (!Vue) {
+	        throw new Error('[vuex] must call Vue.use(Vuex) before creating a store instance.');
+	      }
+	      var silent = Vue.config.silent;
+	      Vue.config.silent = true;
+	      this._vm = new Vue({
+	        data: {
+	          state: state
+	        }
+	      });
+	      Vue.config.silent = silent;
+	      this._setupModuleState(state, modules);
+	      this._setupModuleMutations(modules);
+	      this._setupMiddlewares(middlewares, state);
+	      // add extra warnings in strict mode
+	      if (strict) {
+	        this._setupMutationCheck();
+	      }
+	    }
+
+	    /**
+	     * Getter for the entire state tree.
+	     * Read only.
+	     *
+	     * @return {Object}
+	     */
+
+	    createClass(Store, [{
+	      key: 'dispatch',
+
+
+	      /**
+	       * Dispatch an action.
+	       *
+	       * @param {String} type
+	       */
+
+	      value: function dispatch(type) {
+	        for (var _len2 = arguments.length, payload = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+	          payload[_key2 - 1] = arguments[_key2];
+	        }
+
+	        var silent = false;
+	        // compatibility for object actions, e.g. FSA
+	        if ((typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type.type && arguments.length === 1) {
+	          payload = [type.payload];
+	          if (type.silent) silent = true;
+	          type = type.type;
+	        }
+	        var mutation = this._mutations[type];
+	        var state = this.state;
+	        if (mutation) {
+	          this._dispatching = true;
+	          // apply the mutation
+	          if (Array.isArray(mutation)) {
+	            mutation.forEach(function (m) {
+	              return m.apply(undefined, [state].concat(toConsumableArray(payload)));
+	            });
+	          } else {
+	            mutation.apply(undefined, [state].concat(toConsumableArray(payload)));
+	          }
+	          this._dispatching = false;
+	          if (!silent) this._applyMiddlewares(type, payload);
+	        } else {
+	          console.warn('[vuex] Unknown mutation: ' + type);
+	        }
+	      }
+
+	      /**
+	       * Watch state changes on the store.
+	       * Same API as Vue's $watch, except when watching a function,
+	       * the function gets the state as the first argument.
+	       *
+	       * @param {Function} fn
+	       * @param {Function} cb
+	       * @param {Object} [options]
+	       */
+
+	    }, {
+	      key: 'watch',
+	      value: function watch(fn, cb, options) {
+	        var _this2 = this;
+
+	        if (typeof fn !== 'function') {
+	          console.error('Vuex store.watch only accepts function.');
+	          return;
+	        }
+	        return this._vm.$watch(function () {
+	          return fn(_this2.state);
+	        }, cb, options);
+	      }
+
+	      /**
+	       * Hot update mutations & modules.
+	       *
+	       * @param {Object} options
+	       *        - {Object} [mutations]
+	       *        - {Object} [modules]
+	       */
+
+	    }, {
+	      key: 'hotUpdate',
+	      value: function hotUpdate() {
+	        var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	        var mutations = _ref2.mutations;
+	        var modules = _ref2.modules;
+
+	        this._rootMutations = this._mutations = mutations || this._rootMutations;
+	        this._setupModuleMutations(modules || this._modules);
+	      }
+
+	      /**
+	       * Attach sub state tree of each module to the root tree.
+	       *
+	       * @param {Object} state
+	       * @param {Object} modules
+	       */
+
+	    }, {
+	      key: '_setupModuleState',
+	      value: function _setupModuleState(state, modules) {
+	        Object.keys(modules).forEach(function (key) {
+	          Vue.set(state, key, modules[key].state || {});
+	        });
+	      }
+
+	      /**
+	       * Bind mutations for each module to its sub tree and
+	       * merge them all into one final mutations map.
+	       *
+	       * @param {Object} updatedModules
+	       */
+
+	    }, {
+	      key: '_setupModuleMutations',
+	      value: function _setupModuleMutations(updatedModules) {
+	        var modules = this._modules;
+	        var allMutations = [this._rootMutations];
+	        Object.keys(updatedModules).forEach(function (key) {
+	          modules[key] = updatedModules[key];
+	        });
+	        Object.keys(modules).forEach(function (key) {
+	          var module = modules[key];
+	          if (!module || !module.mutations) return;
+	          // bind mutations to sub state tree
+	          var mutations = {};
+	          Object.keys(module.mutations).forEach(function (name) {
+	            var original = module.mutations[name];
+	            mutations[name] = function (state) {
+	              for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+	                args[_key3 - 1] = arguments[_key3];
+	              }
+
+	              original.apply(undefined, [state[key]].concat(args));
+	            };
+	          });
+	          allMutations.push(mutations);
+	        });
+	        this._mutations = mergeObjects(allMutations);
+	      }
+
+	      /**
+	       * Setup mutation check: if the vuex instance's state is mutated
+	       * outside of a mutation handler, we throw en error. This effectively
+	       * enforces all mutations to the state to be trackable and hot-reloadble.
+	       * However, this comes at a run time cost since we are doing a deep
+	       * watch on the entire state tree, so it is only enalbed with the
+	       * strict option is set to true.
+	       */
+
+	    }, {
+	      key: '_setupMutationCheck',
+	      value: function _setupMutationCheck() {
+	        var _this3 = this;
+
+	        var Watcher = getWatcher(this._vm);
+	        /* eslint-disable no-new */
+	        new Watcher(this._vm, 'state', function () {
+	          if (!_this3._dispatching) {
+	            throw new Error('[vuex] Do not mutate vuex store state outside mutation handlers.');
+	          }
+	        }, { deep: true, sync: true });
+	        /* eslint-enable no-new */
+	      }
+
+	      /**
+	       * Setup the middlewares. The devtools middleware is always
+	       * included, since it does nothing if no devtool is detected.
+	       *
+	       * A middleware can demand the state it receives to be
+	       * "snapshots", i.e. deep clones of the actual state tree.
+	       *
+	       * @param {Array} middlewares
+	       * @param {Object} state
+	       */
+
+	    }, {
+	      key: '_setupMiddlewares',
+	      value: function _setupMiddlewares(middlewares, state) {
+	        var _this4 = this;
+
+	        this._middlewares = [devtoolMiddleware].concat(middlewares);
+	        this._needSnapshots = middlewares.some(function (m) {
+	          return m.snapshot;
+	        });
+	        if (this._needSnapshots) {
+	          console.log('[vuex] One or more of your middlewares are taking state snapshots ' + 'for each mutation. Make sure to use them only during development.');
+	        }
+	        var initialSnapshot = this._prevSnapshot = this._needSnapshots ? deepClone(state) : null;
+	        // call init hooks
+	        this._middlewares.forEach(function (m) {
+	          if (m.onInit) {
+	            m.onInit(m.snapshot ? initialSnapshot : state, _this4);
+	          }
+	        });
+	      }
+
+	      /**
+	       * Apply the middlewares on a given mutation.
+	       *
+	       * @param {String} type
+	       * @param {Array} payload
+	       */
+
+	    }, {
+	      key: '_applyMiddlewares',
+	      value: function _applyMiddlewares(type, payload) {
+	        var _this5 = this;
+
+	        var state = this.state;
+	        var prevSnapshot = this._prevSnapshot;
+	        var snapshot = void 0,
+	            clonedPayload = void 0;
+	        if (this._needSnapshots) {
+	          snapshot = this._prevSnapshot = deepClone(state);
+	          clonedPayload = deepClone(payload);
+	        }
+	        this._middlewares.forEach(function (m) {
+	          if (m.onMutation) {
+	            if (m.snapshot) {
+	              m.onMutation({ type: type, payload: clonedPayload }, snapshot, prevSnapshot, _this5);
+	            } else {
+	              m.onMutation({ type: type, payload: payload }, state, _this5);
+	            }
+	          }
+	        });
+	      }
+	    }, {
+	      key: 'state',
+	      get: function get() {
+	        return this._vm.state;
+	      },
+	      set: function set(v) {
+	        throw new Error('[vuex] Vuex root state is read only.');
+	      }
+	    }]);
+	    return Store;
+	  }();
+
+	  function install(_Vue) {
+	    if (Vue) {
+	      console.warn('[vuex] already installed. Vue.use(Vuex) should be called only once.');
+	      return;
+	    }
+	    Vue = _Vue;
+	    override(Vue);
+	  }
+
+	  // auto install in dist mode
+	  if (typeof window !== 'undefined' && window.Vue) {
+	    install(window.Vue);
+	  }
+
+	  var index = {
+	    Store: Store,
+	    install: install
+	  };
+
+	  return index;
+
+	}));
+
+/***/ },
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14984,18 +15087,18 @@
 	};
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\t<router-view></router-view>\n";
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(20)
-	__vue_template__ = __webpack_require__(29)
+	__vue_script__ = __webpack_require__(21)
+	__vue_template__ = __webpack_require__(30)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15012,7 +15115,7 @@
 	})()}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15021,7 +15124,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15031,9 +15134,9 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15086,13 +15189,13 @@
 	//
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(22)
-	__vue_script__ = __webpack_require__(26)
-	__vue_template__ = __webpack_require__(27)
+	__webpack_require__(23)
+	__vue_script__ = __webpack_require__(27)
+	__vue_template__ = __webpack_require__(28)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15109,16 +15212,16 @@
 	})()}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(23);
+	var content = __webpack_require__(24);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(25)(content, {});
+	var update = __webpack_require__(26)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -15135,10 +15238,10 @@
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(24)();
+	exports = module.exports = __webpack_require__(25)();
 	// imports
 
 
@@ -15149,7 +15252,7 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/*
@@ -15205,7 +15308,7 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -15457,7 +15560,7 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15470,7 +15573,7 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _global = __webpack_require__(15);
+	var _global = __webpack_require__(14);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15513,13 +15616,13 @@
 	//
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.1</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15569,30 +15672,30 @@
 	}
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(30) + "\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(31) + "\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(32) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "images/loading.gif?2bc07f4e6f25ebc7fa55be51f32e9251";
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(33)
-	__vue_template__ = __webpack_require__(34)
+	__vue_script__ = __webpack_require__(34)
+	__vue_template__ = __webpack_require__(35)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15609,7 +15712,7 @@
 	})()}
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15618,7 +15721,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -15628,9 +15731,9 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15734,18 +15837,18 @@
 	//
 
 /***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Preparado para operaciones en hub</h5>\n        <hr />\n\n        <div style=\"margin-top:100px\">\n        <!-- quiero poner items en transito -->\n          <center><a @click=\"goto('trip-transfer')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">ENTREGAR CARGA</a> </center>\n          <br />\n          <!-- quiero poner items en hub -->\n          <center><a @click=\"goto('trip-reception')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(31) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
-
-/***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n        <h5>Preparado para operaciones en hub</h5>\n        <hr />\n\n        <div style=\"margin-top:100px\">\n        <!-- quiero poner items en transito -->\n          <center><a @click=\"goto('trip-transfer')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">ENTREGAR CARGA</a> </center>\n          <br />\n          <!-- quiero poner items en hub -->\n          <center><a @click=\"goto('trip-reception')\" style=\"color:white;font-size: 30px;_border:1px solid white;padding:10px;width:90%\">RECIBIR CARGA</a> </center>\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(32) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n";
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(36)
-	__vue_template__ = __webpack_require__(37)
+	__vue_script__ = __webpack_require__(37)
+	__vue_template__ = __webpack_require__(38)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15762,7 +15865,7 @@
 	})()}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15893,18 +15996,18 @@
 	//
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">CONFIGURACIÓN</h4>\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <form>\n            <p>\n              <label>Vehículo</label>\n              <select v-model=\"db.vehicleSelected\">\n                <option v-for=\"option in vehicleOptions\" v-bind:value=\"option.id\">\n                  {{ option.name }}\n                </option>\n              </select>\n            </p>\n            <p>\n              <label>MAC impresora portátil</label>\n              <input type=\"text\" v-model=\"db.printerMAC\" style=\"text-transform: uppercase;\">\n            </p>\n            <p>\n              <label>Teléfono móvil</label>\n              <input type=\"text\" v-model=\"db.phoneMobile\">\n            </p>\n            <p>\n              <label>Teléfono central</label>\n              <input type=\"text\" v-model=\"db.phoneCentral\">\n            </p>\n            <p>\n              <input class=\"filled-in\" type=\"checkbox\" id=\"grocer\" v-model=\"grocer\" />\n              <label for=\"grocer\">Bodeguero</label>\n            </p>\n          </form>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"cancel()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a @click=\"save()\" class=\"ac25-half-red right waves-effect waves-light\">guardar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(39)
-	__vue_template__ = __webpack_require__(40)
+	__vue_script__ = __webpack_require__(40)
+	__vue_template__ = __webpack_require__(41)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15921,7 +16024,7 @@
 	})()}
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15980,18 +16083,18 @@
 	//
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <iframe id=\"opl_iframe\" style=\"width:100%;height:100%\"></iframe>\n";
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(42)
-	__vue_template__ = __webpack_require__(59)
+	__vue_script__ = __webpack_require__(43)
+	__vue_template__ = __webpack_require__(60)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16008,7 +16111,7 @@
 	})()}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16019,23 +16122,23 @@
 
 	var _common = __webpack_require__(7);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(43);
+	var _NotificationIcon = __webpack_require__(44);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(47);
+	var _ButtonPrint = __webpack_require__(48);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(55);
+	var _ButtonScan = __webpack_require__(56);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16138,12 +16241,12 @@
 	//
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(44)
-	__vue_template__ = __webpack_require__(45)
+	__vue_script__ = __webpack_require__(45)
+	__vue_template__ = __webpack_require__(46)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16160,7 +16263,7 @@
 	})()}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16210,24 +16313,24 @@
 	// </script>
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<a v-if=\"notification\" @click=\"popup()\"><img class=\"\" src=\"" + __webpack_require__(46) + "\" /></a>\n";
+	module.exports = "\n<a v-if=\"notification\" @click=\"popup()\"><img class=\"\" src=\"" + __webpack_require__(47) + "\" /></a>\n";
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAYAAABXuSs3AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA/9JREFUeNrUmk1oE0EUx1+CiGAbgxexH7SVkt5s2vp5qQu2IEKxYKvGqkSvIuaiiKAExK9be/DjULVSsR4qpCJ+YGvTgl/Q6urJItqI1ra3NK1UEFznxdl1djPJbnY36ebBI5l8zP7m7ZuZl//EJUkS2Gkul8tLHvyal2PkOjFbr2MVnIAK5KGVwm7T+fh74iLxKPEIuXbc9IURPFsnVkk8jJHELix4hLhghiGriNM0QODjmT7XtnsHeDwrlPbNWxG9rkewX8IStT1VCDSmQw/xVezrVVXr4EBgMzSsB9jin4A1JW+531+YL4WJT/Uw9MIDg8Pf4NngKO9jXXQAcVtShQKrbnNzU6MUuReQ5qdKJSkBWftYtEU6criVlz44B/y6TDrAXtqR0jGJsNTb3WEKNt0ASGpp4eN68FlBY4RmPtbbBs361a4OXvQFM+Aq6DOnAzkB1kYf76iRyBvK6XxAyz4xtp0H79UFp5vJkkCz8Nr1PiM4zes4m9P5hpYdFwANfGsm8DC7euRqIhr10LF2FjzGsro1u2JIbp8IbU27mehZ/8B+2LlHgJPhvbCQKDNdjpw6+jm5wVGrIIzBlA2IjTZuLlYi5fP5lEjduNZh5zIZS4k4MWU0h/aVW6oY6+qqledla39b6utgm6p8qaDV6L9ahTSwJH0nv0u2cSgqnjJ9senvG+DxSA14iiRo23XXcu199lIAzl3oU+oZwhxKSROcEEs5IXn+/GHqJF1GRyHIw2moXQ5Os411L7Xp4pVzXPmptck/4zhwTFus8RnzyxFXamyfb8j670EPUzYn7IEvKylWgbtJ2CuhAMxXrUrhZKoo4GSLh0IxNxSouWlRlbTh6IfCASdroig3Jie/OBZ0evZP5lSZ/VHvSPCp6UW2GXUzukbSXos1jgTXaDMxGVxJl3EHpvn42xa2OYc6pAyulGB3+t44DhxFJMYiSo6TEWBjTp6gA48CjgK/3v1Kld/ayakk0YOni46BxiAyqx2mSY8WPMxOhOHR9iWHRr3xSrfqd0FnynJIhffbcvti52zyi0tpvf0CK47OseA83duypsL2YUXV0sgTYT1BKMx+ARXZfIOjAqxRs0SjEpxoFd6sIzRHvfUbBVcpWvmCTwMdzFat9WvhUePIo1KbFtqIsJ8CjxFBUdLOKF8+z9XGg6ZPJJiVRtR2jCuOFW0RgfEOcqIc14M2BM7kfCfvyA8VXcx/o4NAjQQHzQE2fP5j5rhQoAOo5b3f3NQI5eWroaZ6JRQX/X99TPwJicQv6L//JF3Xyc2FsIRzfUAbpMWOZNFjdN/w5vSAlnMHKukgBAPH4bJ9ZY7EI6avbeefEGgqcf+EQF20dH7P2F8BBgDi96xrflkLdwAAAABJRU5ErkJggg=="
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(48)
-	__vue_template__ = __webpack_require__(53)
+	__vue_script__ = __webpack_require__(49)
+	__vue_template__ = __webpack_require__(54)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16244,7 +16347,7 @@
 	})()}
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16253,7 +16356,7 @@
 	  value: true
 	});
 
-	var _defineProperty2 = __webpack_require__(49);
+	var _defineProperty2 = __webpack_require__(50);
 
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
@@ -16294,14 +16397,14 @@
 	// <script>
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _defineProperty = __webpack_require__(50);
+	var _defineProperty = __webpack_require__(51);
 
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -16323,22 +16426,22 @@
 	};
 
 /***/ },
-/* 50 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(51), __esModule: true };
-
-/***/ },
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(52);
+	module.exports = { "default": __webpack_require__(52), __esModule: true };
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(53);
 	module.exports = function defineProperty(it, key, desc){
 	  return $.setDesc(it, key, desc);
 	};
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	var $Object = Object;
@@ -16356,24 +16459,24 @@
 	};
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<a v-if=\"!grocer\" v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n\t\t<p class=\"ac25-no-margin\">imprimir</p>\n\t</a>\n  <a v-if=\"grocer\" v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n    <p class=\"ac25-no-margin\">imprimir</p>\n  </a>\n";
+	module.exports = "\n\t<a v-if=\"!grocer\" v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(55) + "\" alt=\"\" />\n\t\t<p class=\"ac25-no-margin\">imprimir</p>\n\t</a>\n  <a v-if=\"grocer\" v-link=\"'print'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(55) + "\" alt=\"\" />\n    <p class=\"ac25-no-margin\">imprimir</p>\n  </a>\n";
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB2CAYAAAAdp2cRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA/FJREFUeNrsnf9x2jAUgB++/B82qDcIG8TZwJ2g7gTJBmWDZoO4GzCCswHdgGxAJqBWEXccZwK20a/n77vTXeASIPrQ05MsybPdbieOqdpStmUu8bJuy8vR44V9LlnuHL62Edm05SHBenltS21LkmRIPcubjTaIPfnGpyw1ebmuxJaihyTluhBbtOVedJGc3ExApVwXYnPkIha5hGLkIha5iNUq9y6Cz/BHhk/dmRmuxQ0+w2akXJHIph9jEDv2G7+KpOVGJZdQrDQsI1apXMQqlYtYpXIRq1QuYpXKRaxSuYhVKhexSuUiVqlcxHazTV0uYrtZpd5yEXte7EfKchF7PhT76AudyUXseZq2PLXlM0W5d/i7KDeX/QL40v78YGX32bQ1l693RrzZKLFCrN+wXEtiG7QIxUpBLGIhJehj3VL1yHhPd9UjNmJMFv1IKAbEAmIRC3qzYpPBLWTcfpicah1cb8sRf9/Y8p+ZPcDLiKwlzEkvM8WyjKhfHt/PXGo0c9rrQygOJRVuyzfbavPMGkaqHsyJPctMbrO/FOKiiGHmaYeH24dkhjuMYwGxEJy+fezpWp9HqjB9sd+le7GVOcL2mapMNxSvej4PifexDdWYrti/VJVOsV9NOc6pRp2hmCnJxMXWsj8WPj9qqebxkmpMe7jzwxaYSCgGxAJiAbGAWMQCYgGxgFhALCAWsYBYQCz4os9lu/crfieX/Y4vSESsWfNUUF3RsJQL+26vDcVb6pI+FhLrY48xq/+vXcRWS2Inh3piYevxWgofYs2HunbfToPDTubicO8ToZg+1hmVTc52ispWAi/LDS3W9Bvm2PR7ZQ3m3g5HqimL1UyJWL0J0iTFrgWciS0Q64xNoPf9CN1izW54rXtvPwNmxpvQB3htbcSoPPVHufg5nbWR/WxbqBYbxT0BjNxXAXUTFIBYQOzEieW+O76SGl85wzoGsSZzC3l0nsketR2BcBjqBEsKMwl7vbQUnedamIsAvyXcRYBNJn7uR34O7UcJvQR63zqzfUIZUK5mQtxr4aeJwofkaW2Tl0K65443OBqEq+lS4+N0nffaRt+mKytuPPe52r8wrk6GreXCAsHQ49hartthkGprDZYVxzCOLWwSNe94PlU2trVupyxWzgzoG4FR41hALCAWEDtR5qmL5Wj5bpxOp/rIip8v/BNTzX6dziMf7vg8ZJzGkQR+mfkQy61BIxdL8kRWDFMQy7VbpWLZTOWXd19iuQOlX3oPCYdmxYdW+0CdO8eseMyl5yXAMclTZd8U3FLJgOu6Y8SaFrsQvSsgQmMS1Keh3d6YUHyMEVxK90oI6MfWyqzHvMg/AQYADYXlUoEuObwAAAAASUVORK5CYII="
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(56)
-	__vue_template__ = __webpack_require__(57)
+	__vue_script__ = __webpack_require__(57)
+	__vue_template__ = __webpack_require__(58)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16390,7 +16493,7 @@
 	})()}
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16399,7 +16502,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	exports.default = {
 	  name: 'ButtonScan',
@@ -16429,42 +16532,42 @@
 	// <script>
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(58) + "\" />\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n  </a>\n";
+	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(59) + "\" />\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n  </a>\n";
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(61) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
-
-/***/ },
-/* 60 */
-/***/ function(module, exports) {
-
-	module.exports = "data:image/png;base64,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"
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(62) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 61 */
 /***/ function(module, exports) {
 
-	module.exports = "data:image/png;base64,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"
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABwCAYAAACaardvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAB1JJREFUeNrsnf1x6zYMwBld/4/fBM+dwNog6gbqBFEmeO4GzgbeoOoG6gRVNnAmqDxB7QlcsoYSWaEogp+gat7xchdbEv0TBAIgQD1cLhfmsz08PKz4n2LQNxNffee97Tsf14ktoD34AMyhrvmfkvdKAXSuCeA17w0fY5csYQHYVedtDVAujrs459rlWEN1JxIMamDH+w9NyRw//itNSX/l4939rySYt5z3TiF9B9634nua59rCMarz5alIsC3cyuSxBlXST3orA3UjnoBi0YAVcJshWHj8K4A1J+niO6UEdDtxTLVkwDlI0lCqSokEngwmtRPo9NXoho6vly9dRfSQb/QiwHFhPYhzbyXX61LRw9ZWBLcg/pvkhGMA9m8zYxG8AaDets1BjTzNHFMOrnFKxhFxaAPnCnXwRbdOnKNU6NukrIe+Z47v16NE8n7mFxKTUaNxs4XXJiyLX+DYYVvfPblby2Irkc4pS0JI534soSNdXqboybk/4RXycMIrZsyzcW9Hx1cpmGPBAI9gby2sh2ShOo9FKCJqfyusgrk4xBkclqTDlplH3S7UwssI2Cvv38RENujC+vgGn50H3y0WERP2roOuOvQwFXOQuMVNiuZYcBVxb55VxL1d20/R1qquk2DvPByWsgYXXYI52IL3FiyMv6D/w/9Xw8rIHbAF3AqAygI7z8LJAMm+AzaE+/vM14Q9fIAI3R2wY7jDgFG7FMgZMbiLg5wRhLsoyBlRuIuBnBGCKxJSflscZE+xB2x48iNWoTg+iVVkr/FgW7ga50kOMjm4S4NMEu6SIJOFuxTIvuD2GZVWcE0hs88szW3sm+AL7prJU1DRcDGQ2XV9r2HylepVMoBDw9WFPAH34/pJAI4F11LnS5NhyAGODdcB5JYsYCpwLSF3JAFTgzsYV5u8BBOGWxtIcEUK8MxjWEaE2xjArQfJiDVIf+MbejQPzQLuzgJuFXrcScGFsXWGcOsY+jkpuDA+zLgapL7OvQKmDhfGqFsWVoPrjJkMd95qNCyWeUKnmTYa3/lD1IWwa1nCc/QlI5hZXaxEFACghR+39iDBK6auZa4tzLjSi4owmDhkcHcsUCkAQJY5GXsbVedJpaEHMyW5qnqLtafB53Bjt/01DOH20bj1SPK/lPSaAMbYlbXsYhoua01wEhzDVRVSGk/kmLyIP6Gg8CTJ832aObYIlRrLvhZDqtp5MLZWcewGBNEo8eSkOSuXE5+VGsd/J5gSogu3bz9M8pczeOzPGibPVKsIQTt5gts3dHZRBo/8FKSjCi7c0Q0VunysQle+eYKLuYG3uWlQqP0ie7RFar/i+JLgo18qnkgbuEe4gea5aQoTp7YNGwaNwcpd5N51zpnZLizloJavYqOabBfBntrCJGpJJIFcAXfMMFAP3qlsj6KVq3BlrelcSKNaBACbFKdXCs9x1gvMJtRGPaGTnwc6GaN/D0T0M9bMehnEVlS2/oZz2aISsDUgY5yHLsHU6SHcjebkik/Atkz06HtBREVUSLVwwPxOH8v2un1FAbBm5NAI7tREnmmaclPqQstrIlaHLB7loyO1MGy1dY2GoSS3VKR3ZK7t2OeG0E2vxgwD9Y3L5D9sNs0+mXR/MwGqXe+bhjW5UrIgtgbH5KoomwngwvMNidk2hse0U5BRgA2jZykBPlvcGCnkzLP0UrMg5ppWSgC7bv141oKMnAT2KdvADoJBjUYs5mb9zndeWNAFT4dvUpA5GTX7LPedc0Q+S4ORFzZ+TUNyNcZXh2QHPUckvtzmaAQqPkkSskFW0TgdYIWZ5GyXh55nlp9IN5i8MC60WI7KM48WxGIgG8DFmWmwGcajo/EmBdkGrjAKskDqIUnIlnDfxA60sQCTh2wJ9yOukWleyFdyCUnIDuC+9DkUWSTpJQvZEdwaM8kVAX4XCciu4WrFIphZFkxyzggzW4ebrSKdu2gREG40yL7g6qxoxNgMLqi68KIWEI7GOpI6DAJZAlesNr9CzNca7qwOZvgFzmTUhUQttEj1WF0uFsXgRAB7gTyhc0vE7698FMGwJagLhc49OVMLCBWxJyDBziR5xlpoJTV41ht6zL3moSMmyWymIMfGWniCtyM07DOL3VxyNSU4JyTBxpLs0851sWdPlzLkmHB1J7km1YnPtxNhrSIcrCZHk+TYkotNwG4IQ95ThYsBnBMGfAOEElxsXkRNHTI1uFjAq8CxYZPeUYKLcpVnisaptO/RrAXDcOUYcoMI5YVoRwfn8AYXDRggCyl+JwD3HSbfF6pwtexgTzambb/NwTXbzzLITqwx17GcwDW0coJtcxt7sdDpNo6a4dWgewjH3CzZS4AHEmVOEyZc8JppZy+uhr0vhQQ9epgqXvk4d8jYb8luXyscJWjl9M3gsIeakOYnh5ZCZbRXDpGWObZIxC7/YjX2V0sb9QgmVJ4yXOcSLJHoEh7VUkN1HCF2K3RtyxbSvAIewe73h1yPPhIwheR3bIHtXwEGAOZ3pUEauI1PAAAAAElFTkSuQmCC"
 
 /***/ },
 /* 62 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(63)
-	__vue_template__ = __webpack_require__(64)
+	__vue_script__ = __webpack_require__(64)
+	__vue_template__ = __webpack_require__(65)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16481,7 +16584,7 @@
 	})()}
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16492,23 +16595,23 @@
 
 	var _common = __webpack_require__(7);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _NotificationIcon = __webpack_require__(43);
+	var _NotificationIcon = __webpack_require__(44);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(47);
+	var _ButtonPrint = __webpack_require__(48);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(55);
+	var _ButtonScan = __webpack_require__(56);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16611,24 +16714,24 @@
 	//
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(65) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(66) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAA+CAYAAAAClQafAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzN0YzQkFBNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzN0YzQkFCNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjM3RjNCQTg1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjM3RjNCQTk1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5+vUb5AAATkElEQVR42uxd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"
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(67)
-	__vue_template__ = __webpack_require__(71)
+	__vue_script__ = __webpack_require__(68)
+	__vue_template__ = __webpack_require__(72)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16645,7 +16748,7 @@
 	})()}
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16654,23 +16757,23 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
-	var _NotificationIcon = __webpack_require__(43);
+	var _NotificationIcon = __webpack_require__(44);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
 
-	var _ButtonPrint = __webpack_require__(47);
+	var _ButtonPrint = __webpack_require__(48);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(55);
+	var _ButtonScan = __webpack_require__(56);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
@@ -16680,7 +16783,7 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16811,12 +16914,12 @@
 	//
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(69)
-	__vue_template__ = __webpack_require__(70)
+	__vue_script__ = __webpack_require__(70)
+	__vue_template__ = __webpack_require__(71)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16833,7 +16936,7 @@
 	})()}
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16842,7 +16945,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	exports.default = {
 		name: 'ModalWait',
@@ -16887,30 +16990,30 @@
 	// <script>
 
 /***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
-
-/***/ },
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(72) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n       <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(72) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <footer class=\"ac25-content-footer\">\n        <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n        <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n      </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(31) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
 
 /***/ },
 /* 72 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n       <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n          <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n          <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n        </div><!-- end content-inner-holder -->\n      </div><!-- end container -->\n\n      <footer class=\"ac25-content-footer\">\n        <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n        <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n      </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAclJREFUeNrsWO1tgzAQNVH+wwZlg7JBzQYdgRGaCUImaEagE7SdoIxANmAEOoFro0NCyBiffRja5klPkRIwL8e7DzsSQjALJJIZc0MN93fMF0rsAl8kO+EOtUYjmVg8y8jIIrIqIrFHPCIVE8mbJPeJ8JJYtfiX58sbxDJfwQcWFo8jD6NxdLjnJNkQCEZH2MUGkUsea75DWyK0DbwssaVYtOCtxaIEhxJ7oRAcKsEYtOt0IaFaIFnpckWjKXkpkGQ24DO9norlZO3SdP0eEgw9dWWIyWrNyM6hn9pUgmWQiTFRZmOgEvjJ8tpciaWYrEIg13n2E6J325taXem6gi2GYr1rsdnkc9diX/dq2l9VZ+9i72JnEuzNNKYFRiH5YBJbwcyZTMa7bmVhpUYHXxI7NIZxz85HjeKZqAa3IGjAWXNG5jV8q3/6ThjNVBPRv5tgJtRgCU5kg4+1j49qnZ9C1dnOIWsFATsoTTb4Vm/iAGXphNhOn4kCFSPE8t42M3ujerIH4qPfKkEDtecrRusKwzN7uni2QERkk9kgWVlHQlkNKuZ3gGzTHMjExogt878cEVtbsdeNhWrHVNORZ7pR1jdzbfhHgAEABTm5f8wP3PEAAAAASUVORK5CYII="
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(74)
-	__vue_template__ = __webpack_require__(75)
+	__vue_script__ = __webpack_require__(75)
+	__vue_template__ = __webpack_require__(76)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -16927,7 +17030,7 @@
 	})()}
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16938,19 +17041,19 @@
 
 	var _common = __webpack_require__(7);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ButtonPrint = __webpack_require__(47);
+	var _ButtonPrint = __webpack_require__(48);
 
 	var _ButtonPrint2 = _interopRequireDefault(_ButtonPrint);
 
-	var _ButtonScan = __webpack_require__(55);
+	var _ButtonScan = __webpack_require__(56);
 
 	var _ButtonScan2 = _interopRequireDefault(_ButtonScan);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17014,18 +17117,18 @@
 	//
 
 /***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}} / Orden #{{order.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
-
-/***/ },
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}} / Orden #{{order.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(77)
-	__vue_template__ = __webpack_require__(78)
+	__vue_script__ = __webpack_require__(78)
+	__vue_template__ = __webpack_require__(79)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17042,7 +17145,7 @@
 	})()}
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17057,15 +17160,15 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17178,18 +17281,18 @@
 	//
 
 /***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(72) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(80)
-	__vue_template__ = __webpack_require__(87)
+	__vue_script__ = __webpack_require__(81)
+	__vue_template__ = __webpack_require__(88)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17206,7 +17309,7 @@
 	})()}
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17217,19 +17320,19 @@
 
 	var _common = __webpack_require__(7);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ButtonPrintTrip = __webpack_require__(81);
+	var _ButtonPrintTrip = __webpack_require__(82);
 
 	var _ButtonPrintTrip2 = _interopRequireDefault(_ButtonPrintTrip);
 
-	var _ButtonScanTrip = __webpack_require__(84);
+	var _ButtonScanTrip = __webpack_require__(85);
 
 	var _ButtonScanTrip2 = _interopRequireDefault(_ButtonScanTrip);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17293,12 +17396,12 @@
 	//
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(82)
-	__vue_template__ = __webpack_require__(83)
+	__vue_script__ = __webpack_require__(83)
+	__vue_template__ = __webpack_require__(84)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17315,7 +17418,7 @@
 	})()}
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17358,18 +17461,18 @@
 	// <script>
 
 /***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <a v-link=\"'print-trip'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\">imprimir</p>\n    </div>\n  </a>\n";
-
-/***/ },
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <a v-link=\"'print-trip'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(55) + "\" alt=\"\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\">imprimir</p>\n    </div>\n  </a>\n";
+
+/***/ },
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(85)
-	__vue_template__ = __webpack_require__(86)
+	__vue_script__ = __webpack_require__(86)
+	__vue_template__ = __webpack_require__(87)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17386,7 +17489,7 @@
 	})()}
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17395,7 +17498,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	var _ls = __webpack_require__(9);
 
@@ -17437,24 +17540,24 @@
 	//
 
 /***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<a v-link=\"'scan-trip'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(58) + "\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">escanear ({{trip_items_remaining_counter}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n    </div>\n  </a>\n";
-
-/***/ },
 /* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{trip_items_remaining_counter}} / Viaje #{{trip.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre en bodega. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print-trip></button-print-trip>\n    <button-scan-trip></button-scan-trip>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n\t<a v-link=\"'scan-trip'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(59) + "\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">escanear ({{trip_items_remaining_counter}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n    </div>\n  </a>\n";
 
 /***/ },
 /* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{trip_items_remaining_counter}} / Viaje #{{trip.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre en bodega. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print-trip></button-print-trip>\n    <button-scan-trip></button-scan-trip>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+
+/***/ },
+/* 89 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(89)
-	__vue_template__ = __webpack_require__(90)
+	__vue_script__ = __webpack_require__(90)
+	__vue_template__ = __webpack_require__(91)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17471,7 +17574,7 @@
 	})()}
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17486,15 +17589,15 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17618,18 +17721,18 @@
 	//
 
 /***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{trip_items_remaining_counter}}</span> bultos / Viaje #{{trip.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list-trip')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(72) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{trip_items_remaining_counter}}</span> bultos / Viaje #{{trip.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list-trip')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 92 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(92)
-	__vue_template__ = __webpack_require__(93)
+	__vue_script__ = __webpack_require__(93)
+	__vue_template__ = __webpack_require__(94)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17646,7 +17749,7 @@
 	})()}
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17655,11 +17758,11 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -17669,9 +17772,9 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17798,18 +17901,18 @@
 	//
 
 /***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
-
-/***/ },
 /* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(55) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(95)
-	__vue_template__ = __webpack_require__(96)
+	__vue_script__ = __webpack_require__(96)
+	__vue_template__ = __webpack_require__(97)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17826,7 +17929,7 @@
 	})()}
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17835,11 +17938,11 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -17849,9 +17952,9 @@
 
 	var _common = __webpack_require__(7);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18126,18 +18229,18 @@
 	//
 
 /***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(58) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{{item_id_info}}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery' && item.qr_id > 0\">{{{item_id_info}}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(59) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{{item_id_info}}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery' && item.qr_id > 0\">{{{item_id_info}}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(98)
-	__vue_template__ = __webpack_require__(99)
+	__vue_script__ = __webpack_require__(99)
+	__vue_template__ = __webpack_require__(100)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18154,7 +18257,7 @@
 	})()}
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18163,11 +18266,11 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18177,9 +18280,9 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18311,18 +18414,18 @@
 	//
 
 /***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(54) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('items-list-trip')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>lista de bultos</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
-
-/***/ },
 /* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(55) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('items-list-trip')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>lista de bultos</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(101)
-	__vue_template__ = __webpack_require__(102)
+	__vue_script__ = __webpack_require__(102)
+	__vue_template__ = __webpack_require__(103)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18339,7 +18442,7 @@
 	})()}
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18348,11 +18451,11 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(68);
+	var _ModalWait = __webpack_require__(69);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18362,9 +18465,9 @@
 
 	var _common = __webpack_require__(7);
 
-	var _actions = __webpack_require__(17);
+	var _actions = __webpack_require__(18);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18619,18 +18722,18 @@
 	//
 
 /***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(58) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">Quedan ({{trip_items_remaining_counter}}) bultos por escanear</p>\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"trip_items_remaining_counter > 0\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(59) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">Quedan ({{trip_items_remaining_counter}}) bultos por escanear</p>\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"trip_items_remaining_counter > 0\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(104)
-	__vue_template__ = __webpack_require__(105)
+	__vue_script__ = __webpack_require__(105)
+	__vue_template__ = __webpack_require__(106)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18647,7 +18750,7 @@
 	})()}
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18678,18 +18781,18 @@
 	// </script>
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports) {
 
 	module.exports = "\n    <div class=\"ac25-red-loading-section\">\n        <div class=\"container\">\n            <div class=\"ac25-loading-content\">\n               <h5>No disponible en esta versión</h5>\n            </div>\n        </div>\n    </div><!-- end red-loading-section -->\n    <footer class=\"ac25-newfoot\">\n        <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n";
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(107)
-	__vue_template__ = __webpack_require__(108)
+	__vue_script__ = __webpack_require__(108)
+	__vue_template__ = __webpack_require__(109)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18706,7 +18809,7 @@
 	})()}
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18715,7 +18818,7 @@
 	  value: true
 	});
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -18723,7 +18826,7 @@
 
 	var _ls2 = _interopRequireDefault(_ls);
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18831,18 +18934,18 @@
 	//
 
 /***/ },
-/* 108 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
-
-/***/ },
 /* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
+
+/***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(110)
-	__vue_template__ = __webpack_require__(111)
+	__vue_script__ = __webpack_require__(111)
+	__vue_template__ = __webpack_require__(112)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18859,7 +18962,7 @@
 	})()}
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18874,7 +18977,7 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -18916,18 +19019,18 @@
 	// <script>
 
 /***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(60) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->\n";
-
-/***/ },
 /* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->\n";
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(113)
-	__vue_template__ = __webpack_require__(114)
+	__vue_script__ = __webpack_require__(114)
+	__vue_template__ = __webpack_require__(115)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18944,7 +19047,7 @@
 	})()}
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18957,7 +19060,7 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -18997,18 +19100,18 @@
 	// </script>
 
 /***/ },
-/* 114 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(30) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
-
-/***/ },
 /* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(31) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+
+/***/ },
+/* 116 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(116)
-	__vue_template__ = __webpack_require__(117)
+	__vue_script__ = __webpack_require__(117)
+	__vue_template__ = __webpack_require__(118)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19025,7 +19128,7 @@
 	})()}
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19038,7 +19141,7 @@
 
 	var _director2 = _interopRequireDefault(_director);
 
-	var _HeaderUserData = __webpack_require__(21);
+	var _HeaderUserData = __webpack_require__(22);
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
@@ -19134,6 +19237,12 @@
 	            console.info('/stand-by despues de retry !!!!!!!!!!!!!!!!!!!!!');
 	            return that.$route.router.go('/stand-by');
 	          }
+
+	          /**
+	           * NO enrutar aqui a ninguna parte ya que
+	           * se espera un notificacion via pubnub que
+	           * manejara el siguiente paso a seguir, asshole!!!
+	           */
 	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
@@ -19150,18 +19259,18 @@
 	//
 
 /***/ },
-/* 117 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(30) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
-
-/***/ },
 /* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(31) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(119)
-	__vue_template__ = __webpack_require__(120)
+	__vue_script__ = __webpack_require__(120)
+	__vue_template__ = __webpack_require__(121)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19178,7 +19287,7 @@
 	})()}
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19187,7 +19296,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	exports.default = {
 	  name: 'ScanSuccesful',
@@ -19233,24 +19342,24 @@
 	// <script>
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(121) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(58) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(122) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(59) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAvCAYAAABUiRJEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhpJREFUeNrkmt1NwzAQx9OId9igYQKyAX1DPCDBBrABI3QEmIBuQCUeEG9hg3SDdAOYINwVuwohH3Z8ts/xSZbV5sP5/WOf7xwv6rpO5mY3H9c5VCvxs3i7ei+7zlvMCR6gH6HCsmwd2kPZgAjr2cEDdAbVFsrFyKk77BEgwtcs4EUXL6CcKl5yFCCNDDwRvQOHRpJGBi7tPthubwgu7TyNFBwtSyMFT4Ia89TgYFUaKfgepjr+8BbA0dbsvb0l8B289Zz1mLcE/g3llrXDswiOYW0l/zgZSBSw4EPgyVVfWhgYeNmb1UHDK+EMLrs8JB6DG2zmAP4HHhrGePdF4WafOG5kWhgq+BEeGkYn8KrjMZt5cYjgTYf3pHljTAsLeOizUMEP8OKtLyc0YCyAT3D55nODhiYL4Bucap7XFoADOGWQoywAF3DqCG9UAE7gEr5wIQA38AM8XFiIwMWaABzBm0EOxvEldeqY/H4yyjiCt8Nb3ShPVYCMI3hXYqMa3/syMvB/3l5kbA8xgHdOdUwFIAfvneeZCWAFfDDIYSKANfDRCM+zAFbBlcJbTwJYB1eO7R0L4ARcK7FxJIAzcO2szrIATsEnpbSWBHAOPjmfJxbAC7jRYgaRAN7AjeAJBPAKbgxvIIB3cBL4hgB3Akolx899g5PBCwFw+ycuVw0tiT0nrc/EPs3KzozGrme5joewW+qPm6b2I8AAPYVgfoaCtkcAAAAASUVORK5CYII="
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(123)
-	__vue_template__ = __webpack_require__(124)
+	__vue_script__ = __webpack_require__(124)
+	__vue_template__ = __webpack_require__(125)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19267,7 +19376,7 @@
 	})()}
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19276,7 +19385,7 @@
 	    value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	exports.default = {
 	    name: 'ScanFailed',
@@ -19322,18 +19431,18 @@
 	// <script>
 
 /***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(58) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
-
-/***/ },
 /* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(59) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(126)
-	__vue_template__ = __webpack_require__(127)
+	__vue_script__ = __webpack_require__(127)
+	__vue_template__ = __webpack_require__(128)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19350,7 +19459,7 @@
 	})()}
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19359,7 +19468,7 @@
 		value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	exports.default = {
 		name: 'ScanFinished',
@@ -19408,24 +19517,24 @@
 	// <script>
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(121) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(128) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(122) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(129) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAADeCAYAAAC65wucAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzNzIzQTY0NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzNzIzQTY1NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDM3MjNBNjI1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDM3MjNBNjM1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xCOYfAAATc0lEQVR42uxd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"
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(130)
-	__vue_template__ = __webpack_require__(131)
+	__vue_script__ = __webpack_require__(131)
+	__vue_template__ = __webpack_require__(132)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19442,7 +19551,7 @@
 	})()}
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19451,7 +19560,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	var _ls = __webpack_require__(9);
 
@@ -19523,18 +19632,18 @@
 	//
 
 /***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(121) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(58) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n      <a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
-
-/***/ },
 /* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(122) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(59) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n      <a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(133)
-	__vue_template__ = __webpack_require__(134)
+	__vue_script__ = __webpack_require__(134)
+	__vue_template__ = __webpack_require__(135)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19551,7 +19660,7 @@
 	})()}
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19560,7 +19669,7 @@
 	  value: true
 	});
 
-	var _getters = __webpack_require__(28);
+	var _getters = __webpack_require__(29);
 
 	var _ls = __webpack_require__(9);
 
@@ -19631,18 +19740,18 @@
 	//
 
 /***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(46) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(58) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
-
-/***/ },
 /* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(47) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(59) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(136)
-	__vue_template__ = __webpack_require__(137)
+	__vue_script__ = __webpack_require__(137)
+	__vue_template__ = __webpack_require__(138)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19659,7 +19768,7 @@
 	})()}
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19726,13 +19835,13 @@
 	// <script>
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(121) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(128) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(122) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(129) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -22446,7 +22555,7 @@
 	}));
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22455,11 +22564,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(140)(Vue);
+	    var _ = __webpack_require__(141)(Vue);
 
-	    Vue.url = __webpack_require__(141)(_);
-	    Vue.http = __webpack_require__(142)(_);
-	    Vue.resource = __webpack_require__(146)(_);
+	    Vue.url = __webpack_require__(142)(_);
+	    Vue.http = __webpack_require__(143)(_);
+	    Vue.resource = __webpack_require__(147)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -22491,7 +22600,7 @@
 	module.exports = install;
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports) {
 
 	/**
@@ -22577,7 +22686,7 @@
 
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports) {
 
 	/**
@@ -22740,16 +22849,16 @@
 
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(143);
-	var jsonp = __webpack_require__(145);
-	var Promise = __webpack_require__(144);
+	var xhr = __webpack_require__(144);
+	var jsonp = __webpack_require__(146);
+	var Promise = __webpack_require__(145);
 
 	module.exports = function (_) {
 
@@ -22906,14 +23015,14 @@
 
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(144);
+	var Promise = __webpack_require__(145);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -22963,7 +23072,7 @@
 
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports) {
 
 	/**
@@ -23179,14 +23288,14 @@
 
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(144);
+	var Promise = __webpack_require__(145);
 
 	module.exports = function (_, options) {
 
@@ -23235,7 +23344,7 @@
 
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports) {
 
 	/**
@@ -23350,94 +23459,6 @@
 	    return _.resource = Resource;
 	};
 
-
-/***/ },
-/* 147 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vue = __webpack_require__(2);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	var _common = __webpack_require__(7);
-
-	var _utils = __webpack_require__(8);
-
-	var _utils2 = _interopRequireDefault(_utils);
-
-	var _ls = __webpack_require__(9);
-
-	var _ls2 = _interopRequireDefault(_ls);
-
-	var _global = __webpack_require__(15);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// import un objecto default
-	// modules are singletons!!!
-
-
-	var MICRO_API_URL = _common.urls.micro_api; // import una variable
-
-	var ORDER_URL = _common.urls.micro_api + '/order';
-
-	exports.default = {
-	  position: {},
-
-	  start: function start(order, addressType) {
-
-	    if (!navigator.geolocation) {
-	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
-	    }
-
-	    var targetPos = {};
-
-	    if (addressType == 'pickup') {
-	      targetPos.latitude = order.pickupAddress_lat;
-	      targetPos.latitude = order.pickupAddress_lon;
-	    } else {
-	      targetPos.latitude = order.deliveryAddress_lat;
-	      targetPos.latitude = order.deliveryAddress_lon;
-	    }
-
-	    navigator.geolocation.watchPosition(function (position) {
-
-	      currPos.latitude = position.coords.latitude;
-	      currPos.longitude = position.coords.longitude;
-
-	      d = _utils2.default.getDistance(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
-	      console.info(d);
-
-	      if (d < 10) {
-	        var meters = (d - 0.01) * 1000;
-	        console.info('Recorridos: ' + meters + ' mts.');
-	        this.helloShipment();
-	      }
-	    }, function (err) {
-	      console.warn('geolocation error (' + err.code + '): ' + err.message);
-	    }, {
-	      enableHighAccuracy: true
-	    });
-	  },
-	  helloShipment: function helloShipment(order_id, addressType) {
-	    this.$http.post(ORDER_URL + '/hello-shipment', {
-	      order_id: order_id,
-	      shipment_type: addressType,
-	      address_type: addressType
-
-	    }).then(function (response) {
-	      console.info(response, 'success callback');
-	    }, function (response) {
-	      console.info(response.data, 'error callback');
-	    });
-	  }
-	};
 
 /***/ }
 /******/ ]);

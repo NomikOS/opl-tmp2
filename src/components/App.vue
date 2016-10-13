@@ -4,6 +4,7 @@
 
 <script>
   import director from '../services/director'
+  import geo from '../services/geo'
   import store from '../vuex/store'
   import { router } from '../index'
   import { pubnub } from '../libs/global'
