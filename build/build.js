@@ -11276,7 +11276,7 @@
 	      var meters = (d - 0.01) * 1000;
 	      console.info('Recorridos: ' + meters + ' mts.');
 
-	      if (d < 100) {
+	      if (meters < 100) {
 
 	        console.info('HELLO');
 	        that.helloShipment(order.id, addressType);
