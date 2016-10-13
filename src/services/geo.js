@@ -22,35 +22,37 @@ export default {
     var currPos = {}
     var that = this
 
-    console.info(order.pickupAddress_lat);
-    console.info(order.deliveryAddress_lat);
+    console.info( 'pickupAddress_lat', order.pickupAddress_lat );
+    console.info( 'deliveryAddress_lat', order.deliveryAddress_lat );
 
-    if (addressType == 'pickup')
-    {
+    if ( addressType == 'pickup' ) {
       targetPos.latitude = order.pickupAddress_lat
       targetPos.longitude = order.pickupAddress_lon
-    }
-    else
-    {
+    } else {
       targetPos.latitude = order.deliveryAddress_lat
       targetPos.longitude = order.deliveryAddress_lon
     }
 
-    navigator.geolocation.watchPosition( function( position ) {
+    var idWatch = navigator.geolocation.watchPosition( function( position ) {
 
         currPos.latitude = position.coords.latitude
         currPos.longitude = position.coords.longitude
 
-        console.info('currPos', currPos);
-        console.info(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
+        console.info( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' );
 
         var d = utils.getDistance( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' )
-        console.info(d);
 
-        if ( d < 10 ) {
-          var meters = ( d - 0.01 ) * 1000
-          console.info( 'Recorridos: ' + meters + ' mts.' )
-          that.helloShipment(order.id, addressType)
+        var meters = ( d - 0.01 ) * 1000
+        console.info( 'Recorridos: ' + meters + ' mts.' )
+
+        if ( d < 100 ) {
+
+          console.info('HELLO');
+          that.helloShipment( order.id, addressType )
+
+          // stop watch
+          navigator.geolocation.clearWatch( idWatch )
+
         }
       },
       function( err ) {
