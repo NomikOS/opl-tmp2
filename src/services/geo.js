@@ -38,21 +38,18 @@ export default {
         currPos.latitude = position.coords.latitude
         currPos.longitude = position.coords.longitude
 
-        console.info( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' );
-
         var d = utils.getDistance( targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K' )
-
         var meters = ( d - 0.01 ) * 1000
-        console.info( 'Recorridos: ' + meters + ' mts.' )
 
         if ( meters < 100 ) {
 
-          console.info('HELLO');
+          var t = new Date()
+
+          console.info('HELLO at ' + t)
           that.helloShipment( order.id, addressType )
 
           // stop watch
           navigator.geolocation.clearWatch( idWatch )
-
         }
       },
       function( err ) {
