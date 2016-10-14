@@ -21,28 +21,29 @@ export default {
     this.user.profile = {}
 
     this.setPhonegapid()
+    this.disableBackbutton()
 
     /**
      * We'll check all these data.
      * We need it for full functionality
      * ---------------------------------
      */
-     var access_token = ls.get( 'access_token' )
-     var user_id = ls.get( 'user_id' )
-     var profile = ls.get( 'profile' )
+    var access_token = ls.get( 'access_token' )
+    var user_id = ls.get( 'user_id' )
+    var profile = ls.get( 'profile' )
 
     /**
      * Now grocer is very important
      * we needit well set it form start
      * --------------------------------
      */
-     var grocer = ls.get( 'grocer' )
-     ls.save( 'grocer', !!grocer )
+    var grocer = ls.get( 'grocer' )
+    ls.save( 'grocer', !!grocer )
 
     /**
      * Access token is needed
      */
-     if ( !access_token || !user_id ) {
+    if ( !access_token || !user_id ) {
 
       console.info( 'Going to iframe-external/go-passport' );
       return router.go( '/iframe-external/go-passport' )
@@ -58,23 +59,23 @@ export default {
     /**
      * Profile is needed
      */
-     if ( !profile || !profile.id ) {
+    if ( !profile || !profile.id ) {
 
       /**
        * Get profile
        */
-       return this.getProfile();
-     }
+      return this.getProfile();
+    }
 
-     this.user.profile = profile
+    this.user.profile = profile
 
     /**
      * Setup is needed
      */
-     this.checkSetup()
-   },
+    this.checkSetup()
+  },
 
-   setPhonegapid() {
+  setPhonegapid() {
     var phonegapid = ls.get( 'phonegapid' )
 
     if ( !phonegapid ) {
@@ -128,17 +129,17 @@ export default {
       /**
        * Set and save profile
        */
-       var profile = response.data.data
-       ls.save( 'profile', profile )
+      var profile = response.data.data
+      ls.save( 'profile', profile )
 
-       this.user.profile = profile
+      this.user.profile = profile
 
       /**
        * Setup is needed
        */
-       this.checkSetup()
+      this.checkSetup()
 
-     }, ( response ) => {
+    }, ( response ) => {
       console.info( response, 'error callback' );
     } );
   },
@@ -162,7 +163,7 @@ export default {
       /**
        * Vehicle a estado = 1
        */
-       Vue.http.post( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-logout' ).then( ( response ) => {
+      Vue.http.post( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-logout' ).then( ( response ) => {
         var data = response.data
 
         if ( data.success && data.success == true ) {
@@ -172,12 +173,12 @@ export default {
         }
 
       }, ( response ) => {
-          console.info( 'Going to iframe-external/go-passport AFTER LOGOUT failed' );
-          return router.go( '/iframe-external/go-passport' )
+        console.info( 'Going to iframe-external/go-passport AFTER LOGOUT failed' );
+        return router.go( '/iframe-external/go-passport' )
 
       } )
 
-     } else {
+    } else {
 
       console.info( 'Going to iframe-external/go-passport AFTER LOGOUT' );
       return router.go( '/iframe-external/go-passport' )
@@ -189,5 +190,21 @@ export default {
     if ( access_token ) {
       return 'Bearer ' + access_token
     }
+  },
+
+  disableBackbutton() {
+    console.info( 'disableBackbutton' );
+    document.addEventListener( 'deviceready', onDeviceReady, false );
+
+    function onDeviceReady() {
+      console.info( 'onDeviceReady' );
+
+      document.addEventListener( 'backbutton', function( e ) {
+        console.info( 'backbutton disabled' );
+        e.preventDefault();
+
+      }, false );
+    }
   }
+
 }

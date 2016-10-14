@@ -10821,6 +10821,7 @@
 	    this.user.profile = {};
 
 	    this.setPhonegapid();
+	    this.disableBackbutton();
 
 	    /**
 	     * We'll check all these data.
@@ -10980,6 +10981,19 @@
 	    var access_token = _ls2.default.get('access_token');
 	    if (access_token) {
 	      return 'Bearer ' + access_token;
+	    }
+	  },
+	  disableBackbutton: function disableBackbutton() {
+	    console.info('disableBackbutton');
+	    document.addEventListener('deviceready', onDeviceReady, false);
+
+	    function onDeviceReady() {
+	      console.info('onDeviceReady');
+
+	      document.addEventListener('backbutton', function (e) {
+	        console.info('backbutton disabled');
+	        e.preventDefault();
+	      }, false);
 	    }
 	  }
 	};
