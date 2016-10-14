@@ -75,11 +75,18 @@
       console.info( '=================================== LoadVehicle is ready with this order: ', this.order.id )
     },
     methods: {
-      finishOrder () {
+      finishOrder() {
 
         var order_id = this.order.id;
-        console.info(order_id, 'order_id <    ------------------');
         var addressType = this.addressType
+
+        ModalWait.showIt( true, 'finish-shipment' )
+
+setTimeout(function(){
+  ModalWait.showIt( false )
+}, 3000)
+        return;
+
 
         this.$http.post( ORDER_URL + '/finish-shipment', {
           order_id: order_id,
@@ -87,6 +94,8 @@
           address_type: addressType
 
         } ).then( ( response ) => {
+          ModalWait.showIt( false )
+
           console.info( response, 'success callback' );
           this.$route.router.go( '/available' )
 
@@ -103,10 +112,8 @@
           return this.$route.router.go( '/setup' )
         }
 
-        var mac = $.trim(setup.printerMAC).toUpperCase()
+        var mac = $.trim( setup.printerMAC ).toUpperCase()
         var order_id = this.order.id;
-
-        console.info(order_id, 'order_id <    ------------------');
 
         ModalWait.showIt( true, 'printing' )
         this.$http.get( ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label ).then( ( response ) => {
@@ -116,14 +123,14 @@
           console.info( label, 'Imprimiendo order #' + order_id + ' en impresora MAC: ' + mac );
 
           var text = response.data.text
-          if (!text) {
-            return alert('Texto no ha arrivado. Abortando impresión.')
+          if ( !text ) {
+            return alert( 'Texto no ha arrivado. Abortando impresión.' )
           }
 
           cordova.plugins.zbtprinter.print( mac, text,
             function( success ) {},
             function( fail ) {
-              alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail  );
+              alert( 'Fallo en plugin de impresión. Posiblemente ha ingresado una dirección MAC incorrecta. Error interno: ' + fail );
             } );
 
         }, ( response ) => {

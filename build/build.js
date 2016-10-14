@@ -16863,8 +16863,14 @@
 	      var _this = this;
 
 	      var order_id = this.order.id;
-	      console.info(order_id, 'order_id <    ------------------');
 	      var addressType = this.addressType;
+
+	      _ModalWait2.default.showIt(true, 'finish-shipment');
+
+	      setTimeout(function () {
+	        _ModalWait2.default.showIt(false);
+	      }, 3000);
+	      return;
 
 	      this.$http.post(ORDER_URL + '/finish-shipment', {
 	        order_id: order_id,
@@ -16872,6 +16878,8 @@
 	        address_type: addressType
 
 	      }).then(function (response) {
+	        _ModalWait2.default.showIt(false);
+
 	        console.info(response, 'success callback');
 	        _this.$route.router.go('/available');
 	      }, function (response) {
@@ -16888,8 +16896,6 @@
 
 	      var mac = $.trim(setup.printerMAC).toUpperCase();
 	      var order_id = this.order.id;
-
-	      console.info(order_id, 'order_id <    ------------------');
 
 	      _ModalWait2.default.showIt(true, 'printing');
 	      this.$http.get(ORDER_URL + '/' + order_id + '/opl-get-zpl/' + label).then(function (response) {
@@ -16962,6 +16968,9 @@
 				case 'printing':
 					text = 'Espere mientras se inicia impresión...';
 					break;
+				case 'finish-shipment':
+					text = 'Espere mientras se procesa término de viaje...';
+					break;
 			}
 			$('#modalCustomDevText').html(text);
 			$('#modalCustomDev').toggle(visible);
@@ -16978,15 +16987,16 @@
 		}
 	};
 	// </script>
+	//
 	// <template>
-	// 	<div class="ac25-red-loading-section modal-custom-dev" style="z-index:10;position:absolute" id="modalCustomDev">
+	// 	<div class="ac25-red-loading-section modal-custom-dev" style="" id="modalCustomDev">
 	// 		<div class="container">
 	// 			<div class="ac25-loading-content">
 	// 				<h5 id="modalCustomDevText">Comunicando con central...</h5>
 	// 				<img src="../html/images/loading.gif" />
 	// 			</div>
 	// 		</div>
-	// 	</div>	
+	// 	</div>
 	// </template>
 	//
 	// <script>
@@ -16995,7 +17005,7 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"z-index:10;position:absolute\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(31) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\t\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(31) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\n";
 
 /***/ },
 /* 72 */

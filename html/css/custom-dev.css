@@ -14,5 +14,8 @@
 }
 
 .modal-custom-dev {
-	display: none
+	display: none;
+	z-index: 1000;
+	position: fixed;
+	height: 100%;
 }
