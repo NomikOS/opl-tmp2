@@ -2,7 +2,7 @@
  * @Author: Igor Parra
  * @Date:   2016-07-15 12:20:57
  * @Last Modified by:   Igor Parra
- * @Last Modified time: 2016-08-21 21:27:51
+ * @Last Modified time: 2016-10-15 12:17:59
  */
 
 import Vue from 'vue'
@@ -38,6 +38,7 @@ const mutations = {
     state[ type ] = content
 
     if ( 'order' == type ) {
+      console.info('content.items_to_scan_remaining', content.items_to_scan_remaining);
       state.counters.items_to_scan_remaining = content.items_to_scan_remaining
     }
   },

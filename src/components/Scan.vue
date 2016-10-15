@@ -141,19 +141,21 @@
         var qr_id = 0
         var addressType = this.addressType
 
-        this.showModal( true )
+        ModalWait.showIt( true, 'scan-item' )
         this.$http.post( ORDER_URL + '/scan-item', {
-          // ------------------------------------------
           order_id: order_id,
           item_id: item_id,
           qr_id: qr_id,
           address_type: addressType
+
         } ).then( ( response ) => {
+          ModalWait.showIt( false )
 
           var data = response.data
           this.switherParseItemRequest( null, data )
 
         }, ( response ) => {
+          ModalWait.showIt( false )
 
           this.switherParseItemRequest( response )
         } );
@@ -211,7 +213,7 @@
         var qr_id = this.qr_id
         var addressType = this.addressType
 
-        this.showModal( true )
+        ModalWait.showIt( true, 'scan-item' )
         this.$http.post( ORDER_URL + '/scan-item', {
           // ------------------------------------------
           order_id: order_id,
@@ -220,11 +222,13 @@
           address_type: addressType
 
         } ).then( ( response ) => {
+          ModalWait.showIt( false )
 
           var data = response.data
           this.switherParseItemUpdated( null, data )
 
         }, ( response ) => {
+          ModalWait.showIt( false )
 
           this.switherParseItemUpdated( response )
         } );

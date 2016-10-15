@@ -10713,6 +10713,8 @@
 
 	              var order = _message.order;
 
+	              console.info(order);
+
 	              that.storeData({
 	                type: 'order',
 	                content: order
@@ -10733,7 +10735,6 @@
 	              _ls2.default.save('address_type', address_type);
 
 	              console.info('/event-' + address_type, '-------------------------------------');
-
 	              console.info('GEO.START....');
 	              _geo2.default.start(order, address_type);
 
@@ -14372,7 +14373,7 @@
 	 * @Author: Igor Parra
 	 * @Date:   2016-07-15 12:20:57
 	 * @Last Modified by:   Igor Parra
-	 * @Last Modified time: 2016-08-21 21:27:51
+	 * @Last Modified time: 2016-10-15 12:17:59
 	 */
 
 	_vue2.default.use(_vuex2.default);
@@ -14405,6 +14406,7 @@
 	    state[type] = content;
 
 	    if ('order' == type) {
+	      console.info('content.items_to_scan_remaining', content.items_to_scan_remaining);
 	      state.counters.items_to_scan_remaining = content.items_to_scan_remaining;
 	    }
 	  },
@@ -16538,10 +16540,14 @@
 	// </script>
 	//
 	// <template>
-	//   <a v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
-	//     <img src="../html/images/barcode-big-2.png" />
-	//       <p class="ac25-no-margin" v-if="counters.items_to_scan_remaining > 0">escanear ({{counters.items_to_scan_remaining}})</p>
-	//       <p class="ac25-no-margin" v-if="counters.items_to_scan_remaining <= 0">escaneo listo</p>
+	//   <a v-if="counters.items_to_scan_remaining > 0" v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
+	//       <img src="../html/images/barcode-big-2.png" />
+	//       <p class="ac25-no-margin">escanear ({{counters.items_to_scan_remaining}})</p>
+	//   </a>
+	//
+	//   <a v-if="counters.items_to_scan_remaining <= 0" class="ac25-half-black  right waves-effect waves-light" style="cursor:default">
+	//       <img src="../html/images/barcode-big-2.png" />
+	//       <p class="ac25-no-margin">escaneo listo</p>
 	//   </a>
 	// </template>
 	//
@@ -16551,7 +16557,7 @@
 /* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(59) + "\" />\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining > 0\">escanear ({{counters.items_to_scan_remaining}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"counters.items_to_scan_remaining <= 0\">escaneo listo</p>\n  </a>\n";
+	module.exports = "\n  <a v-if=\"counters.items_to_scan_remaining > 0\" v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n      <img src=\"" + __webpack_require__(59) + "\" />\n      <p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n  </a>\n\n  <a v-if=\"counters.items_to_scan_remaining <= 0\" class=\"ac25-half-black  right waves-effect waves-light\" style=\"cursor:default\">\n      <img src=\"" + __webpack_require__(59) + "\" />\n      <p class=\"ac25-no-margin\">escaneo listo</p>\n  </a>\n";
 
 /***/ },
 /* 59 */
@@ -16817,7 +16823,7 @@
 	//
 	//        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
 	//         <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
-	//         <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+	//         <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>
 	//       </ul>
 	//
 	//       <div class="clearfix"></div>
@@ -16832,7 +16838,7 @@
 	//
 	//    <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
 	//     <li> Descargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
-	//     <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+	//     <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>
 	//   </ul>
 	//
 	//   <div class="clearfix"></div>
@@ -16984,6 +16990,9 @@
 				case 'finish-shipment':
 					text = 'Espere mientras se procesa término de viaje...';
 					break;
+				case 'scan-item':
+					text = 'Espere mientras obtiene información de escaneo...';
+					break;
 			}
 			$('#modalCustomDevText').html(text);
 			$('#modalCustomDev').toggle(visible);
@@ -17024,7 +17033,7 @@
 /* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n   <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n   <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n   <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n   <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n    <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n    <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>\n  </ul>\n\n  <div class=\"clearfix\"></div>\n  <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n</div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n   <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n   <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n   <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(61) + "\" v-link=\"'call'\" />\n\n   <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n    <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n    <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n  </ul>\n\n  <div class=\"clearfix\"></div>\n  <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(73) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n</div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
 /* 73 */
@@ -18115,18 +18124,20 @@
 	      var qr_id = 0;
 	      var addressType = this.addressType;
 
-	      this.showModal(true);
+	      _ModalWait2.default.showIt(true, 'scan-item');
 	      this.$http.post(ORDER_URL + '/scan-item', {
-	        // ------------------------------------------
 	        order_id: order_id,
 	        item_id: item_id,
 	        qr_id: qr_id,
 	        address_type: addressType
+
 	      }).then(function (response) {
+	        _ModalWait2.default.showIt(false);
 
 	        var data = response.data;
 	        _this.switherParseItemRequest(null, data);
 	      }, function (response) {
+	        _ModalWait2.default.showIt(false);
 
 	        _this.switherParseItemRequest(response);
 	      });
@@ -18186,7 +18197,7 @@
 	      var qr_id = this.qr_id;
 	      var addressType = this.addressType;
 
-	      this.showModal(true);
+	      _ModalWait2.default.showIt(true, 'scan-item');
 	      this.$http.post(ORDER_URL + '/scan-item', {
 	        // ------------------------------------------
 	        order_id: order_id,
@@ -18195,10 +18206,12 @@
 	        address_type: addressType
 
 	      }).then(function (response) {
+	        _ModalWait2.default.showIt(false);
 
 	        var data = response.data;
 	        _this2.switherParseItemUpdated(null, data);
 	      }, function (response) {
+	        _ModalWait2.default.showIt(false);
 
 	        _this2.switherParseItemUpdated(response);
 	      });

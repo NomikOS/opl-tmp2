@@ -25,7 +25,10 @@
         text = 'Espere mientras se inicia impresión...';
         break;
         case 'finish-shipment':
-				text = 'Espere mientras se procesa término de viaje...';
+        text = 'Espere mientras se procesa término de viaje...';
+        break;
+        case 'scan-item':
+				text = 'Espere mientras obtiene información de escaneo...';
 				break;
 			}
 			$('#modalCustomDevText').html(text)

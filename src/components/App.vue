@@ -163,6 +163,8 @@
 
                 var order = message.order
 
+                console.info(order);
+
                 that.storeData( {
                   type: 'order',
                   content: order
@@ -183,7 +185,6 @@
                  ls.save( 'address_type', address_type )
 
                  console.info('/event-' + address_type, '-------------------------------------');
-
                  console.info( 'GEO.START....' );
                  geo.start(order, address_type)
 

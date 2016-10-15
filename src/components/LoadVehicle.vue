@@ -12,7 +12,7 @@
 
        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
         <li> Cargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
-        <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+        <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>
       </ul>
 
       <div class="clearfix"></div>
@@ -27,7 +27,7 @@
 
    <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
     <li> Descargue los <span class="ac25-large-font">{{order.items_amount}}</span> bultos.</li>
-    <li> Una vez que este listo para pasar a la siguiente orden, persione terminar.</li>
+    <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>
   </ul>
 
   <div class="clearfix"></div>
