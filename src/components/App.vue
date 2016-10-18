@@ -44,7 +44,8 @@
 
           message: function( message ) {
             var type = message.type
-            console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type );
+            var t = new Date()
+            console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type + ' a las ' + t);
 
             switch ( type ) {
 

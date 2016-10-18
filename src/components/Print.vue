@@ -27,7 +27,12 @@
       </a>
     </li>
     <li>
-      <a @click="print('customer-pickup-order')" class="waves-effect waves-light">
+      <a v-if="'pickup' == this.addressType" @click="print('customer-pickup-order')" class="waves-effect waves-light">
+        <div class="ac25-main-menu-content">
+          <p>orden cliente</p>
+        </div>
+      </a>
+      <a v-if="'delivery' == this.addressType" @click="print('customer-pickup-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden cliente</p>
         </div>
@@ -64,7 +69,7 @@
   import { urls } from '../libs/common'
   import ls from '../libs/ls'
   import { showModal } from '../vuex/actions'
-  import { getOrder } from '../vuex/getters'
+  import { getOrder, getAddressType } from '../vuex/getters'
 
   const ORDER_URL = urls.micro_api + '/order'
 
@@ -79,7 +84,8 @@
         showModal: showModal
       },
       getters: {
-        order: getOrder
+        order: getOrder,
+        addressType: getAddressType
       }
     },
     data() {
