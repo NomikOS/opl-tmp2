@@ -29,12 +29,12 @@
     <li>
       <a v-if="'pickup' == this.addressType" @click="print('customer-pickup-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>orden cliente</p>
+          <p>orden cliente retiro</p>
         </div>
       </a>
-      <a v-if="'delivery' == this.addressType" @click="print('customer-pickup-order')" class="waves-effect waves-light">
+      <a v-if="'delivery' == this.addressType" @click="print('customer-delivery-order')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>orden cliente</p>
+          <p>orden cliente entrega</p>
         </div>
       </a>
     </li>
