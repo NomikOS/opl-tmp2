@@ -30,13 +30,13 @@
      store: store,
 
      ready: function() {
-      console.info( 'APP is ready ===================================' );
+      alert( 'APP is ready ===================================' );
       this.initPubnub()
     },
 
     methods: {
       initPubnub: function() {
-        console.info( 'pubnub cargado' );
+        alert( 'pubnub cargado' );
 
         var that = this;
         pubnub.subscribe( {
@@ -45,7 +45,7 @@
           message: function( message ) {
             var type = message.type
             var t = new Date()
-            console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type + ' a las ' + t);
+            alert( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type + ' a las ' + t);
 
             switch ( type ) {
 
@@ -72,7 +72,7 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // No es para este vehiculo
-                  console.info( 'Data for another OPL, bye' )
+                  alert( 'Data for another OPL, bye' )
                   return;
                 }
 
@@ -103,7 +103,7 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // No es para este vehiculo
-                  console.info( 'Data for another OPL, bye' );
+                  alert( 'Data for another OPL, bye' );
                   return;
                 }
 
@@ -158,13 +158,13 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // no es para este vehiculo
-                  console.info( 'Data for another OPL, bye' )
+                  alert( 'Data for another OPL, bye' )
                   return;
                 }
 
                 var order = message.order
 
-                console.info(order);
+                alert(order);
 
                 that.storeData( {
                   type: 'order',
@@ -185,8 +185,8 @@
                  ls.save( 'order_id', order.id );
                  ls.save( 'address_type', address_type )
 
-                 console.info('/event-' + address_type, '-------------------------------------');
-                 console.info( 'GEO.START....' );
+                 alert('/event-' + address_type, '-------------------------------------');
+                 alert( 'GEO.START....' );
                  geo.start(order, address_type)
 
                  return that.$route.router.go( '/event-' + address_type )
@@ -207,7 +207,7 @@
                 ls.save( 'access_token', token );
                 ls.save( 'user_id', uid );
 
-                console.info( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
+                alert( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
                 director.init()
                 break
 
