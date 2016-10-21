@@ -199,10 +199,10 @@
                  var uid = message.uid
                  var phonegapid = message.phonegapid
 
-                 if ( phonegapid != phonegapid_stored ) {
-                  console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-                  return // and destroy phone
-                }
+                //  if ( phonegapid != phonegapid_stored ) {
+                //   console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+                //   return // and destroy phone
+                // }
 
                 ls.save( 'access_token', token );
                 ls.save( 'user_id', uid );
