@@ -10749,10 +10749,10 @@
 	              var uid = _message.uid;
 	              var phonegapid = _message.phonegapid;
 
-	              if (phonegapid != phonegapid_stored) {
-	                console.info(phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP');
-	                return; // and destroy phone
-	              }
+	              //  if ( phonegapid != phonegapid_stored ) {
+	              //   console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+	              //   return // and destroy phone
+	              // }
 
 	              _ls2.default.save('access_token', token);
 	              _ls2.default.save('user_id', uid);
