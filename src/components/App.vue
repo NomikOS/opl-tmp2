@@ -30,13 +30,13 @@
      store: store,
 
      ready: function() {
-      alert( 'APP is ready ===================================' );
+      console.info( 'APP is ready ===================================' );
       this.initPubnub()
     },
 
     methods: {
       initPubnub: function() {
-        alert( 'pubnub cargado' );
+        console.info( 'pubnub cargado' );
 
         var that = this;
         pubnub.subscribe( {
@@ -45,7 +45,7 @@
           message: function( message ) {
             var type = message.type
             var t = new Date()
-            alert( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type + ' a las ' + t);
+            console.info( message, '=================================== NOTIFICATIONS-OPL arrivando con tipo: ' + type + ' a las ' + t);
 
             switch ( type ) {
 
@@ -72,7 +72,7 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // No es para este vehiculo
-                  alert( 'Data for another OPL, bye' )
+                  console.info( 'Data for another OPL, bye' )
                   return;
                 }
 
@@ -103,7 +103,7 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // No es para este vehiculo
-                  alert( 'Data for another OPL, bye' );
+                  console.info( 'Data for another OPL, bye' );
                   return;
                 }
 
@@ -158,13 +158,13 @@
                 if ( vehicleSelected != vehicle_id ) {
 
                   // no es para este vehiculo
-                  alert( 'Data for another OPL, bye' )
+                  console.info( 'Data for another OPL, bye' )
                   return;
                 }
 
                 var order = message.order
 
-                alert(order);
+                console.info(order);
 
                 that.storeData( {
                   type: 'order',
@@ -185,8 +185,8 @@
                  ls.save( 'order_id', order.id );
                  ls.save( 'address_type', address_type )
 
-                 alert('/event-' + address_type, '-------------------------------------');
-                 alert( 'GEO.START....' );
+                 console.info('/event-' + address_type, '-------------------------------------');
+                 console.info( 'GEO.START....' );
                  geo.start(order, address_type)
 
                  return that.$route.router.go( '/event-' + address_type )
@@ -199,15 +199,15 @@
                  var uid = message.uid
                  var phonegapid = message.phonegapid
 
-                //  if ( phonegapid != phonegapid_stored ) {
-                //   console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
-                //   return // and destroy phone
-                // }
+                 if ( phonegapid != phonegapid_stored ) {
+                  console.info( phonegapid, phonegapid_stored, 'PHONEGAP-ID DO NOT MACTH !!!!!!!!!!!!!!!!!!! CHECK THIS ASAP' );
+                  return // and destroy phone
+                }
 
                 ls.save( 'access_token', token );
                 ls.save( 'user_id', uid );
 
-                alert( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
+                console.info( 'DIRECTOR.INIT AFTER USER-AUTHENTICATED....' );
                 director.init()
                 break
 
