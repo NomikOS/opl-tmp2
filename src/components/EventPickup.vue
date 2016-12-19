@@ -30,11 +30,11 @@
         <ul class="ac25-info-list ac25-w100 ac25-steps2">
           <li>
             <p class="ac25-info-list-title"> Deparmento </p>
-            <p class="ac25-info-list-content"> {{order.deliveryAddress_apt}} </p>
+            <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
           </li>
           <li>
             <p class="ac25-info-list-title"> Comuna </p>
-            <p class="ac25-info-list-content"> {{order.deliveryAddress_county}} </p>
+            <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
           </li>
         </ul><!-- end steps2 -->
 
