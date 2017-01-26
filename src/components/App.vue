@@ -210,7 +210,7 @@
                   switch ( load ) {
                     case 'payment' :
                       console.info('go to ' + load);
-                      return that.$route.router.go( '/' + load )
+                      return
                     break;
                   }
                  }

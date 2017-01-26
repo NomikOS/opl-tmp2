@@ -46,7 +46,7 @@
             </tr>
           </thead>
           <tr class="border-solid">
-            <tr v-for="payment in order.payments.data">
+            <tr v-for="payment in payments">
               <td><p class="border-red-bottom">{{ payment.total_amount }}</p></td>
               <td><p class="border-red-bottom">{{ payment.created_at }}</p></td>
               <td><p class="border-red-bottom">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>
@@ -100,6 +100,14 @@
       },
       actions: {
         storeData: storeData
+      }
+    },
+    computed: {
+      payments () {
+        if (typeof this.order.payments.data !== 'undefined') {
+          return this.order.payments.data
+        }
+        return this.order.payments
       }
     },
     data: function () {

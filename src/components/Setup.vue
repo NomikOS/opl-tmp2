@@ -4,7 +4,7 @@
       <div class="ac25-content-inner-holder ac25-min-height-200">
         <h4 class="ac25-top-red-text">CONFIGURACIÓN</h4>
 
-        <ul class="ac25-red-list clearfix ac25-fleft ac25-mtop60">
+        <ul class="clearfix ac25-fleft ac25-mtop60">
           <form>
             <p>
               <label>Vehículo</label>

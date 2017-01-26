@@ -236,7 +236,6 @@
 .ac25-full-black{
 	width: 100% !important;
 	border-top: 1px solid white;
-	bottom: -32px !important;
 }
 .ac25-half-black.ac25-border{
 	border-right:1px solid #fff;
@@ -517,7 +516,6 @@
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	height: 250px;
 }
 .ac25-newfoot.ac25-height-auto{
 	height: auto !important;
