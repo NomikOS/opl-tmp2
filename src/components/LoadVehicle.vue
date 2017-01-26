@@ -52,6 +52,7 @@
   import { urls } from '../libs/common'
   import ls from '../libs/ls'
   import { getOrder, getCounters, getAddressType } from '../vuex/getters'
+  import { resetData } from '../vuex/actions'
 
   const ORDER_URL = urls.micro_api + '/order'
 
@@ -65,6 +66,9 @@
       ButtonScan
     },
     vuex: {
+      actions: {
+        resetData: resetData
+      },
       getters: {
         order: getOrder,
         counters: getCounters,
@@ -81,11 +85,6 @@
         var addressType = this.addressType
 
         ModalWait.showIt( true, 'finish-shipment' )
-        // setTimeout(function(){
-        //   ModalWait.showIt( false )
-        // }, 3000)
-        // return;
-
 
         this.$http.post( ORDER_URL + '/finish-shipment', {
           order_id: order_id,
@@ -94,6 +93,14 @@
 
         } ).then( ( response ) => {
           ModalWait.showIt( false )
+
+          this.resetData()
+
+          /**
+           * safeguards
+           */
+           ls.save( 'order_id', 0 );
+           ls.save( 'address_type', '' )
 
           console.info( response, 'success callback' );
           this.$route.router.go( '/available' )

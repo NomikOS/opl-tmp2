@@ -4,6 +4,9 @@
 export const storeData = function ({ dispatch, state }, data) {
   dispatch('LOAD_DATA', data)
 }
+export const resetData = function ({ dispatch, state }) {
+  dispatch('RESET_DATA')
+}
 export const showModal = function ({ dispatch, state }, data) {
   dispatch('HIDE_MODAL', data)
 }

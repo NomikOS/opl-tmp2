@@ -517,7 +517,7 @@
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	height: 143px;
+	height: 250px;
 }
 .ac25-newfoot.ac25-height-auto{
 	height: auto !important;
@@ -720,4 +720,9 @@
 		.ac25-top-right-hand.ac25-loading{
 				top:70px;
 		}
+}
+
+
+.estados-table td {
+	font-size: 20px;	
 }

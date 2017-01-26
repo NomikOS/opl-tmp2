@@ -13,7 +13,7 @@ Vue.use( Vuex )
 
 // Create an object to hold the initial state when
 // the app starts up
-const state = {
+const default_state = {
   order: { id: 0 },
   item: { id: 0 },
   counters: {
@@ -27,7 +27,10 @@ const state = {
   trip: { id: 0 },
   operation_type: '',
   trip_items_remaining_counter : 0,
+  show_acknowledge : false,
+  show_in_position : false
 }
+const state = default_state
 
 const mutations = {
   // A mutation receives the current state as the first argument
@@ -35,6 +38,7 @@ const mutations = {
   LOAD_DATA( state, data ) {
     var type = data.type
     var content = data.content
+
     state[ type ] = content
 
     if ( 'order' == type ) {
@@ -42,8 +46,13 @@ const mutations = {
       state.counters.items_to_scan_remaining = content.items_to_scan_remaining
     }
   },
+  
   HIDE_MODAL( state, data ) {
     state.modalVisible = data
+  },
+
+  RESET_DATA( state ) {
+    state = default_state
   },
 
   SET_COUNTERS( state, data ) {

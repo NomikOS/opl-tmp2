@@ -163,8 +163,7 @@
                 }
 
                 var order = message.order
-
-                console.info(order);
+                var load = message.load
 
                 that.storeData( {
                   type: 'order',
@@ -179,17 +178,45 @@
                   content: address_type
                 } )
 
+                var show_acknowledge = order[address_type + '_acknowledge_time'] ? false : true
+
+                that.storeData( {
+                  type: 'show_acknowledge',
+                  content: show_acknowledge
+                } )
+
+                var show_in_position = false
+
+                if (order[address_type + '_acknowledge_time'] && ! order[address_type + '_hello_time']) {
+                  show_in_position = true
+                }
+
+                that.storeData( {
+                  type: 'show_in_position',
+                  content: show_in_position
+                } )
+
                 /**
                  * safeguards
                  */
                  ls.save( 'order_id', order.id );
                  ls.save( 'address_type', address_type )
 
-                 console.info('/event-' + address_type, '-------------------------------------');
                  console.info( 'GEO.START....' );
                  geo.start(order, address_type)
 
+                 if (load != '') {
+
+                  switch ( load ) {
+                    case 'payment' :
+                      console.info('go to ' + load);
+                      return that.$route.router.go( '/' + load )
+                    break;
+                  }
+                 }
+
                  return that.$route.router.go( '/event-' + address_type )
+
                  break
 
                  case 'user-authenticated':

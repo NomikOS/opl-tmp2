@@ -105,6 +105,34 @@ export default {
   },
 
   checkSetup() {
+
+    return
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
     var setup = ls.get( 'setup' )
     var grocer = ls.get( 'grocer' )
 

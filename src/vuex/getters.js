@@ -29,4 +29,10 @@ export function getOperationType( state ) {
 export function getTripItemsRemainingCounter( state ) {
   return state.trip_items_remaining_counter
 }
+export function getShowAcknowledgeTime( state ) {
+  return state.show_acknowledge
+}
+export function getShowInPosition( state ) {
+  return state.show_in_position
+}
 

@@ -13,7 +13,8 @@ export const credentials = {
   logglyKey: '7c87aa29-08f3-429f-9df7-a4c224bc9114'
 }
 
-var APP_ENV = 'production'
+var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
+console.info(APP_ENV);
 
 var urls2 = {}
 switch ( APP_ENV ) {
@@ -29,9 +30,17 @@ switch ( APP_ENV ) {
       public_docs: 'https://docs-econocargo.agente.cl'
     }
     break;
+  case 'testing':
+    urls2 = {
+      app: 'https://econocargo-testing.agente.cl/#!',
+      passport_website: 'https://passport-testing.agente.cl/#!',
+      passport_api: 'https://api-testing.agente.cl/passport',
+      econocargo_website: 'https://econocargo-testing.agente.cl',
+      gateway_api: 'https://api-testing.agente.cl',
+      micro_api: 'https://api-testing.agente.cl/ltl',
+      public_docs: 'https://docs-econocargo.agente.cl'
+    }
+    break;    
 }
 
 export const urls = urls2
-
-console.info( 'APP_ENV', APP_ENV );
-console.info( 'urls', urls );

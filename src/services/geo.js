@@ -46,7 +46,8 @@ export default {
           var t = new Date()
 
           console.info('HELLO at ' + t)
-          that.helloShipment( order.id, addressType )
+          // that.helloShipment( order.id, addressType )
+          // deprecated
 
           // stop watch
           navigator.geolocation.clearWatch( idWatch )
