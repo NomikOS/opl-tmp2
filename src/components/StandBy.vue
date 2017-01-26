@@ -91,6 +91,10 @@
               type: 'show_acknowledge',
               content: false
             } )
+            this.storeData( {
+              type: 'show_in_position',
+              content: true
+            } )            
           }
         });
       }
