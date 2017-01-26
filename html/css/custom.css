@@ -726,3 +726,41 @@
 .estados-table td {
 	font-size: 20px;	
 }
+p.estados-middle {
+    min-height: 45px;
+    padding: 15px;
+    box-sizing: content-box;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+p.estados-middle.green,
+p.estados-middle.red {
+	color: #fff;
+}
+
+
+p.big-title.sub {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.standard-table th {
+    color: #f44336;
+    text-transform: uppercase;
+    padding: 5px;
+}
+.standard-table thead {
+	border: none;
+}
+.standard-table td > .border-red-bottom {
+	margin: 0;
+	padding: 0 5px;
+	border-bottom: 1px solid #f44336;
+}
+.ac25-content-inner-holder.without-padding-bottom {
+	padding-bottom: 0 !important;
+}
+.estados-title.border {
+	  border-bottom: 1px solid #f44336;
+    padding-bottom: 5px;
+}
