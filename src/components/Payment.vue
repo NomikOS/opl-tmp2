@@ -1,5 +1,7 @@
 <template>
   <header-user-data></header-user-data>
+  <modal-wait></modal-wait>
+
   <div class="ac25-content-global">
     <div class="container">
       <div class="ac25-content-inner-holder padding-bottom-none row">
@@ -62,6 +64,7 @@
     urls
   } from '../libs/common'
   import HeaderUserData from './Partials/HeaderUserData.vue'
+  import ModalWait from './Partials/ModalWait.vue'
   import NotificationIcon from './Partials/NotificationIcon.vue'
   import ButtonPrint from './Partials/ButtonPrint.vue'
   import ButtonScan from './Partials/ButtonScan.vue'
@@ -75,11 +78,13 @@
   import ls from '../libs/ls'
 
   const ORDER_URL = urls.micro_api + '/order'
+  const MICRO_API_URL = urls.micro_api  
 
   export default {
     name: 'Payment',
     components: {
       HeaderUserData,
+      ModalWait,
       NotificationIcon,
     },
     vuex: {
@@ -110,17 +115,23 @@
       },
 
       reload() {
-        var order_id = ls.get('order_id')
+        var setup = ls.get( 'setup' )
 
-        this.$http.get(ORDER_URL + '/' + order_id).then((response) => {
+        if ( !setup || !setup.vehicleSelected ) {
+          return this.$route.router.go( '/setup' )
+        }
 
-          var order = response.data.data
-          console.info(order);
+        ModalWait.showIt( true, 'refresh-order' )
 
-          this.storeData({
-            type: 'order',
-            content: order
-          })
+        var vehicleSelected = setup.vehicleSelected
+
+        this.$http.get( MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-request-order' ).then( ( response ) => {
+
+          ModalWait.showIt( false )
+
+          if (response.data && response.data.success) {
+            /////
+          }
 
         }, (response) => {
           console.info(response, 'error callback');

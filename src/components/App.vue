@@ -211,7 +211,7 @@
                  if (load != '') {
 
                   switch ( load ) {
-                    case 'payment' :
+                    case 'refresh_order' :
                       console.info('order updated');
                       return
                     break;
@@ -219,7 +219,6 @@
                  }
 
                  return that.$route.router.go( '/event-' + address_type )
-
                  break
 
                  case 'user-authenticated':

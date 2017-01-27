@@ -41,8 +41,10 @@ const mutations = {
 
     state[ type ] = content
 
+    console.info('TYPE', type);
+
     if ( 'order' == type ) {
-      console.info('content.items_to_scan_remaining', content.items_to_scan_remaining);
+      console.info('CONTENT.ITEMS_TO_SCAN_REMAINING', content.items_to_scan_remaining);
       state.counters.items_to_scan_remaining = content.items_to_scan_remaining
     }
   },

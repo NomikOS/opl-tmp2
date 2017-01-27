@@ -10984,7 +10984,7 @@
 	              if (load != '') {
 
 	                switch (load) {
-	                  case 'payment':
+	                  case 'refresh_order':
 	                    console.info('order updated');
 	                    return;
 	                    break;
@@ -10992,7 +10992,6 @@
 	              }
 
 	              return that.$route.router.go('/event-' + address_type);
-
 	              break;
 
 	            case 'user-authenticated':
@@ -14753,8 +14752,10 @@
 
 	    state[type] = content;
 
+	    console.info('TYPE', type);
+
 	    if ('order' == type) {
-	      console.info('content.items_to_scan_remaining', content.items_to_scan_remaining);
+	      console.info('CONTENT.ITEMS_TO_SCAN_REMAINING', content.items_to_scan_remaining);
 	      state.counters.items_to_scan_remaining = content.items_to_scan_remaining;
 	    }
 	  },
@@ -17444,6 +17445,9 @@
 				case 'scan-item':
 					text = 'Espere mientras obtiene información de escaneo...';
 					break;
+				case 'refresh-order':
+					text = 'Espere mientras obtiene información de orden...';
+					break;
 			}
 			$('#modalCustomDevText').html(text);
 			$('#modalCustomDev').toggle(visible);
@@ -19244,6 +19248,10 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
+	var _ModalWait = __webpack_require__(70);
+
+	var _ModalWait2 = _interopRequireDefault(_ModalWait);
+
 	var _NotificationIcon = __webpack_require__(45);
 
 	var _NotificationIcon2 = _interopRequireDefault(_NotificationIcon);
@@ -19266,8 +19274,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	var ORDER_URL = _common.urls.micro_api + '/order'; // <template>
 	//   <header-user-data></header-user-data>
+	//   <modal-wait></modal-wait>
+	//
 	//   <div class="ac25-content-global">
 	//     <div class="container">
 	//       <div class="ac25-content-inner-holder padding-bottom-none row">
@@ -19326,12 +19336,14 @@
 	//   <!-- end content-global -->
 	// </template>
 	// <script>
-	var ORDER_URL = _common.urls.micro_api + '/order';
+
+	var MICRO_API_URL = _common.urls.micro_api;
 
 	exports.default = {
 	  name: 'Payment',
 	  components: {
 	    HeaderUserData: _HeaderUserData2.default,
+	    ModalWait: _ModalWait2.default,
 	    NotificationIcon: _NotificationIcon2.default
 	  },
 	  vuex: {
@@ -19361,19 +19373,23 @@
 	      this.reload();
 	    },
 	    reload: function reload() {
-	      var _this = this;
+	      var setup = _ls2.default.get('setup');
 
-	      var order_id = _ls2.default.get('order_id');
+	      if (!setup || !setup.vehicleSelected) {
+	        return this.$route.router.go('/setup');
+	      }
 
-	      this.$http.get(ORDER_URL + '/' + order_id).then(function (response) {
+	      _ModalWait2.default.showIt(true, 'refresh-order');
 
-	        var order = response.data.data;
-	        console.info(order);
+	      var vehicleSelected = setup.vehicleSelected;
 
-	        _this.storeData({
-	          type: 'order',
-	          content: order
-	        });
+	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-request-order').then(function (response) {
+
+	        _ModalWait2.default.showIt(false);
+
+	        if (response.data && response.data.success) {
+	          /////
+	        }
 	      }, function (response) {
 	        console.info(response, 'error callback');
 	      });
@@ -19394,7 +19410,7 @@
 /* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(62) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(62) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 108 */

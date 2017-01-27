@@ -21,15 +21,18 @@
 		showIt(visible, action) {
 			var text = 'Comunicando con central...';
 			switch (action) {
-        case 'printing':
-        text = 'Espere mientras se inicia impresión...';
-        break;
-        case 'finish-shipment':
-        text = 'Espere mientras se procesa término de viaje...';
-        break;
-        case 'scan-item':
+		        case 'printing':
+		        text = 'Espere mientras se inicia impresión...';
+		        break;
+		        case 'finish-shipment':
+		        text = 'Espere mientras se procesa término de viaje...';
+		        break;
+		        case 'scan-item':
 				text = 'Espere mientras obtiene información de escaneo...';
 				break;
+		        case 'refresh-order':
+				text = 'Espere mientras obtiene información de orden...';
+				break;				
 			}
 			$('#modalCustomDevText').html(text)
 			$('#modalCustomDev').toggle(visible)
