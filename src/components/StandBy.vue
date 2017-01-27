@@ -8,7 +8,7 @@
         <img src="html/images/loading.gif" alt="" />
       </div>
 
-      <div class="ac25-loading-content" v-if="order.id">
+      <div class="progress-info" v-if="order.id">
 
         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
         <br />
@@ -22,26 +22,26 @@
 
           <ul class="ac25-info-list ac25-w100">
             <li>
-              <p class="ac25-info-list-title"> nombre </p>
+              <p class="ac25-info-list-title white-color"> nombre </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> telefono </p>
+              <p class="ac25-info-list-title white-color"> telefono </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> direccion </p>
+              <p class="ac25-info-list-title white-color"> direccion </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
             </li>
           </ul><!-- end info-list -->
 
           <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
-              <p class="ac25-info-list-title"> Deparmento </p>
+              <p class="ac25-info-list-title white-color"> Deparmento </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> Comuna </p>
+              <p class="ac25-info-list-title white-color"> Comuna </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
             </li>
           </ul><!-- end steps2 -->        

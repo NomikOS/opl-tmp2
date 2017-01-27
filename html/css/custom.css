@@ -466,6 +466,9 @@ ul.ac25-fleft.next {
 	margin-left: 9px;
 	margin-top: 15px;
 }
+.ac25-info-list-title.white-color {
+	color: #fff;
+}
 .ac25-info-list .ac25-info-list-content{
 	font-size: 22px;
 	margin-top:0;
@@ -772,4 +775,16 @@ p.big-title.sub {
 }
 .padding-bottom-none {
     padding-bottom: 0;
+}
+.progress-info {
+	position: relative;
+	top: 51px;
+}
+.progress-info .ac25-info-list-title {
+	text-align: left;
+}
+.progress-info .ac25-info-list .ac25-info-list-content {
+	text-align: left;
+	border-bottom: 1px solid #fff;
+	margin-left: 10px;
 }
