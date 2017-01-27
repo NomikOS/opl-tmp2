@@ -15,11 +15,14 @@
    padding:0;
    height:100%;
 	 font-family: 'Montserrat', sans-serif;
+	 max-height: 717px;
+	 max-width: 405px;
 	}
 	body{
 		background: #fff;
 		color:#000;
 		overflow-x: hidden;
+		position: relative;
 	}
   body.red{
     background: #e61c37;
@@ -236,7 +239,6 @@
 .ac25-full-black{
 	width: 100% !important;
 	border-top: 1px solid white;
-	bottom: -32px !important;
 }
 .ac25-half-black.ac25-border{
 	border-right:1px solid #fff;
@@ -514,10 +516,9 @@
 
 /*------------------------------ PAGE 1 ------------------------------*/
 .ac25-newfoot{
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	bottom: 0;
-	height: 250px;
 }
 .ac25-newfoot.ac25-height-auto{
 	height: auto !important;
