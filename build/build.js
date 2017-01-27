@@ -10742,7 +10742,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/App.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/App.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15513,7 +15513,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/StandBy.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/StandBy.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15725,7 +15725,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/HeaderUserData.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/HeaderUserData.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15749,8 +15749,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-e19c8826&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-e19c8826&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -17824,7 +17824,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/StandByGrocer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/StandByGrocer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -17975,7 +17975,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Setup.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Setup.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18132,7 +18132,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/IframeExternal.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/IframeExternal.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18217,7 +18217,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/EventPickup.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/EventPickup.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18367,7 +18367,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/NotificationIcon.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/NotificationIcon.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18451,7 +18451,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ButtonPrint.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonPrint.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18597,7 +18597,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ButtonScan.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonScan.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18692,7 +18692,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/EventDelivery.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/EventDelivery.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18854,7 +18854,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/LoadVehicle.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/LoadVehicle.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19052,7 +19052,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ModalWait.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ModalWait.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19156,7 +19156,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/HubReception.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/HubReception.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19269,7 +19269,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/HubTransfer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/HubTransfer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19431,7 +19431,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/TripReception.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/TripReception.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19538,7 +19538,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ButtonPrintTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonPrintTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19609,7 +19609,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ButtonScanTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ButtonScanTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19694,7 +19694,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/TripTransfer.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/TripTransfer.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19867,7 +19867,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Print.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Print.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -20051,7 +20051,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Scan.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Scan.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -20381,7 +20381,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/PrintTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/PrintTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -20564,7 +20564,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/ScanTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/ScanTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -20870,7 +20870,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Payment.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Payment.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21072,7 +21072,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Call.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Call.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21225,7 +21225,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Logout.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Logout.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21310,7 +21310,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Redirecting.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Redirecting.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21391,7 +21391,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Available.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Available.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21548,7 +21548,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanSuccesful.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanSuccesful.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21631,7 +21631,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanFailed.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFailed.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21714,7 +21714,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanFinished.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFinished.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21806,7 +21806,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanSuccesfulTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanSuccesfulTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21915,7 +21915,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanFailedTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFailedTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -22023,7 +22023,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/home/anibal/dev/opl-phonegap/src/components/Partials/ScanFinishedTrip.vue"
+	  var id = "/home/nomikos/dev/_current/econocargo/opl3/src/components/Partials/ScanFinishedTrip.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
