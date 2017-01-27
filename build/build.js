@@ -10991,6 +10991,20 @@
 	                }
 	              }
 
+	              /**
+	               * Still needs to be acepted or arrive to pickcup
+	               */
+	              if (show_acknowledge || show_in_position) {
+	                return that.$route.router.go('/stand-by');
+	              }
+
+	              /**
+	               * Still needs to be fully paid
+	               */
+	              if (order.paymentStatus_id < 4) {
+	                return that.$route.router.go('/payment');
+	              }
+
 	              return that.$route.router.go('/event-' + address_type);
 	              break;
 
@@ -15575,9 +15589,7 @@
 	    }
 	  },
 	  ready: function ready() {
-	    console.info('StandBy is ready ===================================');
-	    console.info(this.order.pickup_acknowledge_time, 'this.order de vuex----------------');
-	    console.info(this.order.id, 'this.order.id de vuex ----------------');
+	    console.info('StandBy is ready =================================== with this order: ', this.order.id);
 	  },
 
 	  methods: {

@@ -218,6 +218,20 @@
                   }
                  }
 
+                 /**
+                  * Still needs to be acepted or arrive to pickcup
+                  */
+                 if (show_acknowledge || show_in_position) {
+                  return that.$route.router.go( '/stand-by' )
+                 }
+
+                 /**
+                  * Still needs to be fully paid
+                  */
+                  if (order.paymentStatus_id < 4) {
+                  return that.$route.router.go( '/payment' )
+                 }
+
                  return that.$route.router.go( '/event-' + address_type )
                  break
 
