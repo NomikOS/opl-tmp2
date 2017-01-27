@@ -15,11 +15,14 @@
    padding:0;
    height:100%;
 	 font-family: 'Montserrat', sans-serif;
+	 max-height: 717px;
+	 max-width: 405px;
 	}
 	body{
 		background: #fff;
 		color:#000;
 		overflow-x: hidden;
+		position: relative;
 	}
   body.red{
     background: #e61c37;
@@ -513,7 +516,7 @@
 
 /*------------------------------ PAGE 1 ------------------------------*/
 .ac25-newfoot{
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	bottom: 0;
 }
