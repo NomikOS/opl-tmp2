@@ -2,28 +2,19 @@
   <header-user-data></header-user-data>
   <div class="ac25-red-loading-section">
     <div class="container">
-
       <div class="ac25-loading-content" v-if="!order.id">
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
       </div>
-
       <div class="progress-info" v-if="order.id">
-
         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
         <br />
-        <img src="html/images/green-check.png" alt="" />      
-
+        <img src="html/images/green-check.png" alt="" />
         <div v-if="addressType == 'pickup'">
-          <p class="ac25-order-number-info">
-            <span>orden {{order.special_id_pickup}}</span>
-            <notification-icon></notification-icon>
-          </p>
-
           <ul class="ac25-info-list ac25-w100">
             <li>
               <p class="ac25-info-list-title white-color"> nombre </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title white-color"> telefono </p>
@@ -33,8 +24,8 @@
               <p class="ac25-info-list-title white-color"> direccion </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
             </li>
-          </ul><!-- end info-list -->
-
+          </ul>
+          <!-- end info-list -->
           <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
               <p class="ac25-info-list-title white-color"> Deparmento </p>
@@ -44,20 +35,14 @@
               <p class="ac25-info-list-title white-color"> Comuna </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
             </li>
-          </ul><!-- end steps2 -->        
+          </ul>
+          <!-- end steps2 -->
         </div>
-
         <div v-if="addressType == 'delivery'">
-          <img class="ac25-page-top-logo" src="html/images/pickup.png" />
-          <p class="ac25-order-number-info">
-            <span>orden {{order.special_id_pickup}}</span>
-            <notification-icon></notification-icon>
-          </p>
-
           <ul class="ac25-info-list ac25-w100">
             <li>
               <p class="ac25-info-list-title"> nombre </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> telefono </p>
@@ -67,8 +52,8 @@
               <p class="ac25-info-list-title"> direccion </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
             </li>
-          </ul><!-- end info-list -->
-
+          </ul>
+          <!-- end info-list -->
           <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
               <p class="ac25-info-list-title"> Deparmento </p>
@@ -78,28 +63,39 @@
               <p class="ac25-info-list-title"> Comuna </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
             </li>
-          </ul><!-- end steps2 -->        
-        </div>        
-
+          </ul>
+          <!-- end steps2 -->
+        </div>
       </div>
     </div>
     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
-  </div><!-- end red-loading-section -->
-
+  </div>
+  <!-- end red-loading-section -->
   <footer class="ac25-newfoot">
     <a @click="aknowledge()" class="ac25-full-black waves-effect waves-light" v-if="order.id && show_acknowledge">ACEPTAR</a>
     <a @click="inPosition()" class="ac25-full-black waves-effect waves-light" v-if="order.id && show_in_position">EN EL LUGAR</a>
     <a v-link="'logout'" class="ac25-full-black waves-effect waves-light">CERRAR SESSION</a>
-  </footer><!-- end footer -->
-
+  </footer>
+  <!-- end footer -->
 </template>
-
 <script>
   import HeaderUserData from './Partials/HeaderUserData.vue'
-  import { urls } from '../libs/common'
+  import {
+    urls
+  } from '../libs/common'
   import ls from '../libs/ls'
-  import { getOrder, getCounters, getAddressType, getShowAcknowledgeTime, getShowInPosition } from '../vuex/getters'
-  import { storeData } from '../vuex/actions'
+  import {
+    getOrder,
+    getCounters,
+    getAddressType,
+    getShowAcknowledgeTime,
+    getShowInPosition
+  } from '../vuex/getters'
+  import {
+    storeData
+  } from '../vuex/actions'
+  import swal from 'sweetalert2'
+
 
   const SHIPMENT_URL = urls.micro_api + '/shipment'
 
@@ -109,8 +105,7 @@
       HeaderUserData
     },
     data: function () {
-      return {
-      }
+      return {}
     },
     vuex: {
       getters: {
@@ -125,42 +120,55 @@
       }
     },
     ready() {
-        console.info( 'StandBy is ready =================================== with this order: ', this.order.id );
+      console.info('StandBy is ready =================================== with this order: ', this.order.id);
     },
     methods: {
-      inPosition () {
+      inPosition() {
 
         var shipment_id = this.order[this.addressType + '_shipment_id']
         console.info(shipment_id, 'shipment_id');
 
-        this.$http.post( SHIPMENT_URL + '/' + shipment_id + '/in-position' ).then( ( response ) => {
+        swal({
+          title: '',
+          text: '¿Está seguro que se encuentra en el lugar indicado?',
+          type: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'SI',
+          cancelButtonText: 'No'
+        }).then( () => {
+          this.$http.post(SHIPMENT_URL + '/' + shipment_id + '/in-position').then((response) => {
 
-          if (response.data && response.data.success) {
-            this.storeData( {
-              type: 'show_in_position',
-              content: false
-            } )
+            if (response.data && response.data.success) {
+              this.storeData({
+                type: 'show_in_position',
+                content: false
+              })
 
-            return this.$route.router.go( '/payment' )
-          }
-        });
+              return this.$route.router.go('/payment')
+            }
+          });
+        }, function (dismiss) {
+
+        })
+
+
       },
-      aknowledge () {
+      aknowledge() {
 
         var shipment_id = this.order[this.addressType + '_shipment_id']
         console.info(shipment_id, 'shipment_id');
 
-        this.$http.post( SHIPMENT_URL + '/' + shipment_id + '/aknowledge' ).then( ( response ) => {
+        this.$http.post(SHIPMENT_URL + '/' + shipment_id + '/aknowledge').then((response) => {
 
           if (response.data && response.data.success) {
-            this.storeData( {
+            this.storeData({
               type: 'show_acknowledge',
               content: false
-            } )
-            this.storeData( {
+            })
+            this.storeData({
               type: 'show_in_position',
               content: true
-            } )
+            })
           }
         });
       }

@@ -780,6 +780,10 @@ p.big-title.sub {
 	position: relative;
 	top: 51px;
 }
+.progress-info > h5 {
+	margin-top: 0;
+	text-align: left;
+}
 .progress-info .ac25-info-list-title {
 	text-align: left;
 }

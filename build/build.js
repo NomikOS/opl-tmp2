@@ -86,97 +86,101 @@
 
 	var _EventPickup2 = _interopRequireDefault(_EventPickup);
 
-	var _EventDelivery = __webpack_require__(64);
+	var _EventDelivery = __webpack_require__(65);
 
 	var _EventDelivery2 = _interopRequireDefault(_EventDelivery);
 
-	var _LoadVehicle = __webpack_require__(68);
+	var _LoadVehicle = __webpack_require__(69);
 
 	var _LoadVehicle2 = _interopRequireDefault(_LoadVehicle);
 
-	var _HubReception = __webpack_require__(75);
+	var _HubReception = __webpack_require__(76);
 
 	var _HubReception2 = _interopRequireDefault(_HubReception);
 
-	var _HubTransfer = __webpack_require__(78);
+	var _HubTransfer = __webpack_require__(79);
 
 	var _HubTransfer2 = _interopRequireDefault(_HubTransfer);
 
-	var _TripReception = __webpack_require__(81);
+	var _TripReception = __webpack_require__(82);
 
 	var _TripReception2 = _interopRequireDefault(_TripReception);
 
-	var _TripTransfer = __webpack_require__(90);
+	var _TripTransfer = __webpack_require__(91);
 
 	var _TripTransfer2 = _interopRequireDefault(_TripTransfer);
 
-	var _Print = __webpack_require__(93);
+	var _Print = __webpack_require__(94);
 
 	var _Print2 = _interopRequireDefault(_Print);
 
-	var _Scan = __webpack_require__(96);
+	var _Scan = __webpack_require__(97);
 
 	var _Scan2 = _interopRequireDefault(_Scan);
 
-	var _PrintTrip = __webpack_require__(99);
+	var _PrintTrip = __webpack_require__(100);
 
 	var _PrintTrip2 = _interopRequireDefault(_PrintTrip);
 
-	var _ScanTrip = __webpack_require__(102);
+	var _ScanTrip = __webpack_require__(103);
 
 	var _ScanTrip2 = _interopRequireDefault(_ScanTrip);
 
-	var _Payment = __webpack_require__(105);
+	var _Payment = __webpack_require__(106);
 
 	var _Payment2 = _interopRequireDefault(_Payment);
 
-	var _Call = __webpack_require__(108);
+	var _Call = __webpack_require__(109);
 
 	var _Call2 = _interopRequireDefault(_Call);
 
-	var _Logout = __webpack_require__(111);
+	var _Logout = __webpack_require__(112);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _Redirecting = __webpack_require__(114);
+	var _Redirecting = __webpack_require__(115);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(117);
+	var _Available = __webpack_require__(118);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _ScanSuccesful = __webpack_require__(120);
+	var _ScanSuccesful = __webpack_require__(121);
 
 	var _ScanSuccesful2 = _interopRequireDefault(_ScanSuccesful);
 
-	var _ScanFailed = __webpack_require__(123);
+	var _ScanFailed = __webpack_require__(124);
 
 	var _ScanFailed2 = _interopRequireDefault(_ScanFailed);
 
-	var _ScanFinished = __webpack_require__(126);
+	var _ScanFinished = __webpack_require__(127);
 
 	var _ScanFinished2 = _interopRequireDefault(_ScanFinished);
 
-	var _ScanSuccesfulTrip = __webpack_require__(130);
+	var _ScanSuccesfulTrip = __webpack_require__(131);
 
 	var _ScanSuccesfulTrip2 = _interopRequireDefault(_ScanSuccesfulTrip);
 
-	var _ScanFailedTrip = __webpack_require__(133);
+	var _ScanFailedTrip = __webpack_require__(134);
 
 	var _ScanFailedTrip2 = _interopRequireDefault(_ScanFailedTrip);
 
-	var _ScanFinishedTrip = __webpack_require__(136);
+	var _ScanFinishedTrip = __webpack_require__(137);
 
 	var _ScanFinishedTrip2 = _interopRequireDefault(_ScanFinishedTrip);
 
-	var _vueRouter = __webpack_require__(139);
+	var _vueRouter = __webpack_require__(140);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(140);
+	var _vueResource = __webpack_require__(141);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
+
+	var _vueSweetalert = __webpack_require__(149);
+
+	var _vueSweetalert2 = _interopRequireDefault(_vueSweetalert);
 
 	var _director = __webpack_require__(6);
 
@@ -187,6 +191,8 @@
 	var _geo2 = _interopRequireDefault(_geo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_vue2.default.use(_vueSweetalert2.default);
 
 	_vue2.default.config.debug = true;
 
@@ -15499,7 +15505,7 @@
 
 	var __vue_script__, __vue_template__
 	__vue_script__ = __webpack_require__(21)
-	__vue_template__ = __webpack_require__(30)
+	__vue_template__ = __webpack_require__(31)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -15539,34 +15545,29 @@
 
 	var _actions = __webpack_require__(18);
 
+	var _sweetalert = __webpack_require__(30);
+
+	var _sweetalert2 = _interopRequireDefault(_sweetalert);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var SHIPMENT_URL = _common.urls.micro_api + '/shipment'; // <template>
+	// <template>
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-red-loading-section">
 	//     <div class="container">
-	//
 	//       <div class="ac25-loading-content" v-if="!order.id">
 	//         <h5>Esperando Evento...</h5>
 	//         <img src="html/images/loading.gif" alt="" />
 	//       </div>
-	//
 	//       <div class="progress-info" v-if="order.id">
-	//
 	//         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
 	//         <br />
-	//         <img src="html/images/green-check.png" alt="" />      
-	//
+	//         <img src="html/images/green-check.png" alt="" />
 	//         <div v-if="addressType == 'pickup'">
-	//           <p class="ac25-order-number-info">
-	//             <span>orden {{order.special_id_pickup}}</span>
-	//             <notification-icon></notification-icon>
-	//           </p>
-	//
 	//           <ul class="ac25-info-list ac25-w100">
 	//             <li>
 	//               <p class="ac25-info-list-title white-color"> nombre </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
 	//             </li>
 	//             <li>
 	//               <p class="ac25-info-list-title white-color"> telefono </p>
@@ -15576,8 +15577,8 @@
 	//               <p class="ac25-info-list-title white-color"> direccion </p>
 	//               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
 	//             </li>
-	//           </ul><!-- end info-list -->
-	//
+	//           </ul>
+	//           <!-- end info-list -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps2">
 	//             <li>
 	//               <p class="ac25-info-list-title white-color"> Deparmento </p>
@@ -15587,20 +15588,14 @@
 	//               <p class="ac25-info-list-title white-color"> Comuna </p>
 	//               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
 	//             </li>
-	//           </ul><!-- end steps2 -->        
+	//           </ul>
+	//           <!-- end steps2 -->
 	//         </div>
-	//
 	//         <div v-if="addressType == 'delivery'">
-	//           <img class="ac25-page-top-logo" src="html/images/pickup.png" />
-	//           <p class="ac25-order-number-info">
-	//             <span>orden {{order.special_id_pickup}}</span>
-	//             <notification-icon></notification-icon>
-	//           </p>
-	//
 	//           <ul class="ac25-info-list ac25-w100">
 	//             <li>
 	//               <p class="ac25-info-list-title"> nombre </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
 	//             </li>
 	//             <li>
 	//               <p class="ac25-info-list-title"> telefono </p>
@@ -15610,8 +15605,8 @@
 	//               <p class="ac25-info-list-title"> direccion </p>
 	//               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
 	//             </li>
-	//           </ul><!-- end info-list -->
-	//
+	//           </ul>
+	//           <!-- end info-list -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps2">
 	//             <li>
 	//               <p class="ac25-info-list-title"> Deparmento </p>
@@ -15621,23 +15616,24 @@
 	//               <p class="ac25-info-list-title"> Comuna </p>
 	//               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
 	//             </li>
-	//           </ul><!-- end steps2 -->        
-	//         </div>        
-	//
+	//           </ul>
+	//           <!-- end steps2 -->
+	//         </div>
 	//       </div>
 	//     </div>
 	//     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
-	//   </div><!-- end red-loading-section -->
-	//
+	//   </div>
+	//   <!-- end red-loading-section -->
 	//   <footer class="ac25-newfoot">
 	//     <a @click="aknowledge()" class="ac25-full-black waves-effect waves-light" v-if="order.id && show_acknowledge">ACEPTAR</a>
 	//     <a @click="inPosition()" class="ac25-full-black waves-effect waves-light" v-if="order.id && show_in_position">EN EL LUGAR</a>
 	//     <a v-link="'logout'" class="ac25-full-black waves-effect waves-light">CERRAR SESSION</a>
-	//   </footer><!-- end footer -->
-	//
+	//   </footer>
+	//   <!-- end footer -->
 	// </template>
-	//
 	// <script>
+	var SHIPMENT_URL = _common.urls.micro_api + '/shipment';
+
 	exports.default = {
 	  name: 'StandBy',
 	  components: {
@@ -15669,17 +15665,26 @@
 	      var shipment_id = this.order[this.addressType + '_shipment_id'];
 	      console.info(shipment_id, 'shipment_id');
 
-	      this.$http.post(SHIPMENT_URL + '/' + shipment_id + '/in-position').then(function (response) {
+	      (0, _sweetalert2.default)({
+	        title: '',
+	        text: '¿Está seguro que se encuentra en el lugar indicado?',
+	        type: 'question',
+	        showCancelButton: true,
+	        confirmButtonText: 'SI',
+	        cancelButtonText: 'No'
+	      }).then(function () {
+	        _this.$http.post(SHIPMENT_URL + '/' + shipment_id + '/in-position').then(function (response) {
 
-	        if (response.data && response.data.success) {
-	          _this.storeData({
-	            type: 'show_in_position',
-	            content: false
-	          });
+	          if (response.data && response.data.success) {
+	            _this.storeData({
+	              type: 'show_in_position',
+	              content: false
+	            });
 
-	          return _this.$route.router.go('/payment');
-	        }
-	      });
+	            return _this.$route.router.go('/payment');
+	          }
+	        });
+	      }, function (dismiss) {});
 	    },
 	    aknowledge: function aknowledge() {
 	      var _this2 = this;
@@ -15704,7 +15709,6 @@
 	  }
 	};
 	// </script>
-	//
 
 /***/ },
 /* 22 */
@@ -16225,25 +16229,1580 @@
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(31) + "\" alt=\"\" />\n      </div>\n\n      <div class=\"progress-info\" v-if=\"order.id\">\n\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />      \n\n        <div v-if=\"addressType == 'pickup'\">\n          <p class=\"ac25-order-number-info\">\n            <span>orden {{order.special_id_pickup}}</span>\n            <notification-icon></notification-icon>\n          </p>\n\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul><!-- end info-list -->\n\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul><!-- end steps2 -->        \n        </div>\n\n        <div v-if=\"addressType == 'delivery'\">\n          <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(33) + "\" />\n          <p class=\"ac25-order-number-info\">\n            <span>orden {{order.special_id_pickup}}</span>\n            <notification-icon></notification-icon>\n          </p>\n\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul><!-- end info-list -->\n\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul><!-- end steps2 -->        \n        </div>        \n\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
+	/*!
+	 * sweetalert2 v6.3.2
+	 * Released under the MIT License.
+	 */
+	(function (global, factory) {
+	   true ? module.exports = factory() :
+	  typeof define === 'function' && define.amd ? define(factory) :
+	  (global.Sweetalert2 = factory());
+	}(this, (function () { 'use strict';
+
+	var swalPrefix = 'swal2-';
+
+	var prefix = function prefix(items) {
+	  var result = {};
+	  for (var i in items) {
+	    result[items[i]] = swalPrefix + items[i];
+	  }
+	  return result;
+	};
+
+	var swalClasses = prefix(['container', 'in', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'spacer', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
+
+	var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+
+	var defaultParams = {
+	  title: '',
+	  titleText: '',
+	  text: '',
+	  html: '',
+	  type: null,
+	  customClass: '',
+	  animation: true,
+	  allowOutsideClick: true,
+	  allowEscapeKey: true,
+	  showConfirmButton: true,
+	  showCancelButton: false,
+	  preConfirm: null,
+	  confirmButtonText: 'OK',
+	  confirmButtonColor: '#3085d6',
+	  confirmButtonClass: null,
+	  cancelButtonText: 'Cancel',
+	  cancelButtonColor: '#aaa',
+	  cancelButtonClass: null,
+	  buttonsStyling: true,
+	  reverseButtons: false,
+	  focusCancel: false,
+	  showCloseButton: false,
+	  showLoaderOnConfirm: false,
+	  imageUrl: null,
+	  imageWidth: null,
+	  imageHeight: null,
+	  imageClass: null,
+	  timer: null,
+	  width: 500,
+	  padding: 20,
+	  background: '#fff',
+	  input: null,
+	  inputPlaceholder: '',
+	  inputValue: '',
+	  inputOptions: {},
+	  inputAutoTrim: true,
+	  inputClass: null,
+	  inputAttributes: {},
+	  inputValidator: null,
+	  progressSteps: [],
+	  currentProgressStep: null,
+	  progressStepsDistance: '40px',
+	  onOpen: null,
+	  onClose: null
+	};
+
+	var sweetHTML = ('\n  <div class="' + swalClasses.modal + '" tabIndex="-1">\n    <ul class="' + swalClasses.progresssteps + '"></ul>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n      <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n    </div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n      <span class="line tip"></span> <span class="line long"></span>\n      <div class="placeholder"></div> <div class="fix"></div>\n    </div>\n    <img class="' + swalClasses.image + '">\n    <h2 class="' + swalClasses.title + '"></h2>\n    <div class="' + swalClasses.content + '"></div>\n    <input class="' + swalClasses.input + '">\n    <input type="file" class="' + swalClasses.file + '">\n    <div class="' + swalClasses.range + '">\n      <output></output>\n      <input type="range">\n    </div>\n    <select class="' + swalClasses.select + '"></select>\n    <div class="' + swalClasses.radio + '"></div>\n    <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n      <input type="checkbox">\n    </label>\n    <textarea class="' + swalClasses.textarea + '"></textarea>\n    <div class="' + swalClasses.validationerror + '"></div>\n    <hr class="' + swalClasses.spacer + '">\n    <button type="button" class="' + swalClasses.confirm + '">OK</button>\n    <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n    <span class="' + swalClasses.close + '">&times;</span>\n  </div>\n').replace(/(^|\n)\s*/g, '');
+
+	var sweetContainer = void 0;
+
+	var existingSweetContainers = document.getElementsByClassName(swalClasses.container);
+
+	if (existingSweetContainers.length) {
+	  sweetContainer = existingSweetContainers[0];
+	} else {
+	  sweetContainer = document.createElement('div');
+	  sweetContainer.className = swalClasses.container;
+	  sweetContainer.innerHTML = sweetHTML;
+	}
+
+	/*
+	 * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
+	 */
+	var colorLuminance = function colorLuminance(hex, lum) {
+	  // Validate hex string
+	  hex = String(hex).replace(/[^0-9a-f]/gi, '');
+	  if (hex.length < 6) {
+	    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+	  }
+	  lum = lum || 0;
+
+	  // Convert to decimal and change luminosity
+	  var rgb = '#';
+	  for (var i = 0; i < 3; i++) {
+	    var c = parseInt(hex.substr(i * 2, 2), 16);
+	    c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16);
+	    rgb += ('00' + c).substr(c.length);
+	  }
+
+	  return rgb;
+	};
+
+	/* global MouseEvent */
+
+	// Remember state in cases where opening and handling a modal will fiddle with it.
+	var states = {
+	  previousWindowKeyDown: null,
+	  previousActiveElement: null,
+	  previousBodyPadding: null
+	};
+
+	/*
+	 * Add modal + overlay to DOM
+	 */
+	var init = function init() {
+	  if (typeof document === 'undefined') {
+	    console.error('SweetAlert2 requires document to initialize');
+	    return;
+	  } else if (document.getElementsByClassName(swalClasses.container).length) {
+	    return;
+	  }
+
+	  document.body.appendChild(sweetContainer);
+
+	  var modal = getModal();
+	  var input = getChildByClass(modal, swalClasses.input);
+	  var file = getChildByClass(modal, swalClasses.file);
+	  var range = modal.querySelector('.' + swalClasses.range + ' input');
+	  var rangeOutput = modal.querySelector('.' + swalClasses.range + ' output');
+	  var select = getChildByClass(modal, swalClasses.select);
+	  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
+	  var textarea = getChildByClass(modal, swalClasses.textarea);
+
+	  input.oninput = function () {
+	    sweetAlert.resetValidationError();
+	  };
+
+	  input.onkeydown = function (event) {
+	    setTimeout(function () {
+	      if (event.keyCode === 13) {
+	        event.stopPropagation();
+	        sweetAlert.clickConfirm();
+	      }
+	    }, 0);
+	  };
+
+	  file.onchange = function () {
+	    sweetAlert.resetValidationError();
+	  };
+
+	  range.oninput = function () {
+	    sweetAlert.resetValidationError();
+	    rangeOutput.value = range.value;
+	  };
+
+	  range.onchange = function () {
+	    sweetAlert.resetValidationError();
+	    range.previousSibling.value = range.value;
+	  };
+
+	  select.onchange = function () {
+	    sweetAlert.resetValidationError();
+	  };
+
+	  checkbox.onchange = function () {
+	    sweetAlert.resetValidationError();
+	  };
+
+	  textarea.oninput = function () {
+	    sweetAlert.resetValidationError();
+	  };
+
+	  return modal;
+	};
+
+	/*
+	 * Manipulate DOM
+	 */
+	var elementByClass = function elementByClass(className) {
+	  return sweetContainer.querySelector('.' + className);
+	};
+
+	var getModal = function getModal() {
+	  return document.body.querySelector('.' + swalClasses.modal) || init();
+	};
+
+	var getIcons = function getIcons() {
+	  var modal = getModal();
+	  return modal.querySelectorAll('.' + swalClasses.icon);
+	};
+
+	var getTitle = function getTitle() {
+	  return elementByClass(swalClasses.title);
+	};
+
+	var getContent = function getContent() {
+	  return elementByClass(swalClasses.content);
+	};
+
+	var getImage = function getImage() {
+	  return elementByClass(swalClasses.image);
+	};
+
+	var getSpacer = function getSpacer() {
+	  return elementByClass(swalClasses.spacer);
+	};
+
+	var getProgressSteps = function getProgressSteps() {
+	  return elementByClass(swalClasses.progresssteps);
+	};
+
+	var getValidationError = function getValidationError() {
+	  return elementByClass(swalClasses.validationerror);
+	};
+
+	var getConfirmButton = function getConfirmButton() {
+	  return elementByClass(swalClasses.confirm);
+	};
+
+	var getCancelButton = function getCancelButton() {
+	  return elementByClass(swalClasses.cancel);
+	};
+
+	var getCloseButton = function getCloseButton() {
+	  return elementByClass(swalClasses.close);
+	};
+
+	var getFocusableElements = function getFocusableElements(focusCancel) {
+	  var buttons = [getConfirmButton(), getCancelButton()];
+	  if (focusCancel) {
+	    buttons.reverse();
+	  }
+	  return buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')));
+	};
+
+	var hasClass = function hasClass(elem, className) {
+	  if (elem.classList) {
+	    return elem.classList.contains(className);
+	  }
+	  return false;
+	};
+
+	var focusInput = function focusInput(input) {
+	  input.focus();
+
+	  // place cursor at end of text in text input
+	  if (input.type !== 'file') {
+	    // http://stackoverflow.com/a/2345915/1331425
+	    var val = input.value;
+	    input.value = '';
+	    input.value = val;
+	  }
+	};
+
+	var addClass = function addClass(elem, className) {
+	  if (!elem || !className) {
+	    return;
+	  }
+	  var classes = className.split(/\s+/).filter(Boolean);
+	  classes.forEach(function (className) {
+	    elem.classList.add(className);
+	  });
+	};
+
+	var removeClass = function removeClass(elem, className) {
+	  if (!elem || !className) {
+	    return;
+	  }
+	  var classes = className.split(/\s+/).filter(Boolean);
+	  classes.forEach(function (className) {
+	    elem.classList.remove(className);
+	  });
+	};
+
+	var getChildByClass = function getChildByClass(elem, className) {
+	  for (var i = 0; i < elem.childNodes.length; i++) {
+	    if (hasClass(elem.childNodes[i], className)) {
+	      return elem.childNodes[i];
+	    }
+	  }
+	};
+
+	var show = function show(elem, display) {
+	  if (!display) {
+	    display = 'block';
+	  }
+	  elem.style.opacity = '';
+	  elem.style.display = display;
+	};
+
+	var hide = function hide(elem) {
+	  elem.style.opacity = '';
+	  elem.style.display = 'none';
+	};
+
+	var empty = function empty(elem) {
+	  while (elem.firstChild) {
+	    elem.removeChild(elem.firstChild);
+	  }
+	};
+
+	// borrowed from jqeury $(elem).is(':visible') implementation
+	var isVisible = function isVisible(elem) {
+	  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
+	};
+
+	var removeStyleProperty = function removeStyleProperty(elem, property) {
+	  if (elem.style.removeProperty) {
+	    elem.style.removeProperty(property);
+	  } else {
+	    elem.style.removeAttribute(property);
+	  }
+	};
+
+	var fireClick = function fireClick(node) {
+	  if (!isVisible(node)) {
+	    return false;
+	  }
+
+	  // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
+	  // Then fixed for today's Chrome browser.
+	  if (typeof MouseEvent === 'function') {
+	    // Up-to-date approach
+	    var mevt = new MouseEvent('click', {
+	      view: window,
+	      bubbles: false,
+	      cancelable: true
+	    });
+	    node.dispatchEvent(mevt);
+	  } else if (document.createEvent) {
+	    // Fallback
+	    var evt = document.createEvent('MouseEvents');
+	    evt.initEvent('click', false, false);
+	    node.dispatchEvent(evt);
+	  } else if (document.createEventObject) {
+	    node.fireEvent('onclick');
+	  } else if (typeof node.onclick === 'function') {
+	    node.onclick();
+	  }
+	};
+
+	var animationEndEvent = function () {
+	  var testEl = document.createElement('div');
+	  var transEndEventNames = {
+	    'WebkitAnimation': 'webkitAnimationEnd',
+	    'OAnimation': 'oAnimationEnd oanimationend',
+	    'msAnimation': 'MSAnimationEnd',
+	    'animation': 'animationend'
+	  };
+	  for (var i in transEndEventNames) {
+	    if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
+	      return transEndEventNames[i];
+	    }
+	  }
+
+	  return false;
+	}();
+
+	// Reset the page to its previous state
+	var resetPrevState = function resetPrevState() {
+	  var modal = getModal();
+	  window.onkeydown = states.previousWindowKeyDown;
+	  if (states.previousActiveElement && states.previousActiveElement.focus) {
+	    states.previousActiveElement.focus();
+	  }
+	  clearTimeout(modal.timeout);
+	};
+
+	// Measure width of scrollbar
+	// https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
+	var measureScrollbar = function measureScrollbar() {
+	  var scrollDiv = document.createElement('div');
+	  scrollDiv.style.width = '50px';
+	  scrollDiv.style.height = '50px';
+	  scrollDiv.style.overflow = 'scroll';
+	  document.body.appendChild(scrollDiv);
+	  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+	  document.body.removeChild(scrollDiv);
+	  return scrollbarWidth;
+	};
+
+	// JavaScript Debounce Function
+	// Simplivied version of https://davidwalsh.name/javascript-debounce-function
+	var debounce = function debounce(func, wait) {
+	  var timeout = void 0;
+	  return function () {
+	    var later = function later() {
+	      timeout = null;
+	      func();
+	    };
+	    clearTimeout(timeout);
+	    timeout = setTimeout(later, wait);
+	  };
+	};
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	  return typeof obj;
+	} : function (obj) {
+	  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];
+
+	    for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }
+
+	  return target;
+	};
+
+	var modalParams = _extends({}, defaultParams);
+	var queue = [];
+	var swal2Observer = void 0;
+
+	/*
+	 * Set type, text and actions on modal
+	 */
+	var setParameters = function setParameters(params) {
+	  var modal = getModal();
+
+	  for (var param in params) {
+	    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+	      console.warn('SweetAlert2: Unknown parameter "' + param + '"');
+	    }
+	  }
+
+	  // set modal width and margin-left
+	  modal.style.width = typeof params.width === 'number' ? params.width + 'px' : params.width;
+
+	  modal.style.padding = params.padding + 'px';
+	  modal.style.background = params.background;
+
+	  var title = getTitle();
+	  var content = getContent();
+	  var confirmButton = getConfirmButton();
+	  var cancelButton = getCancelButton();
+	  var closeButton = getCloseButton();
+
+	  // Title
+	  if (params.titleText) {
+	    title.innerText = params.titleText;
+	  } else {
+	    title.innerHTML = params.title.split('\n').join('<br>');
+	  }
+
+	  // Content
+	  if (params.text || params.html) {
+	    if (_typeof(params.html) === 'object') {
+	      content.innerHTML = '';
+	      if (0 in params.html) {
+	        for (var i = 0; i in params.html; i++) {
+	          content.appendChild(params.html[i].cloneNode(true));
+	        }
+	      } else {
+	        content.appendChild(params.html.cloneNode(true));
+	      }
+	    } else if (params.html) {
+	      content.innerHTML = params.html;
+	    } else if (params.text) {
+	      content.textContent = params.text;
+	    }
+	    show(content);
+	  } else {
+	    hide(content);
+	  }
+
+	  // Close button
+	  if (params.showCloseButton) {
+	    show(closeButton);
+	  } else {
+	    hide(closeButton);
+	  }
+
+	  // Custom Class
+	  modal.className = swalClasses.modal;
+	  if (params.customClass) {
+	    addClass(modal, params.customClass);
+	  }
+
+	  // Progress steps
+	  var progressStepsContainer = getProgressSteps();
+	  var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
+	  if (params.progressSteps.length) {
+	    show(progressStepsContainer);
+	    empty(progressStepsContainer);
+	    if (currentProgressStep >= params.progressSteps.length) {
+	      console.warn('SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' + '(currentProgressStep like JS arrays starts from 0)');
+	    }
+	    params.progressSteps.forEach(function (step, index) {
+	      var circle = document.createElement('li');
+	      addClass(circle, swalClasses.progresscircle);
+	      circle.innerHTML = step;
+	      if (index === currentProgressStep) {
+	        addClass(circle, swalClasses.activeprogressstep);
+	      }
+	      progressStepsContainer.appendChild(circle);
+	      if (index !== params.progressSteps.length - 1) {
+	        var line = document.createElement('li');
+	        addClass(line, swalClasses.progressline);
+	        line.style.width = params.progressStepsDistance;
+	        progressStepsContainer.appendChild(line);
+	      }
+	    });
+	  } else {
+	    hide(progressStepsContainer);
+	  }
+
+	  // Icon
+	  var icons = getIcons();
+	  for (var _i = 0; _i < icons.length; _i++) {
+	    hide(icons[_i]);
+	  }
+	  if (params.type) {
+	    var validType = false;
+	    for (var iconType in iconTypes) {
+	      if (params.type === iconType) {
+	        validType = true;
+	        break;
+	      }
+	    }
+	    if (!validType) {
+	      console.error('SweetAlert2: Unknown alert type: ' + params.type);
+	      return false;
+	    }
+	    var icon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes[params.type]);
+	    show(icon);
+
+	    // Animate icon
+	    switch (params.type) {
+	      case 'success':
+	        addClass(icon, 'animate');
+	        addClass(icon.querySelector('.tip'), 'animate-success-tip');
+	        addClass(icon.querySelector('.long'), 'animate-success-long');
+	        break;
+	      case 'error':
+	        addClass(icon, 'animate-error-icon');
+	        addClass(icon.querySelector('.x-mark'), 'animate-x-mark');
+	        break;
+	      case 'warning':
+	        addClass(icon, 'pulse-warning');
+	        break;
+	      default:
+	        break;
+	    }
+	  }
+
+	  // Custom image
+	  var image = getImage();
+	  if (params.imageUrl) {
+	    image.setAttribute('src', params.imageUrl);
+	    show(image);
+
+	    if (params.imageWidth) {
+	      image.setAttribute('width', params.imageWidth);
+	    } else {
+	      image.removeAttribute('width');
+	    }
+
+	    if (params.imageHeight) {
+	      image.setAttribute('height', params.imageHeight);
+	    } else {
+	      image.removeAttribute('height');
+	    }
+
+	    image.className = swalClasses.image;
+	    if (params.imageClass) {
+	      addClass(image, params.imageClass);
+	    }
+	  } else {
+	    hide(image);
+	  }
+
+	  // Cancel button
+	  if (params.showCancelButton) {
+	    cancelButton.style.display = 'inline-block';
+	  } else {
+	    hide(cancelButton);
+	  }
+
+	  // Confirm button
+	  if (params.showConfirmButton) {
+	    removeStyleProperty(confirmButton, 'display');
+	  } else {
+	    hide(confirmButton);
+	  }
+
+	  // Buttons spacer
+	  var spacer = getSpacer();
+	  if (!params.showConfirmButton && !params.showCancelButton) {
+	    hide(spacer);
+	  } else {
+	    show(spacer);
+	  }
+
+	  // Edit text on cancel and confirm buttons
+	  confirmButton.innerHTML = params.confirmButtonText;
+	  cancelButton.innerHTML = params.cancelButtonText;
+
+	  // Set buttons to selected background colors
+	  if (params.buttonsStyling) {
+	    confirmButton.style.backgroundColor = params.confirmButtonColor;
+	    cancelButton.style.backgroundColor = params.cancelButtonColor;
+	  }
+
+	  // Add buttons custom classes
+	  confirmButton.className = swalClasses.confirm;
+	  addClass(confirmButton, params.confirmButtonClass);
+	  cancelButton.className = swalClasses.cancel;
+	  addClass(cancelButton, params.cancelButtonClass);
+
+	  // Buttons styling
+	  if (params.buttonsStyling) {
+	    addClass(confirmButton, swalClasses.styled);
+	    addClass(cancelButton, swalClasses.styled);
+	  } else {
+	    removeClass(confirmButton, swalClasses.styled);
+	    removeClass(cancelButton, swalClasses.styled);
+
+	    confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = '';
+	    cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = '';
+	  }
+
+	  // CSS animation
+	  if (params.animation === true) {
+	    removeClass(modal, swalClasses.noanimation);
+	  } else {
+	    addClass(modal, swalClasses.noanimation);
+	  }
+	};
+
+	/*
+	 * Animations
+	 */
+	var openModal = function openModal(animation, onComplete) {
+	  var modal = getModal();
+	  if (animation) {
+	    addClass(modal, swalClasses.show);
+	    addClass(sweetContainer, swalClasses.fade);
+	    removeClass(modal, swalClasses.hide);
+	  } else {
+	    removeClass(modal, swalClasses.fade);
+	  }
+	  show(modal);
+
+	  // scrolling is 'hidden' until animation is done, after that 'auto'
+	  sweetContainer.style.overflowY = 'hidden';
+	  if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
+	    modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+	      modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
+	      sweetContainer.style.overflowY = 'auto';
+	    });
+	  } else {
+	    sweetContainer.style.overflowY = 'auto';
+	  }
+
+	  addClass(sweetContainer, swalClasses.in);
+	  addClass(document.body, swalClasses.in);
+	  fixScrollbar();
+	  iOSfix();
+	  states.previousActiveElement = document.activeElement;
+	  if (onComplete !== null && typeof onComplete === 'function') {
+	    onComplete(modal);
+	  }
+	};
+
+	var fixScrollbar = function fixScrollbar() {
+	  // for queues, do not do this more than once
+	  if (states.previousBodyPadding !== null) {
+	    return;
+	  }
+	  // if the body has overflow
+	  if (document.body.scrollHeight > window.innerHeight) {
+	    // add padding so the content doesn't shift after removal of scrollbar
+	    states.previousBodyPadding = document.body.style.paddingRight;
+	    document.body.style.paddingRight = measureScrollbar() + 'px';
+	  }
+	};
+
+	var undoScrollbar = function undoScrollbar() {
+	  if (states.previousBodyPadding !== null) {
+	    document.body.style.paddingRight = states.previousBodyPadding;
+	    states.previousBodyPadding = null;
+	  }
+	};
+
+	// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+	var iOSfix = function iOSfix() {
+	  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+	  if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+	    var offset = document.body.scrollTop;
+	    document.body.style.top = offset * -1 + 'px';
+	    addClass(document.body, swalClasses.iosfix);
+	  }
+	};
+
+	var undoIOSfix = function undoIOSfix() {
+	  if (hasClass(document.body, swalClasses.iosfix)) {
+	    var offset = parseInt(document.body.style.top, 10);
+	    removeClass(document.body, swalClasses.iosfix);
+	    document.body.style.top = '';
+	    document.body.scrollTop = offset * -1;
+	  }
+	};
+
+	var modalDependant = function modalDependant() {
+	  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	    args[_key] = arguments[_key];
+	  }
+
+	  if (args[0] === undefined) {
+	    console.error('SweetAlert2 expects at least 1 attribute!');
+	    return false;
+	  }
+
+	  var params = _extends({}, modalParams);
+
+	  switch (_typeof(args[0])) {
+	    case 'string':
+	      params.title = args[0];
+	      params.html = args[1];
+	      params.type = args[2];
+
+	      break;
+
+	    case 'object':
+	      _extends(params, args[0]);
+	      params.extraParams = args[0].extraParams;
+
+	      if (params.input === 'email' && params.inputValidator === null) {
+	        params.inputValidator = function (email) {
+	          return new Promise(function (resolve, reject) {
+	            var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	            if (emailRegex.test(email)) {
+	              resolve();
+	            } else {
+	              reject('Invalid email address');
+	            }
+	          });
+	        };
+	      }
+	      break;
+
+	    default:
+	      console.error('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got ' + _typeof(args[0]));
+	      return false;
+	  }
+
+	  setParameters(params);
+
+	  var modal = getModal();
+
+	  return new Promise(function (resolve, reject) {
+	    // Close on timer
+	    if (params.timer) {
+	      modal.timeout = setTimeout(function () {
+	        sweetAlert.closeModal(params.onClose);
+	        reject('timer');
+	      }, params.timer);
+	    }
+
+	    // Get input element by specified type or, if type isn't specified, by params.input
+	    var getInput = function getInput(inputType) {
+	      inputType = inputType || params.input;
+	      if (!inputType) {
+	        return null;
+	      }
+	      switch (inputType) {
+	        case 'select':
+	        case 'textarea':
+	        case 'file':
+	          return getChildByClass(modal, swalClasses[inputType]);
+	        case 'checkbox':
+	          return modal.querySelector('.' + swalClasses.checkbox + ' input');
+	        case 'radio':
+	          return modal.querySelector('.' + swalClasses.radio + ' input:checked') || modal.querySelector('.' + swalClasses.radio + ' input:first-child');
+	        case 'range':
+	          return modal.querySelector('.' + swalClasses.range + ' input');
+	        default:
+	          return getChildByClass(modal, swalClasses.input);
+	      }
+	    };
+
+	    // Get the value of the modal input
+	    var getInputValue = function getInputValue() {
+	      var input = getInput();
+	      if (!input) {
+	        return null;
+	      }
+	      switch (params.input) {
+	        case 'checkbox':
+	          return input.checked ? 1 : 0;
+	        case 'radio':
+	          return input.checked ? input.value : null;
+	        case 'file':
+	          return input.files.length ? input.files[0] : null;
+	        default:
+	          return params.inputAutoTrim ? input.value.trim() : input.value;
+	      }
+	    };
+
+	    // input autofocus
+	    if (params.input) {
+	      setTimeout(function () {
+	        var input = getInput();
+	        if (input) {
+	          focusInput(input);
+	        }
+	      }, 0);
+	    }
+
+	    var confirm = function confirm(value) {
+	      if (params.showLoaderOnConfirm) {
+	        sweetAlert.showLoading();
+	      }
+
+	      if (params.preConfirm) {
+	        params.preConfirm(value, params.extraParams).then(function (preConfirmValue) {
+	          sweetAlert.closeModal(params.onClose);
+	          resolve(preConfirmValue || value);
+	        }, function (error) {
+	          sweetAlert.hideLoading();
+	          if (error) {
+	            sweetAlert.showValidationError(error);
+	          }
+	        });
+	      } else {
+	        sweetAlert.closeModal(params.onClose);
+	        resolve(value);
+	      }
+	    };
+
+	    // Mouse interactions
+	    var onButtonEvent = function onButtonEvent(event) {
+	      var e = event || window.event;
+	      var target = e.target || e.srcElement;
+	      var confirmButton = getConfirmButton();
+	      var cancelButton = getCancelButton();
+	      var targetedConfirm = confirmButton === target || confirmButton.contains(target);
+	      var targetedCancel = cancelButton === target || cancelButton.contains(target);
+
+	      switch (e.type) {
+	        case 'mouseover':
+	        case 'mouseup':
+	          if (params.buttonsStyling) {
+	            if (targetedConfirm) {
+	              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
+	            } else if (targetedCancel) {
+	              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
+	            }
+	          }
+	          break;
+	        case 'mouseout':
+	          if (params.buttonsStyling) {
+	            if (targetedConfirm) {
+	              confirmButton.style.backgroundColor = params.confirmButtonColor;
+	            } else if (targetedCancel) {
+	              cancelButton.style.backgroundColor = params.cancelButtonColor;
+	            }
+	          }
+	          break;
+	        case 'mousedown':
+	          if (params.buttonsStyling) {
+	            if (targetedConfirm) {
+	              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
+	            } else if (targetedCancel) {
+	              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
+	            }
+	          }
+	          break;
+	        case 'click':
+	          // Clicked 'confirm'
+	          if (targetedConfirm && sweetAlert.isVisible()) {
+	            if (params.input) {
+	              (function () {
+	                var inputValue = getInputValue();
+
+	                if (params.inputValidator) {
+	                  sweetAlert.disableInput();
+	                  params.inputValidator(inputValue, params.extraParams).then(function () {
+	                    sweetAlert.enableInput();
+	                    confirm(inputValue);
+	                  }, function (error) {
+	                    sweetAlert.enableInput();
+	                    if (error) {
+	                      sweetAlert.showValidationError(error);
+	                    }
+	                  });
+	                } else {
+	                  confirm(inputValue);
+	                }
+	              })();
+	            } else {
+	              confirm(true);
+	            }
+
+	            // Clicked 'cancel'
+	          } else if (targetedCancel && sweetAlert.isVisible()) {
+	            sweetAlert.closeModal(params.onClose);
+	            reject('cancel');
+	          }
+	          break;
+	        default:
+	      }
+	    };
+
+	    var buttons = modal.querySelectorAll('button');
+	    for (var i = 0; i < buttons.length; i++) {
+	      buttons[i].onclick = onButtonEvent;
+	      buttons[i].onmouseover = onButtonEvent;
+	      buttons[i].onmouseout = onButtonEvent;
+	      buttons[i].onmousedown = onButtonEvent;
+	    }
+
+	    // Closing modal by close button
+	    getCloseButton().onclick = function () {
+	      sweetAlert.closeModal(params.onClose);
+	      reject('close');
+	    };
+
+	    // Closing modal by overlay click
+	    sweetContainer.onclick = function (e) {
+	      if (e.target !== sweetContainer) {
+	        return;
+	      }
+	      if (params.allowOutsideClick) {
+	        sweetAlert.closeModal(params.onClose);
+	        reject('overlay');
+	      }
+	    };
+
+	    var confirmButton = getConfirmButton();
+	    var cancelButton = getCancelButton();
+
+	    // Reverse buttons if neede d
+	    if (params.reverseButtons) {
+	      confirmButton.parentNode.insertBefore(cancelButton, confirmButton);
+	    } else {
+	      confirmButton.parentNode.insertBefore(confirmButton, cancelButton);
+	    }
+
+	    // Focus handling
+	    var setFocus = function setFocus(index, increment) {
+	      var focusableElements = getFocusableElements(params.focusCancel);
+	      // search for visible elements and select the next possible match
+	      for (var _i2 = 0; _i2 < focusableElements.length; _i2++) {
+	        index = index + increment;
+
+	        // rollover to first item
+	        if (index === focusableElements.length) {
+	          index = 0;
+
+	          // go to last item
+	        } else if (index === -1) {
+	          index = focusableElements.length - 1;
+	        }
+
+	        // determine if element is visible
+	        var el = focusableElements[index];
+	        if (isVisible(el)) {
+	          return el.focus();
+	        }
+	      }
+	    };
+
+	    var handleKeyDown = function handleKeyDown(event) {
+	      var e = event || window.event;
+	      var keyCode = e.keyCode || e.which;
+
+	      if ([9, 13, 32, 27].indexOf(keyCode) === -1) {
+	        // Don't do work on keys we don't care about.
+	        return;
+	      }
+
+	      var targetElement = e.target || e.srcElement;
+
+	      var focusableElements = getFocusableElements(params.focusCancel);
+	      var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
+	      for (var _i3 = 0; _i3 < focusableElements.length; _i3++) {
+	        if (targetElement === focusableElements[_i3]) {
+	          btnIndex = _i3;
+	          break;
+	        }
+	      }
+
+	      // TAB
+	      if (keyCode === 9) {
+	        if (!e.shiftKey) {
+	          // Cycle to the next button
+	          setFocus(btnIndex, 1);
+	        } else {
+	          // Cycle to the prev button
+	          setFocus(btnIndex, -1);
+	        }
+	        e.stopPropagation();
+	        e.preventDefault();
+
+	        // ENTER/SPACE
+	      } else {
+	        if (keyCode === 13 || keyCode === 32) {
+	          if (btnIndex === -1) {
+	            // ENTER/SPACE clicked outside of a button.
+	            if (params.focusCancel) {
+	              fireClick(cancelButton, e);
+	            } else {
+	              fireClick(confirmButton, e);
+	            }
+	          }
+	        } else if (keyCode === 27 && params.allowEscapeKey === true) {
+	          sweetAlert.closeModal(params.onClose);
+	          reject('esc');
+	        }
+	      }
+	    };
+
+	    states.previousWindowKeyDown = window.onkeydown;
+	    window.onkeydown = handleKeyDown;
+
+	    // Loading state
+	    if (params.buttonsStyling) {
+	      confirmButton.style.borderLeftColor = params.confirmButtonColor;
+	      confirmButton.style.borderRightColor = params.confirmButtonColor;
+	    }
+
+	    /**
+	     * Show spinner instead of Confirm button and disable Cancel button
+	     */
+	    sweetAlert.showLoading = sweetAlert.enableLoading = function () {
+	      show(getSpacer());
+	      show(confirmButton, 'inline-block');
+	      addClass(confirmButton, swalClasses.loading);
+	      addClass(modal, swalClasses.loading);
+	      confirmButton.disabled = true;
+	      cancelButton.disabled = true;
+	    };
+
+	    /**
+	     * Show spinner instead of Confirm button and disable Cancel button
+	     */
+	    sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
+	      if (!params.showConfirmButton) {
+	        hide(confirmButton);
+	        if (!params.showCancelButton) {
+	          hide(getSpacer());
+	        }
+	      }
+	      removeClass(confirmButton, swalClasses.loading);
+	      removeClass(modal, swalClasses.loading);
+	      confirmButton.disabled = false;
+	      cancelButton.disabled = false;
+	    };
+
+	    sweetAlert.getTitle = function () {
+	      return getTitle();
+	    };
+	    sweetAlert.getContent = function () {
+	      return getContent();
+	    };
+	    sweetAlert.getInput = function () {
+	      return getInput();
+	    };
+	    sweetAlert.getImage = function () {
+	      return getImage();
+	    };
+	    sweetAlert.getConfirmButton = function () {
+	      return getConfirmButton();
+	    };
+	    sweetAlert.getCancelButton = function () {
+	      return getCancelButton();
+	    };
+
+	    sweetAlert.enableButtons = function () {
+	      confirmButton.disabled = false;
+	      cancelButton.disabled = false;
+	    };
+
+	    sweetAlert.disableButtons = function () {
+	      confirmButton.disabled = true;
+	      cancelButton.disabled = true;
+	    };
+
+	    sweetAlert.enableConfirmButton = function () {
+	      confirmButton.disabled = false;
+	    };
+
+	    sweetAlert.disableConfirmButton = function () {
+	      confirmButton.disabled = true;
+	    };
+
+	    sweetAlert.enableInput = function () {
+	      var input = getInput();
+	      if (!input) {
+	        return false;
+	      }
+	      if (input.type === 'radio') {
+	        var radiosContainer = input.parentNode.parentNode;
+	        var radios = radiosContainer.querySelectorAll('input');
+	        for (var _i4 = 0; _i4 < radios.length; _i4++) {
+	          radios[_i4].disabled = false;
+	        }
+	      } else {
+	        input.disabled = false;
+	      }
+	    };
+
+	    sweetAlert.disableInput = function () {
+	      var input = getInput();
+	      if (!input) {
+	        return false;
+	      }
+	      if (input && input.type === 'radio') {
+	        var radiosContainer = input.parentNode.parentNode;
+	        var radios = radiosContainer.querySelectorAll('input');
+	        for (var _i5 = 0; _i5 < radios.length; _i5++) {
+	          radios[_i5].disabled = true;
+	        }
+	      } else {
+	        input.disabled = true;
+	      }
+	    };
+
+	    // Set modal min-height to disable scrolling inside the modal
+	    sweetAlert.recalculateHeight = debounce(function () {
+	      var modal = getModal();
+	      var prevState = modal.style.display;
+	      modal.style.minHeight = '';
+	      show(modal);
+	      modal.style.minHeight = modal.scrollHeight + 1 + 'px';
+	      modal.style.display = prevState;
+	    }, 50);
+
+	    // Show block with validation error
+	    sweetAlert.showValidationError = function (error) {
+	      var validationError = getValidationError();
+	      validationError.innerHTML = error;
+	      show(validationError);
+
+	      var input = getInput();
+	      focusInput(input);
+	      addClass(input, swalClasses.inputerror);
+	    };
+
+	    // Hide block with validation error
+	    sweetAlert.resetValidationError = function () {
+	      var validationError = getValidationError();
+	      hide(validationError);
+	      sweetAlert.recalculateHeight();
+
+	      var input = getInput();
+	      if (input) {
+	        removeClass(input, swalClasses.inputerror);
+	      }
+	    };
+
+	    sweetAlert.getProgressSteps = function () {
+	      return params.progressSteps;
+	    };
+
+	    sweetAlert.setProgressSteps = function (progressSteps) {
+	      params.progressSteps = progressSteps;
+	      setParameters(params);
+	    };
+
+	    sweetAlert.showProgressSteps = function () {
+	      show(getProgressSteps());
+	    };
+
+	    sweetAlert.hideProgressSteps = function () {
+	      hide(getProgressSteps());
+	    };
+
+	    sweetAlert.enableButtons();
+	    sweetAlert.hideLoading();
+	    sweetAlert.resetValidationError();
+
+	    // inputs
+	    var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+	    var input = void 0;
+	    for (var _i6 = 0; _i6 < inputTypes.length; _i6++) {
+	      var inputClass = swalClasses[inputTypes[_i6]];
+	      var inputContainer = getChildByClass(modal, inputClass);
+	      input = getInput(inputTypes[_i6]);
+
+	      // set attributes
+	      if (input) {
+	        for (var j in input.attributes) {
+	          if (input.attributes.hasOwnProperty(j)) {
+	            var attrName = input.attributes[j].name;
+	            if (attrName !== 'type' && attrName !== 'value') {
+	              input.removeAttribute(attrName);
+	            }
+	          }
+	        }
+	        for (var attr in params.inputAttributes) {
+	          input.setAttribute(attr, params.inputAttributes[attr]);
+	        }
+	      }
+
+	      // set class
+	      inputContainer.className = inputClass;
+	      if (params.inputClass) {
+	        addClass(inputContainer, params.inputClass);
+	      }
+
+	      hide(inputContainer);
+	    }
+
+	    var populateInputOptions = void 0;
+
+	    (function () {
+	      switch (params.input) {
+	        case 'text':
+	        case 'email':
+	        case 'password':
+	        case 'number':
+	        case 'tel':
+	          input = getChildByClass(modal, swalClasses.input);
+	          input.value = params.inputValue;
+	          input.placeholder = params.inputPlaceholder;
+	          input.type = params.input;
+	          show(input);
+	          break;
+	        case 'file':
+	          input = getChildByClass(modal, swalClasses.file);
+	          input.placeholder = params.inputPlaceholder;
+	          input.type = params.input;
+	          show(input);
+	          break;
+	        case 'range':
+	          var range = getChildByClass(modal, swalClasses.range);
+	          var rangeInput = range.querySelector('input');
+	          var rangeOutput = range.querySelector('output');
+	          rangeInput.value = params.inputValue;
+	          rangeInput.type = params.input;
+	          rangeOutput.value = params.inputValue;
+	          show(range);
+	          break;
+	        case 'select':
+	          var select = getChildByClass(modal, swalClasses.select);
+	          select.innerHTML = '';
+	          if (params.inputPlaceholder) {
+	            var placeholder = document.createElement('option');
+	            placeholder.innerHTML = params.inputPlaceholder;
+	            placeholder.value = '';
+	            placeholder.disabled = true;
+	            placeholder.selected = true;
+	            select.appendChild(placeholder);
+	          }
+	          populateInputOptions = function populateInputOptions(inputOptions) {
+	            for (var optionValue in inputOptions) {
+	              var option = document.createElement('option');
+	              option.value = optionValue;
+	              option.innerHTML = inputOptions[optionValue];
+	              if (params.inputValue === optionValue) {
+	                option.selected = true;
+	              }
+	              select.appendChild(option);
+	            }
+	            show(select);
+	            select.focus();
+	          };
+	          break;
+	        case 'radio':
+	          var radio = getChildByClass(modal, swalClasses.radio);
+	          radio.innerHTML = '';
+	          populateInputOptions = function populateInputOptions(inputOptions) {
+	            for (var radioValue in inputOptions) {
+	              var radioInput = document.createElement('input');
+	              var radioLabel = document.createElement('label');
+	              var radioLabelSpan = document.createElement('span');
+	              radioInput.type = 'radio';
+	              radioInput.name = swalClasses.radio;
+	              radioInput.value = radioValue;
+	              if (params.inputValue === radioValue) {
+	                radioInput.checked = true;
+	              }
+	              radioLabelSpan.innerHTML = inputOptions[radioValue];
+	              radioLabel.appendChild(radioInput);
+	              radioLabel.appendChild(radioLabelSpan);
+	              radioLabel.for = radioInput.id;
+	              radio.appendChild(radioLabel);
+	            }
+	            show(radio);
+	            var radios = radio.querySelectorAll('input');
+	            if (radios.length) {
+	              radios[0].focus();
+	            }
+	          };
+	          break;
+	        case 'checkbox':
+	          var checkbox = getChildByClass(modal, swalClasses.checkbox);
+	          var checkboxInput = getInput('checkbox');
+	          checkboxInput.type = 'checkbox';
+	          checkboxInput.value = 1;
+	          checkboxInput.id = swalClasses.checkbox;
+	          checkboxInput.checked = Boolean(params.inputValue);
+	          var label = checkbox.getElementsByTagName('span');
+	          if (label.length) {
+	            checkbox.removeChild(label[0]);
+	          }
+	          label = document.createElement('span');
+	          label.innerHTML = params.inputPlaceholder;
+	          checkbox.appendChild(label);
+	          show(checkbox);
+	          break;
+	        case 'textarea':
+	          var textarea = getChildByClass(modal, swalClasses.textarea);
+	          textarea.value = params.inputValue;
+	          textarea.placeholder = params.inputPlaceholder;
+	          show(textarea);
+	          break;
+	        case null:
+	          break;
+	        default:
+	          console.error('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "select", "checkbox", "textarea" or "file", got "' + params.input + '"');
+	          break;
+	      }
+	    })();
+
+	    if (params.input === 'select' || params.input === 'radio') {
+	      if (params.inputOptions instanceof Promise) {
+	        sweetAlert.showLoading();
+	        params.inputOptions.then(function (inputOptions) {
+	          sweetAlert.hideLoading();
+	          populateInputOptions(inputOptions);
+	        });
+	      } else if (_typeof(params.inputOptions) === 'object') {
+	        populateInputOptions(params.inputOptions);
+	      } else {
+	        console.error('SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got ' + _typeof(params.inputOptions));
+	      }
+	    }
+
+	    openModal(params.animation, params.onOpen);
+
+	    // Focus the first element (input or button)
+	    setFocus(-1, 1);
+
+	    // fix scroll
+	    sweetContainer.scrollTop = 0;
+
+	    // Observe changes inside the modal and adjust height
+	    if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
+	      swal2Observer = new MutationObserver(sweetAlert.recalculateHeight);
+	      swal2Observer.observe(modal, { childList: true, characterData: true, subtree: true });
+	    }
+	  });
+	};
+
+	// SweetAlert entry point
+	var sweetAlert = function sweetAlert() {
+	  for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	    args[_key2] = arguments[_key2];
+	  }
+
+	  if (sweetAlert.isVisible()) {
+	    sweetAlert.close();
+	  }
+
+	  return modalDependant.apply(undefined, args);
+	};
+
+	/*
+	 * Global function to determine if swal2 modal is visible
+	 */
+	sweetAlert.isVisible = function () {
+	  var modal = getModal();
+	  return isVisible(modal);
+	};
+
+	/*
+	 * Global function for chaining sweetAlert modals
+	 */
+	sweetAlert.queue = function (steps) {
+	  queue = steps;
+	  var modal = getModal();
+	  var resetQueue = function resetQueue() {
+	    queue = [];
+	    modal.removeAttribute('data-queue-step');
+	  };
+	  var queueResult = [];
+	  return new Promise(function (resolve, reject) {
+	    (function step(i, callback) {
+	      if (i < queue.length) {
+	        modal.setAttribute('data-queue-step', i);
+
+	        sweetAlert(queue[i]).then(function (result) {
+	          queueResult.push(result);
+	          step(i + 1, callback);
+	        }, function (dismiss) {
+	          resetQueue();
+	          reject(dismiss);
+	        });
+	      } else {
+	        resetQueue();
+	        resolve(queueResult);
+	      }
+	    })(0);
+	  });
+	};
+
+	/*
+	 * Global function for getting the index of current modal in queue
+	 */
+	sweetAlert.getQueueStep = function () {
+	  return getModal().getAttribute('data-queue-step');
+	};
+
+	/*
+	 * Global function for inserting a modal to the queue
+	 */
+	sweetAlert.insertQueueStep = function (step, index) {
+	  if (index && index < queue.length) {
+	    return queue.splice(index, 0, step);
+	  }
+	  return queue.push(step);
+	};
+
+	/*
+	 * Global function for deleting a modal from the queue
+	 */
+	sweetAlert.deleteQueueStep = function (index) {
+	  if (typeof queue[index] !== 'undefined') {
+	    queue.splice(index, 1);
+	  }
+	};
+
+	/*
+	 * Global function to close sweetAlert
+	 */
+	sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
+	  var modal = getModal();
+	  removeClass(modal, swalClasses.show);
+	  addClass(modal, swalClasses.hide);
+
+	  // Reset icon animations
+	  var successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);
+	  removeClass(successIcon, 'animate');
+	  removeClass(successIcon.querySelector('.tip'), 'animate-success-tip');
+	  removeClass(successIcon.querySelector('.long'), 'animate-success-long');
+
+	  var errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.error);
+	  removeClass(errorIcon, 'animate-error-icon');
+	  removeClass(errorIcon.querySelector('.x-mark'), 'animate-x-mark');
+
+	  var warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
+	  removeClass(warningIcon, 'pulse-warning');
+
+	  resetPrevState();
+
+	  var hideModalAndResetState = function hideModalAndResetState() {
+	    hide(modal);
+	    modal.style.minHeight = '';
+	    removeClass(sweetContainer, swalClasses.in);
+	    removeClass(document.body, swalClasses.in);
+	    undoScrollbar();
+	    undoIOSfix();
+	  };
+
+	  // If animation is supported, animate
+	  if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
+	    modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+	      modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
+	      if (hasClass(modal, swalClasses.hide)) {
+	        hideModalAndResetState();
+	      }
+	    });
+	  } else {
+	    // Otherwise, hide immediately
+	    hideModalAndResetState();
+	  }
+	  if (onComplete !== null && typeof onComplete === 'function') {
+	    onComplete(modal);
+	  }
+	};
+
+	/*
+	 * Global function to click 'Confirm' button
+	 */
+	sweetAlert.clickConfirm = function () {
+	  return getConfirmButton().click();
+	};
+
+	/*
+	 * Global function to click 'Cancel' button
+	 */
+	sweetAlert.clickCancel = function () {
+	  return getCancelButton().click();
+	};
+
+	/**
+	 * Set default params for each popup
+	 * @param {Object} userParams
+	 */
+	sweetAlert.setDefaults = function (userParams) {
+	  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
+	    return console.error('SweetAlert2: the argument for setDefaults() is required and has to be a object');
+	  }
+
+	  for (var param in userParams) {
+	    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+	      console.warn('SweetAlert2: Unknown parameter "' + param + '"');
+	      delete userParams[param];
+	    }
+	  }
+
+	  _extends(modalParams, userParams);
+	};
+
+	/**
+	 * Reset default params for each popup
+	 */
+	sweetAlert.resetDefaults = function () {
+	  modalParams = _extends({}, defaultParams);
+	};
+
+	sweetAlert.noop = function () {};
+
+	sweetAlert.version = '6.3.2';
+
+	sweetAlert.default = sweetAlert;
+
+	return sweetAlert;
+
+	})));
+	if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
+
 
 /***/ },
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/loading.gif?2bc07f4e6f25ebc7fa55be51f32e9251";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
 
 /***/ },
 /* 32 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAvCAYAAABUiRJEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhpJREFUeNrkmt1NwzAQx9OId9igYQKyAX1DPCDBBrABI3QEmIBuQCUeEG9hg3SDdAOYINwVuwohH3Z8ts/xSZbV5sP5/WOf7xwv6rpO5mY3H9c5VCvxs3i7ei+7zlvMCR6gH6HCsmwd2kPZgAjr2cEDdAbVFsrFyKk77BEgwtcs4EUXL6CcKl5yFCCNDDwRvQOHRpJGBi7tPthubwgu7TyNFBwtSyMFT4Ia89TgYFUaKfgepjr+8BbA0dbsvb0l8B289Zz1mLcE/g3llrXDswiOYW0l/zgZSBSw4EPgyVVfWhgYeNmb1UHDK+EMLrs8JB6DG2zmAP4HHhrGePdF4WafOG5kWhgq+BEeGkYn8KrjMZt5cYjgTYf3pHljTAsLeOizUMEP8OKtLyc0YCyAT3D55nODhiYL4Bucap7XFoADOGWQoywAF3DqCG9UAE7gEr5wIQA38AM8XFiIwMWaABzBm0EOxvEldeqY/H4yyjiCt8Nb3ShPVYCMI3hXYqMa3/syMvB/3l5kbA8xgHdOdUwFIAfvneeZCWAFfDDIYSKANfDRCM+zAFbBlcJbTwJYB1eO7R0L4ARcK7FxJIAzcO2szrIATsEnpbSWBHAOPjmfJxbAC7jRYgaRAN7AjeAJBPAKbgxvIIB3cBL4hgB3Akolx899g5PBCwFw+ycuVw0tiT0nrc/EPs3KzozGrme5joewW+qPm6b2I8AAPYVgfoaCtkcAAAAASUVORK5CYII="
+	module.exports = __webpack_require__.p + "images/loading.gif?2bc07f4e6f25ebc7fa55be51f32e9251";
 
 /***/ },
 /* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "data:image/png;base64,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"
+	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAvCAYAAABUiRJEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhpJREFUeNrkmt1NwzAQx9OId9igYQKyAX1DPCDBBrABI3QEmIBuQCUeEG9hg3SDdAOYINwVuwohH3Z8ts/xSZbV5sP5/WOf7xwv6rpO5mY3H9c5VCvxs3i7ei+7zlvMCR6gH6HCsmwd2kPZgAjr2cEDdAbVFsrFyKk77BEgwtcs4EUXL6CcKl5yFCCNDDwRvQOHRpJGBi7tPthubwgu7TyNFBwtSyMFT4Ia89TgYFUaKfgepjr+8BbA0dbsvb0l8B289Zz1mLcE/g3llrXDswiOYW0l/zgZSBSw4EPgyVVfWhgYeNmb1UHDK+EMLrs8JB6DG2zmAP4HHhrGePdF4WafOG5kWhgq+BEeGkYn8KrjMZt5cYjgTYf3pHljTAsLeOizUMEP8OKtLyc0YCyAT3D55nODhiYL4Bucap7XFoADOGWQoywAF3DqCG9UAE7gEr5wIQA38AM8XFiIwMWaABzBm0EOxvEldeqY/H4yyjiCt8Nb3ShPVYCMI3hXYqMa3/syMvB/3l5kbA8xgHdOdUwFIAfvneeZCWAFfDDIYSKANfDRCM+zAFbBlcJbTwJYB1eO7R0L4ARcK7FxJIAzcO2szrIATsEnpbSWBHAOPjmfJxbAC7jRYgaRAN7AjeAJBPAKbgxvIIB3cBL4hgB3Akolx899g5PBCwFw+ycuVw0tiT0nrc/EPs3KzozGrme5joewW+qPm6b2I8AAPYVgfoaCtkcAAAAASUVORK5CYII="
 
 /***/ },
 /* 34 */
@@ -17105,7 +18664,7 @@
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(33) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(64) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 63 */
@@ -17115,11 +18674,17 @@
 
 /***/ },
 /* 64 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/png;base64,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"
+
+/***/ },
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(65)
-	__vue_template__ = __webpack_require__(66)
+	__vue_script__ = __webpack_require__(66)
+	__vue_template__ = __webpack_require__(67)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17136,7 +18701,7 @@
 	})()}
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17264,24 +18829,24 @@
 	//
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(67) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(68) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson}}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson_phone}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAA+CAYAAAAClQafAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzN0YzQkFBNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzN0YzQkFCNTgyNDExRTY5QzQ3ODI4RkRDNTdFRjc2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjM3RjNCQTg1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjM3RjNCQTk1ODI0MTFFNjlDNDc4MjhGREM1N0VGNzYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5+vUb5AAATkElEQVR42uxd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"
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(69)
-	__vue_template__ = __webpack_require__(73)
+	__vue_script__ = __webpack_require__(70)
+	__vue_template__ = __webpack_require__(74)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17298,7 +18863,7 @@
 	})()}
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17311,7 +18876,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -17474,12 +19039,12 @@
 	//
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(71)
-	__vue_template__ = __webpack_require__(72)
+	__vue_script__ = __webpack_require__(72)
+	__vue_template__ = __webpack_require__(73)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17496,7 +19061,7 @@
 	})()}
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17560,30 +19125,30 @@
 	// <script>
 
 /***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(31) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\n";
-
-/***/ },
 /* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(74) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n   <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n   <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n   <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n   <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n    <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n    <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n  </ul>\n\n  <div class=\"clearfix\"></div>\n  <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(74) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n</div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-red-loading-section modal-custom-dev\" style=\"\" id=\"modalCustomDev\">\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-loading-content\">\n\t\t\t\t<h5 id=\"modalCustomDevText\">Comunicando con central...</h5>\n\t\t\t\t<img src=\"" + __webpack_require__(32) + "\" />\n\t\t\t</div>\n\t\t</div>\n\t</div>\n";
 
 /***/ },
 /* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'pickup'\">\n       <h4 class=\"ac25-top-red-text\">CARGAR EL CAMION</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n       <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n        <li> Cargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n        <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n      </ul>\n\n      <div class=\"clearfix\"></div>\n      <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(75) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <div class=\"ac25-content-inner-holder ac25-min-height-200\" v-if=\"addressType == 'delivery'\">\n   <h4 class=\"ac25-top-red-text\">DESCARGAR<br />EL CAMION</h4>\n   <p class=\"left clearfix ac25-subtitle\"> Orden {{order.special_id}} </p>\n   <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n   <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n    <li> Descargue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos.</li>\n    <li> Una vez que este listo para pasar a la siguiente orden, presione terminar.</li>\n  </ul>\n\n  <div class=\"clearfix\"></div>\n  <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(75) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n</div><!-- end content-inner-holder -->\n</div><!-- end container -->\n\n<footer class=\"ac25-content-footer\">\n  <a onclick=\"window.history.back()\" class=\"ac25-half-black left waves-effect waves-light\">volver</a>\n  <a @click=\"finishOrder()\" class=\"ac25-half-red right waves-effect waves-light\">terminar</a>\n</footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
+
+/***/ },
+/* 75 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAArCAYAAADhXXHAAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAclJREFUeNrsWO1tgzAQNVH+wwZlg7JBzQYdgRGaCUImaEagE7SdoIxANmAEOoFro0NCyBiffRja5klPkRIwL8e7DzsSQjALJJIZc0MN93fMF0rsAl8kO+EOtUYjmVg8y8jIIrIqIrFHPCIVE8mbJPeJ8JJYtfiX58sbxDJfwQcWFo8jD6NxdLjnJNkQCEZH2MUGkUsea75DWyK0DbwssaVYtOCtxaIEhxJ7oRAcKsEYtOt0IaFaIFnpckWjKXkpkGQ24DO9norlZO3SdP0eEgw9dWWIyWrNyM6hn9pUgmWQiTFRZmOgEvjJ8tpciaWYrEIg13n2E6J325taXem6gi2GYr1rsdnkc9diX/dq2l9VZ+9i72JnEuzNNKYFRiH5YBJbwcyZTMa7bmVhpUYHXxI7NIZxz85HjeKZqAa3IGjAWXNG5jV8q3/6ThjNVBPRv5tgJtRgCU5kg4+1j49qnZ9C1dnOIWsFATsoTTb4Vm/iAGXphNhOn4kCFSPE8t42M3ujerIH4qPfKkEDtecrRusKwzN7uni2QERkk9kgWVlHQlkNKuZ3gGzTHMjExogt878cEVtbsdeNhWrHVNORZ7pR1jdzbfhHgAEABTm5f8wP3PEAAAAASUVORK5CYII="
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(76)
-	__vue_template__ = __webpack_require__(77)
+	__vue_script__ = __webpack_require__(77)
+	__vue_template__ = __webpack_require__(78)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17600,7 +19165,7 @@
 	})()}
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17685,18 +19250,18 @@
 	//
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{order.items_amount}} / Orden #{{order.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre arriba del móvil. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print></button-print>\n    <button-scan></button-scan>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(79)
-	__vue_template__ = __webpack_require__(80)
+	__vue_script__ = __webpack_require__(80)
+	__vue_template__ = __webpack_require__(81)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17713,7 +19278,7 @@
 	})()}
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17732,7 +19297,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -17847,18 +19412,18 @@
 	//
 
 /***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(74) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{order.items_amount}}</span> bultos / Orden #{{order.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(75) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 82 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(82)
-	__vue_template__ = __webpack_require__(89)
+	__vue_script__ = __webpack_require__(83)
+	__vue_template__ = __webpack_require__(90)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17875,7 +19440,7 @@
 	})()}
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17890,11 +19455,11 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ButtonPrintTrip = __webpack_require__(83);
+	var _ButtonPrintTrip = __webpack_require__(84);
 
 	var _ButtonPrintTrip2 = _interopRequireDefault(_ButtonPrintTrip);
 
-	var _ButtonScanTrip = __webpack_require__(86);
+	var _ButtonScanTrip = __webpack_require__(87);
 
 	var _ButtonScanTrip2 = _interopRequireDefault(_ButtonScanTrip);
 
@@ -17960,12 +19525,12 @@
 	//
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(84)
-	__vue_template__ = __webpack_require__(85)
+	__vue_script__ = __webpack_require__(85)
+	__vue_template__ = __webpack_require__(86)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -17982,7 +19547,7 @@
 	})()}
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18025,18 +19590,18 @@
 	// <script>
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <a v-link=\"'print-trip'\" class=\"ac25-half-red ac25-half-border-right left waves-effect waves-light\">\n    <img src=\"" + __webpack_require__(57) + "\" alt=\"\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\">imprimir</p>\n    </div>\n  </a>\n";
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(87)
-	__vue_template__ = __webpack_require__(88)
+	__vue_script__ = __webpack_require__(88)
+	__vue_template__ = __webpack_require__(89)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18053,7 +19618,7 @@
 	})()}
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18104,24 +19669,24 @@
 	//
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<a v-link=\"'scan-trip'\" class=\"ac25-half-black  right waves-effect waves-light\">\n\t\t<img src=\"" + __webpack_require__(61) + "\" />\n    <div style=\"margin-top:100px\">\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">escanear ({{trip_items_remaining_counter}})</p>\n      <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n    </div>\n  </a>\n";
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">RECEPCIÓN DE<br />CARGA</h4>\n       <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n       <div class=\"clearfix\" style=\"height:100px\"></div>\n\n       <span class=\"ac25-top-check-title\">\n        Bultos a recibir: <span class=\"ac25-large-font\">{{trip_items_remaining_counter}} / Viaje #{{trip.id}}\n      </span>\n\n      <div class=\"clearfix\" style=\"height:100px\"></div>\n\n      <h4 class=\"ac25-top-red-text\">IMPORTANTE!</h4>\n      <p class=\"left clearfix ac25-subtitle\"> Escanee uno a uno los bultos y sólo cuando el bulto a escanear se encuentre en bodega. </p>\n\n      <div class=\"clearfix\"></div>\n\n    </div><!-- end content-inner-holder -->\n  </div><!-- end container -->\n\n  <footer class=\"ac25-content-footer\">\n    <button-print-trip></button-print-trip>\n    <button-scan-trip></button-scan-trip>\n    <div class=\"clearfix\"></div>\n  </footer><!-- end footer -->\n\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(91)
-	__vue_template__ = __webpack_require__(92)
+	__vue_script__ = __webpack_require__(92)
+	__vue_template__ = __webpack_require__(93)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18138,7 +19703,7 @@
 	})()}
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18157,7 +19722,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18283,18 +19848,18 @@
 	//
 
 /***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{trip_items_remaining_counter}}</span> bultos / Viaje #{{trip.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list-trip')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(74) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
-
-/***/ },
 /* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n        <h4 class=\"ac25-top-red-text\">TRASBORDO DE<br />ENTREGA</h4>\n        <p class=\"left clearfix ac25-subtitle\"> Hub: Bodega Huechuraba </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <ul class=\"ac25-red-list clearfix ac25-fleft ac25-mtop60\">\n          <li> Entregue los <span class=\"ac25-large-font\">{{trip_items_remaining_counter}}</span> bultos / Viaje #{{trip.id}}</li>\n          <li> Asegúrese bien que la pesona que recepciona firme la orden de trasbordo.</li>\n        </ul>\n\n        <div class=\"clearfix\"></div>\n        <a @click=\"print('items-list-trip')\" class=\"ac25-print-button ac25-mbottom50 clearfix waves-effect waves-light\"> <img src=\"" + __webpack_require__(75) + "\" class=\"left\" /><span>imprimir listado de bultos</span> </a>\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"finishTransfer()\" class=\"ac25-full-red-custom-dev right waves-effect waves-light\" style=\"padding:100px 20px\">terminar</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(94)
-	__vue_template__ = __webpack_require__(95)
+	__vue_script__ = __webpack_require__(95)
+	__vue_template__ = __webpack_require__(96)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18311,7 +19876,7 @@
 	})()}
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18324,7 +19889,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18467,18 +20032,18 @@
 	//
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(57) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a v-if=\"'pickup' == this.addressType\" @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente retiro</p>\n        </div>\n      </a>\n      <a v-if=\"'delivery' == this.addressType\" @click=\"print('customer-delivery-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente entrega</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(97)
-	__vue_template__ = __webpack_require__(98)
+	__vue_script__ = __webpack_require__(98)
+	__vue_template__ = __webpack_require__(99)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18495,7 +20060,7 @@
 	})()}
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18508,7 +20073,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18797,18 +20362,18 @@
 	//
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(61) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{{item_id_info}}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery' && item.qr_id > 0\">{{{item_id_info}}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(100)
-	__vue_template__ = __webpack_require__(101)
+	__vue_script__ = __webpack_require__(101)
+	__vue_template__ = __webpack_require__(102)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -18825,7 +20390,7 @@
 	})()}
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18838,7 +20403,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -18980,18 +20545,18 @@
 	//
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(57) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('invoice')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p v-if=\"order.dte_type == 33\">factura</p>\n          <p v-if=\"order.dte_type == 39\">boleta</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('items-list-trip')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>lista de bultos</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"scan('special')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- especial --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(103)
-	__vue_template__ = __webpack_require__(104)
+	__vue_script__ = __webpack_require__(104)
+	__vue_template__ = __webpack_require__(105)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19008,7 +20573,7 @@
 	})()}
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19021,7 +20586,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -19286,18 +20851,18 @@
 	//
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(61) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter > 0\">Quedan ({{trip_items_remaining_counter}}) bultos por escanear</p>\n              <p class=\"ac25-no-margin\" v-if=\"trip_items_remaining_counter <= 0\">escaneo listo</p>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"trip_items_remaining_counter > 0\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(106)
-	__vue_template__ = __webpack_require__(107)
+	__vue_script__ = __webpack_require__(107)
+	__vue_template__ = __webpack_require__(108)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19314,7 +20879,7 @@
 	})()}
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19329,7 +20894,7 @@
 
 	var _HeaderUserData2 = _interopRequireDefault(_HeaderUserData);
 
-	var _ModalWait = __webpack_require__(70);
+	var _ModalWait = __webpack_require__(71);
 
 	var _ModalWait2 = _interopRequireDefault(_ModalWait);
 
@@ -19488,18 +21053,18 @@
 	// </script>
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(109)
-	__vue_template__ = __webpack_require__(110)
+	__vue_script__ = __webpack_require__(110)
+	__vue_template__ = __webpack_require__(111)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19516,7 +21081,7 @@
 	})()}
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19641,18 +21206,18 @@
 	//
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(112)
-	__vue_template__ = __webpack_require__(113)
+	__vue_script__ = __webpack_require__(113)
+	__vue_template__ = __webpack_require__(114)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19669,7 +21234,7 @@
 	})()}
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19726,18 +21291,18 @@
 	// <script>
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(115)
-	__vue_template__ = __webpack_require__(116)
+	__vue_script__ = __webpack_require__(116)
+	__vue_template__ = __webpack_require__(117)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19754,7 +21319,7 @@
 	})()}
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19807,18 +21372,18 @@
 	// </script>
 
 /***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(31) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
-
-/***/ },
 /* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(32) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(118)
-	__vue_template__ = __webpack_require__(119)
+	__vue_script__ = __webpack_require__(119)
+	__vue_template__ = __webpack_require__(120)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19835,7 +21400,7 @@
 	})()}
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19964,18 +21529,18 @@
 	//
 
 /***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(31) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
-
-/***/ },
 /* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(32) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
+
+/***/ },
+/* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(121)
-	__vue_template__ = __webpack_require__(122)
+	__vue_script__ = __webpack_require__(122)
+	__vue_template__ = __webpack_require__(123)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -19992,7 +21557,7 @@
 	})()}
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20047,18 +21612,18 @@
 	// <script>
 
 /***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(32) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
-
-/***/ },
 /* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(124)
-	__vue_template__ = __webpack_require__(125)
+	__vue_script__ = __webpack_require__(125)
+	__vue_template__ = __webpack_require__(126)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -20075,7 +21640,7 @@
 	})()}
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20130,18 +21695,18 @@
 	// <script>
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(49) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(127)
-	__vue_template__ = __webpack_require__(128)
+	__vue_script__ = __webpack_require__(128)
+	__vue_template__ = __webpack_require__(129)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -20158,7 +21723,7 @@
 	})()}
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20216,24 +21781,24 @@
 	// <script>
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(32) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(129) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(130) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAADeCAYAAAC65wucAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzNzIzQTY0NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzNzIzQTY1NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDM3MjNBNjI1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDM3MjNBNjM1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xCOYfAAATc0lEQVR42uxd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"
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(131)
-	__vue_template__ = __webpack_require__(132)
+	__vue_script__ = __webpack_require__(132)
+	__vue_template__ = __webpack_require__(133)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -20250,7 +21815,7 @@
 	})()}
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20331,18 +21896,18 @@
 	//
 
 /***/ },
-/* 132 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(32) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n      <a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
-
-/***/ },
 /* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n      <a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(134)
-	__vue_template__ = __webpack_require__(135)
+	__vue_script__ = __webpack_require__(135)
+	__vue_template__ = __webpack_require__(136)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -20359,7 +21924,7 @@
 	})()}
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20439,18 +22004,18 @@
 	//
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(49) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(137)
-	__vue_template__ = __webpack_require__(138)
+	__vue_script__ = __webpack_require__(138)
+	__vue_template__ = __webpack_require__(139)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -20467,7 +22032,7 @@
 	})()}
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20534,13 +22099,13 @@
 	// <script>
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(32) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(129) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(130) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -23254,7 +24819,7 @@
 	}));
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23263,11 +24828,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(141)(Vue);
+	    var _ = __webpack_require__(142)(Vue);
 
-	    Vue.url = __webpack_require__(142)(_);
-	    Vue.http = __webpack_require__(143)(_);
-	    Vue.resource = __webpack_require__(147)(_);
+	    Vue.url = __webpack_require__(143)(_);
+	    Vue.http = __webpack_require__(144)(_);
+	    Vue.resource = __webpack_require__(148)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -23299,7 +24864,7 @@
 	module.exports = install;
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports) {
 
 	/**
@@ -23385,7 +24950,7 @@
 
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports) {
 
 	/**
@@ -23548,16 +25113,16 @@
 
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(144);
-	var jsonp = __webpack_require__(146);
-	var Promise = __webpack_require__(145);
+	var xhr = __webpack_require__(145);
+	var jsonp = __webpack_require__(147);
+	var Promise = __webpack_require__(146);
 
 	module.exports = function (_) {
 
@@ -23714,14 +25279,14 @@
 
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(145);
+	var Promise = __webpack_require__(146);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -23771,7 +25336,7 @@
 
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports) {
 
 	/**
@@ -23987,14 +25552,14 @@
 
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(145);
+	var Promise = __webpack_require__(146);
 
 	module.exports = function (_, options) {
 
@@ -24043,7 +25608,7 @@
 
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports) {
 
 	/**
@@ -24158,6 +25723,17 @@
 	    return _.resource = Resource;
 	};
 
+
+/***/ },
+/* 149 */
+/***/ function(module, exports, __webpack_require__) {
+
+	!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueSweetAlert=t():e.VueSweetAlert=t()}(this,function(){return function(e){function t(n){if(o[n])return o[n].exports;var r=o[n]={exports:{},id:n,loaded:!1};return e[n].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var o={};return t.m=e,t.c=o,t.p="/build/",t(0)}([function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(1),a=n(r);t["default"]=a["default"]},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(6),a=n(r);o(5);var i={};i.install=function(e){e.prototype.$swal=a["default"]},t["default"]=i},function(e,t,o){t=e.exports=o(3)(),t.push([e.id,"body.swal2-in{overflow-y:hidden}.swal2-container,body.swal2-iosfix{position:fixed;left:0;right:0}.swal2-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;top:0;bottom:0;padding:10px;background-color:transparent;z-index:1060}.swal2-container:not(.swal2-in){pointer-events:none}.swal2-container.swal2-fade{-webkit-transition:background-color .1s;transition:background-color .1s}.swal2-container.swal2-in{background-color:rgba(0,0,0,.4)}.swal2-modal{background-color:#fff;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;border-radius:5px;box-sizing:border-box;text-align:center;margin:auto;overflow-x:hidden;overflow-y:auto;display:none;position:relative}.swal2-modal:focus{outline:none}.swal2-modal.swal2-loading{overflow-y:hidden}.swal2-modal .swal2-title{color:#595959;font-size:30px;text-align:center;font-weight:600;text-transform:none;position:relative;margin:0;padding:0;line-height:60px;display:block}.swal2-modal .swal2-spacer{height:10px;color:transparent;border:0}.swal2-modal .swal2-styled{border:0;border-radius:3px;box-shadow:none;color:#fff;cursor:pointer;font-size:17px;font-weight:500;margin:0 5px;padding:10px 32px}.swal2-modal .swal2-styled:not(.swal2-loading)[disabled]{opacity:.4;cursor:no-drop}.swal2-modal .swal2-styled.swal2-loading{box-sizing:border-box;border:4px solid transparent;border-color:transparent;width:40px;height:40px;padding:0;margin:-2px 30px;vertical-align:top;background-color:transparent!important;color:transparent;cursor:default;border-radius:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-modal .swal2-styled.swal2-loading,.swal2-modal :not(.swal2-styled).swal2-loading:after{-webkit-animation:rotate-loading 1.5s linear 0s infinite normal;animation:rotate-loading 1.5s linear 0s infinite normal}.swal2-modal :not(.swal2-styled).swal2-loading:after{display:inline-block;content:'';margin-left:5px;vertical-align:-1px;height:6px;width:6px;border:3px solid #999;border-right-color:transparent;border-radius:50%}.swal2-modal .swal2-image{margin:20px auto;max-width:100%}.swal2-modal .swal2-close{font-size:36px;line-height:36px;font-family:serif;position:absolute;top:5px;right:13px;cursor:pointer;color:#ccc;-webkit-transition:color .1s ease;transition:color .1s ease}.swal2-modal .swal2-close:hover{color:#d55}.swal2-modal>.swal2-checkbox,.swal2-modal>.swal2-file,.swal2-modal>.swal2-input,.swal2-modal>.swal2-radio,.swal2-modal>.swal2-select,.swal2-modal>.swal2-textarea{display:none}.swal2-modal .swal2-content{font-size:18px;text-align:center;font-weight:300;position:relative;float:none;margin:0;padding:0;line-height:normal;color:#545454}.swal2-modal .swal2-checkbox,.swal2-modal .swal2-file,.swal2-modal .swal2-input,.swal2-modal .swal2-radio,.swal2-modal .swal2-select,.swal2-modal .swal2-textarea{margin:20px auto}.swal2-modal .swal2-file,.swal2-modal .swal2-input,.swal2-modal .swal2-textarea{width:100%;box-sizing:border-box;border-radius:3px;border:1px solid #d9d9d9;font-size:18px;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);-webkit-transition:border-color box-shadow .3s;transition:border-color box-shadow .3s}.swal2-modal .swal2-file.swal2-inputerror,.swal2-modal .swal2-input.swal2-inputerror,.swal2-modal .swal2-textarea.swal2-inputerror{border-color:#f06e57}.swal2-modal .swal2-file:focus,.swal2-modal .swal2-input:focus,.swal2-modal .swal2-textarea:focus{outline:none;box-shadow:0 0 3px #c4e6f5;border:1px solid #b4dbed}.swal2-modal .swal2-file:focus::-webkit-input-placeholder,.swal2-modal .swal2-input:focus::-webkit-input-placeholder,.swal2-modal .swal2-textarea:focus::-webkit-input-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus::-moz-placeholder,.swal2-modal .swal2-input:focus::-moz-placeholder,.swal2-modal .swal2-textarea:focus::-moz-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus:-ms-input-placeholder,.swal2-modal .swal2-input:focus:-ms-input-placeholder,.swal2-modal .swal2-textarea:focus:-ms-input-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus::placeholder,.swal2-modal .swal2-input:focus::placeholder,.swal2-modal .swal2-textarea:focus::placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file::-webkit-input-placeholder,.swal2-modal .swal2-input::-webkit-input-placeholder,.swal2-modal .swal2-textarea::-webkit-input-placeholder{color:#e6e6e6}.swal2-modal .swal2-file::-moz-placeholder,.swal2-modal .swal2-input::-moz-placeholder,.swal2-modal .swal2-textarea::-moz-placeholder{color:#e6e6e6}.swal2-modal .swal2-file:-ms-input-placeholder,.swal2-modal .swal2-input:-ms-input-placeholder,.swal2-modal .swal2-textarea:-ms-input-placeholder{color:#e6e6e6}.swal2-modal .swal2-file::placeholder,.swal2-modal .swal2-input::placeholder,.swal2-modal .swal2-textarea::placeholder{color:#e6e6e6}.swal2-modal .swal2-range input{float:left;width:80%}.swal2-modal .swal2-range output{float:right;width:20%;font-size:20px;font-weight:600;text-align:center}.swal2-modal .swal2-range input,.swal2-modal .swal2-range output{height:43px;line-height:43px;vertical-align:middle;margin:20px auto;padding:0}.swal2-modal .swal2-input{height:43px;padding:0 12px}.swal2-modal .swal2-input[type=number]{max-width:150px}.swal2-modal .swal2-file{font-size:20px}.swal2-modal .swal2-textarea{height:108px;padding:12px}.swal2-modal .swal2-select{color:#545454;font-size:inherit;padding:5px 10px;min-width:40%;max-width:100%}.swal2-modal .swal2-radio{border:0}.swal2-modal .swal2-radio label:not(:first-child){margin-left:20px}.swal2-modal .swal2-radio input,.swal2-modal .swal2-radio span{vertical-align:middle}.swal2-modal .swal2-radio input{margin:0 3px 0 0}.swal2-modal .swal2-checkbox{color:#545454}.swal2-modal .swal2-checkbox input,.swal2-modal .swal2-checkbox span{vertical-align:middle}.swal2-modal .swal2-validationerror{background-color:#f0f0f0;margin:0 -20px;overflow:hidden;padding:10px;color:gray;font-size:16px;font-weight:300;display:none}.swal2-modal .swal2-validationerror:before{content:'!';display:inline-block;width:24px;height:24px;border-radius:50%;background-color:#ea7d7d;color:#fff;line-height:24px;text-align:center;margin-right:10px}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media (-ms-high-contrast:active),all and (-ms-high-contrast:none){.swal2-range input{width:100%!important}.swal2-range output{display:none}}.swal2-icon{width:80px;height:80px;border:4px solid transparent;border-radius:50%;margin:20px auto 30px;padding:0;position:relative;box-sizing:content-box;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .x-mark{position:relative;display:block}.swal2-icon.swal2-error .line{position:absolute;height:5px;width:47px;background-color:#f27474;display:block;top:37px;border-radius:2px}.swal2-icon.swal2-error .line.left{-webkit-transform:rotate(45deg);transform:rotate(45deg);left:17px}.swal2-icon.swal2-error .line.right{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);right:16px}.swal2-icon.swal2-warning{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#f8bb86;border-color:#facea8}.swal2-icon.swal2-info,.swal2-icon.swal2-warning{font-size:60px;line-height:80px;text-align:center}.swal2-icon.swal2-info{font-family:Open Sans,sans-serif;color:#3fc3ee;border-color:#9de0f6}.swal2-icon.swal2-question{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#87adbd;border-color:#c9dae1;font-size:60px;line-height:80px;text-align:center}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success:after,.swal2-icon.swal2-success:before{content:'';border-radius:50%;position:absolute;width:60px;height:120px;background:#fff;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success:before{border-radius:120px 0 0 120px;top:-7px;left:-33px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:60px 60px;transform-origin:60px 60px}.swal2-icon.swal2-success:after{border-radius:0 120px 120px 0;top:-11px;left:30px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 60px;transform-origin:0 60px}.swal2-icon.swal2-success .placeholder{width:80px;height:80px;border:4px solid hsla(98,55%,69%,.2);border-radius:50%;box-sizing:content-box;position:absolute;left:-4px;top:-4px;z-index:2}.swal2-icon.swal2-success .fix{width:7px;height:90px;background-color:#fff;position:absolute;left:28px;top:8px;z-index:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success .line{height:5px;background-color:#a5dc86;display:block;border-radius:2px;position:absolute;z-index:2}.swal2-icon.swal2-success .line.tip{width:25px;left:14px;top:46px;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success .line.long{width:47px;right:8px;top:38px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progresssteps{font-weight:600;margin:0 0 20px;padding:0}.swal2-progresssteps li{display:inline-block;position:relative}.swal2-progresssteps .swal2-progresscircle{background:#3085d6;border-radius:2em;color:#fff;height:2em;line-height:2em;text-align:center;width:2em;z-index:20}.swal2-progresssteps .swal2-progresscircle:first-child{margin-left:0}.swal2-progresssteps .swal2-progresscircle:last-child{margin-right:0}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep{background:#3085d6}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle,.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progressline{background:#add8e6}.swal2-progresssteps .swal2-progressline{background:#3085d6;height:.4em;margin:0 -1px;z-index:10}[class^=swal2]{-webkit-tap-highlight-color:transparent}@-webkit-keyframes showSweetAlert{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes showSweetAlert{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes hideSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes hideSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}.swal2-show{-webkit-animation:showSweetAlert .3s;animation:showSweetAlert .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:hideSweetAlert .15s forwards;animation:hideSweetAlert .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}@-webkit-keyframes animate-success-tip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@keyframes animate-success-tip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@-webkit-keyframes animate-success-long{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@keyframes animate-success-long{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@-webkit-keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}.animate-success-tip{-webkit-animation:animate-success-tip .75s;animation:animate-success-tip .75s}.animate-success-long{-webkit-animation:animate-success-long .75s;animation:animate-success-long .75s}.swal2-success.animate:after{-webkit-animation:rotatePlaceholder 4.25s ease-in;animation:rotatePlaceholder 4.25s ease-in}@-webkit-keyframes animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@keyframes animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}.animate-error-icon{-webkit-animation:animate-error-icon .5s;animation:animate-error-icon .5s}@-webkit-keyframes animate-x-mark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}@keyframes animate-x-mark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}.animate-x-mark{-webkit-animation:animate-x-mark .5s;animation:animate-x-mark .5s}@-webkit-keyframes pulse-warning{0%{border-color:#f8d486}to{border-color:#f8bb86}}@keyframes pulse-warning{0%{border-color:#f8d486}to{border-color:#f8bb86}}.pulse-warning{-webkit-animation:pulse-warning .75s infinite alternate;animation:pulse-warning .75s infinite alternate}@-webkit-keyframes rotate-loading{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes rotate-loading{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var o=this[t];o[2]?e.push("@media "+o[2]+"{"+o[1]+"}"):e.push(o[1])}return e.join("")},e.i=function(t,o){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},r=0;r<this.length;r++){var a=this[r][0];"number"==typeof a&&(n[a]=!0)}for(r=0;r<t.length;r++){var i=t[r];"number"==typeof i[0]&&n[i[0]]||(o&&!i[2]?i[2]=o:o&&(i[2]="("+i[2]+") and ("+o+")"),e.push(i))}},e}},function(e,t,o){function n(e,t){for(var o=0;o<e.length;o++){var n=e[o],r=f[n.id];if(r){r.refs++;for(var a=0;a<r.parts.length;a++)r.parts[a](n.parts[a]);for(;a<n.parts.length;a++)r.parts.push(c(n.parts[a],t))}else{for(var i=[],a=0;a<n.parts.length;a++)i.push(c(n.parts[a],t));f[n.id]={id:n.id,refs:1,parts:i}}}}function r(e){for(var t=[],o={},n=0;n<e.length;n++){var r=e[n],a=r[0],i=r[1],s=r[2],l=r[3],c={css:i,media:s,sourceMap:l};o[a]?o[a].parts.push(c):t.push(o[a]={id:a,parts:[c]})}return t}function a(e,t){var o=g(),n=x[x.length-1];if("top"===e.insertAt)n?n.nextSibling?o.insertBefore(t,n.nextSibling):o.appendChild(t):o.insertBefore(t,o.firstChild),x.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");o.appendChild(t)}}function i(e){e.parentNode.removeChild(e);var t=x.indexOf(e);t>=0&&x.splice(t,1)}function s(e){var t=document.createElement("style");return t.type="text/css",a(e,t),t}function l(e){var t=document.createElement("link");return t.rel="stylesheet",a(e,t),t}function c(e,t){var o,n,r;if(t.singleton){var a=b++;o=h||(h=s(t)),n=u.bind(null,o,a,!1),r=u.bind(null,o,a,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(o=l(t),n=p.bind(null,o),r=function(){i(o),o.href&&URL.revokeObjectURL(o.href)}):(o=s(t),n=d.bind(null,o),r=function(){i(o)});return n(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;n(e=t)}else r()}}function u(e,t,o,n){var r=o?"":n.css;if(e.styleSheet)e.styleSheet.cssText=v(t,r);else{var a=document.createTextNode(r),i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(a,i[t]):e.appendChild(a)}}function d(e,t){var o=t.css,n=t.media;if(n&&e.setAttribute("media",n),e.styleSheet)e.styleSheet.cssText=o;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(o))}}function p(e,t){var o=t.css,n=t.sourceMap;n&&(o+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(n))))+" */");var r=new Blob([o],{type:"text/css"}),a=e.href;e.href=URL.createObjectURL(r),a&&URL.revokeObjectURL(a)}var f={},m=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},w=m(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),g=m(function(){return document.head||document.getElementsByTagName("head")[0]}),h=null,b=0,x=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=w()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var o=r(e);return n(o,t),function(e){for(var a=[],i=0;i<o.length;i++){var s=o[i],l=f[s.id];l.refs--,a.push(l)}if(e){var c=r(e);n(c,t)}for(var i=0;i<a.length;i++){var l=a[i];if(0===l.refs){for(var u=0;u<l.parts.length;u++)l.parts[u]();delete f[l.id]}}}};var v=function(){var e=[];return function(t,o){return e[t]=o,e.filter(Boolean).join("\n")}}()},function(e,t,o){var n=o(2);"string"==typeof n&&(n=[[e.id,n,""]]);o(4)(n,{});n.locals&&(e.exports=n.locals)},function(e,t,o){/*!
+		 * sweetalert2 v6.2.0
+		 * Released under the MIT License.
+		 */
+	!function(t,o){e.exports=o()}(this,function(){"use strict";var e="swal2-",t=function(t){var o={};for(var n in t)o[t[n]]=e+t[n];return o},o=t(["container","in","iosfix","modal","overlay","fade","show","hide","noanimation","close","title","content","spacer","confirm","cancel","icon","image","input","file","range","select","radio","checkbox","textarea","inputerror","validationerror","progresssteps","activeprogressstep","progresscircle","progressline","loading","styled"]),n=t(["success","warning","info","question","error"]),r={title:"",text:"",html:"",type:null,customClass:"",animation:!0,allowOutsideClick:!0,allowEscapeKey:!0,showConfirmButton:!0,showCancelButton:!1,preConfirm:null,confirmButtonText:"OK",confirmButtonColor:"#3085d6",confirmButtonClass:null,cancelButtonText:"Cancel",cancelButtonColor:"#aaa",cancelButtonClass:null,buttonsStyling:!0,reverseButtons:!1,focusCancel:!1,showCloseButton:!1,showLoaderOnConfirm:!1,imageUrl:null,imageWidth:null,imageHeight:null,imageClass:null,timer:null,width:500,padding:20,background:"#fff",input:null,inputPlaceholder:"",inputValue:"",inputOptions:{},inputAutoTrim:!0,inputClass:null,inputAttributes:{},inputValidator:null,progressSteps:[],currentProgressStep:null,progressStepsDistance:"40px",onOpen:null,onClose:null},a=('\n  <div class="'+o.modal+'" style="display: none" tabIndex="-1">\n    <ul class="'+o.progresssteps+'"></ul>\n    <div class="'+o.icon+" "+n.error+'">\n      <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n    </div>\n    <div class="'+o.icon+" "+n.question+'">?</div>\n    <div class="'+o.icon+" "+n.warning+'">!</div>\n    <div class="'+o.icon+" "+n.info+'">i</div>\n    <div class="'+o.icon+" "+n.success+'">\n      <span class="line tip"></span> <span class="line long"></span>\n      <div class="placeholder"></div> <div class="fix"></div>\n    </div>\n    <img class="'+o.image+'">\n    <h2 class="'+o.title+'"></h2>\n    <div class="'+o.content+'"></div>\n    <input class="'+o.input+'">\n    <input type="file" class="'+o.file+'">\n    <div class="'+o.range+'">\n      <output></output>\n      <input type="range">\n    </div>\n    <select class="'+o.select+'"></select>\n    <div class="'+o.radio+'"></div>\n    <label for="'+o.checkbox+'" class="'+o.checkbox+'">\n      <input type="checkbox">\n    </label>\n    <textarea class="'+o.textarea+'"></textarea>\n    <div class="'+o.validationerror+'"></div>\n    <hr class="'+o.spacer+'">\n    <button type="button" class="'+o.confirm+'">OK</button>\n    <button type="button" class="'+o.cancel+'">Cancel</button>\n    <span class="'+o.close+'">&times;</span>\n  </div>\n').replace(/(^|\n)\s*/g,""),i=void 0,s=document.getElementsByClassName(o.container);s.length?i=s[0]:(i=document.createElement("div"),i.className=o.container,i.innerHTML=a);var l=function(e,t){e=String(e).replace(/[^0-9a-f]/gi,""),e.length<6&&(e=e[0]+e[0]+e[1]+e[1]+e[2]+e[2]),t=t||0;for(var o="#",n=0;n<3;n++){var r=parseInt(e.substr(2*n,2),16);r=Math.round(Math.min(Math.max(0,r+r*t),255)).toString(16),o+=("00"+r).substr(r.length)}return o},c={previousWindowKeyDown:null,previousActiveElement:null,previousBodyPadding:null},u=function(){if("undefined"==typeof document)return void console.error("SweetAlert2 requires document to initialize");if(!document.getElementsByClassName(o.container).length){document.body.appendChild(i);var e=p(),t=P(e,o.input),n=P(e,o.file),r=e.querySelector("."+o.range+" input"),a=e.querySelector("."+o.range+" output"),s=P(e,o.select),l=e.querySelector("."+o.checkbox+" input"),c=P(e,o.textarea);return t.oninput=function(){$.resetValidationError()},t.onkeydown=function(e){setTimeout(function(){13===e.keyCode&&(e.stopPropagation(),$.clickConfirm())},0)},n.onchange=function(){$.resetValidationError()},r.oninput=function(){$.resetValidationError(),a.value=r.value},r.onchange=function(){$.resetValidationError(),r.previousSibling.value=r.value},s.onchange=function(){$.resetValidationError()},l.onchange=function(){$.resetValidationError()},c.oninput=function(){$.resetValidationError()},e}},d=function(e){return i.querySelector("."+e)},p=function(){return document.body.querySelector("."+o.modal)||u()},f=function(){var e=p();return e.querySelectorAll("."+o.icon)},m=function(){return d(o.title)},w=function(){return d(o.content)},g=function(){return d(o.image)},h=function(){return d(o.spacer)},b=function(){return d(o.progresssteps)},x=function(){return d(o.validationerror)},v=function(){return d(o.confirm)},y=function(){return d(o.cancel)},k=function(){return d(o.close)},C=function(t){var o=[v(),y()];return t&&o.reverse(),o.concat(Array.prototype.slice.call(p().querySelectorAll("button:not([class^="+e+"]), input:not([type=hidden]), textarea, select")))},S=function(e,t){return!!e.classList&&e.classList.contains(t)},A=function(e){if(e.focus(),"file"!==e.type){var t=e.value;e.value="",e.value=t}},E=function(e,t){if(e&&t){var o=t.split(/\s+/).filter(Boolean);o.forEach(function(t){e.classList.add(t)})}},B=function(e,t){if(e&&t){var o=t.split(/\s+/).filter(Boolean);o.forEach(function(t){e.classList.remove(t)})}},P=function(e,t){for(var o=0;o<e.childNodes.length;o++)if(S(e.childNodes[o],t))return e.childNodes[o]},L=function(e,t){t||(t="block"),e.style.opacity="",e.style.display=t},M=function(e){e.style.opacity="",e.style.display="none"},O=function(e){for(;e.firstChild;)e.removeChild(e.firstChild)},q=function(e){return e.offsetWidth||e.offsetHeight||e.getClientRects().length},T=function(e,t){e.style.removeProperty?e.style.removeProperty(t):e.style.removeAttribute(t)},z=function(e){if("function"==typeof MouseEvent){var t=new MouseEvent("click",{view:window,bubbles:!1,cancelable:!0});e.dispatchEvent(t)}else if(document.createEvent){var o=document.createEvent("MouseEvents");o.initEvent("click",!1,!1),e.dispatchEvent(o)}else document.createEventObject?e.fireEvent("onclick"):"function"==typeof e.onclick&&e.onclick()},H=function(){var e=document.createElement("div"),t={WebkitAnimation:"webkitAnimationEnd",OAnimation:"oAnimationEnd oanimationend",msAnimation:"MSAnimationEnd",animation:"animationend"};for(var o in t)if(t.hasOwnProperty(o)&&void 0!==e.style[o])return t[o];return!1}(),V=function(){var e=p();window.onkeydown=c.previousWindowKeyDown,c.previousActiveElement&&c.previousActiveElement.focus&&c.previousActiveElement.focus(),clearTimeout(e.timeout)},N=function(){var e=document.createElement("div");e.style.width="50px",e.style.height="50px",e.style.overflow="scroll",document.body.appendChild(e);var t=e.offsetWidth-e.clientWidth;return document.body.removeChild(e),t},j=function(e,t){var o=void 0;return function(){var n=function(){o=null,e()};clearTimeout(o),o=setTimeout(n,t)}},U="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},R=(function(){function e(e){this.value=e}function t(t){function o(e,t){return new Promise(function(o,r){var s={key:e,arg:t,resolve:o,reject:r,next:null};i?i=i.next=s:(a=i=s,n(e,t))})}function n(o,a){try{var i=t[o](a),s=i.value;s instanceof e?Promise.resolve(s.value).then(function(e){n("next",e)},function(e){n("throw",e)}):r(i.done?"return":"normal",i.value)}catch(l){r("throw",l)}}function r(e,t){switch(e){case"return":a.resolve({value:t,done:!0});break;case"throw":a.reject(t);break;default:a.resolve({value:t,done:!1})}a=a.next,a?n(a.key,a.arg):i=null}var a,i;this._invoke=o,"function"!=typeof t["return"]&&(this["return"]=void 0)}return"function"==typeof Symbol&&Symbol.asyncIterator&&(t.prototype[Symbol.asyncIterator]=function(){return this}),t.prototype.next=function(e){return this._invoke("next",e)},t.prototype["throw"]=function(e){return this._invoke("throw",e)},t.prototype["return"]=function(e){return this._invoke("return",e)},{wrap:function(e){return function(){return new t(e.apply(this,arguments))}},await:function(t){return new e(t)}}}(),Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e}),I=R({},r),_=[],D=void 0,W=function(e){var t=p();for(var a in e)r.hasOwnProperty(a)||"extraParams"===a||console.warn('SweetAlert2: Unknown parameter "'+a+'"');t.style.width="number"==typeof e.width?e.width+"px":e.width,t.style.padding=e.padding+"px",t.style.background=e.background;var i=m(),s=w(),l=v(),c=y(),u=k();if(i.innerHTML=e.title.split("\n").join("<br>"),e.text||e.html){if("object"===U(e.html))if(s.innerHTML="",0 in e.html)for(var d=0;d in e.html;d++)s.appendChild(e.html[d].cloneNode(!0));else s.appendChild(e.html.cloneNode(!0));else e.html?s.innerHTML=e.html:e.text&&(s.innerHTML=(""+e.text).split("\n").join("<br>"));L(s)}else M(s);e.showCloseButton?L(u):M(u),t.className=o.modal,e.customClass&&E(t,e.customClass);var x=b(),C=parseInt(null===e.currentProgressStep?$.getQueueStep():e.currentProgressStep,10);e.progressSteps.length?(L(x),O(x),C>=e.progressSteps.length&&console.warn("SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length (currentProgressStep like JS arrays starts from 0)"),e.progressSteps.forEach(function(t,n){var r=document.createElement("li");if(E(r,o.progresscircle),r.innerHTML=t,n===C&&E(r,o.activeprogressstep),x.appendChild(r),n!==e.progressSteps.length-1){var a=document.createElement("li");E(a,o.progressline),a.style.width=e.progressStepsDistance,x.appendChild(a)}})):M(x);for(var S=f(),A=0;A<S.length;A++)M(S[A]);if(e.type){var P=!1;for(var q in n)if(e.type===q){P=!0;break}if(!P)return console.error("SweetAlert2: Unknown alert type: "+e.type),!1;var z=t.querySelector("."+o.icon+"."+n[e.type]);switch(L(z),e.type){case"success":E(z,"animate"),E(z.querySelector(".tip"),"animate-success-tip"),E(z.querySelector(".long"),"animate-success-long");break;case"error":E(z,"animate-error-icon"),E(z.querySelector(".x-mark"),"animate-x-mark");break;case"warning":E(z,"pulse-warning")}}var H=g();e.imageUrl?(H.setAttribute("src",e.imageUrl),L(H),e.imageWidth?H.setAttribute("width",e.imageWidth):H.removeAttribute("width"),e.imageHeight?H.setAttribute("height",e.imageHeight):H.removeAttribute("height"),H.className=o.image,e.imageClass&&E(H,e.imageClass)):M(H),e.showCancelButton?c.style.display="inline-block":M(c),e.showConfirmButton?T(l,"display"):M(l);var V=h();e.showConfirmButton||e.showCancelButton?L(V):M(V),l.innerHTML=e.confirmButtonText,c.innerHTML=e.cancelButtonText,e.buttonsStyling&&(l.style.backgroundColor=e.confirmButtonColor,c.style.backgroundColor=e.cancelButtonColor),l.className=o.confirm,E(l,e.confirmButtonClass),c.className=o.cancel,E(c,e.cancelButtonClass),e.buttonsStyling?(E(l,o.styled),E(c,o.styled)):(B(l,o.styled),B(c,o.styled),l.style.backgroundColor=l.style.borderLeftColor=l.style.borderRightColor="",c.style.backgroundColor=c.style.borderLeftColor=c.style.borderRightColor=""),e.animation===!0?B(t,o.noanimation):E(t,o.noanimation)},K=function(e,t){var n=p();e?(E(n,o.show),E(i,o.fade),B(n,o.hide)):B(n,o.fade),L(n),i.style.overflowY="hidden",H&&!S(n,o.noanimation)?n.addEventListener(H,function r(){n.removeEventListener(H,r),i.style.overflowY="auto"}):i.style.overflowY="auto",E(i,o["in"]),E(document.body,o["in"]),X(),Y(),c.previousActiveElement=document.activeElement,null!==t&&"function"==typeof t&&t(n)},X=function(){null===c.previousBodyPadding&&document.body.scrollHeight>window.innerHeight&&(c.previousBodyPadding=document.body.style.paddingRight,document.body.style.paddingRight=N()+"px")},Q=function(){null!==c.previousBodyPadding&&(document.body.style.paddingRight=c.previousBodyPadding,c.previousBodyPadding=null)},Y=function(){var e=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;if(e&&!S(document.body,o.iosfix)){var t=document.body.scrollTop;document.body.style.top=t*-1+"px",E(document.body,o.iosfix)}},Z=function(){if(S(document.body,o.iosfix)){var e=parseInt(document.body.style.top,10);B(document.body,o.iosfix),document.body.style.top="",document.body.scrollTop=e*-1}},J=function(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];if(void 0===t[0])return console.error("SweetAlert2 expects at least 1 attribute!"),!1;var r=R({},I);switch(U(t[0])){case"string":r.title=t[0],r.text=t[1],r.type=t[2];break;case"object":R(r,t[0]),r.extraParams=t[0].extraParams,"email"===r.input&&null===r.inputValidator&&(r.inputValidator=function(e){return new Promise(function(t,o){var n=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;n.test(e)?t():o("Invalid email address")})});break;default:return console.error('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got '+U(t[0])),!1}W(r);var a=p();return new Promise(function(e,t){r.timer&&(a.timeout=setTimeout(function(){$.closeModal(r.onClose),t("timer")},r.timer));var n=function(e){switch(e=e||r.input){case"select":case"textarea":case"file":return P(a,o[e]);case"checkbox":return a.querySelector("."+o.checkbox+" input");case"radio":return a.querySelector("."+o.radio+" input:checked")||a.querySelector("."+o.radio+" input:first-child");case"range":return a.querySelector("."+o.range+" input");default:return P(a,o.input)}},s=function(){var e=n();if(!e)return null;switch(r.input){case"checkbox":return e.checked?1:0;case"radio":return e.checked?e.value:null;case"file":return e.files.length?e.files[0]:null;default:return r.inputAutoTrim?e.value.trim():e.value}};r.input&&setTimeout(function(){var e=n();e&&A(e)},0);for(var u=function(t){r.showLoaderOnConfirm&&$.showLoading(),r.preConfirm?r.preConfirm(t,r.extraParams).then(function(o){$.closeModal(r.onClose),e(o||t)},function(e){$.hideLoading(),e&&$.showValidationError(e)}):($.closeModal(r.onClose),e(t))},d=function(e){var o=e||window.event,n=o.target||o.srcElement,a=v(),i=y(),c=a===n||a.contains(n),d=i===n||i.contains(n);switch(o.type){case"mouseover":case"mouseup":r.buttonsStyling&&(c?a.style.backgroundColor=l(r.confirmButtonColor,-.1):d&&(i.style.backgroundColor=l(r.cancelButtonColor,-.1)));break;case"mouseout":r.buttonsStyling&&(c?a.style.backgroundColor=r.confirmButtonColor:d&&(i.style.backgroundColor=r.cancelButtonColor));break;case"mousedown":r.buttonsStyling&&(c?a.style.backgroundColor=l(r.confirmButtonColor,-.2):d&&(i.style.backgroundColor=l(r.cancelButtonColor,-.2)));break;case"click":c&&$.isVisible()?r.input?!function(){var e=s();r.inputValidator?($.disableInput(),r.inputValidator(e,r.extraParams).then(function(){$.enableInput(),u(e)},function(e){$.enableInput(),e&&$.showValidationError(e)})):u(e)}():u(!0):d&&$.isVisible()&&($.closeModal(r.onClose),t("cancel"))}},f=a.querySelectorAll("button"),m=0;m<f.length;m++)f[m].onclick=d,f[m].onmouseover=d,f[m].onmouseout=d,f[m].onmousedown=d;k().onclick=function(){$.closeModal(r.onClose),t("close")},i.onclick=function(e){e.target===i&&r.allowOutsideClick&&($.closeModal(r.onClose),t("overlay"))};var w=v(),g=y();r.reverseButtons?w.parentNode.insertBefore(g,w):w.parentNode.insertBefore(w,g);var S=function(e,t){for(var o=C(r.focusCancel),n=0;n<o.length;n++){e+=t,e===o.length?e=0:e===-1&&(e=o.length-1);var a=o[e];if(q(a))return a.focus()}},O=function(e){var o=e||window.event,n=o.keyCode||o.which;if([9,13,32,27].indexOf(n)!==-1){for(var a=o.target||o.srcElement,i=C(r.focusCancel),s=-1,l=0;l<i.length;l++)if(a===i[l]){s=l;break}9===n?(o.shiftKey?S(s,-1):S(s,1),o.stopPropagation(),o.preventDefault()):13===n||32===n?s===-1&&(r.focusCancel?z(g,o):z(w,o)):27===n&&r.allowEscapeKey===!0&&($.closeModal(r.onClose),t("esc"))}};c.previousWindowKeyDown=window.onkeydown,window.onkeydown=O,r.buttonsStyling&&(w.style.borderLeftColor=r.confirmButtonColor,w.style.borderRightColor=r.confirmButtonColor),$.showLoading=$.enableLoading=function(){L(h()),L(w,"inline-block"),E(w,o.loading),E(a,o.loading),w.disabled=!0,g.disabled=!0},$.hideLoading=$.disableLoading=function(){r.showConfirmButton||(M(w),r.showCancelButton||M(h())),B(w,o.loading),B(a,o.loading),w.disabled=!1,g.disabled=!1},$.enableButtons=function(){w.disabled=!1,g.disabled=!1},$.disableButtons=function(){w.disabled=!0,g.disabled=!0},$.enableConfirmButton=function(){w.disabled=!1},$.disableConfirmButton=function(){w.disabled=!0},$.enableInput=function(){var e=n();if(!e)return!1;if("radio"===e.type)for(var t=e.parentNode.parentNode,o=t.querySelectorAll("input"),r=0;r<o.length;r++)o[r].disabled=!1;else e.disabled=!1},$.disableInput=function(){var e=n();if(!e)return!1;if(e&&"radio"===e.type)for(var t=e.parentNode.parentNode,o=t.querySelectorAll("input"),r=0;r<o.length;r++)o[r].disabled=!0;else e.disabled=!0},$.recalculateHeight=j(function(){var e=p(),t=e.style.display;e.style.minHeight="",L(e),e.style.minHeight=e.scrollHeight+1+"px",e.style.display=t},50),$.showValidationError=function(e){var t=x();t.innerHTML=e,L(t);var r=n();A(r),E(r,o.inputerror)},$.resetValidationError=function(){var e=x();M(e),$.recalculateHeight();var t=n();t&&B(t,o.inputerror)},$.getProgressSteps=function(){return r.progressSteps},$.setProgressSteps=function(e){r.progressSteps=e,W(r)},$.showProgressSteps=function(){L(b())},$.hideProgressSteps=function(){M(b())},$.enableButtons(),$.hideLoading(),$.resetValidationError();for(var T=["input","file","range","select","radio","checkbox","textarea"],H=void 0,V=0;V<T.length;V++){var N=o[T[V]],R=P(a,N);if(H=n(T[V])){for(var I in H.attributes)if(H.attributes.hasOwnProperty(I)){var _=H.attributes[I].name;"type"!==_&&"value"!==_&&H.removeAttribute(_)}for(var X in r.inputAttributes)H.setAttribute(X,r.inputAttributes[X])}R.className=N,r.inputClass&&E(R,r.inputClass),M(R)}var Q=void 0;!function(){switch(r.input){case"text":case"email":case"password":case"number":case"tel":H=P(a,o.input),H.value=r.inputValue,H.placeholder=r.inputPlaceholder,H.type=r.input,L(H);break;case"file":H=P(a,o.file),H.placeholder=r.inputPlaceholder,H.type=r.input,L(H);break;case"range":var e=P(a,o.range),t=e.querySelector("input"),i=e.querySelector("output");t.value=r.inputValue,t.type=r.input,i.value=r.inputValue,L(e);break;case"select":var s=P(a,o.select);if(s.innerHTML="",r.inputPlaceholder){var l=document.createElement("option");l.innerHTML=r.inputPlaceholder,l.value="",l.disabled=!0,l.selected=!0,s.appendChild(l)}Q=function(e){for(var t in e){var o=document.createElement("option");o.value=t,o.innerHTML=e[t],r.inputValue===t&&(o.selected=!0),s.appendChild(o)}L(s),s.focus()};break;case"radio":var c=P(a,o.radio);c.innerHTML="",Q=function(e){for(var t in e){var n=1,a=document.createElement("input"),i=document.createElement("label"),s=document.createElement("span");a.type="radio",a.name=o.radio,a.value=t,a.id=o.radio+"-"+n++,r.inputValue===t&&(a.checked=!0),s.innerHTML=e[t],i.appendChild(a),i.appendChild(s),i["for"]=a.id,c.appendChild(i)}L(c);var l=c.querySelectorAll("input");l.length&&l[0].focus()};break;case"checkbox":var u=P(a,o.checkbox),d=n("checkbox");d.type="checkbox",d.value=1,d.id=o.checkbox,d.checked=Boolean(r.inputValue);var p=u.getElementsByTagName("span");p.length&&u.removeChild(p[0]),p=document.createElement("span"),p.innerHTML=r.inputPlaceholder,u.appendChild(p),L(u);break;case"textarea":var f=P(a,o.textarea);f.value=r.inputValue,f.placeholder=r.inputPlaceholder,L(f);break;case null:break;default:console.error('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "select", "checkbox", "textarea" or "file", got "'+r.input+'"')}}(),"select"!==r.input&&"radio"!==r.input||(r.inputOptions instanceof Promise?($.showLoading(),r.inputOptions.then(function(e){$.hideLoading(),Q(e)})):"object"===U(r.inputOptions)?Q(r.inputOptions):console.error("SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got "+U(r.inputOptions))),K(r.animation,r.onOpen),S(-1,1),i.scrollTop=0,"undefined"==typeof MutationObserver||D||(D=new MutationObserver($.recalculateHeight),D.observe(a,{childList:!0,characterData:!0,subtree:!0}))})},$=function F(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];return F.isVisible()&&F.close(),J.apply(void 0,t)};return $.isVisible=function(){var e=p();return q(e)},$.queue=function(e){_=e;var t=p(),o=function(){_=[],t.removeAttribute("data-queue-step")},n=[];return new Promise(function(e,r){!function a(i,s){i<_.length?(t.setAttribute("data-queue-step",i),$(_[i]).then(function(e){n.push(e),a(i+1,s)},function(e){o(),r(e)})):(o(),e(n))}(0)})},$.getQueueStep=function(){return p().getAttribute("data-queue-step")},$.insertQueueStep=function(e,t){return t&&t<_.length?_.splice(t,0,e):_.push(e)},$.deleteQueueStep=function(e){"undefined"!=typeof _[e]&&_.splice(e,1)},$.close=$.closeModal=function(e){var t=p();B(t,o.show),E(t,o.hide);var r=t.querySelector("."+o.icon+"."+n.success);B(r,"animate"),B(r.querySelector(".tip"),"animate-success-tip"),B(r.querySelector(".long"),"animate-success-long");var a=t.querySelector("."+o.icon+"."+n.error);B(a,"animate-error-icon"),B(a.querySelector(".x-mark"),"animate-x-mark");var s=t.querySelector("."+o.icon+"."+n.warning);B(s,"pulse-warning"),V();var l=function(){M(t),t.style.minHeight="",B(i,o["in"]),B(document.body,o["in"]),Q(),Z()};H&&!S(t,o.noanimation)?t.addEventListener(H,function c(){t.removeEventListener(H,c),S(t,o.hide)&&l()}):l(),null!==e&&"function"==typeof e&&e(t)},$.clickConfirm=function(){return v().click()},$.clickCancel=function(){return y().click()},$.setDefaults=function(e){if(!e||"object"!==("undefined"==typeof e?"undefined":U(e)))return console.error("SweetAlert2: the argument for setDefaults() is required and has to be a object");for(var t in e)r.hasOwnProperty(t)||"extraParams"===t||(console.warn('SweetAlert2: Unknown parameter "'+t+'"'),delete e[t]);R(I,e)},$.resetDefaults=function(){I=R({},r)},$.noop=function(){},$.version="6.2.0",$}),window.Sweetalert2&&(window.sweetAlert=window.swal=window.Sweetalert2)}])});
+	//# sourceMappingURL=vue-sweetalert.js.map
 
 /***/ }
 /******/ ]);

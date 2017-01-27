@@ -35,6 +35,9 @@ import ScanFinishedTrip from './components/Partials/ScanFinishedTrip.vue'
 
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import VueSweetAlert from 'vue-sweetalert'
+ 
+Vue.use(VueSweetAlert)
 
 Vue.config.debug = true
 

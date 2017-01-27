@@ -29,9 +29,11 @@
   "dependencies": {
     "bootstrap": "^3.3.5",
     "pubnub": "^3.15.2",
+    "sweetalert2": "^6.3.2",
     "vue": "^1.0.7",
     "vue-resource": "^0.1.17",
     "vue-router": "^0.7.5",
+    "vue-sweetalert": "^0.1.16",
     "vuex": "^0.8.2"
   }
 }
