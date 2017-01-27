@@ -94,11 +94,11 @@
             this.storeData( {
               type: 'show_in_position',
               content: true
-            } )            
+            } )
           }
         });
       }
-      
+
     }
   }
 </script>

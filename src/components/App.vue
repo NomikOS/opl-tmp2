@@ -178,6 +178,7 @@
                   content: address_type
                 } )
 
+                console.info("order[address_type + _acknowledge_time]", order[address_type + '_acknowledge_time']);
                 var show_acknowledge = order[address_type + '_acknowledge_time'] ? false : true
 
                 that.storeData( {
@@ -186,6 +187,8 @@
                 } )
 
                 var show_in_position = false
+
+                console.info(order[address_type + '_acknowledge_time'] && ! order[address_type + '_hello_time']);
 
                 if (order[address_type + '_acknowledge_time'] && ! order[address_type + '_hello_time']) {
                   show_in_position = true
@@ -209,7 +212,7 @@
 
                   switch ( load ) {
                     case 'payment' :
-                      console.info('go to ' + load);
+                      console.info('order updated');
                       return
                     break;
                   }

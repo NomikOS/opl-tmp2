@@ -57,8 +57,9 @@
       <div class="clearfix"></div>
     </div>
     <!-- end container -->
+
     <footer class="ac25-content-footer" v-if="order.paymentStatus_id >= 4 ">
-      <a onclick="window.history.back()" class="ac25-full-black left waves-effect waves-light">volver</a>
+      <a @click="back()" class="ac25-full-black left waves-effect waves-light">volver</a>
     </footer>
     <!-- end footer -->
     <footer class="ac25-content-footer" v-if="order.paymentStatus_id < 4 ">
@@ -78,7 +79,7 @@
   import ButtonScan from './Partials/ButtonScan.vue'
   import {
     getOrder,
-    getCounters
+    getAddressType
   } from '../vuex/getters'
   import {
     storeData
@@ -96,7 +97,7 @@
     vuex: {
       getters: {
         order: getOrder,
-        counters: getCounters
+        addressType: getAddressType,
       },
       actions: {
         storeData: storeData
@@ -137,7 +138,12 @@
           console.info(response, 'error callback');
         });
 
-      }
+      },
+
+      back() {
+        console.info(this.addressType);
+        return this.$route.router.go( '/event-' + this.addressType )
+      }    
     },
     ready: function () {
       console.info('=================================== Payment is ready with this order: ', this.order.id)

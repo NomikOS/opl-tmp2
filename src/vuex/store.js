@@ -52,7 +52,18 @@ const mutations = {
   },
 
   RESET_DATA( state ) {
-    state = default_state
+    state.order = { id : 0 }
+    state.item = { id : 0 }
+    state.counters.items_to_scan_remaining = 0
+    state.addressType = ''
+    state.shipmentNotification = {}
+    state.modalVisible = true
+    state.urlIframe = ''
+    state.trip.id = 0
+    state.operation_type = ''
+    state.trip_items_remaining_counter  = 0
+    state.show_acknowledge = false
+    state.show_in_position = false
   },
 
   SET_COUNTERS( state, data ) {
