@@ -15,8 +15,6 @@
    padding:0;
    height:100%;
 	 font-family: 'Montserrat', sans-serif;
-	 max-height: 717px;
-	 max-width: 405px;
 	}
 	body{
 		background: #fff;
@@ -749,6 +747,9 @@ p.big-title.sub {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.standard-table {
+	font-size: 17px;
+}
 .standard-table th {
     color: #f44336;
     text-transform: uppercase;
@@ -768,4 +769,7 @@ p.big-title.sub {
 .estados-title.border {
 	  border-bottom: 1px solid #f44336;
     padding-bottom: 5px;
+}
+.padding-bottom-none {
+    padding-bottom: 0;
 }

@@ -2,7 +2,7 @@
   <header-user-data></header-user-data>
   <div class="ac25-content-global">
     <div class="container">
-      <div class="ac25-content-inner-holder ac25-min-height-200 row">
+      <div class="ac25-content-inner-holder padding-bottom-none row">
         <h4 class="ac25-top-red-text">ESTADO DE CUENTA</h4>
         <p class="ac25-order-number-info">
           <span>orden {{order.special_id}}</span>
@@ -14,23 +14,11 @@
       <div class="ac25-content-inner-holder without-padding-bottom row">
         <p class="estados-top"> <span>PRECIO</span> <span class="estados-price">{{ order.price_printable }}</span> </p>
         <div class="row">
-          <div class="col s4">
-            <div class="estados-box">
-              <p class="estados-title border"> Comercial </p>
-              <p class="estados-middle green" v-bind:style="{ background: order.commercialStatus_color }">{{ order.commercialStatus_name }}</p>
-            </div>
-          </div>
-          <div class="col s4">
+          <div class="col s12">
             <div class="estados-box">
               <p class="estados-title border"> Pago </p>
               <p class="estados-middle yellow" v-if="order.paymentStatus_id != 3" v-bind:style="{ background: order.paymentStatus_color }">{{ order.paymentStatus_name }}</p>
               <p class="estados-middle yellow" v-if="order.paymentStatus_id == 3" v-bind:style="{ background: order.paymentStatus_color }">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>
-            </div>
-          </div>
-          <div class="col s4">
-            <div class="estados-box">
-              <p class="estados-title border"> Logistico </p>
-              <p class="estados-middle red" v-bind:style="{ background: order.logisticStatus_color }">{{ order.logisticStatus_name }}</p>
             </div>
           </div>
         </div>
