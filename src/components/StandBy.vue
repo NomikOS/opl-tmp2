@@ -4,12 +4,10 @@
     <div class="container">
 
       <div class="ac25-loading-content" v-if="!order.id">
-      OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
       </div>
       <div class="ac25-loading-content" v-if="order.id">
-      OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}
         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
         <br />
         <img src="html/images/green-check.png" alt="" />

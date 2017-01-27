@@ -15533,12 +15533,10 @@
 	//     <div class="container">
 	//
 	//       <div class="ac25-loading-content" v-if="!order.id">
-	//       OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}
 	//         <h5>Esperando Evento...</h5>
 	//         <img src="html/images/loading.gif" alt="" />
 	//       </div>
 	//       <div class="ac25-loading-content" v-if="order.id">
-	//       OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}
 	//         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
 	//         <br />
 	//         <img src="html/images/green-check.png" alt="" />
@@ -16145,7 +16143,7 @@
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n      OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(31) + "\" alt=\"\" />\n      </div>\n      <div class=\"ac25-loading-content\" v-if=\"order.id\">\n      OT: | {{order.id}}<br>show_acknowledge:{{show_acknowledge}}<br>show_in_position:{{show_in_position}}\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(33) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(31) + "\" alt=\"\" />\n      </div>\n      <div class=\"ac25-loading-content\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(33) + "\" v-link=\"'call'\" />\n  </div><!-- end red-loading-section -->\n\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer><!-- end footer -->\n\n";
 
 /***/ },
 /* 31 */
@@ -16996,6 +16994,7 @@
 	//   </a>
 	//
 	//   <a v-if="counters.items_to_scan_remaining <= 0" class="ac25-half-black  right waves-effect waves-light" style="cursor:default">
+	//       <img src="../html/images/barcode-big-2.png" />
 	//       <p class="ac25-no-margin">escaneo listo</p>
 	//   </a>
 	// </template>
@@ -17006,7 +17005,7 @@
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-if=\"counters.items_to_scan_remaining > 0\" v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n      <img src=\"" + __webpack_require__(60) + "\" />\n      <p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n  </a>\n\n  <a v-if=\"counters.items_to_scan_remaining <= 0\" class=\"ac25-half-black  right waves-effect waves-light\" style=\"cursor:default\">\n      <p class=\"ac25-no-margin\">escaneo listo</p>\n  </a>\n";
+	module.exports = "\n  <a v-if=\"counters.items_to_scan_remaining > 0\" v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n      <img src=\"" + __webpack_require__(60) + "\" />\n      <p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n  </a>\n\n  <a v-if=\"counters.items_to_scan_remaining <= 0\" class=\"ac25-half-black  right waves-effect waves-light\" style=\"cursor:default\">\n      <img src=\"" + __webpack_require__(60) + "\" />\n      <p class=\"ac25-no-margin\">escaneo listo</p>\n  </a>\n";
 
 /***/ },
 /* 60 */
