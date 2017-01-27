@@ -19270,7 +19270,7 @@
 	//   <header-user-data></header-user-data>
 	//   <div class="ac25-content-global">
 	//     <div class="container">
-	//       <div class="ac25-content-inner-holder ac25-min-height-200 row">
+	//       <div class="ac25-content-inner-holder padding-bottom-none row">
 	//         <h4 class="ac25-top-red-text">ESTADO DE CUENTA</h4>
 	//         <p class="ac25-order-number-info">
 	//           <span>orden {{order.special_id}}</span>
@@ -19282,23 +19282,11 @@
 	//       <div class="ac25-content-inner-holder without-padding-bottom row">
 	//         <p class="estados-top"> <span>PRECIO</span> <span class="estados-price">{{ order.price_printable }}</span> </p>
 	//         <div class="row">
-	//           <div class="col s4">
-	//             <div class="estados-box">
-	//               <p class="estados-title border"> Comercial </p>
-	//               <p class="estados-middle green" v-bind:style="{ background: order.commercialStatus_color }">{{ order.commercialStatus_name }}</p>
-	//             </div>
-	//           </div>
-	//           <div class="col s4">
+	//           <div class="col s12">
 	//             <div class="estados-box">
 	//               <p class="estados-title border"> Pago </p>
 	//               <p class="estados-middle yellow" v-if="order.paymentStatus_id != 3" v-bind:style="{ background: order.paymentStatus_color }">{{ order.paymentStatus_name }}</p>
 	//               <p class="estados-middle yellow" v-if="order.paymentStatus_id == 3" v-bind:style="{ background: order.paymentStatus_color }">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>
-	//             </div>
-	//           </div>
-	//           <div class="col s4">
-	//             <div class="estados-box">
-	//               <p class="estados-title border"> Logistico </p>
-	//               <p class="estados-middle red" v-bind:style="{ background: order.logisticStatus_color }">{{ order.logisticStatus_name }}</p>
 	//             </div>
 	//           </div>
 	//         </div>
@@ -19406,7 +19394,7 @@
 /* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200 row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(62) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s4\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Comercial </p>\n              <p class=\"estados-middle green\" v-bind:style=\"{ background: order.commercialStatus_color }\">{{ order.commercialStatus_name }}</p>\n            </div>\n          </div>\n          <div class=\"col s4\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n          <div class=\"col s4\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Logistico </p>\n              <p class=\"estados-middle red\" v-bind:style=\"{ background: order.logisticStatus_color }\">{{ order.logisticStatus_name }}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(62) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 108 */
