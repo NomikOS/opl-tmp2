@@ -7,10 +7,80 @@
         <h5>Esperando Evento...</h5>
         <img src="html/images/loading.gif" alt="" />
       </div>
+
       <div class="ac25-loading-content" v-if="order.id">
+
         <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>
         <br />
-        <img src="html/images/green-check.png" alt="" />
+        <img src="html/images/green-check.png" alt="" />      
+
+        <div v-if="addressType == 'pickup'">
+          <p class="ac25-order-number-info">
+            <span>orden {{order.special_id_pickup}}</span>
+            <notification-icon></notification-icon>
+          </p>
+
+          <ul class="ac25-info-list ac25-w100">
+            <li>
+              <p class="ac25-info-list-title"> nombre </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> telefono </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> direccion </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
+            </li>
+          </ul><!-- end info-list -->
+
+          <ul class="ac25-info-list ac25-w100 ac25-steps2">
+            <li>
+              <p class="ac25-info-list-title"> Deparmento </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> Comuna </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
+            </li>
+          </ul><!-- end steps2 -->        
+        </div>
+
+        <div v-if="addressType == 'delivery'">
+          <img class="ac25-page-top-logo" src="html/images/pickup.png" />
+          <p class="ac25-order-number-info">
+            <span>orden {{order.special_id_pickup}}</span>
+            <notification-icon></notification-icon>
+          </p>
+
+          <ul class="ac25-info-list ac25-w100">
+            <li>
+              <p class="ac25-info-list-title"> nombre </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}}  </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> telefono </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> direccion </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
+            </li>
+          </ul><!-- end info-list -->
+
+          <ul class="ac25-info-list ac25-w100 ac25-steps2">
+            <li>
+              <p class="ac25-info-list-title"> Deparmento </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> Comuna </p>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
+            </li>
+          </ul><!-- end steps2 -->        
+        </div>        
+
       </div>
     </div>
     <img class="ac25-top-right-hand ac25-loading" src="html/images/hand.png" v-link="'call'" />
