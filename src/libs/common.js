@@ -13,7 +13,8 @@ export const credentials = {
   logglyKey: '7c87aa29-08f3-429f-9df7-a4c224bc9114'
 }
 
-var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
+// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
+var APP_ENV = 'production'
 console.info(APP_ENV);
 
 var urls2 = {}
