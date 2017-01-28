@@ -33,10 +33,10 @@
             </tr>
           </thead>
           <tr class="border-solid">
-            <tr v-for="payment in payments" class="border-solid">
+            <tr v-for="item in item_list" class="border-solid">
               <td><p class="border-red-bottom">{{ item.id }}</p></td>
               <td><p class="border-red-bottom">{{ item.name }}</p></td>
-              <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO'} }</p></td>
+              <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>
             </tr>
         </table>
 
@@ -45,7 +45,7 @@
     </div><!-- end content-inner-holder -->
 
     <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+      <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 
