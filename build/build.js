@@ -20128,7 +20128,6 @@
 	//     </div><!-- end content-inner-holder -->
 	//
 	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" style="padding:45px 0;">presione para escanear item</a>
 	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
@@ -20324,7 +20323,7 @@
 	      var addressType = this.addressType;
 
 	      if (!item_id) {
-	        item_id = item.id;
+	        item_id = this.item.id;
 	      }
 
 	      _ModalWait2.default.showIt(true, 'scan-item');
@@ -20401,8 +20400,7 @@
 	        _ModalWait2.default.showIt(false);
 
 	        var data = response.data;
-	        console.info(data);
-	        // this.switherParseItemRequest( null, data )
+
 	        if (data.success) {
 	          console.info(data.items);
 	          _this3.item_list = data.items;
@@ -20426,7 +20424,7 @@
 /* 99 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n\n      <div class=\"container\">\n        <table class=\"standard-table version2 margin-top-20\">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>Nombre</th>\n              <th>QR</th>\n            </tr>\n          </thead>\n            <tr v-for=\"item in item_list\" class=\"border-solid aling-bottom click\" @click=\"scanItem(item.id)\">\n              <td><p class=\"border-red-bottom\">{{ item.id }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.name }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>\n            </tr>\n        </table>\n\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item_list\"  class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" style=\"padding:45px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n\n      <div class=\"container\">\n        <table class=\"standard-table version2 margin-top-20\">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>Nombre</th>\n              <th>QR</th>\n            </tr>\n          </thead>\n            <tr v-for=\"item in item_list\" class=\"border-solid aling-bottom click\" @click=\"scanItem(item.id)\">\n              <td><p class=\"border-red-bottom\">{{ item.id }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.name }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>\n            </tr>\n        </table>\n\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 100 */

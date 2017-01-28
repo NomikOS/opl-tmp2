@@ -26,7 +26,6 @@
     </div><!-- end content-inner-holder -->
 
     <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" style="padding:45px 0;">presione para escanear item</a>
       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 
@@ -240,7 +239,7 @@
         var addressType = this.addressType
 
         if ( ! item_id) {
-          item_id = item.id
+          item_id = this.item.id
         }
 
         ModalWait.showIt( true, 'scan-item' )
@@ -319,8 +318,7 @@
           ModalWait.showIt( false )
 
           var data = response.data
-          console.info(data);
-          // this.switherParseItemRequest( null, data )
+
           if (data.success) {
             console.info(data.items);
             this.item_list = data.items
