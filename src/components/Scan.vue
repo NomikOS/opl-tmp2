@@ -24,7 +24,7 @@
         </li>
       </ul><!-- end scan-list -- -->
       <div class="container">
-        <table class="standard-table version2">
+        <table class="standard-table version2 margin-top-20">
           <thead>
             <tr>
               <th>ID</th>
@@ -32,8 +32,7 @@
               <th>QR</th>
             </tr>
           </thead>
-          <tr class="border-solid">
-            <tr v-for="item in item_list" class="border-solid">
+            <tr v-for="item in item_list" class="border-solid aling-bottom click">
               <td><p class="border-red-bottom">{{ item.id }}</p></td>
               <td><p class="border-red-bottom">{{ item.name }}</p></td>
               <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>
@@ -45,7 +44,7 @@
     </div><!-- end content-inner-holder -->
 
     <footer class="ac25-newfoot ac25-height-auto">
-      <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+      <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" style="padding:45px 0;">presione para escanear item</a>
       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
     </footer><!-- end footer -->
 

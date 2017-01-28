@@ -792,3 +792,19 @@ p.big-title.sub {
 	border-bottom: 1px solid #fff;
 	margin-left: 10px;
 }
+.margin-top-20 {
+	margin-top: 20px;
+}
+.aling-bottom td {
+	vertical-align: bottom;
+}
+.table-overflow-x {
+	max-height: 415px;
+	overflow-y: auto;
+}
+.without-bottom {
+	bottom: 0 !important;
+}
+tr.click:hover {
+	background-color: #ccc;
+}
