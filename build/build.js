@@ -11330,6 +11330,17 @@
 
 	// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
 	var APP_ENV = 'production';
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	console.info(APP_ENV);
 
 	var urls2 = {};
@@ -15595,26 +15606,26 @@
 	//           <ul class="ac25-info-list ac25-w100">
 	//             <li>
 	//               <p class="ac25-info-list-title"> nombre </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
+	//               <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson}} </p>
 	//             </li>
 	//             <li>
 	//               <p class="ac25-info-list-title"> telefono </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
+	//               <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson_phone}} </p>
 	//             </li>
 	//             <li>
 	//               <p class="ac25-info-list-title"> direccion </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
+	//               <p class="ac25-info-list-content"> {{order.deliveryAddress_name}} </p>
 	//             </li>
 	//           </ul>
 	//           <!-- end info-list -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps2">
 	//             <li>
 	//               <p class="ac25-info-list-title"> Deparmento </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
+	//               <p class="ac25-info-list-content"> {{order.deliveryAddress_apt}} </p>
 	//             </li>
 	//             <li>
 	//               <p class="ac25-info-list-title"> Comuna </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
+	//               <p class="ac25-info-list-content"> {{order.deliveryAddress_county}} </p>
 	//             </li>
 	//           </ul>
 	//           <!-- end steps2 -->
@@ -17790,7 +17801,7 @@
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_forperson_phone}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
 
 /***/ },
 /* 32 */
@@ -20095,32 +20106,29 @@
 	//
 	//   <div class="ac25-content-global">
 	//     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
-	//       <ul class="ac25-scan-list">
-	//         <li>
-	//           <a class="waves-effect waves-light">
-	//             <div class="ac25-scan-list-content">
-	//               <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
-	//               <div class="clearfix"></div>
-	//               <span class="ac25-scanlist-scan-text">escanear</span>
-	//             </div>
-	//           </a>
-	//         </li>
-	//         <li>
-	//           <a>
-	//             <div class="ac25-scan-list-content">
-	//               <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{{item_id_info}}}</span>
-	//               <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery' && item.qr_id > 0">{{{item_id_info}}}</span>
-	//             </div>
-	//           </a>
-	//         </li>
-	//       </ul><!-- end scan-list -->
+	//
 	//       <div class="container">
+	//         <table class="standard-table version2 margin-top-20">
+	//           <thead>
+	//             <tr>
+	//               <th>ID</th>
+	//               <th>Nombre</th>
+	//               <th>QR</th>
+	//             </tr>
+	//           </thead>
+	//             <tr v-for="item in item_list" class="border-solid aling-bottom click" @click="scanItem(item.id)">
+	//               <td><p class="border-red-bottom">{{ item.id }}</p></td>
+	//               <td><p class="border-red-bottom">{{ item.name }}</p></td>
+	//               <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>
+	//             </tr>
+	//         </table>
+	//
 	//         <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
 	//       </div>
 	//     </div><!-- end content-inner-holder -->
 	//
 	//     <footer class="ac25-newfoot ac25-height-auto">
-	//       <a @click="scan()" v-if="item.id"  class="ac25-full-red-custom-dev waves-effect waves-light" style="padding:100px 0;">presione para escanear item</a>
+	//       <a @click="scan()" v-if="item_list"  class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" style="padding:45px 0;">presione para escanear item</a>
 	//       <a @click="back()" class="ac25-full-black waves-effect waves-light">volver</a>
 	//     </footer><!-- end footer -->
 	//
@@ -20130,7 +20138,7 @@
 	// <script>
 	var ORDER_URL = _common.urls.micro_api + '/order';
 	var barcodeScannerOptions = {
-	  "preferFrontCamera": true, // iOS and Android
+	  "preferFrontCamera": false, // iOS and Android
 	  "showFlipCameraButton": true, // iOS and Android
 	  "prompt": "Apuntar a codigo QR", // supported on Android only
 	  "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
@@ -20161,7 +20169,10 @@
 	      item: [],
 	      qr_id: 0,
 	      item_id_info: '',
-	      item_name_info: ''
+	      item_name_info: '',
+	      // v02
+	      item_list: {},
+	      item_id: 0
 	    };
 	  },
 
@@ -20181,6 +20192,20 @@
 
 	    // really scan
 	    // -----------
+	    scanItem: function scanItem(item_id) {
+	      var that = this;
+	      cordova.plugins.barcodeScanner.scan(function (result) {
+	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
+
+	        if (result.cancelled) {
+	          that.switherParseQrScanResult('Scan cancelled >:');
+	        } else {
+	          that.switherParseQrScanResult(null, result, item_id);
+	        }
+	      }, function (error) {
+	        that.switherParseQrScanResult(error);
+	      }, barcodeScannerOptions);
+	    },
 	    scan: function scan() {
 	      var that = this;
 
@@ -20196,15 +20221,23 @@
 	        that.switherParseQrScanResult(error);
 	      }, barcodeScannerOptions);
 	    },
-	    switherParseQrScanResult: function switherParseQrScanResult(error, result) {
+	    switherParseQrScanResult: function switherParseQrScanResult(error, result, item_id) {
 	      if (error) {
 	        console.info("Scanning failed: " + error);
 	        this.$route.router.go('/scan-failed');
 	      } else {
 	        var qr_id = result.text;
-	        this.item.qr_id = qr_id;
-	        this.qr_id = qr_id;
-	        this.updateItem();
+
+	        if (item_id) {
+	          this.item_id = item_id;
+	          this.item.qr_id = qr_id;
+	          this.qr_id = qr_id;
+	          this.updateItem();
+	        } else {
+	          this.item.qr_id = qr_id;
+	          this.qr_id = qr_id;
+	          this.updateItem();
+	        }
 	      }
 	    },
 
@@ -20225,7 +20258,6 @@
 	        item_id: item_id,
 	        qr_id: qr_id,
 	        address_type: addressType
-
 	      }).then(function (response) {
 	        _ModalWait2.default.showIt(false);
 
@@ -20284,13 +20316,16 @@
 
 	    // update item in db, call api
 	    // --------------------------
-	    updateItem: function updateItem() {
+	    updateItem: function updateItem(item_id) {
 	      var _this2 = this;
 
 	      var order_id = this.order.id;
-	      var item_id = this.item.id;
 	      var qr_id = this.qr_id;
 	      var addressType = this.addressType;
+
+	      if (!item_id) {
+	        item_id = item.id;
+	      }
 
 	      _ModalWait2.default.showIt(true, 'scan-item');
 	      this.$http.post(ORDER_URL + '/scan-item', {
@@ -20350,12 +20385,38 @@
 	          this.$route.router.go('/scan-failed');
 	        }
 	      }
+	    },
+	    requestItemList: function requestItemList() {
+	      var _this3 = this;
+
+	      var order_id = this.order.id;
+	      var addressType = this.addressType;
+
+	      _ModalWait2.default.showIt(true, 'scan-item');
+	      this.$http.post(ORDER_URL + '/scan-item-list', {
+	        order_id: order_id,
+	        address_type: addressType
+
+	      }).then(function (response) {
+	        _ModalWait2.default.showIt(false);
+
+	        var data = response.data;
+	        console.info(data);
+	        // this.switherParseItemRequest( null, data )
+	        if (data.success) {
+	          console.info(data.items);
+	          _this3.item_list = data.items;
+	        }
+	      }, function (response) {
+	        _ModalWait2.default.showIt(false);
+
+	        _this3.switherParseItemRequest(response);
+	      });
 	    }
 	  },
 	  ready: function ready() {
 	    console.info('=================================== Scan is ready with this order: ', this.order.id);
-	    console.info('order', this.order, 'counters', this.counters.items_to_scan_remaining);
-	    this.requestItem();
+	    this.requestItemList();
 	  }
 	};
 	// </script>
@@ -20363,9 +20424,9 @@
 
 /***/ },
 /* 99 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n      <ul class=\"ac25-scan-list\">\n        <li>\n          <a class=\"waves-effect waves-light\">\n            <div class=\"ac25-scan-list-content\">\n              <img class=\"ac25-scanlist-scan-code\" src=\"" + __webpack_require__(61) + "\" />\n              <div class=\"clearfix\"></div>\n              <span class=\"ac25-scanlist-scan-text\">escanear</span>\n            </div>\n          </a>\n        </li>\n        <li>\n          <a>\n            <div class=\"ac25-scan-list-content\">\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType != 'delivery'\">{{{item_id_info}}}</span>\n              <span class=\"ac25-sclanlist-scan-id\" v-if=\"addressType == 'delivery' && item.qr_id > 0\">{{{item_id_info}}}</span>\n            </div>\n          </a>\n        </li>\n      </ul><!-- end scan-list -->\n      <div class=\"container\">\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item.id\"  class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right\">\n\n      <div class=\"container\">\n        <table class=\"standard-table version2 margin-top-20\">\n          <thead>\n            <tr>\n              <th>ID</th>\n              <th>Nombre</th>\n              <th>QR</th>\n            </tr>\n          </thead>\n            <tr v-for=\"item in item_list\" class=\"border-solid aling-bottom click\" @click=\"scanItem(item.id)\">\n              <td><p class=\"border-red-bottom\">{{ item.id }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.name }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>\n            </tr>\n        </table>\n\n        <p class=\"ac25-mid-page-paragraph\">{{item_name_info}}</p>\n      </div>\n    </div><!-- end content-inner-holder -->\n\n    <footer class=\"ac25-newfoot ac25-height-auto\">\n      <a @click=\"scan()\" v-if=\"item_list\"  class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" style=\"padding:45px 0;\">presione para escanear item</a>\n      <a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">volver</a>\n    </footer><!-- end footer -->\n\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 100 */
@@ -20957,8 +21018,7 @@
 	//               <th>Medio de Pago</th>
 	//             </tr>
 	//           </thead>
-	//           <tr class="border-solid">
-	//             <tr v-for="payment in payments">
+	//             <tr v-for="payment in payments" class="border-solid">
 	//               <td><p class="border-red-bottom">{{ payment.total_amount }}</p></td>
 	//               <td><p class="border-red-bottom">{{ payment.created_at }}</p></td>
 	//               <td><p class="border-red-bottom">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>
@@ -21056,7 +21116,7 @@
 /* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr class=\"border-solid\">\n            <tr v-for=\"payment in payments\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n            <tr v-for=\"payment in payments\" class=\"border-solid\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 109 */
@@ -21117,17 +21177,19 @@
 	//        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//      </div><!-- end content-inner-holder -->
 	//    </div><!-- end container -->
+	//
 	//    <footer class="ac25-content-footer">
-	//      <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
-	//
-	//      <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
-	//
-	//      <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
-	//
+	//      <div v-if="addressType == 'pickup'">
+	//        <a class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="!order.pickupAddress_forperson_phone">&nbsp;</a>
+	//        <a href="tel:{{order.pickupAddress_forperson_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="order.pickupAddress_forperson_phone">llamar al cliente ({{order.pickupAddress_forperson}})</a>
+	//     </div>   
+	//      <div v-if="addressType == 'delivery'">
+	//        <a class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="!order.deliveryAddress_forperson_phone">&nbsp;</a>
+	//        <a href="tel:{{order.deliveryAddress_forperson_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="order.deliveryAddress_forperson_phone">llamar al cliente ({{order.deliveryAddress_forperson}})</a>
+	//     </div>      
+	//     <!--  <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente -></a>
 	//      <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar a la central</a>
-	//
-	//      <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a>
-	//
+	//      <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a> -->
 	//      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
 	//    </footer><!-- end footer -->
 	//  </div><!-- end content-global -->  
@@ -21144,7 +21206,8 @@
 	  },
 	  vuex: {
 	    getters: {
-	      order: _getters.getOrder
+	      order: _getters.getOrder,
+	      addressType: _getters.getAddressType
 	    }
 	  },
 	  data: function data() {
@@ -21195,11 +21258,6 @@
 	    console.info('Call is ready ===================================');
 	    var setup = _ls2.default.get('setup');
 	    this.setup = setup;
-
-	    console.info(this.order.pickupAddress_person_phone, 'order.pickupAddress_person_phone');
-	    console.info(setup.phoneCentral, 'phoneCentral');
-	    console.info(setup.phoneMobile, 'phoneMobile');
-	    console.info(this.setup, 'this.setup:');
 	  }
 	};
 	// </script>
@@ -21209,7 +21267,7 @@
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"!order.pickupAddress_person_phone\">&nbsp;</a>\n\n     <a href=\"tel:{{order.pickupAddress_person_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"order.pickupAddress_person_phone\">llamar al cliente</a>\n\n     <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente --></a>\n\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a>\n\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n\n   <footer class=\"ac25-content-footer\">\n     <div v-if=\"addressType == 'pickup'\">\n       <a class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"!order.pickupAddress_forperson_phone\">&nbsp;</a>\n       <a href=\"tel:{{order.pickupAddress_forperson_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"order.pickupAddress_forperson_phone\">llamar al cliente ({{order.pickupAddress_forperson}})</a>\n    </div>   \n     <div v-if=\"addressType == 'delivery'\">\n       <a class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"!order.deliveryAddress_forperson_phone\">&nbsp;</a>\n       <a href=\"tel:{{order.deliveryAddress_forperson_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"order.deliveryAddress_forperson_phone\">llamar al cliente ({{order.deliveryAddress_forperson}})</a>\n    </div>      \n    <!--  <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente -></a>\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a> -->\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
 /* 112 */

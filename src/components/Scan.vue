@@ -4,25 +4,7 @@
 
   <div class="ac25-content-global">
     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
-<!--       <ul class="ac25-scan-list">
-        <li>
-          <a class="waves-effect waves-light">
-            <div class="ac25-scan-list-content">
-              <img class="ac25-scanlist-scan-code" src="html/images/barcode-big-2.png" />
-              <div class="clearfix"></div>
-              <span class="ac25-scanlist-scan-text">escanear</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a>
-            <div class="ac25-scan-list-content">
-              <span class="ac25-sclanlist-scan-id" v-if="addressType != 'delivery'">{{{item_id_info}}}</span>
-              <span class="ac25-sclanlist-scan-id" v-if="addressType == 'delivery' && item.qr_id > 0">{{{item_id_info}}}</span>
-            </div>
-          </a>
-        </li>
-      </ul><!-- end scan-list -- -->
+
       <div class="container">
         <table class="standard-table version2 margin-top-20">
           <thead>
@@ -32,7 +14,7 @@
               <th>QR</th>
             </tr>
           </thead>
-            <tr v-for="item in item_list" class="border-solid aling-bottom click">
+            <tr v-for="item in item_list" class="border-solid aling-bottom click" @click="scanItem(item.id)">
               <td><p class="border-red-bottom">{{ item.id }}</p></td>
               <td><p class="border-red-bottom">{{ item.name }}</p></td>
               <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO' }}</p></td>
@@ -62,7 +44,7 @@
 
   const ORDER_URL = urls.micro_api + '/order'
   const barcodeScannerOptions = {
-    "preferFrontCamera": true, // iOS and Android
+    "preferFrontCamera": false, // iOS and Android
     "showFlipCameraButton": true, // iOS and Android
     "prompt": "Apuntar a codigo QR", // supported on Android only
     "formats": "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
@@ -94,7 +76,9 @@
         qr_id: 0,
         item_id_info: '',
         item_name_info: '',
-        item_list :{}
+        // v02
+        item_list :{},
+        item_id: 0
       }
     },
     methods: {
@@ -115,6 +99,26 @@
 
       // really scan
       // -----------
+      scanItem(item_id){
+        var that = this
+        cordova.plugins.barcodeScanner.scan(
+          function( result ) {
+            console.info( "RESULT\n" +
+              "Result: " + result.text + "\n" +
+              "Format: " + result.format + "\n" +
+              "Cancelled: " + result.cancelled )
+
+            if (result.cancelled) {
+              that.switherParseQrScanResult( 'Scan cancelled >:' )
+            } else {
+              that.switherParseQrScanResult( null, result, item_id )
+            }
+          },
+          function( error ) {
+            that.switherParseQrScanResult( error )
+
+          }, barcodeScannerOptions );
+      },
       scan() {
         var that = this
 
@@ -136,16 +140,24 @@
 
           }, barcodeScannerOptions );
       },
-      switherParseQrScanResult( error, result ) {
+      switherParseQrScanResult( error, result, item_id ) {
         if ( error ) {
           console.info( "Scanning failed: " + error );
           this.$route.router.go( '/scan-failed' )
 
         } else {
           var qr_id = result.text
-          this.item.qr_id = qr_id
-          this.qr_id = qr_id
-          this.updateItem()
+
+          if (item_id) {
+            this.item_id = item_id
+            this.item.qr_id = qr_id
+            this.qr_id = qr_id
+            this.updateItem()
+          } else {
+            this.item.qr_id = qr_id
+            this.qr_id = qr_id
+            this.updateItem()
+          }
         }
       },
 
@@ -222,11 +234,14 @@
 
       // update item in db, call api
       // --------------------------
-      updateItem() {
+      updateItem(item_id) {
         var order_id = this.order.id
-        var item_id = this.item.id
         var qr_id = this.qr_id
         var addressType = this.addressType
+
+        if ( ! item_id) {
+          item_id = item.id
+        }
 
         ModalWait.showIt( true, 'scan-item' )
         this.$http.post( ORDER_URL + '/scan-item', {
