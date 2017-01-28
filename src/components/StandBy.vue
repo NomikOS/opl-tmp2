@@ -42,26 +42,26 @@
           <ul class="ac25-info-list ac25-w100">
             <li>
               <p class="ac25-info-list-title"> nombre </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
+              <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> telefono </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
+              <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson_phone}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> direccion </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
+              <p class="ac25-info-list-content"> {{order.deliveryAddress_name}} </p>
             </li>
           </ul>
           <!-- end info-list -->
           <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
               <p class="ac25-info-list-title"> Deparmento </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
+              <p class="ac25-info-list-content"> {{order.deliveryAddress_apt}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> Comuna </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
+              <p class="ac25-info-list-content"> {{order.deliveryAddress_county}} </p>
             </li>
           </ul>
           <!-- end steps2 -->

@@ -35,8 +35,7 @@
               <th>Medio de Pago</th>
             </tr>
           </thead>
-          <tr class="border-solid">
-            <tr v-for="payment in payments">
+            <tr v-for="payment in payments" class="border-solid">
               <td><p class="border-red-bottom">{{ payment.total_amount }}</p></td>
               <td><p class="border-red-bottom">{{ payment.created_at }}</p></td>
               <td><p class="border-red-bottom">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>

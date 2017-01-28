@@ -13,17 +13,19 @@
        <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
      </div><!-- end content-inner-holder -->
    </div><!-- end container -->
+
    <footer class="ac25-content-footer">
-     <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="!order.pickupAddress_person_phone">&nbsp;</a>
-
-     <a href="tel:{{order.pickupAddress_person_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light" v-if="order.pickupAddress_person_phone">llamar al cliente</a>
-
-     <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente --></a>
-
+     <div v-if="addressType == 'pickup'">
+       <a class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="!order.pickupAddress_forperson_phone">&nbsp;</a>
+       <a href="tel:{{order.pickupAddress_forperson_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="order.pickupAddress_forperson_phone">llamar al cliente ({{order.pickupAddress_forperson}})</a>
+    </div>   
+     <div v-if="addressType == 'delivery'">
+       <a class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="!order.deliveryAddress_forperson_phone">&nbsp;</a>
+       <a href="tel:{{order.deliveryAddress_forperson_phone}}" class="ac25-full-red-custom-dev waves-effect waves-light without-bottom" v-if="order.deliveryAddress_forperson_phone">llamar al cliente ({{order.deliveryAddress_forperson}})</a>
+    </div>      
+    <!--  <a class="ac25-full-red-custom-dev waves-effect waves-light" v-if="false"><!-- central llama a cliente -></a>
      <a href="tel:{{setup.phoneCentral}}" __click="callCentral()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar a la central</a>
-
-     <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a>
-
+     <a href="tel:{{setup.phoneMobile}}" __click="callDriver()" class="ac25-full-red-custom-dev waves-effect waves-light">llamar al chofer</a> -->
      <a onclick="window.history.back()" class="ac25-full-black waves-effect waves-light">terminar</a>
    </footer><!-- end footer -->
  </div><!-- end content-global -->  
@@ -32,7 +34,7 @@
 <script>
   import HeaderUserData from './Partials/HeaderUserData.vue'
   import ls from '../libs/ls'
-  import { getOrder } from '../vuex/getters'
+  import { getOrder, getAddressType } from '../vuex/getters'
 
   var phoneMobile = ''
   var phoneCentral = ''
@@ -44,7 +46,8 @@
     },
     vuex: {
       getters: {
-        order: getOrder
+        order: getOrder,
+        addressType: getAddressType,
       }
     },    
     data: function() {
@@ -95,11 +98,6 @@
       console.info('Call is ready ===================================');
       var setup = ls.get( 'setup' )      
       this.setup = setup
-
-      console.info(this.order.pickupAddress_person_phone, 'order.pickupAddress_person_phone');
-      console.info(setup.phoneCentral, 'phoneCentral');
-      console.info(setup.phoneMobile, 'phoneMobile');
-      console.info(this.setup, 'this.setup:');
     }  
   }
 </script>

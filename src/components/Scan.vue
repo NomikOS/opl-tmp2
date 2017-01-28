@@ -4,7 +4,7 @@
 
   <div class="ac25-content-global">
     <div class="ac25-content-inner-holder ac25-ptop15 ac25-no-padding-left ac25-no-padding-right">
-      <ul class="ac25-scan-list">
+<!--       <ul class="ac25-scan-list">
         <li>
           <a class="waves-effect waves-light">
             <div class="ac25-scan-list-content">
@@ -22,8 +22,24 @@
             </div>
           </a>
         </li>
-      </ul><!-- end scan-list -->
+      </ul><!-- end scan-list -- -->
       <div class="container">
+        <table class="standard-table version2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>QR</th>
+            </tr>
+          </thead>
+          <tr class="border-solid">
+            <tr v-for="payment in payments" class="border-solid">
+              <td><p class="border-red-bottom">{{ item.id }}</p></td>
+              <td><p class="border-red-bottom">{{ item.name }}</p></td>
+              <td><p class="border-red-bottom">{{ item.qr_id ? item.qr_id : 'NO ESCANEADO'} }</p></td>
+            </tr>
+        </table>
+
         <p class="ac25-mid-page-paragraph">{{item_name_info}}</p>
       </div>
     </div><!-- end content-inner-holder -->
@@ -78,7 +94,8 @@
         item: [],
         qr_id: 0,
         item_id_info: '',
-        item_name_info: ''
+        item_name_info: '',
+        item_list :{}
       }
     },
     methods: {
@@ -147,7 +164,6 @@
           item_id: item_id,
           qr_id: qr_id,
           address_type: addressType
-
         } ).then( ( response ) => {
           ModalWait.showIt( false )
 
@@ -275,11 +291,37 @@
           }
         }
       },
+
+      requestItemList() {
+        var order_id = this.order.id
+        var addressType = this.addressType
+
+        ModalWait.showIt( true, 'scan-item' )
+        this.$http.post( ORDER_URL + '/scan-item-list', {
+          order_id: order_id,
+          address_type: addressType
+
+        } ).then( ( response ) => {
+          ModalWait.showIt( false )
+
+          var data = response.data
+          console.info(data);
+          // this.switherParseItemRequest( null, data )
+          if (data.success) {
+            console.info(data.items);
+            this.item_list = data.items
+          }
+
+        }, ( response ) => {
+          ModalWait.showIt( false )
+
+          this.switherParseItemRequest( response )
+        } );
+      }      
     },
     ready() {
       console.info( '=================================== Scan is ready with this order: ', this.order.id );
-      console.info( 'order', this.order, 'counters', this.counters.items_to_scan_remaining );
-      this.requestItem()
+      this.requestItemList()
     }
   }
 </script>

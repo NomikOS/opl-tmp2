@@ -19,3 +19,6 @@
 	position: fixed;
 	height: 100%;
 }
+.ac25-full-red-custom-dev.without-bottom {
+	bottom: 0 !important;
+}
