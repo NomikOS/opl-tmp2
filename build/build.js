@@ -20170,7 +20170,7 @@
 	      item_id_info: '',
 	      item_name_info: '',
 	      // v02
-	      item_list: {},
+	      item_list: [],
 	      item_id: 0
 	    };
 	  },
@@ -20193,6 +20193,21 @@
 	    // -----------
 	    scanItem: function scanItem(item_id) {
 	      var that = this;
+
+	      if (typeof this.item_list[item_id] != 'undefined') {
+
+	        var item = this.item_list[item_id];
+	        this.item = item;
+
+	        this.storeData({
+	          type: 'item',
+	          content: item
+	        });
+	      } else {
+	        this.item_name_info = 'No hay más items que escanear para la orden ' + this.order.special_id;
+	        return;
+	      }
+
 	      cordova.plugins.barcodeScanner.scan(function (result) {
 	        console.info("RESULT\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
 
