@@ -14,11 +14,11 @@
           <ul class="ac25-info-list ac25-w100">
             <li>
               <p class="ac25-info-list-title white-color"> nombre </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson}} </p>
+              <p class="ac25-info-list-content"> {{ infoName}} </p>
             </li>
             <li>
               <p class="ac25-info-list-title white-color"> telefono </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_forperson_phone}} </p>
+              <p class="ac25-info-list-content"> {{ infoPhone }} </p>
             </li>
             <li>
               <p class="ac25-info-list-title white-color"> direccion </p>
@@ -37,16 +37,30 @@
             </li>
           </ul>
           <!-- end steps2 -->
+          <ul class="ac25-info-list ac25-w100 ac25-steps3">
+            <li>
+              <p class="ac25-info-list-title"> MTS3 </p>
+              <p class="ac25-info-list-content">{{order.items_volume}}</p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> bultos </p>
+              <p class="ac25-info-list-content">{{order.items_amount}}</p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> peso </p>
+              <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
+            </li>
+          </ul><!-- end steps3 -->
         </div>
         <div v-if="addressType == 'delivery'">
           <ul class="ac25-info-list ac25-w100">
             <li>
               <p class="ac25-info-list-title"> nombre </p>
-              <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson}} </p>
+              <p class="ac25-info-list-content"> {{ infoName }} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> telefono </p>
-              <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson_phone}} </p>
+              <p class="ac25-info-list-content"> {{ infoPhone }} </p>
             </li>
             <li>
               <p class="ac25-info-list-title"> direccion </p>
@@ -65,6 +79,20 @@
             </li>
           </ul>
           <!-- end steps2 -->
+          <ul class="ac25-info-list ac25-w100 ac25-steps3">
+            <li>
+              <p class="ac25-info-list-title"> MTS3 </p>
+              <p class="ac25-info-list-content">{{order.items_volume}}</p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> bultos </p>
+              <p class="ac25-info-list-content">{{order.items_amount}}</p>
+            </li>
+            <li>
+              <p class="ac25-info-list-title"> peso </p>
+              <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
+            </li>
+          </ul><!-- end steps3 -->
         </div>
       </div>
     </div>
@@ -121,6 +149,16 @@
     },
     ready() {
       console.info('StandBy is ready =================================== with this order: ', this.order.id);
+    },
+    computed: {
+      infoName: function () {
+        const name = this.order[this.addressType + 'Address_forperson'];
+        return name === '-' ? this.order.customer.name : name;
+      },
+      infoPhone: function () {
+        const phone = this.order[this.addressType + 'Address_forperson_phone'];
+        return phone === '-' ? this.order.customer.phone : phone;
+      }
     },
     methods: {
       inPosition() {

@@ -12,10 +12,9 @@
       </a>
     </li>
     <li>
-      <a @click="print('invoice')" class="waves-effect waves-light">
+      <a @click="print('customer-order-full')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p v-if="order.dte_type == 33">factura</p>
-          <p v-if="order.dte_type == 39">boleta</p>
+          <p>Orden Completa</p>
         </div>
       </a>
     </li>
@@ -46,9 +45,9 @@
       </a>
     </li>
     <li>
-      <a __click="scan('special')" class="waves-effect waves-light">
+      <a @click="scan('customer-order-adicionales')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p><!-- especial --></p>
+          <p>Adicionales</p>
         </div>
       </a>
     </li>
