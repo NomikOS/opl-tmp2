@@ -14,7 +14,7 @@
     <li>
       <a @click="print('customer-order-full')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>Orden Completa</p>
+          <p>orden completa</p>
         </div>
       </a>
     </li>
@@ -45,9 +45,9 @@
       </a>
     </li>
     <li>
-      <a @click="scan('customer-order-adicionales')" class="waves-effect waves-light">
+      <a @click="print('customer-order-adicionales')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>Adicionales</p>
+          <p>adicionales</p>
         </div>
       </a>
     </li>
