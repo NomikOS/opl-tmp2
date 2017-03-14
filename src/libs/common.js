@@ -14,7 +14,7 @@ export const credentials = {
 }
 
 // var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-var APP_ENV = 'production'
+var APP_ENV = 'testing'
 //
 //
 //
@@ -26,7 +26,7 @@ var APP_ENV = 'production'
 //
 //
 //
-console.info(APP_ENV);
+console.info('APP_ENV', APP_ENV);
 
 var urls2 = {}
 switch ( APP_ENV ) {
@@ -54,5 +54,7 @@ switch ( APP_ENV ) {
     }
     break;    
 }
+
+console.info('urls2', urls2);
 
 export const urls = urls2

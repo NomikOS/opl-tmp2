@@ -11329,7 +11329,7 @@
 	};
 
 	// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-	var APP_ENV = 'production';
+	var APP_ENV = 'testing';
 	//
 	//
 	//
@@ -11341,7 +11341,7 @@
 	//
 	//
 	//
-	console.info(APP_ENV);
+	console.info('APP_ENV', APP_ENV);
 
 	var urls2 = {};
 	switch (APP_ENV) {
@@ -11369,6 +11369,8 @@
 	    };
 	    break;
 	}
+
+	console.info('urls2', urls2);
 
 	var urls = exports.urls = urls2;
 
@@ -15603,15 +15605,15 @@
 	//           <!-- end steps2 -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps3">
 	//             <li>
-	//               <p class="ac25-info-list-title"> MTS3 </p>
+	//               <p class="ac25-info-list-title white-color"> MTS3 </p>
 	//               <p class="ac25-info-list-content">{{order.items_volume}}</p>
 	//             </li>
 	//             <li>
-	//               <p class="ac25-info-list-title"> bultos </p>
+	//               <p class="ac25-info-list-title white-color"> bultos </p>
 	//               <p class="ac25-info-list-content">{{order.items_amount}}</p>
 	//             </li>
 	//             <li>
-	//               <p class="ac25-info-list-title"> peso </p>
+	//               <p class="ac25-info-list-title white-color"> peso </p>
 	//               <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
 	//             </li>
 	//           </ul><!-- end steps3 -->
@@ -15645,15 +15647,15 @@
 	//           <!-- end steps2 -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps3">
 	//             <li>
-	//               <p class="ac25-info-list-title"> MTS3 </p>
+	//               <p class="ac25-info-list-title white-color"> MTS3 </p>
 	//               <p class="ac25-info-list-content">{{order.items_volume}}</p>
 	//             </li>
 	//             <li>
-	//               <p class="ac25-info-list-title"> bultos </p>
+	//               <p class="ac25-info-list-title white-color"> bultos </p>
 	//               <p class="ac25-info-list-content">{{order.items_amount}}</p>
 	//             </li>
 	//             <li>
-	//               <p class="ac25-info-list-title"> peso </p>
+	//               <p class="ac25-info-list-title white-color"> peso </p>
 	//               <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
 	//             </li>
 	//           </ul><!-- end steps3 -->
@@ -15798,8 +15800,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ecf5351c&file=HeaderUserData.vue!../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./HeaderUserData.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -15895,7 +15897,7 @@
 			};
 		},
 		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
 		}),
 		getHeadElement = memoize(function () {
 			return document.head || document.getElementsByTagName("head")[0];
@@ -17839,7 +17841,7 @@
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
 
 /***/ },
 /* 32 */
