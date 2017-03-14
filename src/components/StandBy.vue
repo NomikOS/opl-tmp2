@@ -39,15 +39,15 @@
           <!-- end steps2 -->
           <ul class="ac25-info-list ac25-w100 ac25-steps3">
             <li>
-              <p class="ac25-info-list-title"> MTS3 </p>
+              <p class="ac25-info-list-title white-color"> MTS3 </p>
               <p class="ac25-info-list-content">{{order.items_volume}}</p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> bultos </p>
+              <p class="ac25-info-list-title white-color"> bultos </p>
               <p class="ac25-info-list-content">{{order.items_amount}}</p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> peso </p>
+              <p class="ac25-info-list-title white-color"> peso </p>
               <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
             </li>
           </ul><!-- end steps3 -->
@@ -81,15 +81,15 @@
           <!-- end steps2 -->
           <ul class="ac25-info-list ac25-w100 ac25-steps3">
             <li>
-              <p class="ac25-info-list-title"> MTS3 </p>
+              <p class="ac25-info-list-title white-color"> MTS3 </p>
               <p class="ac25-info-list-content">{{order.items_volume}}</p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> bultos </p>
+              <p class="ac25-info-list-title white-color"> bultos </p>
               <p class="ac25-info-list-content">{{order.items_amount}}</p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> peso </p>
+              <p class="ac25-info-list-title white-color"> peso </p>
               <p class="ac25-info-list-content">n/a<!-- {{order.items_weight}} --></p>
             </li>
           </ul><!-- end steps3 -->
