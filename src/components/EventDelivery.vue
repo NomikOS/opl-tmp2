@@ -15,11 +15,11 @@
         <ul class="ac25-info-list ac25-w100">
           <li>
             <p class="ac25-info-list-title"> nombre </p>
-            <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson}}  </p>
+            <p class="ac25-info-list-content"> {{ infoName }}  </p>
           </li>
           <li>
             <p class="ac25-info-list-title"> telefono </p>
-            <p class="ac25-info-list-content"> {{order.deliveryAddress_forperson_phone}} </p>
+            <p class="ac25-info-list-content"> {{ infoPhone }} </p>
           </li>
           <li>
             <p class="ac25-info-list-title"> direccion </p>
@@ -91,6 +91,16 @@
     },
     data: function() {
       return {}
+    },
+    computed: {
+      infoName: function () {
+        const name = this.order['deliveryAddress_forperson'];
+        return name === '-' ? this.order.customer.name : name;
+      },
+      infoPhone: function () {
+        const phone = this.order['deliveryAddress_forperson_phone'];
+        return phone === '-' ? this.order.customer.phone : phone;
+      }
     },
     methods: {},
     ready: function() {
