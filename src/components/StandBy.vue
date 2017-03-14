@@ -55,26 +55,26 @@
         <div v-if="addressType == 'delivery'">
           <ul class="ac25-info-list ac25-w100">
             <li>
-              <p class="ac25-info-list-title"> nombre </p>
+              <p class="ac25-info-list-title white-color"> nombre </p>
               <p class="ac25-info-list-content"> {{ infoName }} </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> telefono </p>
+              <p class="ac25-info-list-title white-color"> telefono </p>
               <p class="ac25-info-list-content"> {{ infoPhone }} </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> direccion </p>
+              <p class="ac25-info-list-title white-color"> direccion </p>
               <p class="ac25-info-list-content"> {{order.deliveryAddress_name}} </p>
             </li>
           </ul>
           <!-- end info-list -->
           <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
-              <p class="ac25-info-list-title"> Deparmento </p>
+              <p class="ac25-info-list-title white-color"> Deparmento </p>
               <p class="ac25-info-list-content"> {{order.deliveryAddress_apt}} </p>
             </li>
             <li>
-              <p class="ac25-info-list-title"> Comuna </p>
+              <p class="ac25-info-list-title white-color"> Comuna </p>
               <p class="ac25-info-list-content"> {{order.deliveryAddress_county}} </p>
             </li>
           </ul>
