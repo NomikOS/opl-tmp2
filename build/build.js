@@ -11354,6 +11354,7 @@
 	      econocargo_website: 'https://econocargo.cl',
 	      gateway_api: 'https://api.agente.cl',
 	      micro_api: 'https://api.agente.cl/ltl',
+	      adc_api: 'https://api.agente.cl/adc',
 	      public_docs: 'https://docs-econocargo.agente.cl'
 	    };
 	    break;
@@ -11365,6 +11366,7 @@
 	      econocargo_website: 'https://econocargo-testing.agente.cl',
 	      gateway_api: 'https://api-testing.agente.cl',
 	      micro_api: 'https://api-testing.agente.cl/ltl',
+	      adc_api: 'https://api-testing.agente.cl/adc',
 	      public_docs: 'https://docs-econocargo.agente.cl'
 	    };
 	    break;
@@ -19990,7 +19992,12 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('customer-order-full')" class="waves-effect waves-light">
+	//       <a v-if="'pickup' == this.addressType"  @click="print('customer-order-full-pickup')" class="waves-effect waves-light">
+	//         <div class="ac25-main-menu-content">
+	//           <p>orden completa</p>
+	//         </div>
+	//       </a>
+	//       <a v-if="'delivery' == this.addressType"  @click="print('customer-order-full-delivery')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
 	//           <p>orden completa</p>
 	//         </div>
@@ -20023,9 +20030,14 @@
 	//       </a>
 	//     </li>
 	//     <li>
-	//       <a @click="print('customer-order-adicionales')" class="waves-effect waves-light">
+	//       <a v-if="'pickup' == this.addressType"   @click="print('customer-order-adicionales-pickup')" class="waves-effect waves-light">
 	//         <div class="ac25-main-menu-content">
-	//           <p>adicionales</p>
+	//           <p>adicionales retiro</p>
+	//         </div>
+	//       </a>
+	//       <a v-if="'delivery' == this.addressType"   @click="print('customer-order-adicionales-delivery')" class="waves-effect waves-light">
+	//         <div class="ac25-main-menu-content">
+	//           <p>adicionales entrega</p>
 	//         </div>
 	//       </a>
 	//     </li>
@@ -20105,7 +20117,7 @@
 /* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(57) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-order-full')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden completa</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a v-if=\"'pickup' == this.addressType\" @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente retiro</p>\n        </div>\n      </a>\n      <a v-if=\"'delivery' == this.addressType\" @click=\"print('customer-delivery-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente entrega</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('customer-order-adicionales')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>adicionales</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <ul class=\"ac25-main-menu\">\n    <li>\n      <a class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <img src=\"" + __webpack_require__(57) + "\" alt=\"\" />\n          <p>imprimir</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a v-if=\"'pickup' == this.addressType\"  @click=\"print('customer-order-full-pickup')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden completa</p>\n        </div>\n      </a>\n      <a v-if=\"'delivery' == this.addressType\"  @click=\"print('customer-order-full-delivery')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden completa</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a @click=\"print('internal-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden interna</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a v-if=\"'pickup' == this.addressType\" @click=\"print('customer-pickup-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente retiro</p>\n        </div>\n      </a>\n      <a v-if=\"'delivery' == this.addressType\" @click=\"print('customer-delivery-order')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>orden cliente entrega</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a __click=\"print('payments-history')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p><!-- historial de pago --></p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a v-if=\"'pickup' == this.addressType\"   @click=\"print('customer-order-adicionales-pickup')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>adicionales retiro</p>\n        </div>\n      </a>\n      <a v-if=\"'delivery' == this.addressType\"   @click=\"print('customer-order-adicionales-delivery')\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>adicionales entrega</p>\n        </div>\n      </a>\n    </li>\n    <li>\n      <a onclick=\"window.history.back()\" class=\"waves-effect waves-light\">\n        <div class=\"ac25-main-menu-content\">\n          <p>volver</p>\n        </div>\n      </a>\n    </li>\n  </ul><!-- end main-menu -->\n";
 
 /***/ },
 /* 97 */

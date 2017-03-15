@@ -12,7 +12,12 @@
       </a>
     </li>
     <li>
-      <a @click="print('customer-order-full')" class="waves-effect waves-light">
+      <a v-if="'pickup' == this.addressType"  @click="print('customer-order-full-pickup')" class="waves-effect waves-light">
+        <div class="ac25-main-menu-content">
+          <p>orden completa</p>
+        </div>
+      </a>
+      <a v-if="'delivery' == this.addressType"  @click="print('customer-order-full-delivery')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>orden completa</p>
         </div>
@@ -45,9 +50,14 @@
       </a>
     </li>
     <li>
-      <a @click="print('customer-order-adicionales')" class="waves-effect waves-light">
+      <a v-if="'pickup' == this.addressType"   @click="print('customer-order-adicionales-pickup')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
-          <p>adicionales</p>
+          <p>adicionales retiro</p>
+        </div>
+      </a>
+      <a v-if="'delivery' == this.addressType"   @click="print('customer-order-adicionales-delivery')" class="waves-effect waves-light">
+        <div class="ac25-main-menu-content">
+          <p>adicionales entrega</p>
         </div>
       </a>
     </li>

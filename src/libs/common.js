@@ -39,6 +39,7 @@ switch ( APP_ENV ) {
       econocargo_website: 'https://econocargo.cl',
       gateway_api: 'https://api.agente.cl',
       micro_api: 'https://api.agente.cl/ltl',
+      adc_api: 'https://api.agente.cl/adc',
       public_docs: 'https://docs-econocargo.agente.cl'
     }
     break;
@@ -50,6 +51,7 @@ switch ( APP_ENV ) {
       econocargo_website: 'https://econocargo-testing.agente.cl',
       gateway_api: 'https://api-testing.agente.cl',
       micro_api: 'https://api-testing.agente.cl/ltl',
+      adc_api: 'https://api-testing.agente.cl/adc',
       public_docs: 'https://docs-econocargo.agente.cl'
     }
     break;    
