@@ -11329,7 +11329,7 @@
 	};
 
 	// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-	var APP_ENV = 'testing';
+	var APP_ENV = 'production';
 	//
 	//
 	//
