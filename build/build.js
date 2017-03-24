@@ -10992,6 +10992,13 @@
 	                switch (load) {
 	                  case 'refresh_order':
 	                    console.info('order updated');
+
+	                    /**
+	                     * Still needs to be fully paid
+	                     */
+	                    if (order.paymentStatus_id < 4) {
+	                      return that.$route.router.go('/payment');
+	                    }
 	                    return;
 	                    break;
 	                }
