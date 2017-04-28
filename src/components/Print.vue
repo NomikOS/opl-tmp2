@@ -50,12 +50,12 @@
       </a>
     </li>
     <li>
-      <a v-if="'pickup' == this.addressType"   @click="print('customer-order-adicionales-pickup')" class="waves-effect waves-light">
+      <a v-if="'pickup' == this.addressType && order.pickup_adicionales_pdf != ''"   @click="print('customer-order-adicionales-pickup')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>adicionales retiro</p>
         </div>
       </a>
-      <a v-if="'delivery' == this.addressType"   @click="print('customer-order-adicionales-delivery')" class="waves-effect waves-light">
+      <a v-if="'delivery' == this.addressType && order.delivery_adicionales_pdf != ''"   @click="print('customer-order-adicionales-delivery')" class="waves-effect waves-light">
         <div class="ac25-main-menu-content">
           <p>adicionales entrega</p>
         </div>
