@@ -11339,7 +11339,7 @@
 	};
 
 	// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-	var APP_ENV = 'production';
+	var APP_ENV = 'testing';
 	//
 	//
 	//
@@ -11585,6 +11585,7 @@
 	// modules are singletons!!!
 	var MICRO_API_URL = _common.urls.micro_api; // import una variable
 	exports.default = {
+	    idWatch: 0,
 	    position: {},
 
 	    startGpsReporting: function startGpsReporting() {
@@ -11602,7 +11603,21 @@
 
 	        console.info('Geolocalización disponible.');
 
-	        setInterval(function () {
+	        if (this.idWatch) {
+	            clearInterval(this.idWatch);
+	        }
+
+	        this.idWatch = setInterval(function () {
+	            var setup = _ls2.default.get('setup');
+	            if (!setup || !setup.vehicleSelected) {
+	                /**
+	                 * eventualmente vehicleSelected sera seteado
+	                 * y en tal caso este loop ya estara corriendo
+	                 */
+	                return;
+	            }
+	            var vehicleSelected = setup.vehicleSelected;
+
 	            navigator.geolocation.getCurrentPosition(function (position) {
 	                currPos.latitude = position.coords.latitude;
 	                currPos.longitude = position.coords.longitude;
@@ -11617,7 +11632,7 @@
 	                    var t = new Date();
 	                    console.info('SENDING TO BACKEND @' + t);
 
-	                    that.send(currPos);
+	                    that.send(currPos, vehicleSelected);
 
 	                    lastPos.latitude = currPos.latitude;
 	                    lastPos.longitude = currPos.longitude;
@@ -11629,9 +11644,10 @@
 	                enableHighAccuracy: true
 	            });
 	        }, 3000); //cada 3 minutos
+
+	        console.info('idWatch', this.idWatch);
 	    },
-	    send: function send(currPos) {
-	        var vehicleSelected = setup.vehicleSelected;
+	    send: function send(currPos, vehicleSelected) {
 	        _vue2.default.http.post(MICRO_API_URL + '/vehicle/', {
 	            vehicle_id: vehicleSelected,
 	            lat: currPos.latitude,
