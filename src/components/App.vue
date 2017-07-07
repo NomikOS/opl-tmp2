@@ -205,9 +205,6 @@
                  ls.save( 'order_id', order.id );
                  ls.save( 'address_type', address_type )
 
-                 console.info( 'GEO.START....' );
-                 geo.start(order, address_type)
-
                  if (load != '') {
 
                   switch ( load ) {
