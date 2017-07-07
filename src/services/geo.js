@@ -28,7 +28,7 @@ export default {
         lastPos.latitude = 0
         lastPos.longitude = 0
 
-        setTimeout( function() {
+        setInterval( function() {
             navigator.geolocation.getCurrentPosition( function( position ) {
                     currPos.latitude = position.coords.latitude
                     currPos.longitude = position.coords.longitude
@@ -36,6 +36,8 @@ export default {
 
                     var d = utils.getDistance( lastPos.latitude, lastPos.longitude, currPos.latitude, currPos.longitude, 'K' )
                     var meters = ( d - 0.01 ) * 1000
+
+                    console.info('meters:', meters);
 
                     if ( meters > 100 ) {
                         var t = new Date()
