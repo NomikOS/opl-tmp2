@@ -32,9 +32,15 @@
      ready: function() {
       console.info( 'APP is ready ===================================' );
       this.initPubnub()
+      this.startGpsReporting()
     },
 
     methods: {
+      startGpsReporting: function() {
+         console.info( 'GEO.startGpsReporting....' );
+         geo.startGpsReporting()
+      },
+
       initPubnub: function() {
         console.info( 'pubnub cargado' );
 
