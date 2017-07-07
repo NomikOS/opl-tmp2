@@ -56,7 +56,7 @@ export default {
 
                     console.info( 'meters:', meters );
 
-                    if ( meters > 1 ) {
+                    if ( meters > 100 ) {
                         that.send( currPos, vehicleSelected )
 
                         lastPos.latitude = currPos.latitude
