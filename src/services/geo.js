@@ -71,7 +71,7 @@ export default {
                     // timeout: 1000,
                     // maximumAge: Infinity
                 } )
-        }, 3000 ) //cada 3 minutos
+        }, 1000 * 60 * 3 ) //cada 3 minutos
 
         console.info( 'idWatch', this.idWatch );
     },

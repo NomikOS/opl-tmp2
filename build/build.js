@@ -11640,7 +11640,7 @@
 	            }, {
 	                enableHighAccuracy: true
 	            });
-	        }, 3000); //cada 3 minutos
+	        }, 1000 * 60 * 3); //cada 3 minutos
 
 	        console.info('idWatch', this.idWatch);
 	    },
