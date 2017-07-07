@@ -11,6 +11,7 @@ import {
 const MICRO_API_URL = urls.micro_api
 
 export default {
+    idWatch: 0,
     position: {
 
     },
@@ -28,28 +29,42 @@ export default {
         lastPos.latitude = 0
         lastPos.longitude = 0
 
-        console.info('Geolocalización disponible.');
+        console.info( 'Geolocalización disponible.' );
 
-        setInterval( function() {
+        if ( this.idWatch ) {
+            clearInterval( this.idWatch )
+        }
+
+        this.idWatch = setInterval( function() {
+            var setup = ls.get( 'setup' )
+            if ( !setup || !setup.vehicleSelected ) {
+                /**
+                 * eventualmente vehicleSelected sera seteado
+                 * y en tal caso este loop ya estara corriendo
+                 */
+                return;
+            }
+            var vehicleSelected = setup.vehicleSelected;
+
             navigator.geolocation.getCurrentPosition( function( position ) {
                     currPos.latitude = position.coords.latitude
                     currPos.longitude = position.coords.longitude
-                    console.info('currPos', currPos);
+                    console.info( 'currPos', currPos );
 
                     var d = utils.getDistance( lastPos.latitude, lastPos.longitude, currPos.latitude, currPos.longitude, 'K' )
                     var meters = ( d - 0.01 ) * 1000
 
-                    console.info('meters:', meters);
+                    console.info( 'meters:', meters );
 
                     if ( meters > 100 ) {
                         var t = new Date()
                         console.info( 'SENDING TO BACKEND @' + t )
 
-                        that.send( currPos )
+                        that.send( currPos, vehicleSelected )
 
                         lastPos.latitude = currPos.latitude
                         lastPos.longitude = currPos.longitude
-                        console.info('lastPos:', lastPos);
+                        console.info( 'lastPos:', lastPos );
                     }
                 },
                 function( err ) {
@@ -60,10 +75,11 @@ export default {
                     // maximumAge: Infinity
                 } )
         }, 3000 ) //cada 3 minutos
+
+        console.info( 'idWatch', this.idWatch );
     },
 
-    send( currPos ) {
-        var vehicleSelected = setup.vehicleSelected;
+    send( currPos, vehicleSelected ) {
         Vue.http.post( MICRO_API_URL + '/vehicle/', {
             vehicle_id: vehicleSelected,
             lat: currPos.latitude,
