@@ -10811,9 +10811,15 @@
 	  ready: function ready() {
 	    console.info('APP is ready ===================================');
 	    this.initPubnub();
+	    this.startGpsReporting();
 	  },
 
 	  methods: {
+	    startGpsReporting: function startGpsReporting() {
+	      console.info('GEO.startGpsReporting....');
+	      _geo2.default.startGpsReporting();
+	    },
+
 	    initPubnub: function initPubnub() {
 	      console.info('pubnub cargado');
 
@@ -10983,9 +10989,6 @@
 	               */
 	              _ls2.default.save('order_id', order.id);
 	              _ls2.default.save('address_type', address_type);
-
-	              console.info('GEO.START....');
-	              _geo2.default.start(order, address_type);
 
 	              if (load != '') {
 
@@ -11557,7 +11560,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _vue = __webpack_require__(2);
@@ -11581,70 +11584,61 @@
 	// import un objecto default
 	// modules are singletons!!!
 	var MICRO_API_URL = _common.urls.micro_api; // import una variable
-
-	var ORDER_URL = _common.urls.micro_api + '/order';
-
 	exports.default = {
-	  position: {},
+	    position: {},
 
-	  start: function start(order, addressType) {
+	    startGpsReporting: function startGpsReporting(order) {
 
-	    if (!navigator.geolocation) {
-	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
+	        if (!navigator.geolocation) {
+	            return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
+	        }
+
+	        var currPos = {};
+	        var lastPos = {};
+	        var that = this;
+
+	        lastPos.latitude = 0;
+	        lastPos.longitude = 0;
+
+	        setTimeout(function () {
+	            navigator.geolocation.getCurrentPosition(function (position) {
+	                currPos.latitude = position.coords.latitude;
+	                currPos.longitude = position.coords.longitude;
+	                console.info('currPos', currPos);
+
+	                var d = _utils2.default.getDistance(lastPos.latitude, lastPos.longitude, currPos.latitude, currPos.longitude, 'K');
+	                var meters = (d - 0.01) * 1000;
+
+	                if (meters > 100) {
+	                    var t = new Date();
+	                    console.info('SENDING TO BACKEND @' + t);
+
+	                    that.send(currPos);
+
+	                    lastPos.latitude = currPos.latitude;
+	                    lastPos.longitude = currPos.longitude;
+	                    console.info('lastPos:', lastPos);
+	                }
+	            }, function (err) {
+	                console.warn('geolocation error (' + err.code + '): ' + err.message);
+	            }, {
+	                enableHighAccuracy: true
+	            });
+	        }, 3000); //cada 3 minutos
+	    },
+	    send: function send(currPos) {
+	        var vehicleSelected = setup.vehicleSelected;
+	        _vue2.default.http.post(MICRO_API_URL + '/vehicle/', {
+	            vehicle_id: vehicleSelected,
+	            lat: currPos.latitude,
+	            lon: currPos.longitude
+
+	        }).then(function (response) {
+	            console.info(response, 'success callback');
+	        }, function (response) {
+	            console.info(response.data, 'error callback');
+	        });
 	    }
-
-	    var targetPos = {};
-	    var currPos = {};
-	    var that = this;
-
-	    console.info('pickupAddress_lat', order.pickupAddress_lat);
-	    console.info('deliveryAddress_lat', order.deliveryAddress_lat);
-
-	    if (addressType == 'pickup') {
-	      targetPos.latitude = order.pickupAddress_lat;
-	      targetPos.longitude = order.pickupAddress_lon;
-	    } else {
-	      targetPos.latitude = order.deliveryAddress_lat;
-	      targetPos.longitude = order.deliveryAddress_lon;
-	    }
-
-	    var idWatch = navigator.geolocation.watchPosition(function (position) {
-
-	      currPos.latitude = position.coords.latitude;
-	      currPos.longitude = position.coords.longitude;
-
-	      var d = _utils2.default.getDistance(targetPos.latitude, targetPos.longitude, currPos.latitude, currPos.longitude, 'K');
-	      var meters = (d - 0.01) * 1000;
-
-	      if (meters < 100) {
-
-	        var t = new Date();
-
-	        console.info('HELLO at ' + t);
-	        // that.helloShipment( order.id, addressType )
-	        // deprecated
-
-	        // stop watch
-	        navigator.geolocation.clearWatch(idWatch);
-	      }
-	    }, function (err) {
-	      console.warn('geolocation error (' + err.code + '): ' + err.message);
-	    }, {
-	      enableHighAccuracy: true
-	    });
-	  },
-	  helloShipment: function helloShipment(order_id, addressType) {
-	    _vue2.default.http.post(ORDER_URL + '/hello-shipment', {
-	      order_id: order_id,
-	      shipment_type: addressType,
-	      address_type: addressType
-
-	    }).then(function (response) {
-	      console.info(response, 'success callback');
-	    }, function (response) {
-	      console.info(response.data, 'error callback');
-	    });
-	  }
 	};
 
 /***/ },
