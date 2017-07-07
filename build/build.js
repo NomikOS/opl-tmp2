@@ -11628,10 +11628,7 @@
 
 	                console.info('meters:', meters);
 
-	                if (meters > 100) {
-	                    var t = new Date();
-	                    console.info('SENDING TO BACKEND @' + t);
-
+	                if (meters > 1) {
 	                    that.send(currPos, vehicleSelected);
 
 	                    lastPos.latitude = currPos.latitude;
@@ -11648,7 +11645,9 @@
 	        console.info('idWatch', this.idWatch);
 	    },
 	    send: function send(currPos, vehicleSelected) {
-	        _vue2.default.http.post(MICRO_API_URL + '/vehicle/', {
+	        var t = new Date();
+	        console.info('SENDING TO BACKEND NOW @' + t);
+	        _vue2.default.http.post(MICRO_API_URL + '/vehicle/update-gps', {
 	            vehicle_id: vehicleSelected,
 	            lat: currPos.latitude,
 	            lon: currPos.longitude
@@ -16185,7 +16184,7 @@
 	//     <!-- <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span> -->
 	//     <!-- <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span> -->
 	//     <span class="left" v-if="user.profile.name">OPERADOR: {{user.profile.name}}</span>
-	//     <span class="right">VER: 0.6</span>
+	//     <span class="right">VER: 0.6.1</span>
 	//     <span class="right"><a v-link="'available'" style="color:white">PING</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a v-link="'setup'" style="color:white">SETUP</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a @click="reset()" style="color:white" v-if="false">RESET</a> &nbsp; | &nbsp; </span>
@@ -16239,7 +16238,7 @@
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6.1</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 29 */

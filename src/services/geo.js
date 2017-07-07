@@ -56,10 +56,7 @@ export default {
 
                     console.info( 'meters:', meters );
 
-                    if ( meters > 100 ) {
-                        var t = new Date()
-                        console.info( 'SENDING TO BACKEND @' + t )
-
+                    if ( meters > 1 ) {
                         that.send( currPos, vehicleSelected )
 
                         lastPos.latitude = currPos.latitude
@@ -80,7 +77,9 @@ export default {
     },
 
     send( currPos, vehicleSelected ) {
-        Vue.http.post( MICRO_API_URL + '/vehicle/', {
+        var t = new Date()
+        console.info( 'SENDING TO BACKEND NOW @' + t )
+        Vue.http.post( MICRO_API_URL + '/vehicle/update-gps', {
             vehicle_id: vehicleSelected,
             lat: currPos.latitude,
             lon: currPos.longitude
