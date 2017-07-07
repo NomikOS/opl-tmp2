@@ -15,7 +15,7 @@ export default {
 
     },
 
-    startGpsReporting( order ) {
+    startGpsReporting() {
 
         if ( !navigator.geolocation ) {
             return alert( 'Geolocalización no disponible. Reinicie aplicación o informe a la central' )
@@ -27,6 +27,8 @@ export default {
 
         lastPos.latitude = 0
         lastPos.longitude = 0
+
+        console.info('Geolocalización disponible.');
 
         setInterval( function() {
             navigator.geolocation.getCurrentPosition( function( position ) {
