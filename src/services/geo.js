@@ -23,13 +23,9 @@ export default {
         }
 
         var currPos = {}
-        var lastPos = {}
         var that = this
 
-        lastPos.latitude = 0
-        lastPos.longitude = 0
-
-        console.info( 'Geolocalización disponible.' );
+        console.info( 'Geolocalización disponible: OK' );
 
         if ( this.idWatch ) {
             clearInterval( this.idWatch )
@@ -51,18 +47,10 @@ export default {
                     currPos.longitude = position.coords.longitude
                     console.info( 'currPos', currPos );
 
-                    var d = utils.getDistance( lastPos.latitude, lastPos.longitude, currPos.latitude, currPos.longitude, 'K' )
-                    var meters = ( d - 0.01 ) * 1000
-
-                    console.info( 'meters:', meters );
-
-                    if ( meters > 100 ) {
-                        that.send( currPos, vehicleSelected )
-
-                        lastPos.latitude = currPos.latitude
-                        lastPos.longitude = currPos.longitude
-                        console.info( 'lastPos:', lastPos );
-                    }
+                    /**
+                     * Send to backend
+                     */
+                    that.send( currPos, vehicleSelected )
                 },
                 function( err ) {
                     console.warn( 'geolocation error (' + err.code + '): ' + err.message )
@@ -71,7 +59,7 @@ export default {
                     // timeout: 1000,
                     // maximumAge: Infinity
                 } )
-        }, 1000 * 60 * 3 ) //cada 3 minutos
+        }, 1000 * 60 * 3 ) // cada 3 minutos
 
         console.info( 'idWatch', this.idWatch );
     },

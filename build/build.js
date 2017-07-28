@@ -11595,13 +11595,9 @@
 	        }
 
 	        var currPos = {};
-	        var lastPos = {};
 	        var that = this;
 
-	        lastPos.latitude = 0;
-	        lastPos.longitude = 0;
-
-	        console.info('Geolocalización disponible.');
+	        console.info('Geolocalización disponible: OK');
 
 	        if (this.idWatch) {
 	            clearInterval(this.idWatch);
@@ -11623,24 +11619,16 @@
 	                currPos.longitude = position.coords.longitude;
 	                console.info('currPos', currPos);
 
-	                var d = _utils2.default.getDistance(lastPos.latitude, lastPos.longitude, currPos.latitude, currPos.longitude, 'K');
-	                var meters = (d - 0.01) * 1000;
-
-	                console.info('meters:', meters);
-
-	                if (meters > 100) {
-	                    that.send(currPos, vehicleSelected);
-
-	                    lastPos.latitude = currPos.latitude;
-	                    lastPos.longitude = currPos.longitude;
-	                    console.info('lastPos:', lastPos);
-	                }
+	                /**
+	                 * Send to backend
+	                 */
+	                that.send(currPos, vehicleSelected);
 	            }, function (err) {
 	                console.warn('geolocation error (' + err.code + '): ' + err.message);
 	            }, {
 	                enableHighAccuracy: true
 	            });
-	        }, 1000 * 60 * 3); //cada 3 minutos
+	        }, 1000 * 60 * 3); // cada 3 minutos
 
 	        console.info('idWatch', this.idWatch);
 	    },
@@ -16184,7 +16172,7 @@
 	//     <!-- <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span> -->
 	//     <!-- <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span> -->
 	//     <span class="left" v-if="user.profile.name">OPERADOR: {{user.profile.name}}</span>
-	//     <span class="right">VER: 0.6.3</span>
+	//     <span class="right">VER: 0.6.4</span>
 	//     <span class="right"><a v-link="'available'" style="color:white">PING</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a v-link="'setup'" style="color:white">SETUP</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a @click="reset()" style="color:white" v-if="false">RESET</a> &nbsp; | &nbsp; </span>
@@ -16238,7 +16226,7 @@
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6.3</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6.4</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 29 */
