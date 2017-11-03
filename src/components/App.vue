@@ -221,6 +221,7 @@
                       * Still needs to be fully paid
                       */
                       if (order.paymentStatus_id < 4) {
+                        console.info('Still needs to be fully paid')
                         return that.$route.router.go( '/payment' )
                       }
                       return
@@ -232,6 +233,7 @@
                   * Still needs to be acepted or arrive to pickcup
                   */
                  if (show_acknowledge || show_in_position) {
+                  console.info('Still needs to be acepted or arrive to pickcup')
                   return that.$route.router.go( '/stand-by' )
                  }
 
@@ -239,6 +241,7 @@
                   * Still needs to be fully paid
                   */
                   if (order.paymentStatus_id < 4) {
+                    console.info('Still needs to be fully paid')
                     return that.$route.router.go( '/payment' )
                   }
 

@@ -58,8 +58,9 @@
       <button-print></button-print>
       <button-scan></button-scan>
       <div class="clearfix"></div>
-      <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
-      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining <= 0">cargar</a>
+<!--       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining <= 0">cargar</a> -->
+      <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">cargar</a>
       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
     </footer><!-- end footer -->
   </div><!-- end content-global -->

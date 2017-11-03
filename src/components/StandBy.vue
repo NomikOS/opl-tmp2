@@ -24,17 +24,10 @@
               <p class="ac25-info-list-title white-color"> direccion </p>
               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
             </li>
-          </ul>
-          <!-- end info-list -->
-          <ul class="ac25-info-list ac25-w100 ac25-steps2">
             <li>
               <p class="ac25-info-list-title white-color"> Deparmento </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
-            </li>
-            <li>
-              <p class="ac25-info-list-title white-color"> Comuna </p>
-              <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
-            </li>
+              <p class="ac25-info-list-content"> {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A' }} </p>
+            </li>            
           </ul>
           <!-- end steps2 -->
           <ul class="ac25-info-list ac25-w100 ac25-steps3">
