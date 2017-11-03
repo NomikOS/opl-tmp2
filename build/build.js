@@ -11000,6 +11000,7 @@
 	                     * Still needs to be fully paid
 	                     */
 	                    if (order.paymentStatus_id < 4) {
+	                      console.info('Still needs to be fully paid');
 	                      return that.$route.router.go('/payment');
 	                    }
 	                    return;
@@ -11011,6 +11012,7 @@
 	               * Still needs to be acepted or arrive to pickcup
 	               */
 	              if (show_acknowledge || show_in_position) {
+	                console.info('Still needs to be acepted or arrive to pickcup');
 	                return that.$route.router.go('/stand-by');
 	              }
 
@@ -11018,6 +11020,7 @@
 	               * Still needs to be fully paid
 	               */
 	              if (order.paymentStatus_id < 4) {
+	                console.info('Still needs to be fully paid');
 	                return that.$route.router.go('/payment');
 	              }
 
@@ -11338,8 +11341,8 @@
 	  logglyKey: '7c87aa29-08f3-429f-9df7-a4c224bc9114'
 	};
 
-	// var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-	var APP_ENV = 'production';
+	var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production';
+	// var APP_ENV = 'testing'
 	//
 	//
 	//
@@ -15600,17 +15603,10 @@
 	//               <p class="ac25-info-list-title white-color"> direccion </p>
 	//               <p class="ac25-info-list-content"> {{order.pickupAddress_name}} </p>
 	//             </li>
-	//           </ul>
-	//           <!-- end info-list -->
-	//           <ul class="ac25-info-list ac25-w100 ac25-steps2">
 	//             <li>
 	//               <p class="ac25-info-list-title white-color"> Deparmento </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_apt}} </p>
-	//             </li>
-	//             <li>
-	//               <p class="ac25-info-list-title white-color"> Comuna </p>
-	//               <p class="ac25-info-list-content"> {{order.pickupAddress_county}} </p>
-	//             </li>
+	//               <p class="ac25-info-list-content"> {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A' }} </p>
+	//             </li>            
 	//           </ul>
 	//           <!-- end steps2 -->
 	//           <ul class="ac25-info-list ac25-w100 ac25-steps3">
@@ -16172,7 +16168,7 @@
 	//     <!-- <span class="left" v-if="!user.authenticated">Aplicación no disponible hasta autorizar usuario</span> -->
 	//     <!-- <span class="left" v-if="user.authenticated">OPERADOR: {{user.profile.name}}</span> -->
 	//     <span class="left" v-if="user.profile.name">OPERADOR: {{user.profile.name}}</span>
-	//     <span class="right">VER: 0.6.4</span>
+	//     <span class="right">VER: 0.6.5</span>
 	//     <span class="right"><a v-link="'available'" style="color:white">PING</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a v-link="'setup'" style="color:white">SETUP</a> &nbsp; | &nbsp; </span>
 	//     <span class="right"><a @click="reset()" style="color:white" v-if="false">RESET</a> &nbsp; | &nbsp; </span>
@@ -16226,7 +16222,7 @@
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6.4</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
+	module.exports = "\n  <div class=\"ac25-top-bar ac25-border-bottom\">\n   <div class=\"container\">\n    <!-- <span class=\"left\" v-if=\"!user.authenticated\">Aplicación no disponible hasta autorizar usuario</span> -->\n    <!-- <span class=\"left\" v-if=\"user.authenticated\">OPERADOR: {{user.profile.name}}</span> -->\n    <span class=\"left\" v-if=\"user.profile.name\">OPERADOR: {{user.profile.name}}</span>\n    <span class=\"right\">VER: 0.6.5</span>\n    <span class=\"right\"><a v-link=\"'available'\" style=\"color:white\">PING</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a v-link=\"'setup'\" style=\"color:white\">SETUP</a> &nbsp; | &nbsp; </span>\n    <span class=\"right\"><a @click=\"reset()\" style=\"color:white\" v-if=\"false\">RESET</a> &nbsp; | &nbsp; </span>\n  </div><!-- end .container -->\n</div><!-- end .top-bar -->\n";
 
 /***/ },
 /* 29 */
@@ -17851,7 +17847,7 @@
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\" v-if=\"!order.id\">\n        <h5>Esperando Evento...</h5>\n        <img src=\"" + __webpack_require__(32) + "\" alt=\"\" />\n      </div>\n      <div class=\"progress-info\" v-if=\"order.id\">\n        <h5>{{order.special_id}}<br /><br />EN PROGRESO </h5>\n        <br />\n        <img src=\"" + __webpack_require__(33) + "\" alt=\"\" />\n        <div v-if=\"addressType == 'pickup'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A' }} </p>\n            </li>            \n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n        <div v-if=\"addressType == 'delivery'\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> nombre </p>\n              <p class=\"ac25-info-list-content\"> {{ infoName }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> telefono </p>\n              <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> direccion </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n            </li>\n          </ul>\n          <!-- end info-list -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Deparmento </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> Comuna </p>\n              <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n            </li>\n          </ul>\n          <!-- end steps2 -->\n          <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> MTS3 </p>\n              <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> bultos </p>\n              <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-title white-color\"> peso </p>\n              <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n            </li>\n          </ul><!-- end steps3 -->\n        </div>\n      </div>\n    </div>\n    <img class=\"ac25-top-right-hand ac25-loading\" src=\"" + __webpack_require__(34) + "\" v-link=\"'call'\" />\n  </div>\n  <!-- end red-loading-section -->\n  <footer class=\"ac25-newfoot\">\n    <a @click=\"aknowledge()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_acknowledge\">ACEPTAR</a>\n    <a @click=\"inPosition()\" class=\"ac25-full-black waves-effect waves-light\" v-if=\"order.id && show_in_position\">EN EL LUGAR</a>\n    <a v-link=\"'logout'\" class=\"ac25-full-black waves-effect waves-light\">CERRAR SESSION</a>\n  </footer>\n  <!-- end footer -->\n";
 
 /***/ },
 /* 32 */
@@ -18378,8 +18374,9 @@
 	//       <button-print></button-print>
 	//       <button-scan></button-scan>
 	//       <div class="clearfix"></div>
-	//       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
-	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining <= 0">cargar</a>
+	// <!--       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining <= 0">cargar</a> -->
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">cargar</a>
 	//       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
 	//     </footer><!-- end footer -->
 	//   </div><!-- end content-global -->
@@ -18706,15 +18703,18 @@
 	// </script>
 	//
 	// <template>
-	//   <a v-if="counters.items_to_scan_remaining > 0" v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
+	//       <a class="ac25-half-black  right waves-effect waves-light">  
+	//       <img src="../html/images/barcode-big-2.png" />
+	//       <p class="ac25-no-margin">Escaneo deshabilitado</p>  
+	//       </a>
+	// <!--   <a v-if="counters.items_to_scan_remaining > 0" v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
 	//       <img src="../html/images/barcode-big-2.png" />
 	//       <p class="ac25-no-margin">escanear ({{counters.items_to_scan_remaining}})</p>
 	//   </a>
-	//
 	//   <a v-if="counters.items_to_scan_remaining <= 0" class="ac25-half-black  right waves-effect waves-light" style="cursor:default">
 	//       <img src="../html/images/barcode-big-2.png" />
 	//       <p class="ac25-no-margin">escaneo listo</p>
-	//   </a>
+	//   </a> -->
 	// </template>
 	//
 	// <script>
@@ -18723,7 +18723,7 @@
 /* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <a v-if=\"counters.items_to_scan_remaining > 0\" v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n      <img src=\"" + __webpack_require__(61) + "\" />\n      <p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n  </a>\n\n  <a v-if=\"counters.items_to_scan_remaining <= 0\" class=\"ac25-half-black  right waves-effect waves-light\" style=\"cursor:default\">\n      <img src=\"" + __webpack_require__(61) + "\" />\n      <p class=\"ac25-no-margin\">escaneo listo</p>\n  </a>\n";
+	module.exports = "\n      <a class=\"ac25-half-black  right waves-effect waves-light\">  \n      <img src=\"" + __webpack_require__(61) + "\" />\n      <p class=\"ac25-no-margin\">Escaneo deshabilitado</p>  \n      </a>\n<!--   <a v-if=\"counters.items_to_scan_remaining > 0\" v-link=\"'scan'\" class=\"ac25-half-black  right waves-effect waves-light\">\n      <img src=\"" + __webpack_require__(61) + "\" />\n      <p class=\"ac25-no-margin\">escanear ({{counters.items_to_scan_remaining}})</p>\n  </a>\n  <a v-if=\"counters.items_to_scan_remaining <= 0\" class=\"ac25-half-black  right waves-effect waves-light\" style=\"cursor:default\">\n      <img src=\"" + __webpack_require__(61) + "\" />\n      <p class=\"ac25-no-margin\">escaneo listo</p>\n  </a> -->\n";
 
 /***/ },
 /* 61 */
@@ -18735,7 +18735,7 @@
 /* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(64) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{ infoName }}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(64) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id_pickup}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{ infoName }}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.pickupAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n<!--       <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining <= 0\">cargar</a> -->\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">cargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 63 */
@@ -18863,8 +18863,9 @@
 	//       <button-print></button-print>
 	//       <button-scan></button-scan>
 	//       <div class="clearfix"></div>
-	//       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
-	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">descargar</a>
+	// <!--       <a class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining > 0">&nbsp;</a>
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light" v-if="counters.items_to_scan_remaining == 0">descargar</a> -->
+	//       <a v-link="'load-vehicle'" class="ac25-half-black ac25-half-border-right left waves-effect waves-light">descargar</a>      
 	//       <a v-link="'payment'" class="ac25-half-red right waves-effect waves-light">pagos</a>
 	//     </footer><!-- end footer -->
 	//   </div><!-- end content-global -->
@@ -18913,7 +18914,7 @@
 /* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(68) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{ infoName }}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n      <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a>\n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder\">\n\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n\n        <img class=\"ac25-page-top-logo\" src=\"" + __webpack_require__(68) + "\" />\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n\n        <ul class=\"ac25-info-list ac25-w100\">\n          <li>\n            <p class=\"ac25-info-list-title\"> nombre </p>\n            <p class=\"ac25-info-list-content\"> {{ infoName }}  </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> telefono </p>\n            <p class=\"ac25-info-list-content\"> {{ infoPhone }} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> direccion </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_name}} </p>\n          </li>\n        </ul><!-- end info-list -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps2\">\n          <li>\n            <p class=\"ac25-info-list-title\"> Deparmento </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_apt}} </p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> Comuna </p>\n            <p class=\"ac25-info-list-content\"> {{order.deliveryAddress_county}} </p>\n          </li>\n        </ul><!-- end steps2 -->\n\n        <ul class=\"ac25-info-list ac25-w100 ac25-steps3\">\n          <li>\n            <p class=\"ac25-info-list-title\"> MTS3 </p>\n            <p class=\"ac25-info-list-content\">{{order.items_volume}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> bultos </p>\n            <p class=\"ac25-info-list-content\">{{order.items_amount}}</p>\n          </li>\n          <li>\n            <p class=\"ac25-info-list-title\"> peso </p>\n            <p class=\"ac25-info-list-content\">n/a<!-- {{order.items_weight}} --></p>\n          </li>\n        </ul><!-- end steps3 -->\n      </div><!-- end content-inner-holder -->\n    </div><!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <button-print></button-print>\n      <button-scan></button-scan>\n      <div class=\"clearfix\"></div>\n<!--       <a class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining > 0\">&nbsp;</a>\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\" v-if=\"counters.items_to_scan_remaining == 0\">descargar</a> -->\n      <a v-link=\"'load-vehicle'\" class=\"ac25-half-black ac25-half-border-right left waves-effect waves-light\">descargar</a>      \n      <a v-link=\"'payment'\" class=\"ac25-half-red right waves-effect waves-light\">pagos</a>\n    </footer><!-- end footer -->\n  </div><!-- end content-global -->\n";
 
 /***/ },
 /* 68 */
@@ -21041,6 +21042,10 @@
 	  value: true
 	});
 
+	var _defineProperty2 = __webpack_require__(52);
+
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 	var _common = __webpack_require__(7);
 
 	var _HeaderUserData = __webpack_require__(22);
@@ -21082,25 +21087,48 @@
 	//       <div class="ac25-content-inner-holder padding-bottom-none row">
 	//         <h4 class="ac25-top-red-text">ESTADO DE CUENTA</h4>
 	//         <p class="ac25-order-number-info">
-	//           <span>orden {{order.special_id}}</span>
+	//           <span>ORDEN {{order.special_id}}</span>
 	//           <notification-icon></notification-icon>
 	//         </p>
 	//         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
 	//       </div>
-	//       <!-- end content-inner-holder -->
+	//
 	//       <div class="ac25-content-inner-holder without-padding-bottom row">
-	//         <p class="estados-top"> <span>PRECIO</span> <span class="estados-price">{{ order.price_printable }}</span> </p>
 	//         <div class="row">
 	//           <div class="col s12">
+	//           <ul class="ac25-info-list ac25-w100">
+	//             <li>
+	//               <p class="ac25-info-list-content"> nombre: {{ infoName}} </p>
+	//             </li>
+	//             <li>
+	//               <p class="ac25-info-list-content"> teléfono: {{ infoPhone }} </p>
+	//             </li>
+	//             <li>
+	//               <p class="ac25-info-list-content"> dirección: {{order.pickupAddress_name}} </p>
+	//             </li>
+	//             <li>
+	//               <p class="ac25-info-list-content"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>
+	//             </li>            
+	//             <li>
+	//               <p class="ac25-info-list-content">MTS3: {{order.items_volume}}</p>
+	//             </li>            
+	//             <li>
+	//               <p class="ac25-info-list-content">bultos: {{order.items_amount}}</p>
+	//             </li>            
+	//             <li>
+	//               <p class="ac25-info-list-content">precio: {{order.price_printable}}</p>
+	//             </li>                        
+	//           </ul>
+	//         </div>
+	//         </div>
 	//             <div class="estados-box">
-	//               <p class="estados-title border"> Pago </p>
 	//               <p class="estados-middle yellow" v-if="order.paymentStatus_id != 3" v-bind:style="{ background: order.paymentStatus_color }">{{ order.paymentStatus_name }}</p>
 	//               <p class="estados-middle yellow" v-if="order.paymentStatus_id == 3" v-bind:style="{ background: order.paymentStatus_color }">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>
-	//             </div>
-	//           </div>
-	//         </div>
+	//             </div>        
 	//       </div>
-	//       <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments">
+	//
+	//       <!-- end content-inner-holder -->
+	//       <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array">
 	//         <p class="big-title sub"> Listado de pagos</p>
 	//         <table class="standard-table version2">
 	//           <thead>
@@ -21110,8 +21138,8 @@
 	//               <th>Medio de Pago</th>
 	//             </tr>
 	//           </thead>
-	//             <tr v-for="payment in payments" class="border-solid">
-	//               <td><p class="border-red-bottom">{{ payment.total_amount }}</p></td>
+	//             <tr v-for="payment in order.payments_array" class="border-solid">
+	//               <td><p class="border-red-bottom">${{ payment.total_amount }}</p></td>
 	//               <td><p class="border-red-bottom">{{ payment.created_at }}</p></td>
 	//               <td><p class="border-red-bottom">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>
 	//             </tr>
@@ -21137,7 +21165,7 @@
 
 	var MICRO_API_URL = _common.urls.micro_api;
 
-	exports.default = {
+	exports.default = (0, _defineProperty3.default)({
 	  name: 'Payment',
 	  components: {
 	    HeaderUserData: _HeaderUserData2.default,
@@ -21201,14 +21229,23 @@
 	    console.info('=================================== Payment is ready with this order: ', this.order.id);
 	    this.reload();
 	  }
-	};
+	}, 'computed', {
+	  infoName: function infoName() {
+	    var name = this.order[this.addressType + 'Address_forperson'];
+	    return name === '-' ? this.order.customer.name : name;
+	  },
+	  infoPhone: function infoPhone() {
+	    var phone = this.order[this.addressType + 'Address_forperson_phone'];
+	    return phone === '-' ? this.order.customer.phone : phone;
+	  }
+	});
 	// </script>
 
 /***/ },
 /* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>orden {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <p class=\"estados-top\"> <span>PRECIO</span> <span class=\"estados-price\">{{ order.price_printable }}</span> </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <div class=\"estados-box\">\n              <p class=\"estados-title border\"> Pago </p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n            <tr v-for=\"payment in payments\" class=\"border-solid\">\n              <td><p class=\"border-red-bottom\">{{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n          <ul class=\"ac25-info-list ac25-w100\">\n            <li>\n              <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n            </li>\n            <li>\n              <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n            </li>            \n            <li>\n              <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n            </li>            \n            <li>\n              <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n            </li>            \n            <li>\n              <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n            </li>                        \n          </ul>\n        </div>\n        </div>\n            <div class=\"estados-box\">\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n              <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE<br />${{order.paymentRemaining}}</p>\n            </div>        \n      </div>\n\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n            <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n              <td><p class=\"border-red-bottom\">${{ payment.total_amount }}</p></td>\n              <td><p class=\"border-red-bottom\">{{ payment.created_at }}</p></td>\n              <td><p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p></td>\n            </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 109 */
