@@ -48,7 +48,7 @@
       </div>
 
       <!-- end content-inner-holder -->
-      <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array">
+      <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array.length">
         <p class="big-title sub"> Listado de pagos</p>
         <table class="standard-table version2">
           <thead>
