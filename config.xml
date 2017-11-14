@@ -66,13 +66,11 @@
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm" />
     <gap:plugin name="org.apache.cordova.vibration" source="npm" />
  -->
-    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-geolocation" spec="~2.4.3" />
     <plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-device" />
-    <plugin name="cordova-plugin-file" />
+    <plugin name="cordova-plugin-file" spec="~4.3.0" />
     <plugin name="cordova-plugin-file-transfer"/>
-    <plugin name="cordova-plugin-media" />
-    <plugin name="cordova-plugin-media-capture"/>
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
