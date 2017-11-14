@@ -27,6 +27,7 @@ export default {
       console.info( navigator )
       console.info( navigator.camera )
       console.info( navigator.device )
+      console.info( cordova )
       console.info( phonegap )
 
       if ( typeof navigator.device === 'undefined' ) {
