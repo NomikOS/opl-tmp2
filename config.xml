@@ -76,6 +76,7 @@
     <plugin name="cordova-plugin-camera" spec="~0.3.6" />
     <plugin name="cordova-plugin-file" spec="~1.3.3" />
     <plugin name="cordova-plugin-file-transfer"/>
+    <plugin name="cordova-plugin-device" />
     <plugin name="cordova-plugin-media-capture" spec="~0.3.6" />
 
     <!-- Third party plugins -->
