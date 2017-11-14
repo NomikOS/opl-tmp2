@@ -21522,7 +21522,7 @@
 
 	      console.info(navigator);
 	      console.info(navigator.camera);
-	      console.info(navigator.device);
+	      console.info(navigator.device.capture);
 
 	      if (typeof navigator.device === 'undefined') {
 	        return alert('Camera device needed', 'No hay acceso a la cámara.');
