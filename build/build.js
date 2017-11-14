@@ -130,55 +130,55 @@
 
 	var _Payment2 = _interopRequireDefault(_Payment);
 
-	var _Call = __webpack_require__(142);
+	var _Call = __webpack_require__(112);
 
 	var _Call2 = _interopRequireDefault(_Call);
 
-	var _Logout = __webpack_require__(145);
+	var _Logout = __webpack_require__(115);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _Redirecting = __webpack_require__(148);
+	var _Redirecting = __webpack_require__(118);
 
 	var _Redirecting2 = _interopRequireDefault(_Redirecting);
 
-	var _Available = __webpack_require__(151);
+	var _Available = __webpack_require__(121);
 
 	var _Available2 = _interopRequireDefault(_Available);
 
-	var _ScanSuccesful = __webpack_require__(154);
+	var _ScanSuccesful = __webpack_require__(124);
 
 	var _ScanSuccesful2 = _interopRequireDefault(_ScanSuccesful);
 
-	var _ScanFailed = __webpack_require__(157);
+	var _ScanFailed = __webpack_require__(127);
 
 	var _ScanFailed2 = _interopRequireDefault(_ScanFailed);
 
-	var _ScanFinished = __webpack_require__(160);
+	var _ScanFinished = __webpack_require__(130);
 
 	var _ScanFinished2 = _interopRequireDefault(_ScanFinished);
 
-	var _ScanSuccesfulTrip = __webpack_require__(164);
+	var _ScanSuccesfulTrip = __webpack_require__(134);
 
 	var _ScanSuccesfulTrip2 = _interopRequireDefault(_ScanSuccesfulTrip);
 
-	var _ScanFailedTrip = __webpack_require__(167);
+	var _ScanFailedTrip = __webpack_require__(137);
 
 	var _ScanFailedTrip2 = _interopRequireDefault(_ScanFailedTrip);
 
-	var _ScanFinishedTrip = __webpack_require__(170);
+	var _ScanFinishedTrip = __webpack_require__(140);
 
 	var _ScanFinishedTrip2 = _interopRequireDefault(_ScanFinishedTrip);
 
-	var _vueRouter = __webpack_require__(173);
+	var _vueRouter = __webpack_require__(143);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vueResource = __webpack_require__(174);
+	var _vueResource = __webpack_require__(144);
 
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 
-	var _vueSweetalert = __webpack_require__(182);
+	var _vueSweetalert = __webpack_require__(152);
 
 	var _vueSweetalert2 = _interopRequireDefault(_vueSweetalert);
 
@@ -21017,7 +21017,7 @@
 	var __vue_script__, __vue_template__
 	__webpack_require__(107)
 	__vue_script__ = __webpack_require__(109)
-	__vue_template__ = __webpack_require__(141)
+	__vue_template__ = __webpack_require__(111)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -21486,10 +21486,6 @@
 	  value: true
 	});
 
-	var _typeof2 = __webpack_require__(111);
-
-	var _typeof3 = _interopRequireDefault(_typeof2);
-
 	var _vue = __webpack_require__(2);
 
 	var _vue2 = _interopRequireDefault(_vue);
@@ -21521,7 +21517,13 @@
 	    console.info('#ec_choose_transfer_camera', $('#ec_choose_transfer_camera').length);
 
 	    $('#ec_choose_transfer_camera').on('click', function () {
-	      console.info((0, _typeof3.default)(navigator.device));
+
+	      console.info(navigator);
+	      console.info(navigator.camera);
+	      console.info(navigator.device);
+	      console.info(cordova);
+	      console.info(phonegap);
+
 	      if (typeof navigator.device === 'undefined') {
 	        return alert('Camera device needed', 'No hay acceso a la cámara.');
 	      }
@@ -21771,616 +21773,15 @@
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	var _Symbol = __webpack_require__(112)["default"];
-
-	exports["default"] = function (obj) {
-	  return obj && obj.constructor === _Symbol ? "symbol" : typeof obj;
-	};
-
-	exports.__esModule = true;
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!--\nRedcompra\nTarjeta de crédito\n2) Ingresar:\nvoucher (foto)\nmonto (textbox)\ncód. autorización (textbox) -->\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Elija </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo1\" value=\"redcompra\">\n                  <label for=\"ingreso_pago_tipo1\">Redcompra</label>\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo2\" value=\"creditcard\">\n                  <label for=\"ingreso_pago_tipo2\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingreso voucher </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\">\n                  </div>\n                  <!-- ec_receipt_submit_buttons -->\n                  <div id=\"ec_receipt_submit_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\">\n                    <!-- ec_choose_transfer_retry -->\n                    <input type=\"button\" id=\"ec_choose_transfer_retry\" value=\"Subir o fotografiar de nuevo\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingrese </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  Monto de pago\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n                <p class=\"ac25-info-list-content\">\n                  Código de autorización\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(113), __esModule: true };
-
-/***/ },
-/* 113 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(114);
-	__webpack_require__(140);
-	module.exports = __webpack_require__(12).Symbol;
-
-/***/ },
-/* 114 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// ECMAScript 6 symbols shim
-	var $              = __webpack_require__(55)
-	  , global         = __webpack_require__(115)
-	  , has            = __webpack_require__(116)
-	  , DESCRIPTORS    = __webpack_require__(117)
-	  , $export        = __webpack_require__(119)
-	  , redefine       = __webpack_require__(122)
-	  , $fails         = __webpack_require__(118)
-	  , shared         = __webpack_require__(125)
-	  , setToStringTag = __webpack_require__(126)
-	  , uid            = __webpack_require__(128)
-	  , wks            = __webpack_require__(127)
-	  , keyOf          = __webpack_require__(129)
-	  , $names         = __webpack_require__(134)
-	  , enumKeys       = __webpack_require__(135)
-	  , isArray        = __webpack_require__(136)
-	  , anObject       = __webpack_require__(137)
-	  , toIObject      = __webpack_require__(130)
-	  , createDesc     = __webpack_require__(124)
-	  , getDesc        = $.getDesc
-	  , setDesc        = $.setDesc
-	  , _create        = $.create
-	  , getNames       = $names.get
-	  , $Symbol        = global.Symbol
-	  , $JSON          = global.JSON
-	  , _stringify     = $JSON && $JSON.stringify
-	  , setter         = false
-	  , HIDDEN         = wks('_hidden')
-	  , isEnum         = $.isEnum
-	  , SymbolRegistry = shared('symbol-registry')
-	  , AllSymbols     = shared('symbols')
-	  , useNative      = typeof $Symbol == 'function'
-	  , ObjectProto    = Object.prototype;
-
-	// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-	var setSymbolDesc = DESCRIPTORS && $fails(function(){
-	  return _create(setDesc({}, 'a', {
-	    get: function(){ return setDesc(this, 'a', {value: 7}).a; }
-	  })).a != 7;
-	}) ? function(it, key, D){
-	  var protoDesc = getDesc(ObjectProto, key);
-	  if(protoDesc)delete ObjectProto[key];
-	  setDesc(it, key, D);
-	  if(protoDesc && it !== ObjectProto)setDesc(ObjectProto, key, protoDesc);
-	} : setDesc;
-
-	var wrap = function(tag){
-	  var sym = AllSymbols[tag] = _create($Symbol.prototype);
-	  sym._k = tag;
-	  DESCRIPTORS && setter && setSymbolDesc(ObjectProto, tag, {
-	    configurable: true,
-	    set: function(value){
-	      if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
-	      setSymbolDesc(this, tag, createDesc(1, value));
-	    }
-	  });
-	  return sym;
-	};
-
-	var isSymbol = function(it){
-	  return typeof it == 'symbol';
-	};
-
-	var $defineProperty = function defineProperty(it, key, D){
-	  if(D && has(AllSymbols, key)){
-	    if(!D.enumerable){
-	      if(!has(it, HIDDEN))setDesc(it, HIDDEN, createDesc(1, {}));
-	      it[HIDDEN][key] = true;
-	    } else {
-	      if(has(it, HIDDEN) && it[HIDDEN][key])it[HIDDEN][key] = false;
-	      D = _create(D, {enumerable: createDesc(0, false)});
-	    } return setSymbolDesc(it, key, D);
-	  } return setDesc(it, key, D);
-	};
-	var $defineProperties = function defineProperties(it, P){
-	  anObject(it);
-	  var keys = enumKeys(P = toIObject(P))
-	    , i    = 0
-	    , l = keys.length
-	    , key;
-	  while(l > i)$defineProperty(it, key = keys[i++], P[key]);
-	  return it;
-	};
-	var $create = function create(it, P){
-	  return P === undefined ? _create(it) : $defineProperties(_create(it), P);
-	};
-	var $propertyIsEnumerable = function propertyIsEnumerable(key){
-	  var E = isEnum.call(this, key);
-	  return E || !has(this, key) || !has(AllSymbols, key) || has(this, HIDDEN) && this[HIDDEN][key]
-	    ? E : true;
-	};
-	var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key){
-	  var D = getDesc(it = toIObject(it), key);
-	  if(D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key]))D.enumerable = true;
-	  return D;
-	};
-	var $getOwnPropertyNames = function getOwnPropertyNames(it){
-	  var names  = getNames(toIObject(it))
-	    , result = []
-	    , i      = 0
-	    , key;
-	  while(names.length > i)if(!has(AllSymbols, key = names[i++]) && key != HIDDEN)result.push(key);
-	  return result;
-	};
-	var $getOwnPropertySymbols = function getOwnPropertySymbols(it){
-	  var names  = getNames(toIObject(it))
-	    , result = []
-	    , i      = 0
-	    , key;
-	  while(names.length > i)if(has(AllSymbols, key = names[i++]))result.push(AllSymbols[key]);
-	  return result;
-	};
-	var $stringify = function stringify(it){
-	  if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
-	  var args = [it]
-	    , i    = 1
-	    , $$   = arguments
-	    , replacer, $replacer;
-	  while($$.length > i)args.push($$[i++]);
-	  replacer = args[1];
-	  if(typeof replacer == 'function')$replacer = replacer;
-	  if($replacer || !isArray(replacer))replacer = function(key, value){
-	    if($replacer)value = $replacer.call(this, key, value);
-	    if(!isSymbol(value))return value;
-	  };
-	  args[1] = replacer;
-	  return _stringify.apply($JSON, args);
-	};
-	var buggyJSON = $fails(function(){
-	  var S = $Symbol();
-	  // MS Edge converts symbol values to JSON as {}
-	  // WebKit converts symbol values to JSON as null
-	  // V8 throws on boxed symbols
-	  return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
-	});
-
-	// 19.4.1.1 Symbol([description])
-	if(!useNative){
-	  $Symbol = function Symbol(){
-	    if(isSymbol(this))throw TypeError('Symbol is not a constructor');
-	    return wrap(uid(arguments.length > 0 ? arguments[0] : undefined));
-	  };
-	  redefine($Symbol.prototype, 'toString', function toString(){
-	    return this._k;
-	  });
-
-	  isSymbol = function(it){
-	    return it instanceof $Symbol;
-	  };
-
-	  $.create     = $create;
-	  $.isEnum     = $propertyIsEnumerable;
-	  $.getDesc    = $getOwnPropertyDescriptor;
-	  $.setDesc    = $defineProperty;
-	  $.setDescs   = $defineProperties;
-	  $.getNames   = $names.get = $getOwnPropertyNames;
-	  $.getSymbols = $getOwnPropertySymbols;
-
-	  if(DESCRIPTORS && !__webpack_require__(139)){
-	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
-	  }
-	}
-
-	var symbolStatics = {
-	  // 19.4.2.1 Symbol.for(key)
-	  'for': function(key){
-	    return has(SymbolRegistry, key += '')
-	      ? SymbolRegistry[key]
-	      : SymbolRegistry[key] = $Symbol(key);
-	  },
-	  // 19.4.2.5 Symbol.keyFor(sym)
-	  keyFor: function keyFor(key){
-	    return keyOf(SymbolRegistry, key);
-	  },
-	  useSetter: function(){ setter = true; },
-	  useSimple: function(){ setter = false; }
-	};
-	// 19.4.2.2 Symbol.hasInstance
-	// 19.4.2.3 Symbol.isConcatSpreadable
-	// 19.4.2.4 Symbol.iterator
-	// 19.4.2.6 Symbol.match
-	// 19.4.2.8 Symbol.replace
-	// 19.4.2.9 Symbol.search
-	// 19.4.2.10 Symbol.species
-	// 19.4.2.11 Symbol.split
-	// 19.4.2.12 Symbol.toPrimitive
-	// 19.4.2.13 Symbol.toStringTag
-	// 19.4.2.14 Symbol.unscopables
-	$.each.call((
-	  'hasInstance,isConcatSpreadable,iterator,match,replace,search,' +
-	  'species,split,toPrimitive,toStringTag,unscopables'
-	).split(','), function(it){
-	  var sym = wks(it);
-	  symbolStatics[it] = useNative ? sym : wrap(sym);
-	});
-
-	setter = true;
-
-	$export($export.G + $export.W, {Symbol: $Symbol});
-
-	$export($export.S, 'Symbol', symbolStatics);
-
-	$export($export.S + $export.F * !useNative, 'Object', {
-	  // 19.1.2.2 Object.create(O [, Properties])
-	  create: $create,
-	  // 19.1.2.4 Object.defineProperty(O, P, Attributes)
-	  defineProperty: $defineProperty,
-	  // 19.1.2.3 Object.defineProperties(O, Properties)
-	  defineProperties: $defineProperties,
-	  // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-	  getOwnPropertyDescriptor: $getOwnPropertyDescriptor,
-	  // 19.1.2.7 Object.getOwnPropertyNames(O)
-	  getOwnPropertyNames: $getOwnPropertyNames,
-	  // 19.1.2.8 Object.getOwnPropertySymbols(O)
-	  getOwnPropertySymbols: $getOwnPropertySymbols
-	});
-
-	// 24.3.2 JSON.stringify(value [, replacer [, space]])
-	$JSON && $export($export.S + $export.F * (!useNative || buggyJSON), 'JSON', {stringify: $stringify});
-
-	// 19.4.3.5 Symbol.prototype[@@toStringTag]
-	setToStringTag($Symbol, 'Symbol');
-	// 20.2.1.9 Math[@@toStringTag]
-	setToStringTag(Math, 'Math', true);
-	// 24.3.3 JSON[@@toStringTag]
-	setToStringTag(global.JSON, 'JSON', true);
-
-/***/ },
-/* 115 */
-/***/ function(module, exports) {
-
-	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-	var global = module.exports = typeof window != 'undefined' && window.Math == Math
-	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ },
-/* 116 */
-/***/ function(module, exports) {
-
-	var hasOwnProperty = {}.hasOwnProperty;
-	module.exports = function(it, key){
-	  return hasOwnProperty.call(it, key);
-	};
-
-/***/ },
-/* 117 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(118)(function(){
-	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 118 */
-/***/ function(module, exports) {
-
-	module.exports = function(exec){
-	  try {
-	    return !!exec();
-	  } catch(e){
-	    return true;
-	  }
-	};
-
-/***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(115)
-	  , core      = __webpack_require__(12)
-	  , ctx       = __webpack_require__(120)
-	  , PROTOTYPE = 'prototype';
-
-	var $export = function(type, name, source){
-	  var IS_FORCED = type & $export.F
-	    , IS_GLOBAL = type & $export.G
-	    , IS_STATIC = type & $export.S
-	    , IS_PROTO  = type & $export.P
-	    , IS_BIND   = type & $export.B
-	    , IS_WRAP   = type & $export.W
-	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-	    , key, own, out;
-	  if(IS_GLOBAL)source = name;
-	  for(key in source){
-	    // contains in native
-	    own = !IS_FORCED && target && key in target;
-	    if(own && key in exports)continue;
-	    // export native or passed
-	    out = own ? target[key] : source[key];
-	    // prevent global pollution for namespaces
-	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-	    // bind timers to global for call from export context
-	    : IS_BIND && own ? ctx(out, global)
-	    // wrap global constructors for prevent change them in library
-	    : IS_WRAP && target[key] == out ? (function(C){
-	      var F = function(param){
-	        return this instanceof C ? new C(param) : C(param);
-	      };
-	      F[PROTOTYPE] = C[PROTOTYPE];
-	      return F;
-	    // make static versions for prototype methods
-	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-	    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
-	  }
-	};
-	// type bitmap
-	$export.F = 1;  // forced
-	$export.G = 2;  // global
-	$export.S = 4;  // static
-	$export.P = 8;  // proto
-	$export.B = 16; // bind
-	$export.W = 32; // wrap
-	module.exports = $export;
-
-/***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// optional / simple context binding
-	var aFunction = __webpack_require__(121);
-	module.exports = function(fn, that, length){
-	  aFunction(fn);
-	  if(that === undefined)return fn;
-	  switch(length){
-	    case 1: return function(a){
-	      return fn.call(that, a);
-	    };
-	    case 2: return function(a, b){
-	      return fn.call(that, a, b);
-	    };
-	    case 3: return function(a, b, c){
-	      return fn.call(that, a, b, c);
-	    };
-	  }
-	  return function(/* ...args */){
-	    return fn.apply(that, arguments);
-	  };
-	};
-
-/***/ },
-/* 121 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-	  return it;
-	};
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(123);
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $          = __webpack_require__(55)
-	  , createDesc = __webpack_require__(124);
-	module.exports = __webpack_require__(117) ? function(object, key, value){
-	  return $.setDesc(object, key, createDesc(1, value));
-	} : function(object, key, value){
-	  object[key] = value;
-	  return object;
-	};
-
-/***/ },
-/* 124 */
-/***/ function(module, exports) {
-
-	module.exports = function(bitmap, value){
-	  return {
-	    enumerable  : !(bitmap & 1),
-	    configurable: !(bitmap & 2),
-	    writable    : !(bitmap & 4),
-	    value       : value
-	  };
-	};
-
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global = __webpack_require__(115)
-	  , SHARED = '__core-js_shared__'
-	  , store  = global[SHARED] || (global[SHARED] = {});
-	module.exports = function(key){
-	  return store[key] || (store[key] = {});
-	};
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var def = __webpack_require__(55).setDesc
-	  , has = __webpack_require__(116)
-	  , TAG = __webpack_require__(127)('toStringTag');
-
-	module.exports = function(it, tag, stat){
-	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
-	};
-
-/***/ },
-/* 127 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var store  = __webpack_require__(125)('wks')
-	  , uid    = __webpack_require__(128)
-	  , Symbol = __webpack_require__(115).Symbol;
-	module.exports = function(name){
-	  return store[name] || (store[name] =
-	    Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
-	};
-
-/***/ },
-/* 128 */
-/***/ function(module, exports) {
-
-	var id = 0
-	  , px = Math.random();
-	module.exports = function(key){
-	  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-	};
-
-/***/ },
-/* 129 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $         = __webpack_require__(55)
-	  , toIObject = __webpack_require__(130);
-	module.exports = function(object, el){
-	  var O      = toIObject(object)
-	    , keys   = $.getKeys(O)
-	    , length = keys.length
-	    , index  = 0
-	    , key;
-	  while(length > index)if(O[key = keys[index++]] === el)return key;
-	};
-
-/***/ },
-/* 130 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(131)
-	  , defined = __webpack_require__(133);
-	module.exports = function(it){
-	  return IObject(defined(it));
-	};
-
-/***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(132);
-	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
-	  return cof(it) == 'String' ? it.split('') : Object(it);
-	};
-
-/***/ },
-/* 132 */
-/***/ function(module, exports) {
-
-	var toString = {}.toString;
-
-	module.exports = function(it){
-	  return toString.call(it).slice(8, -1);
-	};
-
-/***/ },
-/* 133 */
-/***/ function(module, exports) {
-
-	// 7.2.1 RequireObjectCoercible(argument)
-	module.exports = function(it){
-	  if(it == undefined)throw TypeError("Can't call method on  " + it);
-	  return it;
-	};
-
-/***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-	var toIObject = __webpack_require__(130)
-	  , getNames  = __webpack_require__(55).getNames
-	  , toString  = {}.toString;
-
-	var windowNames = typeof window == 'object' && Object.getOwnPropertyNames
-	  ? Object.getOwnPropertyNames(window) : [];
-
-	var getWindowNames = function(it){
-	  try {
-	    return getNames(it);
-	  } catch(e){
-	    return windowNames.slice();
-	  }
-	};
-
-	module.exports.get = function getOwnPropertyNames(it){
-	  if(windowNames && toString.call(it) == '[object Window]')return getWindowNames(it);
-	  return getNames(toIObject(it));
-	};
-
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// all enumerable object keys, includes symbols
-	var $ = __webpack_require__(55);
-	module.exports = function(it){
-	  var keys       = $.getKeys(it)
-	    , getSymbols = $.getSymbols;
-	  if(getSymbols){
-	    var symbols = getSymbols(it)
-	      , isEnum  = $.isEnum
-	      , i       = 0
-	      , key;
-	    while(symbols.length > i)if(isEnum.call(it, key = symbols[i++]))keys.push(key);
-	  }
-	  return keys;
-	};
-
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.2.2 IsArray(argument)
-	var cof = __webpack_require__(132);
-	module.exports = Array.isArray || function(arg){
-	  return cof(arg) == 'Array';
-	};
-
-/***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(138);
-	module.exports = function(it){
-	  if(!isObject(it))throw TypeError(it + ' is not an object!');
-	  return it;
-	};
-
-/***/ },
-/* 138 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  return typeof it === 'object' ? it !== null : typeof it === 'function';
-	};
-
-/***/ },
-/* 139 */
-/***/ function(module, exports) {
-
-	module.exports = true;
-
-/***/ },
-/* 140 */
-/***/ function(module, exports) {
-
-	
-
-/***/ },
-/* 141 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!--\nRedcompra\nTarjeta de crédito\n2) Ingresar:\nvoucher (foto)\nmonto (textbox)\ncód. autorización (textbox) -->\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Elija </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo1\" value=\"redcompra\">\n                  <label for=\"ingreso_pago_tipo1\">Redcompra</label>\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo2\" value=\"creditcard\">\n                  <label for=\"ingreso_pago_tipo2\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingreso voucher </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\">\n                  </div>\n                  <!-- ec_receipt_submit_buttons -->\n                  <div id=\"ec_receipt_submit_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\">\n                    <!-- ec_choose_transfer_retry -->\n                    <input type=\"button\" id=\"ec_choose_transfer_retry\" value=\"Subir o fotografiar de nuevo\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingrese </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  Monto de pago\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n                <p class=\"ac25-info-list-content\">\n                  Código de autorización\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
-
-/***/ },
-/* 142 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(143)
-	__vue_template__ = __webpack_require__(144)
+	__vue_script__ = __webpack_require__(113)
+	__vue_template__ = __webpack_require__(114)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22397,7 +21798,7 @@
 	})()}
 
 /***/ },
-/* 143 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22520,18 +21921,18 @@
 	//
 
 /***/ },
-/* 144 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">LLAMADO</h4>\n       <p class=\"left clearfix ac25-subtitle\" style=\"width:60%\">\n         Seleccione una de las opciones para iniciar un llamado telefónico.\n         <br />\n         <br />\n         Llame a cliente sólo en caso de ser necesario.\n       </p>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n\n   <footer class=\"ac25-content-footer\">\n     <div v-if=\"addressType == 'pickup'\">\n       <a class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"!order.pickupAddress_forperson_phone\">&nbsp;</a>\n       <a href=\"tel:{{order.pickupAddress_forperson_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"order.pickupAddress_forperson_phone\">llamar al cliente ({{order.pickupAddress_forperson}})</a>\n    </div>   \n     <div v-if=\"addressType == 'delivery'\">\n       <a class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"!order.deliveryAddress_forperson_phone\">&nbsp;</a>\n       <a href=\"tel:{{order.deliveryAddress_forperson_phone}}\" class=\"ac25-full-red-custom-dev waves-effect waves-light without-bottom\" v-if=\"order.deliveryAddress_forperson_phone\">llamar al cliente ({{order.deliveryAddress_forperson}})</a>\n    </div>      \n    <!--  <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" v-if=\"false\"><!-- central llama a cliente -></a>\n     <a href=\"tel:{{setup.phoneCentral}}\" __click=\"callCentral()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar a la central</a>\n     <a href=\"tel:{{setup.phoneMobile}}\" __click=\"callDriver()\" class=\"ac25-full-red-custom-dev waves-effect waves-light\">llamar al chofer</a> -->\n     <a onclick=\"window.history.back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n   </footer><!-- end footer -->\n </div><!-- end content-global -->  \n";
 
 /***/ },
-/* 145 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(146)
-	__vue_template__ = __webpack_require__(147)
+	__vue_script__ = __webpack_require__(116)
+	__vue_template__ = __webpack_require__(117)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22548,7 +21949,7 @@
 	})()}
 
 /***/ },
-/* 146 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22605,18 +22006,18 @@
 	// <script>
 
 /***/ },
-/* 147 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-content-global\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder ac25-min-height-200\">\n       <h4 class=\"ac25-top-red-text\">ECONOCARGO</h4>\n       <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n     </div><!-- end content-inner-holder -->\n   </div><!-- end container -->\n   <footer class=\"ac25-content-footer\">\n   <a class=\"ac25-full-red-custom-dev waves-effect waves-light\" style=\"padding:100px 20px\">Esta seguro que desea cerrar la sesión?</a>\n    <a @click=\"yes()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">sí</a>\n    <a @click=\"no()\" class=\"ac25-half-black left waves-effect waves-light\" style=\"border:1px solid white\">no</a>\n  </footer><!-- end footer -->\n</div><!-- end content-global -->\n";
 
 /***/ },
-/* 148 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(149)
-	__vue_template__ = __webpack_require__(150)
+	__vue_script__ = __webpack_require__(119)
+	__vue_template__ = __webpack_require__(120)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22633,7 +22034,7 @@
 	})()}
 
 /***/ },
-/* 149 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22686,18 +22087,18 @@
 	// </script>
 
 /***/ },
-/* 150 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>Redireccionando</h5>\n       <img src=\"" + __webpack_require__(32) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 151 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(152)
-	__vue_template__ = __webpack_require__(153)
+	__vue_script__ = __webpack_require__(122)
+	__vue_template__ = __webpack_require__(123)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22714,7 +22115,7 @@
 	})()}
 
 /***/ },
-/* 152 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22843,18 +22244,18 @@
 	//
 
 /***/ },
-/* 153 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n  <header-user-data></header-user-data>\n  <div class=\"ac25-red-loading-section\">\n    <div class=\"container\">\n      <div class=\"ac25-loading-content\">\n       <h5>{{message}}</h5>\n       <img src=\"" + __webpack_require__(32) + "\" />\n     </div>\n   </div>\n </div><!-- end red-loading-section -->\n";
 
 /***/ },
-/* 154 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(155)
-	__vue_template__ = __webpack_require__(156)
+	__vue_script__ = __webpack_require__(125)
+	__vue_template__ = __webpack_require__(126)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22871,7 +22272,7 @@
 	})()}
 
 /***/ },
-/* 155 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22926,18 +22327,18 @@
 	// <script>
 
 /***/ },
-/* 156 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 157 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(158)
-	__vue_template__ = __webpack_require__(159)
+	__vue_script__ = __webpack_require__(128)
+	__vue_template__ = __webpack_require__(129)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -22954,7 +22355,7 @@
 	})()}
 
 /***/ },
-/* 158 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23009,18 +22410,18 @@
 	// <script>
 
 /***/ },
-/* 159 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(49) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a v-link=\"'available'\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 160 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(161)
-	__vue_template__ = __webpack_require__(162)
+	__vue_script__ = __webpack_require__(131)
+	__vue_template__ = __webpack_require__(132)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -23037,7 +22438,7 @@
 	})()}
 
 /***/ },
-/* 161 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23095,24 +22496,24 @@
 	// <script>
 
 /***/ },
-/* 162 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(163) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(133) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 163 */
+/* 133 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAADeCAYAAAC65wucAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkQzNzIzQTY0NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkQzNzIzQTY1NTgyNDExRTZCOEE3QkNDNTNBNDgxODJEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RDM3MjNBNjI1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RDM3MjNBNjM1ODI0MTFFNkI4QTdCQ0M1M0E0ODE4MkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xCOYfAAATc0lEQVR42uxd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"
 
 /***/ },
-/* 164 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(165)
-	__vue_template__ = __webpack_require__(166)
+	__vue_script__ = __webpack_require__(135)
+	__vue_template__ = __webpack_require__(136)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -23129,7 +22530,7 @@
 	})()}
 
 /***/ },
-/* 165 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23210,18 +22611,18 @@
 	//
 
 /***/ },
-/* 166 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura exitosa </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}<br />QR #{{item.qr_id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n      <a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n      <a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">siguiente</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 167 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(168)
-	__vue_template__ = __webpack_require__(169)
+	__vue_script__ = __webpack_require__(138)
+	__vue_template__ = __webpack_require__(139)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -23238,7 +22639,7 @@
 	})()}
 
 /***/ },
-/* 168 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23318,18 +22719,18 @@
 	//
 
 /***/ },
-/* 169 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(49) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> Lectura fallida </span>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<img class=\"ac25-no-margin\" src=\"" + __webpack_require__(61) + "\" />\n\t\t\t\t\t<p class=\"ac25-mid-page-paragraph ac25-no-margin\"> {{item.name}}  </p>\n\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\n\t\t\t\t\t<p class=\"ac25-red-id-text ac25-no-margin\">item id #{{item.id}}</p>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-half-black left waves-effect waves-light\">cancelar</a>\n\t\t\t<a v-link=\"'scan-trip'\" class=\"ac25-half-red right waves-effect waves-light\">reintentar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 170 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(171)
-	__vue_template__ = __webpack_require__(172)
+	__vue_script__ = __webpack_require__(141)
+	__vue_template__ = __webpack_require__(142)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -23346,7 +22747,7 @@
 	})()}
 
 /***/ },
-/* 171 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23413,13 +22814,13 @@
 	// <script>
 
 /***/ },
-/* 172 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(163) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
+	module.exports = "\n\t<div class=\"ac25-content-global\">\n\n\t\t<div class=\"container\">\n\t\t\t<div class=\"ac25-content-inner-holder ac25-min-height-200 center\">\n\t\t\t\t<p class=\"ac25-mtop140\">\n\t\t\t\t\t<img src=\"" + __webpack_require__(33) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<span class=\"ac25-top-check-title\"> escaneo terminado </span>\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t\t<img src=\"" + __webpack_require__(133) + "\" />\n\t\t\t\t\t<div class=\"clearfix\"></div>\n\t\t\t\t</p>\n\t\t\t</div><!-- end content-inner-holder -->\n\t\t</div><!-- end container -->\n\n\t\t<footer class=\"ac25-content-footer\">\n\t\t\t<a @click=\"back()\" class=\"ac25-full-black waves-effect waves-light\">terminar</a>\n\t\t</footer><!-- end footer -->\n\n\t</div><!-- end content-global -->\n";
 
 /***/ },
-/* 173 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -26133,7 +25534,7 @@
 	}));
 
 /***/ },
-/* 174 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26142,11 +25543,11 @@
 
 	function install(Vue) {
 
-	    var _ = __webpack_require__(175)(Vue);
+	    var _ = __webpack_require__(145)(Vue);
 
-	    Vue.url = __webpack_require__(176)(_);
-	    Vue.http = __webpack_require__(177)(_);
-	    Vue.resource = __webpack_require__(181)(_);
+	    Vue.url = __webpack_require__(146)(_);
+	    Vue.http = __webpack_require__(147)(_);
+	    Vue.resource = __webpack_require__(151)(_);
 
 	    Object.defineProperties(Vue.prototype, {
 
@@ -26178,7 +25579,7 @@
 	module.exports = install;
 
 /***/ },
-/* 175 */
+/* 145 */
 /***/ function(module, exports) {
 
 	/**
@@ -26264,7 +25665,7 @@
 
 
 /***/ },
-/* 176 */
+/* 146 */
 /***/ function(module, exports) {
 
 	/**
@@ -26427,16 +25828,16 @@
 
 
 /***/ },
-/* 177 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 
-	var xhr = __webpack_require__(178);
-	var jsonp = __webpack_require__(180);
-	var Promise = __webpack_require__(179);
+	var xhr = __webpack_require__(148);
+	var jsonp = __webpack_require__(150);
+	var Promise = __webpack_require__(149);
 
 	module.exports = function (_) {
 
@@ -26593,14 +25994,14 @@
 
 
 /***/ },
-/* 178 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp request.
 	 */
 
-	var Promise = __webpack_require__(179);
+	var Promise = __webpack_require__(149);
 	var XDomain = window.XDomainRequest;
 
 	module.exports = function (_, options) {
@@ -26650,7 +26051,7 @@
 
 
 /***/ },
-/* 179 */
+/* 149 */
 /***/ function(module, exports) {
 
 	/**
@@ -26866,14 +26267,14 @@
 
 
 /***/ },
-/* 180 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP request.
 	 */
 
-	var Promise = __webpack_require__(179);
+	var Promise = __webpack_require__(149);
 
 	module.exports = function (_, options) {
 
@@ -26922,7 +26323,7 @@
 
 
 /***/ },
-/* 181 */
+/* 151 */
 /***/ function(module, exports) {
 
 	/**
@@ -27039,7 +26440,7 @@
 
 
 /***/ },
-/* 182 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueSweetAlert=t():e.VueSweetAlert=t()}(this,function(){return function(e){function t(n){if(o[n])return o[n].exports;var r=o[n]={exports:{},id:n,loaded:!1};return e[n].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var o={};return t.m=e,t.c=o,t.p="/build/",t(0)}([function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(1),a=n(r);t["default"]=a["default"]},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(6),a=n(r);o(5);var i={};i.install=function(e){e.prototype.$swal=a["default"]},t["default"]=i},function(e,t,o){t=e.exports=o(3)(),t.push([e.id,"body.swal2-in{overflow-y:hidden}.swal2-container,body.swal2-iosfix{position:fixed;left:0;right:0}.swal2-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;top:0;bottom:0;padding:10px;background-color:transparent;z-index:1060}.swal2-container:not(.swal2-in){pointer-events:none}.swal2-container.swal2-fade{-webkit-transition:background-color .1s;transition:background-color .1s}.swal2-container.swal2-in{background-color:rgba(0,0,0,.4)}.swal2-modal{background-color:#fff;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;border-radius:5px;box-sizing:border-box;text-align:center;margin:auto;overflow-x:hidden;overflow-y:auto;display:none;position:relative}.swal2-modal:focus{outline:none}.swal2-modal.swal2-loading{overflow-y:hidden}.swal2-modal .swal2-title{color:#595959;font-size:30px;text-align:center;font-weight:600;text-transform:none;position:relative;margin:0;padding:0;line-height:60px;display:block}.swal2-modal .swal2-spacer{height:10px;color:transparent;border:0}.swal2-modal .swal2-styled{border:0;border-radius:3px;box-shadow:none;color:#fff;cursor:pointer;font-size:17px;font-weight:500;margin:0 5px;padding:10px 32px}.swal2-modal .swal2-styled:not(.swal2-loading)[disabled]{opacity:.4;cursor:no-drop}.swal2-modal .swal2-styled.swal2-loading{box-sizing:border-box;border:4px solid transparent;border-color:transparent;width:40px;height:40px;padding:0;margin:-2px 30px;vertical-align:top;background-color:transparent!important;color:transparent;cursor:default;border-radius:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-modal .swal2-styled.swal2-loading,.swal2-modal :not(.swal2-styled).swal2-loading:after{-webkit-animation:rotate-loading 1.5s linear 0s infinite normal;animation:rotate-loading 1.5s linear 0s infinite normal}.swal2-modal :not(.swal2-styled).swal2-loading:after{display:inline-block;content:'';margin-left:5px;vertical-align:-1px;height:6px;width:6px;border:3px solid #999;border-right-color:transparent;border-radius:50%}.swal2-modal .swal2-image{margin:20px auto;max-width:100%}.swal2-modal .swal2-close{font-size:36px;line-height:36px;font-family:serif;position:absolute;top:5px;right:13px;cursor:pointer;color:#ccc;-webkit-transition:color .1s ease;transition:color .1s ease}.swal2-modal .swal2-close:hover{color:#d55}.swal2-modal>.swal2-checkbox,.swal2-modal>.swal2-file,.swal2-modal>.swal2-input,.swal2-modal>.swal2-radio,.swal2-modal>.swal2-select,.swal2-modal>.swal2-textarea{display:none}.swal2-modal .swal2-content{font-size:18px;text-align:center;font-weight:300;position:relative;float:none;margin:0;padding:0;line-height:normal;color:#545454}.swal2-modal .swal2-checkbox,.swal2-modal .swal2-file,.swal2-modal .swal2-input,.swal2-modal .swal2-radio,.swal2-modal .swal2-select,.swal2-modal .swal2-textarea{margin:20px auto}.swal2-modal .swal2-file,.swal2-modal .swal2-input,.swal2-modal .swal2-textarea{width:100%;box-sizing:border-box;border-radius:3px;border:1px solid #d9d9d9;font-size:18px;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);-webkit-transition:border-color box-shadow .3s;transition:border-color box-shadow .3s}.swal2-modal .swal2-file.swal2-inputerror,.swal2-modal .swal2-input.swal2-inputerror,.swal2-modal .swal2-textarea.swal2-inputerror{border-color:#f06e57}.swal2-modal .swal2-file:focus,.swal2-modal .swal2-input:focus,.swal2-modal .swal2-textarea:focus{outline:none;box-shadow:0 0 3px #c4e6f5;border:1px solid #b4dbed}.swal2-modal .swal2-file:focus::-webkit-input-placeholder,.swal2-modal .swal2-input:focus::-webkit-input-placeholder,.swal2-modal .swal2-textarea:focus::-webkit-input-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus::-moz-placeholder,.swal2-modal .swal2-input:focus::-moz-placeholder,.swal2-modal .swal2-textarea:focus::-moz-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus:-ms-input-placeholder,.swal2-modal .swal2-input:focus:-ms-input-placeholder,.swal2-modal .swal2-textarea:focus:-ms-input-placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file:focus::placeholder,.swal2-modal .swal2-input:focus::placeholder,.swal2-modal .swal2-textarea:focus::placeholder{-webkit-transition:opacity .3s ease .03s;transition:opacity .3s ease .03s;opacity:.8}.swal2-modal .swal2-file::-webkit-input-placeholder,.swal2-modal .swal2-input::-webkit-input-placeholder,.swal2-modal .swal2-textarea::-webkit-input-placeholder{color:#e6e6e6}.swal2-modal .swal2-file::-moz-placeholder,.swal2-modal .swal2-input::-moz-placeholder,.swal2-modal .swal2-textarea::-moz-placeholder{color:#e6e6e6}.swal2-modal .swal2-file:-ms-input-placeholder,.swal2-modal .swal2-input:-ms-input-placeholder,.swal2-modal .swal2-textarea:-ms-input-placeholder{color:#e6e6e6}.swal2-modal .swal2-file::placeholder,.swal2-modal .swal2-input::placeholder,.swal2-modal .swal2-textarea::placeholder{color:#e6e6e6}.swal2-modal .swal2-range input{float:left;width:80%}.swal2-modal .swal2-range output{float:right;width:20%;font-size:20px;font-weight:600;text-align:center}.swal2-modal .swal2-range input,.swal2-modal .swal2-range output{height:43px;line-height:43px;vertical-align:middle;margin:20px auto;padding:0}.swal2-modal .swal2-input{height:43px;padding:0 12px}.swal2-modal .swal2-input[type=number]{max-width:150px}.swal2-modal .swal2-file{font-size:20px}.swal2-modal .swal2-textarea{height:108px;padding:12px}.swal2-modal .swal2-select{color:#545454;font-size:inherit;padding:5px 10px;min-width:40%;max-width:100%}.swal2-modal .swal2-radio{border:0}.swal2-modal .swal2-radio label:not(:first-child){margin-left:20px}.swal2-modal .swal2-radio input,.swal2-modal .swal2-radio span{vertical-align:middle}.swal2-modal .swal2-radio input{margin:0 3px 0 0}.swal2-modal .swal2-checkbox{color:#545454}.swal2-modal .swal2-checkbox input,.swal2-modal .swal2-checkbox span{vertical-align:middle}.swal2-modal .swal2-validationerror{background-color:#f0f0f0;margin:0 -20px;overflow:hidden;padding:10px;color:gray;font-size:16px;font-weight:300;display:none}.swal2-modal .swal2-validationerror:before{content:'!';display:inline-block;width:24px;height:24px;border-radius:50%;background-color:#ea7d7d;color:#fff;line-height:24px;text-align:center;margin-right:10px}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media (-ms-high-contrast:active),all and (-ms-high-contrast:none){.swal2-range input{width:100%!important}.swal2-range output{display:none}}.swal2-icon{width:80px;height:80px;border:4px solid transparent;border-radius:50%;margin:20px auto 30px;padding:0;position:relative;box-sizing:content-box;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .x-mark{position:relative;display:block}.swal2-icon.swal2-error .line{position:absolute;height:5px;width:47px;background-color:#f27474;display:block;top:37px;border-radius:2px}.swal2-icon.swal2-error .line.left{-webkit-transform:rotate(45deg);transform:rotate(45deg);left:17px}.swal2-icon.swal2-error .line.right{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);right:16px}.swal2-icon.swal2-warning{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#f8bb86;border-color:#facea8}.swal2-icon.swal2-info,.swal2-icon.swal2-warning{font-size:60px;line-height:80px;text-align:center}.swal2-icon.swal2-info{font-family:Open Sans,sans-serif;color:#3fc3ee;border-color:#9de0f6}.swal2-icon.swal2-question{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#87adbd;border-color:#c9dae1;font-size:60px;line-height:80px;text-align:center}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success:after,.swal2-icon.swal2-success:before{content:'';border-radius:50%;position:absolute;width:60px;height:120px;background:#fff;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success:before{border-radius:120px 0 0 120px;top:-7px;left:-33px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:60px 60px;transform-origin:60px 60px}.swal2-icon.swal2-success:after{border-radius:0 120px 120px 0;top:-11px;left:30px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 60px;transform-origin:0 60px}.swal2-icon.swal2-success .placeholder{width:80px;height:80px;border:4px solid hsla(98,55%,69%,.2);border-radius:50%;box-sizing:content-box;position:absolute;left:-4px;top:-4px;z-index:2}.swal2-icon.swal2-success .fix{width:7px;height:90px;background-color:#fff;position:absolute;left:28px;top:8px;z-index:1;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success .line{height:5px;background-color:#a5dc86;display:block;border-radius:2px;position:absolute;z-index:2}.swal2-icon.swal2-success .line.tip{width:25px;left:14px;top:46px;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success .line.long{width:47px;right:8px;top:38px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progresssteps{font-weight:600;margin:0 0 20px;padding:0}.swal2-progresssteps li{display:inline-block;position:relative}.swal2-progresssteps .swal2-progresscircle{background:#3085d6;border-radius:2em;color:#fff;height:2em;line-height:2em;text-align:center;width:2em;z-index:20}.swal2-progresssteps .swal2-progresscircle:first-child{margin-left:0}.swal2-progresssteps .swal2-progresscircle:last-child{margin-right:0}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep{background:#3085d6}.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progresscircle,.swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep~.swal2-progressline{background:#add8e6}.swal2-progresssteps .swal2-progressline{background:#3085d6;height:.4em;margin:0 -1px;z-index:10}[class^=swal2]{-webkit-tap-highlight-color:transparent}@-webkit-keyframes showSweetAlert{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes showSweetAlert{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}to{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes hideSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes hideSweetAlert{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}.swal2-show{-webkit-animation:showSweetAlert .3s;animation:showSweetAlert .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:hideSweetAlert .15s forwards;animation:hideSweetAlert .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}@-webkit-keyframes animate-success-tip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@keyframes animate-success-tip{0%{width:0;left:1px;top:19px}54%{width:0;left:1px;top:19px}70%{width:50px;left:-8px;top:37px}84%{width:17px;left:21px;top:48px}to{width:25px;left:14px;top:45px}}@-webkit-keyframes animate-success-long{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@keyframes animate-success-long{0%{width:0;right:46px;top:54px}65%{width:0;right:46px;top:54px}84%{width:55px;right:0;top:35px}to{width:47px;right:8px;top:38px}}@-webkit-keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes rotatePlaceholder{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}to{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}.animate-success-tip{-webkit-animation:animate-success-tip .75s;animation:animate-success-tip .75s}.animate-success-long{-webkit-animation:animate-success-long .75s;animation:animate-success-long .75s}.swal2-success.animate:after{-webkit-animation:rotatePlaceholder 4.25s ease-in;animation:rotatePlaceholder 4.25s ease-in}@-webkit-keyframes animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}@keyframes animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}to{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);opacity:1}}.animate-error-icon{-webkit-animation:animate-error-icon .5s;animation:animate-error-icon .5s}@-webkit-keyframes animate-x-mark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}@keyframes animate-x-mark{0%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}50%{-webkit-transform:scale(.4);transform:scale(.4);margin-top:26px;opacity:0}80%{-webkit-transform:scale(1.15);transform:scale(1.15);margin-top:-6px}to{-webkit-transform:scale(1);transform:scale(1);margin-top:0;opacity:1}}.animate-x-mark{-webkit-animation:animate-x-mark .5s;animation:animate-x-mark .5s}@-webkit-keyframes pulse-warning{0%{border-color:#f8d486}to{border-color:#f8bb86}}@keyframes pulse-warning{0%{border-color:#f8d486}to{border-color:#f8bb86}}.pulse-warning{-webkit-animation:pulse-warning .75s infinite alternate;animation:pulse-warning .75s infinite alternate}@-webkit-keyframes rotate-loading{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes rotate-loading{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var o=this[t];o[2]?e.push("@media "+o[2]+"{"+o[1]+"}"):e.push(o[1])}return e.join("")},e.i=function(t,o){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},r=0;r<this.length;r++){var a=this[r][0];"number"==typeof a&&(n[a]=!0)}for(r=0;r<t.length;r++){var i=t[r];"number"==typeof i[0]&&n[i[0]]||(o&&!i[2]?i[2]=o:o&&(i[2]="("+i[2]+") and ("+o+")"),e.push(i))}},e}},function(e,t,o){function n(e,t){for(var o=0;o<e.length;o++){var n=e[o],r=f[n.id];if(r){r.refs++;for(var a=0;a<r.parts.length;a++)r.parts[a](n.parts[a]);for(;a<n.parts.length;a++)r.parts.push(c(n.parts[a],t))}else{for(var i=[],a=0;a<n.parts.length;a++)i.push(c(n.parts[a],t));f[n.id]={id:n.id,refs:1,parts:i}}}}function r(e){for(var t=[],o={},n=0;n<e.length;n++){var r=e[n],a=r[0],i=r[1],s=r[2],l=r[3],c={css:i,media:s,sourceMap:l};o[a]?o[a].parts.push(c):t.push(o[a]={id:a,parts:[c]})}return t}function a(e,t){var o=g(),n=x[x.length-1];if("top"===e.insertAt)n?n.nextSibling?o.insertBefore(t,n.nextSibling):o.appendChild(t):o.insertBefore(t,o.firstChild),x.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");o.appendChild(t)}}function i(e){e.parentNode.removeChild(e);var t=x.indexOf(e);t>=0&&x.splice(t,1)}function s(e){var t=document.createElement("style");return t.type="text/css",a(e,t),t}function l(e){var t=document.createElement("link");return t.rel="stylesheet",a(e,t),t}function c(e,t){var o,n,r;if(t.singleton){var a=b++;o=h||(h=s(t)),n=u.bind(null,o,a,!1),r=u.bind(null,o,a,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(o=l(t),n=p.bind(null,o),r=function(){i(o),o.href&&URL.revokeObjectURL(o.href)}):(o=s(t),n=d.bind(null,o),r=function(){i(o)});return n(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;n(e=t)}else r()}}function u(e,t,o,n){var r=o?"":n.css;if(e.styleSheet)e.styleSheet.cssText=v(t,r);else{var a=document.createTextNode(r),i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(a,i[t]):e.appendChild(a)}}function d(e,t){var o=t.css,n=t.media;if(n&&e.setAttribute("media",n),e.styleSheet)e.styleSheet.cssText=o;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(o))}}function p(e,t){var o=t.css,n=t.sourceMap;n&&(o+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(n))))+" */");var r=new Blob([o],{type:"text/css"}),a=e.href;e.href=URL.createObjectURL(r),a&&URL.revokeObjectURL(a)}var f={},m=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},w=m(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),g=m(function(){return document.head||document.getElementsByTagName("head")[0]}),h=null,b=0,x=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=w()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var o=r(e);return n(o,t),function(e){for(var a=[],i=0;i<o.length;i++){var s=o[i],l=f[s.id];l.refs--,a.push(l)}if(e){var c=r(e);n(c,t)}for(var i=0;i<a.length;i++){var l=a[i];if(0===l.refs){for(var u=0;u<l.parts.length;u++)l.parts[u]();delete f[l.id]}}}};var v=function(){var e=[];return function(t,o){return e[t]=o,e.filter(Boolean).join("\n")}}()},function(e,t,o){var n=o(2);"string"==typeof n&&(n=[[e.id,n,""]]);o(4)(n,{});n.locals&&(e.exports=n.locals)},function(e,t,o){/*!
