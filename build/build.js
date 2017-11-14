@@ -21516,13 +21516,13 @@
 
 	    console.info('#ec_choose_transfer_camera', $('#ec_choose_transfer_camera').length);
 
+	    var that = this;
+
 	    $('#ec_choose_transfer_camera').on('click', function () {
 
 	      console.info(navigator);
 	      console.info(navigator.camera);
 	      console.info(navigator.device);
-	      console.info(cordova);
-	      console.info(phonegap);
 
 	      if (typeof navigator.device === 'undefined') {
 	        return alert('Camera device needed', 'No hay acceso a la cámara.');
@@ -21531,7 +21531,7 @@
 	        var photo = mediaFiles[0];
 	        var imageURI = photo.fullPath;
 	        var fileName = photo.name;
-	        uploadPhotoByFileTransfer(imageURI, fileName);
+	        that.uploadPhotoByFileTransfer(imageURI, fileName);
 	      }, function (e) {
 	        console.info(e);
 	      }, {
@@ -21545,7 +21545,7 @@
 	      }
 	      navigator.camera.getPicture(function (imageURI) {
 	        var fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.jpeg';
-	        uploadPhotoByFileTransfer(imageURI, fileName);
+	        that.uploadPhotoByFileTransfer(imageURI, fileName);
 	      }, function (message) {
 	        console.info(message);
 	      }, {
@@ -21661,6 +21661,8 @@
 	    $('#ec_receipt_upload_buttons').hide();
 	    $('#ec_receipt_submit_buttons').show();
 
+	    var that = this;
+
 	    try {
 
 	      if (typeof assembly.uploads === 'undefined') {
@@ -21668,6 +21670,7 @@
 	      }
 
 	      var receiptUrl = assembly.uploads[0].url;
+	      console.info('receiptUrl', receiptUrl);
 	      // form.receiptThumbUrl = assembly.results.thumb[ 0 ].url;
 
 	      $('#ec_choose_transfer_verify').off('click').on('click', function () {
@@ -21684,7 +21687,7 @@
 	      });
 
 	      $('#ec_choose_transfer_submit').off('click').on('click', function () {
-	        processForm(receiptUrl);
+	        that.processForm(receiptUrl);
 	      });
 	    } catch (e) {
 	      return alert(e.message, 'No se ha podido enviar su transferencia');
