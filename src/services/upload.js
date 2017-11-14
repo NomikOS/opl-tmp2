@@ -2,7 +2,9 @@ import Vue from 'vue' // modules are singletons!!!
 import {
   urls
 } from '../libs/common' // import una variable
-import { credentials } from '../libs/common'
+import {
+  credentials
+} from '../libs/common'
 import utils from '../libs/utils' // import un objecto default
 import ls from '../libs/ls'
 import {
@@ -21,7 +23,12 @@ export default {
     console.info( '#ec_choose_transfer_camera', $( '#ec_choose_transfer_camera' ).length )
 
     $( '#ec_choose_transfer_camera' ).on( 'click', function() {
-      console.info( typeof navigator.device )
+
+      console.info( navigator )
+      console.info( navigator.camera )
+      console.info( navigator.device )
+      console.info( phonegap )
+
       if ( typeof navigator.device === 'undefined' ) {
         return alert( 'Camera device needed', 'No hay acceso a la cámara.' )
       }
