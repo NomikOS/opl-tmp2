@@ -67,68 +67,14 @@ export default {
     } )
   },
 
-  fuploadPhotoByFileInput() {
-
-    /**
-     * Configure transloadit service thru jQuery plugin
-     * Deprecated in favor of FileTransfer Phonegap API
-     */
-    $( '#chooseTransfer-form' ).transloadit( {
-      wait: true,
-      triggerUploadOnFileSelection: true,
-      autoSubmit: false,
-      modal: false,
-      params: {
-        auth: {
-          key: credentials.transloaditKey,
-          max_size: max_size
-        },
-        steps: {
-          thumb: {
-            use: ':original',
-            robot: '/image/resize',
-            width: 75,
-            height: 75,
-            resize_strategy: 'pad',
-            background: '#000000'
-          },
-        }
-      },
-      onResult: function( step, result ) {
-        $( '#ec_choose_loading' ).hide();
-      },
-      onStart: function( assembly ) {
-        $( '#ec_choose_loading' ).show();
-      },
-      onProgress: function( bytesReceived, bytesExpected ) {},
-      onSuccess: function( assembly ) {
-        console.info( 'onSuccess assembly:', assembly );
-        // var assembly = JSON.parse( r.response );
-        weCool( assembly );
-        // try {
-        //  processForm( assembly );
-        // } catch ( e ) {
-        //  return alert( e.message, 'No se ha podido enviar su transferencia' );
-        // }
-      },
-      onError: function( assembly ) {
-        if ( assembly.error == 'MAX_SIZE_EXCEEDED' ) {
-          return alert( assembly.error, 'El archivo excede el máximo permitido: ' + max_size + ' bytes' );
-        } else {
-          return alert( assembly.error, 'No se ha podido subir su comprobante' );
-        }
-      }
-    } );
-  },
-
   /**
    * Using FileTransfer/Camera Phonegap API
    * https://github.com/tim-kos/transloadit_xhr/blob/master/transloadit_xhr.js
    */
   uploadPhotoByFileTransfer( imageURI, fileName ) {
     var ft = new FileTransfer();
-    var url = 'http://api2.transloadit.com/assemblies';
     var options = new FileUploadOptions();
+    var url = 'http://api2.transloadit.com/assemblies';
 
     $( '#ec_choose_loading' ).show();
 
@@ -136,7 +82,7 @@ export default {
     options.fileName = fileName;
     options.mimeType = 'image/jpeg';
 
-    paramsVariable = {
+    var paramsVariable = {
       auth: {
         key: credentials.transloaditKey,
         max_size: this.max_size
@@ -153,13 +99,14 @@ export default {
       }
     };
 
-    params = {};
+    var that = this
+    var params = {};
     params.params = paramsVariable;
     options.params = params;
 
     ft.upload( imageURI, encodeURI( url ), function( r ) {
       var assembly = JSON.parse( r.response );
-      weCool( assembly );
+      that.weCool( assembly );
     }, function( error ) {
       $( '#ec_choose_loading' ).hide();
       console.info( error );
@@ -167,6 +114,7 @@ export default {
   },
 
   weCool( assembly ) {
+    console.info('assembly', assembly)
 
     $( '#ec_choose_loading' ).hide();
 
@@ -273,27 +221,3 @@ export default {
     } )
   }
 }
-
-
-
-
-
-
-
-
-
-/**
- * Image and files uploads  black ops
- * @check https://github.com/rombdn/img-touch-canvas
- *
- * @type {Object}
- */
-// UploadManager: ( function() {
-
-
-
-//   return {
-//     init: init
-//   };
-
-// } )()
