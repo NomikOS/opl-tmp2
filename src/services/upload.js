@@ -28,6 +28,7 @@ export default {
 
       console.info( navigator )
       console.info( navigator.camera )
+      console.info( navigator.geolocation )
 
       if ( typeof navigator.device === 'undefined' ) {
         return alert( 'Camera device needed', 'No hay acceso a la cámara.' )
@@ -125,10 +126,9 @@ export default {
    * https://github.com/tim-kos/transloadit_xhr/blob/master/transloadit_xhr.js
    */
   uploadPhotoByFileTransfer( imageURI, fileName ) {
-    console.info('window--------', window)
-    var ft = new window.FileTransfer();
+    var ft = new FileTransfer();
     var url = 'http://api2.transloadit.com/assemblies';
-    var options = new window.FileUploadOptions();
+    var options = new FileUploadOptions();
 
     $( '#ec_choose_loading' ).show();
 
@@ -182,7 +182,7 @@ export default {
       }
 
       var receiptUrl = assembly.uploads[ 0 ].url;
-      console.info('receiptUrl', receiptUrl)
+      console.info( 'receiptUrl', receiptUrl )
       // form.receiptThumbUrl = assembly.results.thumb[ 0 ].url;
 
       $( '#ec_choose_transfer_verify' ).off( 'click' ).on( 'click', function() {

@@ -21522,6 +21522,7 @@
 
 	      console.info(navigator);
 	      console.info(navigator.camera);
+	      console.info(navigator.geolocation);
 
 	      if (typeof navigator.device === 'undefined') {
 	        return alert('Camera device needed', 'No hay acceso a la cámara.');
@@ -21614,10 +21615,9 @@
 	   * https://github.com/tim-kos/transloadit_xhr/blob/master/transloadit_xhr.js
 	   */
 	  uploadPhotoByFileTransfer: function uploadPhotoByFileTransfer(imageURI, fileName) {
-	    console.info('window--------', window);
-	    var ft = new window.FileTransfer();
+	    var ft = new FileTransfer();
 	    var url = 'http://api2.transloadit.com/assemblies';
-	    var options = new window.FileUploadOptions();
+	    var options = new FileUploadOptions();
 
 	    $('#ec_choose_loading').show();
 

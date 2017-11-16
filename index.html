@@ -38,5 +38,16 @@
 
 	<script type="text/javascript" src="cordova.js"></script>
 	<script src="build/build.js"></script>		
+
+	<script type="text/javascript">
+	document.addEventListener("deviceready", onDeviceReady, false);
+	d(1111111111);
+	function onDeviceReady() {
+		d(22222222222222);
+	      console.info( navigator.camera )
+	      console.info( navigator.geolocation )	
+	    	console.log(navigator.device.capture);
+	}		
+	</script>
 </body>
 </html>
