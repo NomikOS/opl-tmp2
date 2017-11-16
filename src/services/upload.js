@@ -28,6 +28,7 @@ export default {
 
       console.info( navigator )
       console.info( navigator.camera )
+      console.info( device )
       console.info( navigator.device.capture )
 
       if ( typeof navigator.device === 'undefined' ) {
@@ -126,9 +127,10 @@ export default {
    * https://github.com/tim-kos/transloadit_xhr/blob/master/transloadit_xhr.js
    */
   uploadPhotoByFileTransfer( imageURI, fileName ) {
-    var ft = new FileTransfer();
+    console.info('window--------', window)
+    var ft = new window.FileTransfer();
     var url = 'http://api2.transloadit.com/assemblies';
-    var options = new FileUploadOptions();
+    var options = new window.FileUploadOptions();
 
     $( '#ec_choose_loading' ).show();
 
