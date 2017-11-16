@@ -21628,7 +21628,7 @@
 	    paramsVariable = {
 	      auth: {
 	        key: _common.credentials.transloaditKey,
-	        max_size: max_size
+	        max_size: this.max_size
 	      },
 	      steps: {
 	        thumb: {

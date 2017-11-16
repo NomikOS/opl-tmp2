@@ -139,7 +139,7 @@ export default {
     paramsVariable = {
       auth: {
         key: credentials.transloaditKey,
-        max_size: max_size
+        max_size: this.max_size
       },
       steps: {
         thumb: {
