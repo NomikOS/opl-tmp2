@@ -141,11 +141,11 @@ cód. autorización (textbox) -->
             <ul class="ac25-info-list ac25-w100">
               <li>
                 <p class="ac25-info-list-content">
-                  <input type="radio" name="ingreso_pago_tipo" id="ingreso_pago_tipo1" value="redcompra">
-                  <label for="ingreso_pago_tipo1">Redcompra</label>
+                  <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
+                  <label for="ingreso_payment_gateway1">Redcompra</label>
                   <br />
-                  <input type="radio" name="ingreso_pago_tipo" id="ingreso_pago_tipo2" value="creditcard">
-                  <label for="ingreso_pago_tipo2">Tarjeta de crédito</label>
+                  <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway2" value="creditcard">
+                  <label for="ingreso_payment_gateway2">Tarjeta de crédito</label>
                 </p>
               </li>
             </ul>
@@ -157,6 +157,7 @@ cód. autorización (textbox) -->
             <ul class="ac25-info-list ac25-w100">
               <li>
                 <p class="ac25-info-list-content">
+                  <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
                   <!-- ec_receipt_upload_buttons -->
                   <div id="ec_receipt_upload_buttons">
                     <!-- ec_choose_transfer_camera -->
@@ -167,11 +168,9 @@ cód. autorización (textbox) -->
                   <!-- ec_receipt_submit_buttons -->
                   <div id="ec_receipt_submit_buttons">
                     <!-- ec_choose_transfer_verify -->
-                    <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante">
-                    <!-- ec_choose_transfer_retry -->
-                    <input type="button" id="ec_choose_transfer_retry" value="Subir o fotografiar de nuevo">
+                    <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()">
                     <!-- ec_choose_transfer_submit -->
-                    <input type="button" id="ec_choose_transfer_submit" value="Enviar">
+                    <input type="button" id="ec_choose_transfer_submit" value="Enviar" @click="processForm()">
                   </div>
                   <div id="ec_choose_image_verify">
                     <div id="ec_image_verify_img"></div>
@@ -189,11 +188,11 @@ cód. autorización (textbox) -->
               <li>
                 <p class="ac25-info-list-content">
                   Monto de pago
-                  <input type="text" style="text-transform: uppercase;">
+                  <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
                 </p>
                 <p class="ac25-info-list-content">
                   Código de autorización
-                  <input type="text" style="text-transform: uppercase;">
+                  <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
                 </p>
               </li>
             </ul>
@@ -212,8 +211,38 @@ cód. autorización (textbox) -->
   <!-- end content-global -->
 </template>
 <style>
+#ec_choose_image_verify {
+  display: none;
+  z-index: 7;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  border-top-style: none;
+  border-top-width: 0px;
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-style: none;
+  border-right-width: 0px;
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-top-left-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+}
 #ec_image_verify_img {
   z-index: 3;
+  top: 14px;
+  bottom: 46px;
+  left: 0px;
+  right: 0px;
+  position: absolute;  
   border-top-left-radius: 10px;
   -moz-border-radius-topleft: 10px;
   border-top-right-radius: 10px;
@@ -236,6 +265,8 @@ cód. autorización (textbox) -->
   z-index: 4;
   width: 288px;
   height: 28px;
+  bottom: 10px;
+  left: 15px;
   font-size: 14px;
   border-top-color: transparent;
   border-top-width: 0px;
@@ -337,6 +368,14 @@ export default {
     back() {
       console.info(this.addressType);
       return this.$route.router.go('/event-' + this.addressType)
+    },
+
+    processForm() {
+      upload.processForm(this.order.id)
+    },
+
+    verifyVoucher() {
+      upload.processForm(this.order.id)
     },
 
     openIngresoPago() {

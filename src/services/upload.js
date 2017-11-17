@@ -19,17 +19,10 @@ export default {
   init() {
     $( '#ec_choose_transfer_camera' ).show()
     // $$( 'ec_choose_transfer_retry' ).setValue( 'Subir o fotografiar de nuevo' )
-
     console.info( '#ec_choose_transfer_camera', $( '#ec_choose_transfer_camera' ).length )
-
     var that = this
 
     $( '#ec_choose_transfer_camera' ).on( 'click', function() {
-
-      console.info( navigator )
-      console.info( navigator.camera )
-      console.info( navigator.geolocation )
-
       if ( typeof navigator.device === 'undefined' ) {
         return alert( 'Camera device needed', 'No hay acceso a la cámara.' )
       }
@@ -114,10 +107,9 @@ export default {
   },
 
   weCool( assembly ) {
-    console.info('assembly', assembly)
+    console.info( 'assembly', assembly )
 
     $( '#ec_choose_loading' ).hide();
-
     $( '#ec_receipt_upload_buttons' ).hide();
     $( '#ec_receipt_submit_buttons' ).show();
 
@@ -129,95 +121,82 @@ export default {
         throw ( new Error( 'Image url missing from Transloadit' ) );
       }
 
+      console.info( assembly.uploads )
+
       var receiptUrl = assembly.uploads[ 0 ].url;
       console.info( 'receiptUrl', receiptUrl )
-      // form.receiptThumbUrl = assembly.results.thumb[ 0 ].url;
-
-      $( '#ec_choose_transfer_verify' ).off( 'click' ).on( 'click', function() {
-
-        $( '#ec_choose_image_verify' ).show();
-        $( '#ec_image_verify_img' ).css( 'padding', '5px' );
-        $( '#ec_image_verify_img' ).html( '' ).append( $( '<img>', {
-          src: receiptUrl,
-          width: '100%'
-        } ) );
-        $( '#ec_image_verify_button' ).click( function() {
-          $( '#ec_choose_image_verify' ).hide();
-        } );
-
-      } );
-
-      $( '#ec_choose_transfer_submit' ).off( 'click' ).on( 'click', function() {
-        that.processForm( receiptUrl );
-      } );
-
+      $( '#ingreso_pago_voucher_url' ).val( receiptUrl )
     } catch ( e ) {
       return alert( e.message, 'No se ha podido enviar su transferencia' );
     }
   },
 
-  processForm( receiptUrl ) {
+  verifyVoucher() {
+    var receiptUrl = $( '#ingreso_pago_voucher_url' ).val()
+    $( '#ec_choose_image_verify' ).show();
+    $( '#ec_image_verify_img' ).css( 'padding', '5px' );
+    $( '#ec_image_verify_img' ).html( '' ).append( $( '<img>', {
+      src: receiptUrl,
+      width: '100%'
+    } ) );
+    $( '#ec_image_verify_button' ).click( function() {
+      $( '#ec_choose_image_verify' ).hide();
+    } )
+
+    $( '#ec_choose_transfer_submit' ).off( 'click' ).on( 'click', function() {
+      that.processForm();
+    } )
+  },
+
+  processForm( order_id ) {
 
     /** Some validation */
     var errors = [];
     var form = {};
+    form.order_id = order_id
 
-    form.receiptUrl = receiptUrl;
-    form.amount = $( '#ec_choose_transfer_amount' ).val();
-    // form.bankName = $$( 'ec_choose_transfer_bankName' ).getValue();
-    form.accountName = $( '#ec_choose_transfer_accountName' ).val();
-    form.accountNumber = $( '#ec_choose_transfer_accountNumber' ).val();
-    form.comment = $( '#ec_choose_transfer_comment' ).val();
-    console.info( form );
+    form.payment_gateway = $( 'input[name="ingreso_payment_gateway"]:checked' ).val()
+    // form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
+    form.voucher_url = 'xxxxxxxxxxxxx'
+    form.amount = $( '#ingreso_pago_amount' ).val()
+    form.authorization_code = $( '#ingreso_pago_authorization_code' ).val()
 
+    if ( !form.payment_gateway ) {
+      errors.push( 'Ingrese tipo de pago' );
+    }
     if ( form.amount === '' || $.isNumeric( form.amount ) === false ) {
       errors.push( 'Ingrese un Monto numérico' );
     }
-    if ( form.bankName === '' ) {
-      errors.push( 'Ingrese Nombre del banco' );
+    if ( form.authorization_code === '' || $.isNumeric( form.authorization_code ) === false ) {
+      errors.push( 'Ingrese un Código de autorización numérico' );
     }
-    if ( form.bankCountry === '' ) {
-      errors.push( 'Ingrese País del banco' );
-    }
-    if ( form.accountName === '' ) {
-      errors.push( 'Ingrese Nombre de la cuenta' );
-    }
-    if ( form.accountNumber === '' ) {
-      errors.push( 'Ingrese Número de la cuenta' );
-    }
-    if ( !form.receiptUrl ) {
-      errors.push( 'Ingrese Comprobante de pago' );
+    if ( !form.voucher_url ) {
+      errors.push( 'Ingrese Voucher' );
     }
 
+    console.info( 'datos de pago:', form );
     if ( errors.length ) {
-      alert( "Por favor:<br /><br />" + errors.join( "<br />" ) );
+      alert( "Por favor:\n" + errors.join( "\n" ) );
       return;
     }
 
-    // ds.PaymentRequest.create( form, EC.person.ID, {
-    //   onSuccess: function( data ) {
-    //     EC.lastPayment = data.result;
-    //     EC.gotoPage( 'paymentSuccess' );
-    //   },
-    //   onError: function( data ) {
-    //     EC.gotoPage( 'paymentError' );
-    //   }
-    // } );
+    this.send( form )
   },
 
-  send( currPos, vehicleSelected ) {
-    var t = new Date()
-    console.info( 'SENDING TO BACKEND NOW @' + t )
-    Vue.http.post( MICRO_API_URL + '/vehicle/update-gps', {
-      vehicle_id: vehicleSelected,
-      lat: currPos.latitude,
-      lon: currPos.longitude
-
+  send( form ) {
+    Vue.http.post( MICRO_API_URL + '/payment/mobile-store', {
+      order_id: form.order_id,
+      amount: form.amount,
+      payment_gateway: form.payment_gateway,
+      payment_type: 'opl',
+      authorization_code: form.authorization_code,
+      voucher_url: form.voucher_url
     } ).then( ( response ) => {
-      console.info( response, 'success callback' );
+      if ( !response || !response.success ) {
+        alert( 'Pago no procesado' )
+      }
     }, ( response ) => {
-      console.info( response.data, 'error callback' );
-
+      alert( 'Pago no procesado' )
     } )
   }
 }

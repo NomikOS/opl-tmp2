@@ -11563,7 +11563,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _vue = __webpack_require__(2);
@@ -11588,67 +11588,67 @@
 	// modules are singletons!!!
 	var MICRO_API_URL = _common.urls.micro_api; // import una variable
 	exports.default = {
-	    idWatch: 0,
-	    position: {},
+	  idWatch: 0,
+	  position: {},
 
-	    startGpsReporting: function startGpsReporting() {
+	  startGpsReporting: function startGpsReporting() {
 
-	        if (!navigator.geolocation) {
-	            return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
-	        }
-
-	        var currPos = {};
-	        var that = this;
-
-	        console.info('Geolocalización disponible: OK');
-
-	        if (this.idWatch) {
-	            clearInterval(this.idWatch);
-	        }
-
-	        this.idWatch = setInterval(function () {
-	            var setup = _ls2.default.get('setup');
-	            if (!setup || !setup.vehicleSelected) {
-	                /**
-	                 * eventualmente vehicleSelected sera seteado
-	                 * y en tal caso este loop ya estara corriendo
-	                 */
-	                return;
-	            }
-	            var vehicleSelected = setup.vehicleSelected;
-
-	            navigator.geolocation.getCurrentPosition(function (position) {
-	                currPos.latitude = position.coords.latitude;
-	                currPos.longitude = position.coords.longitude;
-	                console.info('currPos', currPos);
-
-	                /**
-	                 * Send to backend
-	                 */
-	                that.send(currPos, vehicleSelected);
-	            }, function (err) {
-	                console.warn('geolocation error (' + err.code + '): ' + err.message);
-	            }, {
-	                enableHighAccuracy: true
-	            });
-	        }, 1000 * 60 * 3); // cada 3 minutos
-
-	        console.info('idWatch', this.idWatch);
-	    },
-	    send: function send(currPos, vehicleSelected) {
-	        var t = new Date();
-	        console.info('SENDING TO BACKEND NOW @' + t);
-	        _vue2.default.http.post(MICRO_API_URL + '/vehicle/update-gps', {
-	            vehicle_id: vehicleSelected,
-	            lat: currPos.latitude,
-	            lon: currPos.longitude
-
-	        }).then(function (response) {
-	            console.info(response, 'success callback');
-	        }, function (response) {
-	            console.info(response.data, 'error callback');
-	        });
+	    if (!navigator.geolocation) {
+	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
 	    }
+
+	    var currPos = {};
+	    var that = this;
+
+	    console.info('Geolocalización disponible: OK');
+
+	    if (this.idWatch) {
+	      clearInterval(this.idWatch);
+	    }
+
+	    this.idWatch = setInterval(function () {
+	      var setup = _ls2.default.get('setup');
+	      if (!setup || !setup.vehicleSelected) {
+	        /**
+	         * eventualmente vehicleSelected sera seteado
+	         * y en tal caso este loop ya estara corriendo
+	         */
+	        return;
+	      }
+	      var vehicleSelected = setup.vehicleSelected;
+
+	      navigator.geolocation.getCurrentPosition(function (position) {
+	        currPos.latitude = position.coords.latitude;
+	        currPos.longitude = position.coords.longitude;
+	        console.info('currPos', currPos);
+
+	        /**
+	         * Send to backend
+	         */
+	        that.send(currPos, vehicleSelected);
+	      }, function (err) {
+	        console.warn('geolocation error (' + err.code + '): ' + err.message);
+	      }, {
+	        enableHighAccuracy: true
+	      });
+	    }, 1000 * 60 * 3); // cada 3 minutos
+
+	    console.info('idWatch', this.idWatch);
+	  },
+	  send: function send(currPos, vehicleSelected) {
+	    var t = new Date();
+	    console.info('SENDING TO BACKEND NOW @' + t);
+	    _vue2.default.http.post(MICRO_API_URL + '/vehicle/update-gps', {
+	      vehicle_id: vehicleSelected,
+	      lat: currPos.latitude,
+	      lon: currPos.longitude
+
+	    }).then(function (response) {
+	      console.info(response, 'success callback');
+	    }, function (response) {
+	      console.info(response.data, 'error callback');
+	    });
+	  }
 	};
 
 /***/ },
@@ -21068,7 +21068,7 @@
 
 
 	// module
-	exports.push([module.id, "\n#ec_image_verify_img {\n  z-index: 3;\n  border-top-left-radius: 10px;\n  -moz-border-radius-topleft: 10px;\n  border-top-right-radius: 10px;\n  -moz-border-radius-topright: 10px;\n  border-bottom-left-radius: 10px;\n  -moz-border-radius-bottomleft: 10px;\n  border-bottom-right-radius: 10px;\n  -moz-border-radius-bottomright: 10px;\n  border-top-style: solid;\n  border-top-width: 1px;\n  border-left-style: solid;\n  border-left-width: 1px;\n  border-right-style: solid;\n  border-right-width: 1px;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n}\n\n#ec_image_verify_button {\n  z-index: 4;\n  width: 288px;\n  height: 28px;\n  font-size: 14px;\n  border-top-color: transparent;\n  border-top-width: 0px;\n  border-left-color: transparent;\n  border-left-width: 0px;\n  border-right-color: transparent;\n  border-right-width: 0px;\n  border-bottom-color: transparent;\n  border-bottom-width: 0px;\n  background-color: rgb(0, 191, 0);\n}\n", ""]);
+	exports.push([module.id, "\n#ec_choose_image_verify {\n  display: none;\n  z-index: 7;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  position: absolute;\n  border-top-style: none;\n  border-top-width: 0px;\n  border-left-style: none;\n  border-left-width: 0px;\n  border-right-style: none;\n  border-right-width: 0px;\n  border-bottom-style: none;\n  border-bottom-width: 0px;\n  border-top-left-radius: 0px;\n  -moz-border-radius-topleft: 0px;\n  border-top-right-radius: 0px;\n  -moz-border-radius-topright: 0px;\n  border-bottom-left-radius: 0px;\n  -moz-border-radius-bottomleft: 0px;\n  border-bottom-right-radius: 0px;\n  -moz-border-radius-bottomright: 0px;\n}\n#ec_image_verify_img {\n  z-index: 3;\n  top: 14px;\n  bottom: 46px;\n  left: 0px;\n  right: 0px;\n  position: absolute;  \n  border-top-left-radius: 10px;\n  -moz-border-radius-topleft: 10px;\n  border-top-right-radius: 10px;\n  -moz-border-radius-topright: 10px;\n  border-bottom-left-radius: 10px;\n  -moz-border-radius-bottomleft: 10px;\n  border-bottom-right-radius: 10px;\n  -moz-border-radius-bottomright: 10px;\n  border-top-style: solid;\n  border-top-width: 1px;\n  border-left-style: solid;\n  border-left-width: 1px;\n  border-right-style: solid;\n  border-right-width: 1px;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n}\n\n#ec_image_verify_button {\n  z-index: 4;\n  width: 288px;\n  height: 28px;\n  bottom: 10px;\n  left: 15px;\n  font-size: 14px;\n  border-top-color: transparent;\n  border-top-width: 0px;\n  border-left-color: transparent;\n  border-left-width: 0px;\n  border-right-color: transparent;\n  border-right-width: 0px;\n  border-bottom-color: transparent;\n  border-bottom-width: 0px;\n  background-color: rgb(0, 191, 0);\n}\n", ""]);
 
 	// exports
 
@@ -21269,11 +21269,11 @@
 	//             <ul class="ac25-info-list ac25-w100">
 	//               <li>
 	//                 <p class="ac25-info-list-content">
-	//                   <input type="radio" name="ingreso_pago_tipo" id="ingreso_pago_tipo1" value="redcompra">
-	//                   <label for="ingreso_pago_tipo1">Redcompra</label>
+	//                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
+	//                   <label for="ingreso_payment_gateway1">Redcompra</label>
 	//                   <br />
-	//                   <input type="radio" name="ingreso_pago_tipo" id="ingreso_pago_tipo2" value="creditcard">
-	//                   <label for="ingreso_pago_tipo2">Tarjeta de crédito</label>
+	//                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway2" value="creditcard">
+	//                   <label for="ingreso_payment_gateway2">Tarjeta de crédito</label>
 	//                 </p>
 	//               </li>
 	//             </ul>
@@ -21285,6 +21285,7 @@
 	//             <ul class="ac25-info-list ac25-w100">
 	//               <li>
 	//                 <p class="ac25-info-list-content">
+	//                   <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
 	//                   <!-- ec_receipt_upload_buttons -->
 	//                   <div id="ec_receipt_upload_buttons">
 	//                     <!-- ec_choose_transfer_camera -->
@@ -21295,11 +21296,9 @@
 	//                   <!-- ec_receipt_submit_buttons -->
 	//                   <div id="ec_receipt_submit_buttons">
 	//                     <!-- ec_choose_transfer_verify -->
-	//                     <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante">
-	//                     <!-- ec_choose_transfer_retry -->
-	//                     <input type="button" id="ec_choose_transfer_retry" value="Subir o fotografiar de nuevo">
+	//                     <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()">
 	//                     <!-- ec_choose_transfer_submit -->
-	//                     <input type="button" id="ec_choose_transfer_submit" value="Enviar">
+	//                     <input type="button" id="ec_choose_transfer_submit" value="Enviar" @click="processForm()">
 	//                   </div>
 	//                   <div id="ec_choose_image_verify">
 	//                     <div id="ec_image_verify_img"></div>
@@ -21317,11 +21316,11 @@
 	//               <li>
 	//                 <p class="ac25-info-list-content">
 	//                   Monto de pago
-	//                   <input type="text" style="text-transform: uppercase;">
+	//                   <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
 	//                 </p>
 	//                 <p class="ac25-info-list-content">
 	//                   Código de autorización
-	//                   <input type="text" style="text-transform: uppercase;">
+	//                   <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
 	//                 </p>
 	//               </li>
 	//             </ul>
@@ -21340,8 +21339,38 @@
 	//   <!-- end content-global -->
 	// </template>
 	// <style>
+	// #ec_choose_image_verify {
+	//   display: none;
+	//   z-index: 7;
+	//   top: 0px;
+	//   bottom: 0px;
+	//   left: 0px;
+	//   right: 0px;
+	//   position: absolute;
+	//   border-top-style: none;
+	//   border-top-width: 0px;
+	//   border-left-style: none;
+	//   border-left-width: 0px;
+	//   border-right-style: none;
+	//   border-right-width: 0px;
+	//   border-bottom-style: none;
+	//   border-bottom-width: 0px;
+	//   border-top-left-radius: 0px;
+	//   -moz-border-radius-topleft: 0px;
+	//   border-top-right-radius: 0px;
+	//   -moz-border-radius-topright: 0px;
+	//   border-bottom-left-radius: 0px;
+	//   -moz-border-radius-bottomleft: 0px;
+	//   border-bottom-right-radius: 0px;
+	//   -moz-border-radius-bottomright: 0px;
+	// }
 	// #ec_image_verify_img {
 	//   z-index: 3;
+	//   top: 14px;
+	//   bottom: 46px;
+	//   left: 0px;
+	//   right: 0px;
+	//   position: absolute;  
 	//   border-top-left-radius: 10px;
 	//   -moz-border-radius-topleft: 10px;
 	//   border-top-right-radius: 10px;
@@ -21364,6 +21393,8 @@
 	//   z-index: 4;
 	//   width: 288px;
 	//   height: 28px;
+	//   bottom: 10px;
+	//   left: 15px;
 	//   font-size: 14px;
 	//   border-top-color: transparent;
 	//   border-top-width: 0px;
@@ -21439,6 +21470,12 @@
 	      console.info(this.addressType);
 	      return this.$route.router.go('/event-' + this.addressType);
 	    },
+	    processForm: function processForm() {
+	      _upload2.default.processForm(this.order.id);
+	    },
+	    verifyVoucher: function verifyVoucher() {
+	      _upload2.default.processForm(this.order.id);
+	    },
 	    openIngresoPago: function openIngresoPago() {
 	      var $w1 = $('#windowPagos');
 	      $w1.hide();
@@ -21513,17 +21550,10 @@
 	  init: function init() {
 	    $('#ec_choose_transfer_camera').show();
 	    // $$( 'ec_choose_transfer_retry' ).setValue( 'Subir o fotografiar de nuevo' )
-
 	    console.info('#ec_choose_transfer_camera', $('#ec_choose_transfer_camera').length);
-
 	    var that = this;
 
 	    $('#ec_choose_transfer_camera').on('click', function () {
-
-	      console.info(navigator);
-	      console.info(navigator.camera);
-	      console.info(navigator.geolocation);
-
 	      if (typeof navigator.device === 'undefined') {
 	        return alert('Camera device needed', 'No hay acceso a la cámara.');
 	      }
@@ -21606,7 +21636,6 @@
 	    console.info('assembly', assembly);
 
 	    $('#ec_choose_loading').hide();
-
 	    $('#ec_receipt_upload_buttons').hide();
 	    $('#ec_receipt_submit_buttons').show();
 
@@ -21618,90 +21647,79 @@
 	        throw new Error('Image url missing from Transloadit');
 	      }
 
+	      console.info(assembly.uploads);
+
 	      var receiptUrl = assembly.uploads[0].url;
 	      console.info('receiptUrl', receiptUrl);
-	      // form.receiptThumbUrl = assembly.results.thumb[ 0 ].url;
-
-	      $('#ec_choose_transfer_verify').off('click').on('click', function () {
-
-	        $('#ec_choose_image_verify').show();
-	        $('#ec_image_verify_img').css('padding', '5px');
-	        $('#ec_image_verify_img').html('').append($('<img>', {
-	          src: receiptUrl,
-	          width: '100%'
-	        }));
-	        $('#ec_image_verify_button').click(function () {
-	          $('#ec_choose_image_verify').hide();
-	        });
-	      });
-
-	      $('#ec_choose_transfer_submit').off('click').on('click', function () {
-	        that.processForm(receiptUrl);
-	      });
+	      $('#ingreso_pago_voucher_url').val(receiptUrl);
 	    } catch (e) {
 	      return alert(e.message, 'No se ha podido enviar su transferencia');
 	    }
 	  },
-	  processForm: function processForm(receiptUrl) {
+	  verifyVoucher: function verifyVoucher() {
+	    var receiptUrl = $('#ingreso_pago_voucher_url').val();
+	    $('#ec_choose_image_verify').show();
+	    $('#ec_image_verify_img').css('padding', '5px');
+	    $('#ec_image_verify_img').html('').append($('<img>', {
+	      src: receiptUrl,
+	      width: '100%'
+	    }));
+	    $('#ec_image_verify_button').click(function () {
+	      $('#ec_choose_image_verify').hide();
+	    });
+
+	    $('#ec_choose_transfer_submit').off('click').on('click', function () {
+	      that.processForm();
+	    });
+	  },
+	  processForm: function processForm(order_id) {
 
 	    /** Some validation */
 	    var errors = [];
 	    var form = {};
+	    form.order_id = order_id;
 
-	    form.receiptUrl = receiptUrl;
-	    form.amount = $('#ec_choose_transfer_amount').val();
-	    // form.bankName = $$( 'ec_choose_transfer_bankName' ).getValue();
-	    form.accountName = $('#ec_choose_transfer_accountName').val();
-	    form.accountNumber = $('#ec_choose_transfer_accountNumber').val();
-	    form.comment = $('#ec_choose_transfer_comment').val();
-	    console.info(form);
+	    form.payment_gateway = $('input[name="ingreso_payment_gateway"]:checked').val();
+	    // form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
+	    form.voucher_url = 'xxxxxxxxxxxxx';
+	    form.amount = $('#ingreso_pago_amount').val();
+	    form.authorization_code = $('#ingreso_pago_authorization_code').val();
 
+	    if (!form.payment_gateway) {
+	      errors.push('Ingrese tipo de pago');
+	    }
 	    if (form.amount === '' || $.isNumeric(form.amount) === false) {
 	      errors.push('Ingrese un Monto numérico');
 	    }
-	    if (form.bankName === '') {
-	      errors.push('Ingrese Nombre del banco');
+	    if (form.authorization_code === '' || $.isNumeric(form.authorization_code) === false) {
+	      errors.push('Ingrese un Código de autorización numérico');
 	    }
-	    if (form.bankCountry === '') {
-	      errors.push('Ingrese País del banco');
-	    }
-	    if (form.accountName === '') {
-	      errors.push('Ingrese Nombre de la cuenta');
-	    }
-	    if (form.accountNumber === '') {
-	      errors.push('Ingrese Número de la cuenta');
-	    }
-	    if (!form.receiptUrl) {
-	      errors.push('Ingrese Comprobante de pago');
+	    if (!form.voucher_url) {
+	      errors.push('Ingrese Voucher');
 	    }
 
+	    console.info('datos de pago:', form);
 	    if (errors.length) {
-	      alert("Por favor:<br /><br />" + errors.join("<br />"));
+	      alert("Por favor:\n" + errors.join("\n"));
 	      return;
 	    }
 
-	    // ds.PaymentRequest.create( form, EC.person.ID, {
-	    //   onSuccess: function( data ) {
-	    //     EC.lastPayment = data.result;
-	    //     EC.gotoPage( 'paymentSuccess' );
-	    //   },
-	    //   onError: function( data ) {
-	    //     EC.gotoPage( 'paymentError' );
-	    //   }
-	    // } );
+	    this.send(form);
 	  },
-	  send: function send(currPos, vehicleSelected) {
-	    var t = new Date();
-	    console.info('SENDING TO BACKEND NOW @' + t);
-	    _vue2.default.http.post(MICRO_API_URL + '/vehicle/update-gps', {
-	      vehicle_id: vehicleSelected,
-	      lat: currPos.latitude,
-	      lon: currPos.longitude
-
+	  send: function send(form) {
+	    _vue2.default.http.post(MICRO_API_URL + '/payment/mobile-store', {
+	      order_id: form.order_id,
+	      amount: form.amount,
+	      payment_gateway: form.payment_gateway,
+	      payment_type: 'opl',
+	      authorization_code: form.authorization_code,
+	      voucher_url: form.voucher_url
 	    }).then(function (response) {
-	      console.info(response, 'success callback');
+	      if (!response || !response.success) {
+	        alert('Pago no procesado');
+	      }
 	    }, function (response) {
-	      console.info(response.data, 'error callback');
+	      alert('Pago no procesado');
 	    });
 	  }
 	};
@@ -21710,7 +21728,7 @@
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!--\nRedcompra\nTarjeta de crédito\n2) Ingresar:\nvoucher (foto)\nmonto (textbox)\ncód. autorización (textbox) -->\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Elija </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo1\" value=\"redcompra\">\n                  <label for=\"ingreso_pago_tipo1\">Redcompra</label>\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_pago_tipo\" id=\"ingreso_pago_tipo2\" value=\"creditcard\">\n                  <label for=\"ingreso_pago_tipo2\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingreso voucher </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\">\n                  </div>\n                  <!-- ec_receipt_submit_buttons -->\n                  <div id=\"ec_receipt_submit_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\">\n                    <!-- ec_choose_transfer_retry -->\n                    <input type=\"button\" id=\"ec_choose_transfer_retry\" value=\"Subir o fotografiar de nuevo\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingrese </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  Monto de pago\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n                <p class=\"ac25-info-list-content\">\n                  Código de autorización\n                  <input type=\"text\" style=\"text-transform: uppercase;\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!--\nRedcompra\nTarjeta de crédito\n2) Ingresar:\nvoucher (foto)\nmonto (textbox)\ncód. autorización (textbox) -->\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Elija </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway1\" value=\"redcompra\">\n                  <label for=\"ingreso_payment_gateway1\">Redcompra</label>\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway2\" value=\"creditcard\">\n                  <label for=\"ingreso_payment_gateway2\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingreso voucher </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"hidden\" name=\"ingreso_pago_voucher_url\" id=\"ingreso_pago_voucher_url\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\">\n                  </div>\n                  <!-- ec_receipt_submit_buttons -->\n                  <div id=\"ec_receipt_submit_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\" @click=\"verifyVoucher()\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\" @click=\"processForm()\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <p class=\"big-title sub\"> Ingrese </p>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  Monto de pago\n                  <input type=\"number\" name=\"ingreso_pago_amount\" id=\"ingreso_pago_amount\">\n                </p>\n                <p class=\"ac25-info-list-content\">\n                  Código de autorización\n                  <input type=\"number\" name=\"ingreso_pago_authorization_code\" id=\"ingreso_pago_authorization_code\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 112 */
