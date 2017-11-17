@@ -126,19 +126,10 @@
           </div>
         </div>
       </div>
-      <!--
-Redcompra
-Tarjeta de crédito
-2) Ingresar:
-voucher (foto)
-monto (textbox)
-cód. autorización (textbox) -->
-      <!-- end content-inner-holder -->
-      <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array.length">
-        <p class="big-title sub"> Elija </p>
+      <div class="">
         <div class="row">
           <div class="col s12">
-            <ul class="ac25-info-list ac25-w100">
+            <ul class="ac25-w100">
               <li>
                 <p class="ac25-info-list-content">
                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
@@ -151,48 +142,46 @@ cód. autorización (textbox) -->
             </ul>
           </div>
         </div>
-        <p class="big-title sub"> Ingreso voucher </p>
         <div class="row">
           <div class="col s12">
-            <ul class="ac25-info-list ac25-w100">
+            <ul class="ac25-w100">
               <li>
-                <p class="ac25-info-list-content">
-                  <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
-                  <!-- ec_receipt_upload_buttons -->
-                  <div id="ec_receipt_upload_buttons">
-                    <!-- ec_choose_transfer_camera -->
-                    <input type="button" id="ec_choose_transfer_camera" value="Fotografiar comprobante">
-                    <!-- ec_choose_transfer_file -->
-                    <input type="button" id="ec_choose_transfer_file" value="Subir comprobante">
-                  </div>
-                  <!-- ec_receipt_submit_buttons -->
-                  <div id="ec_receipt_submit_buttons">
-                    <!-- ec_choose_transfer_verify -->
-                    <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()">
-                    <!-- ec_choose_transfer_submit -->
-                    <input type="button" id="ec_choose_transfer_submit" value="Enviar" @click="processForm()">
-                  </div>
-                  <div id="ec_choose_image_verify">
-                    <div id="ec_image_verify_img"></div>
-                    <input type="button" id="ec_image_verify_button" value="OK">
-                  </div>
+                <p class="">
+                  Ingrese monto de pago
+                  <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
+                </p>
+                <p class="">
+                  Ingrese código de autorización
+                  <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
                 </p>
               </li>
             </ul>
           </div>
         </div>
-        <p class="big-title sub"> Ingrese </p>
         <div class="row">
           <div class="col s12">
-            <ul class="ac25-info-list ac25-w100">
+            <ul class="ac25-w100">
               <li>
-                <p class="ac25-info-list-content">
-                  Monto de pago
-                  <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
-                </p>
-                <p class="ac25-info-list-content">
-                  Código de autorización
-                  <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
+                <p class="">
+                  <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
+                  <!-- ec_receipt_upload_buttons -->
+                  <div id="ec_receipt_upload_buttons">
+                    <!-- ec_choose_transfer_camera -->
+                    <input type="button" id="ec_choose_transfer_camera" value="Fotografiar comprobante" class="ec_receipt_buttons">
+                    <!-- ec_choose_transfer_file -->
+                    <input type="button" id="ec_choose_transfer_file" value="Subir comprobante" class="ec_receipt_buttons">
+                  </div>
+                  <!-- ec_receipt_submit_buttons -->
+                  <div id="ec_receipt_submit_buttons">
+                    <!-- ec_choose_transfer_verify -->
+                    <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()" class="ec_receipt_buttons">
+                    <!-- ec_choose_transfer_submit -->
+                    <input type="button" id="ec_choose_transfer_submit" value="Enviar" @click="processForm()" class="ec_receipt_buttons">
+                  </div>
+                  <div id="ec_choose_image_verify">
+                    <div id="ec_image_verify_img"></div>
+                    <input type="button" id="ec_image_verify_button" value="OK">
+                  </div>
                 </p>
               </li>
             </ul>
@@ -219,64 +208,32 @@ cód. autorización (textbox) -->
   left: 0px;
   right: 0px;
   position: absolute;
-  border-top-style: none;
-  border-top-width: 0px;
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-style: none;
-  border-right-width: 0px;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-top-left-radius: 0px;
-  -moz-border-radius-topleft: 0px;
-  border-top-right-radius: 0px;
-  -moz-border-radius-topright: 0px;
-  border-bottom-left-radius: 0px;
-  -moz-border-radius-bottomleft: 0px;
-  border-bottom-right-radius: 0px;
-  -moz-border-radius-bottomright: 0px;
+  background-color: black;
 }
+
 #ec_image_verify_img {
-  z-index: 3;
-  top: 14px;
-  bottom: 46px;
-  left: 0px;
-  right: 0px;
-  position: absolute;  
-  border-top-left-radius: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-right-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  border-bottom-left-radius: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  border-bottom-right-radius: 10px;
-  -moz-border-radius-bottomright: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  top: 30px;
+  left: 10px;
+  right: 10px;
+  position: absolute;
 }
 
 #ec_image_verify_button {
-  z-index: 4;
-  width: 288px;
-  height: 28px;
   bottom: 10px;
-  left: 15px;
-  font-size: 14px;
-  border-top-color: transparent;
-  border-top-width: 0px;
-  border-left-color: transparent;
-  border-left-width: 0px;
-  border-right-color: transparent;
-  border-right-width: 0px;
-  border-bottom-color: transparent;
-  border-bottom-width: 0px;
+  width:  95%;
+  height: 50px;
+  font-size: 30px;
+  position: absolute;
+  background-color: crimson;
+}
+
+.ec_receipt_buttons {
+  z-index: 4;
+  width: 100%;
+  height: 50px;
+  font-size: 30px;
   background-color: rgb(0, 191, 0);
+  margin-top: 20px;
 }
 </style>
 <script>
@@ -375,7 +332,7 @@ export default {
     },
 
     verifyVoucher() {
-      upload.processForm(this.order.id)
+      upload.verifyVoucher()
     },
 
     openIngresoPago() {
