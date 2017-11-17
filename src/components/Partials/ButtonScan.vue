@@ -1,7 +1,7 @@
 <template>
       <a class="ac25-half-black  right waves-effect waves-light">  
       <img src="../html/images/barcode-big-2.png" />
-      <p class="ac25-no-margin">Escaneo deshabilitado</p>  
+      <p class="ac25-no-margin">escaneo deshabilitado</p>  
       </a>
 <!--   <a v-if="counters.items_to_scan_remaining > 0" v-link="'scan'" class="ac25-half-black  right waves-effect waves-light">
       <img src="../html/images/barcode-big-2.png" />

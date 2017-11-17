@@ -97,35 +97,6 @@
         </p>
         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
       </div>
-      <div class="ac25-content-inner-holder without-padding-bottom row">
-        <div class="row">
-          <div class="col s12">
-            <ul class="ac25-info-list ac25-w100">
-              <li>
-                <p class="ac25-info-list-content"> nombre: {{ infoName}} </p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content"> teléfono: {{ infoPhone }} </p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content"> dirección: {{order.pickupAddress_name}} </p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content">MTS3: {{order.items_volume}}</p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content">bultos: {{order.items_amount}}</p>
-              </li>
-              <li>
-                <p class="ac25-info-list-content">precio: {{order.price_printable}}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="">
         <div class="row">
           <div class="col s12">
@@ -133,10 +104,11 @@
               <li>
                 <p class="ac25-info-list-content">
                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
-                  <label for="ingreso_payment_gateway1">Redcompra</label>
+                  <label for="ingreso_payment_gateway1" style="font-size:20px">Redcompra</label>
+                  <br />
                   <br />
                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway2" value="creditcard">
-                  <label for="ingreso_payment_gateway2">Tarjeta de crédito</label>
+                  <label for="ingreso_payment_gateway2" style="font-size:20px">Tarjeta de crédito</label>
                 </p>
               </li>
             </ul>
@@ -146,11 +118,11 @@
           <div class="col s12">
             <ul class="ac25-w100">
               <li>
-                <p class="">
+                <p class="" style="font-size:20px">
                   Ingrese monto de pago
                   <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
                 </p>
-                <p class="">
+                <p class="" style="font-size:20px">
                   Ingrese código de autorización
                   <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
                 </p>
