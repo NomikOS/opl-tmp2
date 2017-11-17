@@ -17,9 +17,8 @@ export default {
   max_size: 1048576 * 10,
 
   init() {
-    $( '#ec_choose_transfer_camera' ).show()
-    // $$( 'ec_choose_transfer_retry' ).setValue( 'Subir o fotografiar de nuevo' )
-    console.info( '#ec_choose_transfer_camera', $( '#ec_choose_transfer_camera' ).length )
+    $( '#ec_receipt_upload_buttons' ).show()
+    $( '#ec_choose_loading' ).hide();
     var that = this
 
     $( '#ec_choose_transfer_camera' ).on( 'click', function() {
@@ -69,6 +68,7 @@ export default {
     var options = new FileUploadOptions();
     var url = 'http://api2.transloadit.com/assemblies';
 
+    $( '#ec_receipt_upload_buttons' ).hide()
     $( '#ec_choose_loading' ).show();
 
     options.fileKey = 'file';
@@ -98,21 +98,18 @@ export default {
     options.params = params;
 
     ft.upload( imageURI, encodeURI( url ), function( r ) {
-      var assembly = JSON.parse( r.response );
-      that.weCool( assembly );
+      var assembly = JSON.parse( r.response )
+      that.weCool( assembly )
     }, function( error ) {
-      $( '#ec_choose_loading' ).hide();
-      console.info( error );
+      $( '#ec_choose_loading' ).hide()
+      $( '#ec_receipt_upload_buttons' ).show()
+      console.info( error )
     }, options );
   },
 
   weCool( assembly ) {
-    console.info( 'assembly', assembly )
-
-    $( '#ec_choose_loading' ).hide();
-    $( '#ec_receipt_upload_buttons' ).hide();
-    $( '#ec_receipt_submit_buttons' ).show();
-
+    $( '#ec_choose_loading' ).hide()
+    $( '#ec_receipt_upload_buttons' ).show()
     var that = this
 
     try {
@@ -121,23 +118,22 @@ export default {
         throw ( new Error( 'Image url missing from Transloadit' ) );
       }
 
-      console.info( assembly.uploads )
-
       var receiptUrl = assembly.uploads[ 0 ].url;
       console.info( 'receiptUrl', receiptUrl )
       $( '#ingreso_pago_voucher_url' ).val( receiptUrl )
     } catch ( e ) {
-      return alert( e.message, 'No se ha podido enviar su transferencia' );
+      return alert( e.message, 'No se ha podido enviar pago' );
     }
   },
 
   verifyVoucher() {
+    var that = this
     var receiptUrl = $( '#ingreso_pago_voucher_url' ).val()
     $( '#ec_choose_image_verify' ).show();
     $( '#ec_image_verify_img' ).css( 'padding', '5px' );
     $( '#ec_image_verify_img' ).html( '' ).append( $( '<img>', {
       src: receiptUrl,
-      width: '100%'
+      height: '100%'
     } ) );
     $( '#ec_image_verify_button' ).click( function() {
       $( '#ec_choose_image_verify' ).hide();
@@ -156,8 +152,8 @@ export default {
     form.order_id = order_id
 
     form.payment_gateway = $( 'input[name="ingreso_payment_gateway"]:checked' ).val()
-    // form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
-    form.voucher_url = 'xxxxxxxxxxxxx'
+    form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
+    // form.voucher_url = 'xxxxxxxxxxxxx'
     form.amount = $( '#ingreso_pago_amount' ).val()
     form.authorization_code = $( '#ingreso_pago_authorization_code' ).val()
 

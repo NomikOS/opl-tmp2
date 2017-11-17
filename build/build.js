@@ -21068,7 +21068,7 @@
 
 
 	// module
-	exports.push([module.id, "\n#ec_choose_image_verify {\n  display: none;\n  z-index: 7;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  position: absolute;\n  background-color: black;\n}\n\n#ec_image_verify_img {\n  top: 30px;\n  left: 10px;\n  right: 10px;\n  position: absolute;\n}\n\n#ec_image_verify_button {\n  bottom: 10px;\n  width:  95%;\n  height: 50px;\n  font-size: 30px;\n  position: absolute;\n  background-color: crimson;\n}\n\n.ec_receipt_buttons {\n  z-index: 4;\n  width: 100%;\n  height: 50px;\n  font-size: 30px;\n  background-color: rgb(0, 191, 0);\n  margin-top: 20px;\n}\n", ""]);
+	exports.push([module.id, "\n#ec_choose_image_verify {\n  display: none;\n  z-index: 10;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  position: absolute;\n  background-color: black;\n}\n\n#ec_image_verify_img {\n  top: 30px;\n  left: 10px;\n  right: 10px;\n  position: absolute;\n}\n\n#ec_image_verify_button {\n  bottom: 10px;\n  width: 95%;\n  height: 50px;\n  font-size: 30px;\n  position: absolute;\n  background-color: crimson;\n}\n\n.ec_receipt_buttons {\n  z-index: 4;\n  width: 100%;\n  height: 60px;\n  font-size: 30px;\n  background-color: rgb(0, 191, 0);\n  margin-top: 20px;\n}\n", ""]);
 
 	// exports
 
@@ -21232,11 +21232,12 @@
 	//               <li>
 	//                 <p class="ac25-info-list-content">
 	//                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
-	//                   <label for="ingreso_payment_gateway1" style="font-size:20px">Redcompra</label>
+	//                   <label for="ingreso_payment_gateway1" style="font-size:30px">Redcompra</label>
+	//                   <br />
 	//                   <br />
 	//                   <br />
 	//                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway2" value="creditcard">
-	//                   <label for="ingreso_payment_gateway2" style="font-size:20px">Tarjeta de crédito</label>
+	//                   <label for="ingreso_payment_gateway2" style="font-size:30px">Tarjeta de crédito</label>
 	//                 </p>
 	//               </li>
 	//             </ul>
@@ -21246,11 +21247,11 @@
 	//           <div class="col s12">
 	//             <ul class="ac25-w100">
 	//               <li>
-	//                 <p class="" style="font-size:20px">
+	//                 <p class="" style="font-size:30px">
 	//                   Ingrese monto de pago
 	//                   <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
 	//                 </p>
-	//                 <p class="" style="font-size:20px">
+	//                 <p class="" style="font-size:30px">
 	//                   Ingrese código de autorización
 	//                   <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
 	//                 </p>
@@ -21263,6 +21264,7 @@
 	//             <ul class="ac25-w100">
 	//               <li>
 	//                 <p class="">
+	//                   <div id="ec_choose_loading" style="font-size:30px;color:crimson">Procesando comprobante, espere...</div>
 	//                   <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
 	//                   <!-- ec_receipt_upload_buttons -->
 	//                   <div id="ec_receipt_upload_buttons">
@@ -21270,9 +21272,6 @@
 	//                     <input type="button" id="ec_choose_transfer_camera" value="Fotografiar comprobante" class="ec_receipt_buttons">
 	//                     <!-- ec_choose_transfer_file -->
 	//                     <input type="button" id="ec_choose_transfer_file" value="Subir comprobante" class="ec_receipt_buttons">
-	//                   </div>
-	//                   <!-- ec_receipt_submit_buttons -->
-	//                   <div id="ec_receipt_submit_buttons">
 	//                     <!-- ec_choose_transfer_verify -->
 	//                     <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()" class="ec_receipt_buttons">
 	//                     <!-- ec_choose_transfer_submit -->
@@ -21302,7 +21301,7 @@
 	// <style>
 	// #ec_choose_image_verify {
 	//   display: none;
-	//   z-index: 7;
+	//   z-index: 10;
 	//   top: 0px;
 	//   bottom: 0px;
 	//   left: 0px;
@@ -21320,7 +21319,7 @@
 	//
 	// #ec_image_verify_button {
 	//   bottom: 10px;
-	//   width:  95%;
+	//   width: 95%;
 	//   height: 50px;
 	//   font-size: 30px;
 	//   position: absolute;
@@ -21330,7 +21329,7 @@
 	// .ec_receipt_buttons {
 	//   z-index: 4;
 	//   width: 100%;
-	//   height: 50px;
+	//   height: 60px;
 	//   font-size: 30px;
 	//   background-color: rgb(0, 191, 0);
 	//   margin-top: 20px;
@@ -21477,9 +21476,8 @@
 	  max_size: 1048576 * 10,
 
 	  init: function init() {
-	    $('#ec_choose_transfer_camera').show();
-	    // $$( 'ec_choose_transfer_retry' ).setValue( 'Subir o fotografiar de nuevo' )
-	    console.info('#ec_choose_transfer_camera', $('#ec_choose_transfer_camera').length);
+	    $('#ec_receipt_upload_buttons').show();
+	    $('#ec_choose_loading').hide();
 	    var that = this;
 
 	    $('#ec_choose_transfer_camera').on('click', function () {
@@ -21525,6 +21523,7 @@
 	    var options = new FileUploadOptions();
 	    var url = 'http://api2.transloadit.com/assemblies';
 
+	    $('#ec_receipt_upload_buttons').hide();
 	    $('#ec_choose_loading').show();
 
 	    options.fileKey = 'file';
@@ -21558,16 +21557,13 @@
 	      that.weCool(assembly);
 	    }, function (error) {
 	      $('#ec_choose_loading').hide();
+	      $('#ec_receipt_upload_buttons').show();
 	      console.info(error);
 	    }, options);
 	  },
 	  weCool: function weCool(assembly) {
-	    console.info('assembly', assembly);
-
 	    $('#ec_choose_loading').hide();
-	    $('#ec_receipt_upload_buttons').hide();
-	    $('#ec_receipt_submit_buttons').show();
-
+	    $('#ec_receipt_upload_buttons').show();
 	    var that = this;
 
 	    try {
@@ -21576,22 +21572,21 @@
 	        throw new Error('Image url missing from Transloadit');
 	      }
 
-	      console.info(assembly.uploads);
-
 	      var receiptUrl = assembly.uploads[0].url;
 	      console.info('receiptUrl', receiptUrl);
 	      $('#ingreso_pago_voucher_url').val(receiptUrl);
 	    } catch (e) {
-	      return alert(e.message, 'No se ha podido enviar su transferencia');
+	      return alert(e.message, 'No se ha podido enviar pago');
 	    }
 	  },
 	  verifyVoucher: function verifyVoucher() {
+	    var that = this;
 	    var receiptUrl = $('#ingreso_pago_voucher_url').val();
 	    $('#ec_choose_image_verify').show();
 	    $('#ec_image_verify_img').css('padding', '5px');
 	    $('#ec_image_verify_img').html('').append($('<img>', {
 	      src: receiptUrl,
-	      width: '100%'
+	      height: '100%'
 	    }));
 	    $('#ec_image_verify_button').click(function () {
 	      $('#ec_choose_image_verify').hide();
@@ -21609,8 +21604,8 @@
 	    form.order_id = order_id;
 
 	    form.payment_gateway = $('input[name="ingreso_payment_gateway"]:checked').val();
-	    // form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
-	    form.voucher_url = 'xxxxxxxxxxxxx';
+	    form.voucher_url = $('#ingreso_pago_voucher_url').val();
+	    // form.voucher_url = 'xxxxxxxxxxxxx'
 	    form.amount = $('#ingreso_pago_amount').val();
 	    form.authorization_code = $('#ingreso_pago_authorization_code').val();
 
@@ -21657,7 +21652,7 @@
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway1\" value=\"redcompra\">\n                  <label for=\"ingreso_payment_gateway1\" style=\"font-size:20px\">Redcompra</label>\n                  <br />\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway2\" value=\"creditcard\">\n                  <label for=\"ingreso_payment_gateway2\" style=\"font-size:20px\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"\" style=\"font-size:20px\">\n                  Ingrese monto de pago\n                  <input type=\"number\" name=\"ingreso_pago_amount\" id=\"ingreso_pago_amount\">\n                </p>\n                <p class=\"\" style=\"font-size:20px\">\n                  Ingrese código de autorización\n                  <input type=\"number\" name=\"ingreso_pago_authorization_code\" id=\"ingreso_pago_authorization_code\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"\">\n                  <input type=\"hidden\" name=\"ingreso_pago_voucher_url\" id=\"ingreso_pago_voucher_url\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\" class=\"ec_receipt_buttons\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\" class=\"ec_receipt_buttons\">\n                  </div>\n                  <!-- ec_receipt_submit_buttons -->\n                  <div id=\"ec_receipt_submit_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\" @click=\"verifyVoucher()\" class=\"ec_receipt_buttons\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\" @click=\"processForm()\" class=\"ec_receipt_buttons\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
+	module.exports = "\n  <header-user-data></header-user-data>\n  <modal-wait></modal-wait>\n  <div class=\"ac25-content-global\" id=\"windowPagos\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">ESTADO DE CUENTA</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-info-list ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\"> nombre: {{ infoName}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> teléfono: {{ infoPhone }} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> dirección: {{order.pickupAddress_name}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\"> deparmento: {{order.pickupAddress_apt ? order.pickupAddress_apt : 'N/A'}} </p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">MTS3: {{order.items_volume}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">bultos: {{order.items_amount}}</p>\n              </li>\n              <li>\n                <p class=\"ac25-info-list-content\">precio: {{order.price_printable}}</p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"estados-box\">\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id != 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">{{ order.paymentStatus_name }}</p>\n          <p class=\"estados-middle yellow\" v-if=\"order.paymentStatus_id == 3\" v-bind:style=\"{ background: order.paymentStatus_color }\">PAGO PENDIENTE\n            <br />${{order.paymentRemaining}}</p>\n        </div>\n      </div>\n      <!-- end content-inner-holder -->\n      <div class=\"ac25-content-inner-holder without-padding-bottom row\" v-if=\"order.payments_array.length\">\n        <p class=\"big-title sub\"> Listado de pagos</p>\n        <table class=\"standard-table version2\">\n          <thead>\n            <tr>\n              <th>Monto</th>\n              <th>Fecha</th>\n              <th>Medio de Pago</th>\n            </tr>\n          </thead>\n          <tr v-for=\"payment in order.payments_array\" class=\"border-solid\">\n            <td>\n              <p class=\"border-red-bottom\">${{ payment.total_amount }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{ payment.created_at }}</p>\n            </td>\n            <td>\n              <p class=\"border-red-bottom\">{{payment.payment_gateway ? payment.payment_gateway : 'Crédito'}}</p>\n            </td>\n          </tr>\n        </table>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id >= 4 \">\n      <a @click=\"back()\" class=\"ac25-full-black left waves-effect waves-light\">volver</a>\n      <a @click=\"openIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">ingreso pago</a>\n    </footer>\n    <!-- end footer -->\n    <footer class=\"ac25-content-footer\" v-if=\"order.paymentStatus_id < 4 \">\n      <a @click=\"refresh()\" class=\"ac25-full-black left waves-effect waves-light\">refrescar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!--\n    Ventana ingreso de pagos\n    ------------------------\n  -->\n  <div class=\"ac25-content-global\" id=\"windowIngresoPago\">\n    <div class=\"container\">\n      <div class=\"ac25-content-inner-holder padding-bottom-none row\">\n        <h4 class=\"ac25-top-red-text\">INGRESO DE PAGO</h4>\n        <p class=\"ac25-order-number-info\">\n          <span>ORDEN {{order.special_id}}</span>\n          <notification-icon></notification-icon>\n        </p>\n        <img class=\"ac25-top-right-hand ac25-z-1\" src=\"" + __webpack_require__(63) + "\" v-link=\"'call'\" />\n      </div>\n      <div class=\"\">\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"ac25-info-list-content\">\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway1\" value=\"redcompra\">\n                  <label for=\"ingreso_payment_gateway1\" style=\"font-size:30px\">Redcompra</label>\n                  <br />\n                  <br />\n                  <br />\n                  <input type=\"radio\" name=\"ingreso_payment_gateway\" id=\"ingreso_payment_gateway2\" value=\"creditcard\">\n                  <label for=\"ingreso_payment_gateway2\" style=\"font-size:30px\">Tarjeta de crédito</label>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"\" style=\"font-size:30px\">\n                  Ingrese monto de pago\n                  <input type=\"number\" name=\"ingreso_pago_amount\" id=\"ingreso_pago_amount\">\n                </p>\n                <p class=\"\" style=\"font-size:30px\">\n                  Ingrese código de autorización\n                  <input type=\"number\" name=\"ingreso_pago_authorization_code\" id=\"ingreso_pago_authorization_code\">\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col s12\">\n            <ul class=\"ac25-w100\">\n              <li>\n                <p class=\"\">\n                  <div id=\"ec_choose_loading\" style=\"font-size:30px;color:crimson\">Procesando comprobante, espere...</div>\n                  <input type=\"hidden\" name=\"ingreso_pago_voucher_url\" id=\"ingreso_pago_voucher_url\">\n                  <!-- ec_receipt_upload_buttons -->\n                  <div id=\"ec_receipt_upload_buttons\">\n                    <!-- ec_choose_transfer_camera -->\n                    <input type=\"button\" id=\"ec_choose_transfer_camera\" value=\"Fotografiar comprobante\" class=\"ec_receipt_buttons\">\n                    <!-- ec_choose_transfer_file -->\n                    <input type=\"button\" id=\"ec_choose_transfer_file\" value=\"Subir comprobante\" class=\"ec_receipt_buttons\">\n                    <!-- ec_choose_transfer_verify -->\n                    <input type=\"button\" id=\"ec_choose_transfer_verify\" value=\"Verificar comprobante\" @click=\"verifyVoucher()\" class=\"ec_receipt_buttons\">\n                    <!-- ec_choose_transfer_submit -->\n                    <input type=\"button\" id=\"ec_choose_transfer_submit\" value=\"Enviar\" @click=\"processForm()\" class=\"ec_receipt_buttons\">\n                  </div>\n                  <div id=\"ec_choose_image_verify\">\n                    <div id=\"ec_image_verify_img\"></div>\n                    <input type=\"button\" id=\"ec_image_verify_button\" value=\"OK\">\n                  </div>\n                </p>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <!-- end white-holder -->\n      <div class=\"clearfix\"></div>\n    </div>\n    <!-- end container -->\n    <footer class=\"ac25-content-footer\">\n      <a @click=\"closeIngresoPago()\" class=\"ac25-full-black left waves-effect waves-light\">cerrar</a>\n    </footer>\n    <!-- end footer -->\n  </div>\n  <!-- end content-global -->\n";
 
 /***/ },
 /* 112 */

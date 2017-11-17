@@ -104,11 +104,12 @@
               <li>
                 <p class="ac25-info-list-content">
                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway1" value="redcompra">
-                  <label for="ingreso_payment_gateway1" style="font-size:20px">Redcompra</label>
+                  <label for="ingreso_payment_gateway1" style="font-size:30px">Redcompra</label>
+                  <br />
                   <br />
                   <br />
                   <input type="radio" name="ingreso_payment_gateway" id="ingreso_payment_gateway2" value="creditcard">
-                  <label for="ingreso_payment_gateway2" style="font-size:20px">Tarjeta de crédito</label>
+                  <label for="ingreso_payment_gateway2" style="font-size:30px">Tarjeta de crédito</label>
                 </p>
               </li>
             </ul>
@@ -118,11 +119,11 @@
           <div class="col s12">
             <ul class="ac25-w100">
               <li>
-                <p class="" style="font-size:20px">
+                <p class="" style="font-size:30px">
                   Ingrese monto de pago
                   <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
                 </p>
-                <p class="" style="font-size:20px">
+                <p class="" style="font-size:30px">
                   Ingrese código de autorización
                   <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
                 </p>
@@ -135,6 +136,7 @@
             <ul class="ac25-w100">
               <li>
                 <p class="">
+                  <div id="ec_choose_loading" style="font-size:30px;color:crimson">Procesando comprobante, espere...</div>
                   <input type="hidden" name="ingreso_pago_voucher_url" id="ingreso_pago_voucher_url">
                   <!-- ec_receipt_upload_buttons -->
                   <div id="ec_receipt_upload_buttons">
@@ -142,9 +144,6 @@
                     <input type="button" id="ec_choose_transfer_camera" value="Fotografiar comprobante" class="ec_receipt_buttons">
                     <!-- ec_choose_transfer_file -->
                     <input type="button" id="ec_choose_transfer_file" value="Subir comprobante" class="ec_receipt_buttons">
-                  </div>
-                  <!-- ec_receipt_submit_buttons -->
-                  <div id="ec_receipt_submit_buttons">
                     <!-- ec_choose_transfer_verify -->
                     <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()" class="ec_receipt_buttons">
                     <!-- ec_choose_transfer_submit -->
@@ -174,7 +173,7 @@
 <style>
 #ec_choose_image_verify {
   display: none;
-  z-index: 7;
+  z-index: 10;
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -192,7 +191,7 @@
 
 #ec_image_verify_button {
   bottom: 10px;
-  width:  95%;
+  width: 95%;
   height: 50px;
   font-size: 30px;
   position: absolute;
@@ -202,7 +201,7 @@
 .ec_receipt_buttons {
   z-index: 4;
   width: 100%;
-  height: 50px;
+  height: 60px;
   font-size: 30px;
   background-color: rgb(0, 191, 0);
   margin-top: 20px;
