@@ -206,7 +206,7 @@
   z-index: 4;
   width: 100%;
   height: 60px;
-  font-size: 30px;
+  font-size: 40px;
   background-color: rgb(0, 191, 0);
   margin-top: 20px;
 }
@@ -222,6 +222,7 @@
 }
 #ec_choose_transfer_verify {
   background-color: crimson;
+  color: white;
 }
 </style>
 <script>

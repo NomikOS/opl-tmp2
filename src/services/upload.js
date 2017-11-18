@@ -183,19 +183,25 @@ export default {
       payment_type: 'opl',
       authorization_code: form.authorization_code,
       voucher_url: form.voucher_url
-    } ).then( ( response ) => {
-      $( '#ec_receipt_upload_buttons' ).show()
-      $( '#ec_choose_loading' ).hide();
-      $( '#ec_choose_transfer_verify' ).hide()
+    } ).then(
+      ( response ) => {
+        $( '#ec_receipt_upload_buttons' ).show()
+        $( '#ec_choose_loading' ).hide();
+        $( '#ec_choose_transfer_verify' ).hide()
 
-      if ( !response.data || !response.data.success ) {
+        if ( !response.data || !response.data.success ) {
+          alert( 'Pago no procesado' )
+        } else {
+          $( 'input[name="ingreso_payment_gateway"]' ).prop( 'checked', false )
+          $( '#ingreso_pago_voucher_url' ).val( '' )
+          $( '#ingreso_pago_amount' ).val( '' )
+          $( '#ingreso_pago_authorization_code' ).val( '' )
+        }
+      }, ( response ) => {
+        $( '#ec_receipt_upload_buttons' ).show()
+        $( '#ec_choose_loading' ).hide();
+
         alert( 'Pago no procesado' )
-      }
-    }, ( response ) => {
-      $( '#ec_receipt_upload_buttons' ).show()
-      $( '#ec_choose_loading' ).hide();
-
-      alert( 'Pago no procesado' )
-    } )
+      } )
   }
 }
