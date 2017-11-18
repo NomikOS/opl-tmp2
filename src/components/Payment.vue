@@ -145,7 +145,7 @@
                     <!-- ec_choose_transfer_verify -->
                     <input type="button" id="ec_choose_transfer_verify" value="Verificar comprobante" @click="verifyVoucher()" class="ec_receipt_buttons">
                     <!-- ec_choose_transfer_submit -->
-                    <input type="button" id="ec_choose_transfer_submit" value="Enviar" @click="processForm()" class="ec_receipt_buttons">
+                    <input type="button" id="ec_choose_transfer_submit" value="Guardar pago" @click="processForm()" class="ec_receipt_buttons">
                   </div>
                   <div id="ec_choose_image_verify">
                     <div id="ec_image_verify_img"></div>
