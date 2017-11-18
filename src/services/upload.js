@@ -120,6 +120,7 @@ export default {
       console.info( 'receiptUrl', receiptUrl )
       $( '#ingreso_pago_voucher_url' ).val( receiptUrl )
       $( '#ec_choose_transfer_verify' ).show()
+      $( '#ec_choose_transfer_submit' ).show()
     } catch ( e ) {
       return alert( e.message, 'No se ha podido enviar pago' );
     }
@@ -152,7 +153,7 @@ export default {
     form.authorization_code = $( '#ingreso_pago_authorization_code' ).val()
 
     if ( !form.payment_gateway ) {
-      errors.push( 'Ingrese tipo de pago' );
+      errors.push( 'Ingrese Tipo de pago' );
     }
     if ( form.amount === '' || $.isNumeric( form.amount ) === false ) {
       errors.push( 'Ingrese un Monto numérico' );
@@ -188,6 +189,7 @@ export default {
         $( '#ec_receipt_upload_buttons' ).show()
         $( '#ec_choose_loading' ).hide();
         $( '#ec_choose_transfer_verify' ).hide()
+        $( '#ec_choose_transfer_submit' ).hide()
 
         if ( !response.data || !response.data.success ) {
           alert( 'Pago no procesado' )

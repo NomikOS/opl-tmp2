@@ -21068,7 +21068,7 @@
 
 
 	// module
-	exports.push([module.id, "\n#ec_choose_image_verify {\n  display: none;\n  z-index: 10;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  position: absolute;\n  background-color: black;\n}\n\n#ec_image_verify_img {\n  top: 30px;\n  left: 0px;\n  right: 0px;\n  bottom: 150px;\n  position: fixed;\n  overflow: auto;\n}\n\n#ec_image_verify_img img {\n  height: 1060px;\n}\n\n#ec_image_verify_button {\n  bottom: 0px;\n  width: 100%;\n  height: 150px;\n  font-size: 30px;\n  position: fixed;\n  background-color: crimson;\n}\n\n.ec_receipt_buttons {\n  z-index: 4;\n  width: 100%;\n  height: 60px;\n  font-size: 40px;\n  background-color: rgb(0, 191, 0);\n  margin-top: 20px;\n}\n\n.ec_receipt_textbox {\n  font-size: 50px !important;\n  text-align: right;\n}\n\n#ec_choose_transfer_verify,\n#ec_choose_loading {\n  display: none;\n}\n#ec_choose_transfer_verify {\n  background-color: crimson;\n  color: white;\n}\n", ""]);
+	exports.push([module.id, "\n#ec_choose_image_verify {\n  display: none;\n  z-index: 10;\n  top: 0px;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  position: absolute;\n  background-color: black;\n}\n\n#ec_image_verify_img {\n  top: 30px;\n  left: 0px;\n  right: 0px;\n  bottom: 150px;\n  position: fixed;\n  overflow: auto;\n}\n\n#ec_image_verify_img img {\n  height: 1060px;\n}\n\n#ec_image_verify_button {\n  bottom: 0px;\n  width: 100%;\n  height: 150px;\n  font-size: 30px;\n  position: fixed;\n  background-color: crimson;\n}\n\n.ec_receipt_buttons {\n  z-index: 4;\n  width: 100%;\n  height: 60px;\n  font-size: 40px;\n  background-color: aliceblue;\n  margin-top: 20px;\n}\n\n.ec_receipt_textbox {\n  font-size: 50px !important;\n  text-align: right;\n}\n\n#ec_choose_transfer_verify,\n#ec_choose_loading {\n  display: none;\n}\n#ec_choose_transfer_verify {\n  background-color: crimson;\n  color: white;\n}\n#ec_choose_transfer_submit {\n  background-color: rgb(0, 191, 0);\n  color: white;\n}\n", ""]);
 
 	// exports
 
@@ -21335,7 +21335,7 @@
 	//   width: 100%;
 	//   height: 60px;
 	//   font-size: 40px;
-	//   background-color: rgb(0, 191, 0);
+	//   background-color: aliceblue;
 	//   margin-top: 20px;
 	// }
 	//
@@ -21350,6 +21350,10 @@
 	// }
 	// #ec_choose_transfer_verify {
 	//   background-color: crimson;
+	//   color: white;
+	// }
+	// #ec_choose_transfer_submit {
+	//   background-color: rgb(0, 191, 0);
 	//   color: white;
 	// }
 	// </style>
@@ -21586,6 +21590,7 @@
 	      console.info('receiptUrl', receiptUrl);
 	      $('#ingreso_pago_voucher_url').val(receiptUrl);
 	      $('#ec_choose_transfer_verify').show();
+	      $('#ec_choose_transfer_submit').show();
 	    } catch (e) {
 	      return alert(e.message, 'No se ha podido enviar pago');
 	    }
@@ -21616,7 +21621,7 @@
 	    form.authorization_code = $('#ingreso_pago_authorization_code').val();
 
 	    if (!form.payment_gateway) {
-	      errors.push('Ingrese tipo de pago');
+	      errors.push('Ingrese Tipo de pago');
 	    }
 	    if (form.amount === '' || $.isNumeric(form.amount) === false) {
 	      errors.push('Ingrese un Monto numérico');
@@ -21650,6 +21655,7 @@
 	      $('#ec_receipt_upload_buttons').show();
 	      $('#ec_choose_loading').hide();
 	      $('#ec_choose_transfer_verify').hide();
+	      $('#ec_choose_transfer_submit').hide();
 
 	      if (!response.data || !response.data.success) {
 	        alert('Pago no procesado');

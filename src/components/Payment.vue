@@ -207,7 +207,7 @@
   width: 100%;
   height: 60px;
   font-size: 40px;
-  background-color: rgb(0, 191, 0);
+  background-color: aliceblue;
   margin-top: 20px;
 }
 
@@ -222,6 +222,10 @@
 }
 #ec_choose_transfer_verify {
   background-color: crimson;
+  color: white;
+}
+#ec_choose_transfer_submit {
+  background-color: rgb(0, 191, 0);
   color: white;
 }
 </style>
