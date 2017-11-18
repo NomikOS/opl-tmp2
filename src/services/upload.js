@@ -67,6 +67,8 @@ export default {
     var ft = new FileTransfer();
     var options = new FileUploadOptions();
     var url = 'http://api2.transloadit.com/assemblies';
+    var that = this
+    var params = {}
 
     $( '#ec_receipt_upload_buttons' ).hide()
     $( '#ec_choose_loading' ).show();
@@ -90,12 +92,10 @@ export default {
           background: '#000000'
         },
       }
-    };
+    }
 
-    var that = this
-    var params = {};
-    params.params = paramsVariable;
-    options.params = params;
+    params.params = paramsVariable
+    options.params = params
 
     ft.upload( imageURI, encodeURI( url ), function( r ) {
       var assembly = JSON.parse( r.response )
@@ -121,6 +121,7 @@ export default {
       var receiptUrl = assembly.uploads[ 0 ].url;
       console.info( 'receiptUrl', receiptUrl )
       $( '#ingreso_pago_voucher_url' ).val( receiptUrl )
+      $( '#ec_choose_transfer_verify' ).show()
     } catch ( e ) {
       return alert( e.message, 'No se ha podido enviar pago' );
     }

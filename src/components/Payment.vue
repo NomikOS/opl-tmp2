@@ -46,7 +46,7 @@
         </div>
       </div>
       <!-- end content-inner-holder -->
-      <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array.length">
+      <div class="ac25-content-inner-holder without-padding-bottom row" v-if="order.payments_array.length" style="margin-top: -50px">
         <p class="big-title sub"> Listado de pagos</p>
         <table class="standard-table version2">
           <thead>
@@ -121,7 +121,7 @@
               <li>
                 <p class="" style="font-size:30px">
                   Ingrese monto de pago
-                  <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount">
+                  <input type="number" name="ingreso_pago_amount" id="ingreso_pago_amount" class="ec_receipt_textbox">
                 </p>
                 <p class="" style="font-size:30px">
                   Ingrese código de autorización
@@ -184,17 +184,22 @@
 
 #ec_image_verify_img {
   top: 30px;
-  left: 10px;
-  right: 10px;
+  left: 0px;
+  right: 0px;
+  bottom: 150px;
   position: absolute;
 }
 
+#ec_image_verify_img img {
+  height: 1060px;
+}
+
 #ec_image_verify_button {
-  bottom: 10px;
-  width: 95%;
-  height: 50px;
+  bottom: 0px;
+  width: 100%;
+  height: 150px;
   font-size: 30px;
-  position: absolute;
+  position: fixed;
   background-color: crimson;
 }
 
@@ -205,6 +210,11 @@
   font-size: 30px;
   background-color: rgb(0, 191, 0);
   margin-top: 20px;
+}
+
+.ec_receipt_textbox {
+  font-size: 50px;
+  text-align: right;
 }
 </style>
 <script>
