@@ -220,6 +220,9 @@
 #ec_choose_loading {
   display: none;
 }
+#ec_choose_transfer_verify {
+  background-color: crimson;
+}
 </style>
 <script>
 import {

@@ -186,8 +186,7 @@ export default {
     } ).then( ( response ) => {
       $( '#ec_receipt_upload_buttons' ).show()
       $( '#ec_choose_loading' ).hide();
-
-      console.info('>>>>', response)
+      $( '#ec_choose_transfer_verify' ).hide()
 
       if ( !response.data || !response.data.success ) {
         alert( 'Pago no procesado' )
