@@ -11,7 +11,7 @@
         </p>
         <img class="ac25-top-right-hand ac25-z-1" src="html/images/hand-black.png" v-link="'call'" />
       </div>
-      <div class="ac25-content-inner-holder without-padding-bottom row">
+      <div class="ac25-content-inner-holder without-padding-bottom row" style="margin-top: -30px">
         <div class="row">
           <div class="col s12">
             <ul class="ac25-info-list ac25-w100">
@@ -73,13 +73,11 @@
       <div class="clearfix"></div>
     </div>
     <!-- end container -->
-    <footer class="ac25-content-footer" v-if="order.paymentStatus_id >= 4 ">
-      <a @click="back()" class="ac25-full-black left waves-effect waves-light">volver</a>
-      <a @click="openIngresoPago()" class="ac25-full-black left waves-effect waves-light">ingreso pago</a>
-    </footer>
     <!-- end footer -->
-    <footer class="ac25-content-footer" v-if="order.paymentStatus_id < 4 ">
-      <a @click="refresh()" class="ac25-full-black left waves-effect waves-light">refrescar</a>
+    <footer class="ac25-content-footer">
+      <a @click="openIngresoPago()" class="ac25-full-black left waves-effect waves-light" style="padding:20px">ingreso pago</a>
+      <a @click="refresh()" class="ac25-full-black left waves-effect waves-light" style="padding:20px">refrescar</a>
+      <a @click="back()" class="ac25-full-black left waves-effect waves-light" style="padding:20px">volver</a>
     </footer>
     <!-- end footer -->
   </div>
@@ -218,7 +216,8 @@
   text-align: right;
 }
 
-#ec_choose_transfer_verify, #ec_choose_loading {
+#ec_choose_transfer_verify,
+#ec_choose_loading {
   display: none;
 }
 </style>
@@ -295,8 +294,7 @@ export default {
 
       this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-request-order').then((response) => {
         ModalWait.showIt(false)
-        if (response.data && response.data.success) {
-        }
+        if (response.data && response.data.success) {}
       }, (response) => {
         console.info(response, 'error callback')
       })
