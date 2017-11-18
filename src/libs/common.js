@@ -14,18 +14,7 @@ export const credentials = {
 }
 
 var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
-// var APP_ENV = 'production'
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var APP_ENV = 'production'
 console.info('APP_ENV', APP_ENV);
 
 var urls2 = {}
