@@ -129,7 +129,7 @@
             </ul>
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: -100px">
           <div class="col s12">
             <ul class="ac25-w100">
               <li>
