@@ -188,6 +188,7 @@
   right: 0px;
   bottom: 150px;
   position: fixed;
+  overflow: auto;
 }
 
 #ec_image_verify_img img {
@@ -217,7 +218,7 @@
   text-align: right;
 }
 
-#ec_choose_transfer_verify {
+#ec_choose_transfer_verify, #ec_choose_loading {
   display: none;
 }
 </style>

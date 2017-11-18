@@ -189,7 +189,7 @@ export default {
 
       console.info('>>>>', response)
 
-      if ( !response || !response.success ) {
+      if ( !response.data || !response.data.success ) {
         alert( 'Pago no procesado' )
       }
     }, ( response ) => {
