@@ -291,25 +291,18 @@ export default {
       }
 
       ModalWait.showIt(true, 'refresh-order')
-
       var vehicleSelected = setup.vehicleSelected
 
       this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-request-order').then((response) => {
-
         ModalWait.showIt(false)
-
         if (response.data && response.data.success) {
-          /////
         }
-
       }, (response) => {
-        console.info(response, 'error callback');
-      });
-
+        console.info(response, 'error callback')
+      })
     },
 
     back() {
-      console.info(this.addressType);
       return this.$route.router.go('/event-' + this.addressType)
     },
 
@@ -333,6 +326,7 @@ export default {
       $w1.show()
       var $w2 = $('#windowIngresoPago')
       $w2.hide()
+      this.reload()
     }
   },
   ready: function() {
@@ -343,8 +337,7 @@ export default {
     /**
      * open siempre ventana prncipal
      */
-    // this.closeIngresoPago()
-    this.openIngresoPago()
+    this.closeIngresoPago()
   },
   computed: {
     infoName: function() {

@@ -21395,22 +21395,16 @@
 	      }
 
 	      _ModalWait2.default.showIt(true, 'refresh-order');
-
 	      var vehicleSelected = setup.vehicleSelected;
 
 	      this.$http.get(MICRO_API_URL + '/vehicle/' + vehicleSelected + '/opl-request-order').then(function (response) {
-
 	        _ModalWait2.default.showIt(false);
-
-	        if (response.data && response.data.success) {
-	          /////
-	        }
+	        if (response.data && response.data.success) {}
 	      }, function (response) {
 	        console.info(response, 'error callback');
 	      });
 	    },
 	    back: function back() {
-	      console.info(this.addressType);
 	      return this.$route.router.go('/event-' + this.addressType);
 	    },
 	    processForm: function processForm() {
@@ -21430,6 +21424,7 @@
 	      $w1.show();
 	      var $w2 = $('#windowIngresoPago');
 	      $w2.hide();
+	      this.reload();
 	    }
 	  },
 	  ready: function ready() {
@@ -21440,8 +21435,7 @@
 	    /**
 	     * open siempre ventana prncipal
 	     */
-	    // this.closeIngresoPago()
-	    this.openIngresoPago();
+	    this.closeIngresoPago();
 	  }
 	}, 'computed', {
 	  infoName: function infoName() {
