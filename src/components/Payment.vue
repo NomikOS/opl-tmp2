@@ -205,7 +205,7 @@
 .ec_receipt_buttons {
   z-index: 4;
   width: 100%;
-  height: 60px;
+  height: 40px;
   font-size: 40px;
   background-color: aliceblue;
   margin-top: 20px;
