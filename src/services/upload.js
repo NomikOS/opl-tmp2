@@ -17,8 +17,6 @@ export default {
   max_size: 1048576 * 10,
 
   init() {
-    $( '#ec_receipt_upload_buttons' ).show()
-    $( '#ec_choose_loading' ).hide();
     var that = this
 
     $( '#ec_choose_transfer_camera' ).on( 'click', function() {
@@ -139,10 +137,6 @@ export default {
     $( '#ec_image_verify_button' ).click( function() {
       $( '#ec_choose_image_verify' ).hide();
     } )
-
-    $( '#ec_choose_transfer_submit' ).off( 'click' ).on( 'click', function() {
-      that.processForm();
-    } )
   },
 
   processForm( order_id ) {
@@ -154,7 +148,6 @@ export default {
 
     form.payment_gateway = $( 'input[name="ingreso_payment_gateway"]:checked' ).val()
     form.voucher_url = $( '#ingreso_pago_voucher_url' ).val()
-    // form.voucher_url = 'xxxxxxxxxxxxx'
     form.amount = $( '#ingreso_pago_amount' ).val()
     form.authorization_code = $( '#ingreso_pago_authorization_code' ).val()
 
@@ -181,6 +174,8 @@ export default {
   },
 
   send( form ) {
+    $( '#ec_receipt_upload_buttons' ).hide()
+    $( '#ec_choose_loading' ).show();
     Vue.http.post( MICRO_API_URL + '/payment/mobile-store', {
       order_id: form.order_id,
       amount: form.amount,
@@ -189,10 +184,18 @@ export default {
       authorization_code: form.authorization_code,
       voucher_url: form.voucher_url
     } ).then( ( response ) => {
+      $( '#ec_receipt_upload_buttons' ).show()
+      $( '#ec_choose_loading' ).hide();
+
+      console.info('>>>>', response)
+
       if ( !response || !response.success ) {
         alert( 'Pago no procesado' )
       }
     }, ( response ) => {
+      $( '#ec_receipt_upload_buttons' ).show()
+      $( '#ec_choose_loading' ).hide();
+
       alert( 'Pago no procesado' )
     } )
   }

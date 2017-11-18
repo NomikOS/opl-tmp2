@@ -125,7 +125,7 @@
                 </p>
                 <p class="" style="font-size:30px">
                   Ingrese código de autorización
-                  <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code">
+                  <input type="number" name="ingreso_pago_authorization_code" id="ingreso_pago_authorization_code" class="ec_receipt_textbox">
                 </p>
               </li>
             </ul>
@@ -187,7 +187,7 @@
   left: 0px;
   right: 0px;
   bottom: 150px;
-  position: absolute;
+  position: fixed;
 }
 
 #ec_image_verify_img img {
@@ -213,8 +213,12 @@
 }
 
 .ec_receipt_textbox {
-  font-size: 50px;
+  font-size: 50px !important;
   text-align: right;
+}
+
+#ec_choose_transfer_verify {
+  display: none;
 }
 </style>
 <script>
