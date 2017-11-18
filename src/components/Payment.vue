@@ -217,13 +217,16 @@
 }
 
 #ec_choose_transfer_verify,
-#ec_choose_loading {
+#ec_choose_loading,
+#ec_choose_transfer_submit {
   display: none;
 }
+
 #ec_choose_transfer_verify {
   background-color: crimson;
   color: white;
 }
+
 #ec_choose_transfer_submit {
   background-color: rgb(0, 191, 0);
   color: white;
