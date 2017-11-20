@@ -16,9 +16,20 @@ export default {
 
   startGpsReporting() {
 
-    if ( !navigator.geolocation ) {
-      return alert( 'Geolocalización no disponible. Reinicie aplicación o informe a la central' )
-    }
+    // if ( !navigator.geolocation ) {
+    //   return alert( 'Geolocalización no disponible. Reinicie aplicación o informe a la central' )
+    // }
+
+    cordova.plugins.diagnostic.isGpsLocationEnabled( function( enabled ) {
+      console.log( "GPS location is " + ( enabled ? "enabled" : "disabled" ) );
+      if ( !enabled ) {
+        if ( window.confirm( 'GPS no activo. Confirme para ir a panel activación.' ) ) {
+          cordova.plugins.diagnostic.switchToLocationSettings();
+        }
+      }
+    }, function( error ) {
+      console.error( "isGpsLocationEnabled error: " + error );
+    } );
 
     var currPos = {}
     var that = this
