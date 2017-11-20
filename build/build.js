@@ -11342,8 +11342,13 @@
 	};
 
 	var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production';
+
+	/**
+	 * Set environment
+	 */
 	var APP_ENV = 'production';
 	var APP_ENV = 'testing';
+
 	console.info('APP_ENV', APP_ENV);
 
 	var urls2 = {};
@@ -11583,20 +11588,9 @@
 
 	  startGpsReporting: function startGpsReporting() {
 
-	    // if ( !navigator.geolocation ) {
-	    //   return alert( 'Geolocalización no disponible. Reinicie aplicación o informe a la central' )
-	    // }
-
-	    cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
-	      console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
-	      if (!enabled) {
-	        if (window.confirm('GPS no activo. Confirme para ir a panel activación.')) {
-	          cordova.plugins.diagnostic.switchToLocationSettings();
-	        }
-	      }
-	    }, function (error) {
-	      console.error("isGpsLocationEnabled error: " + error);
-	    });
+	    if (!navigator.geolocation) {
+	      return alert('Geolocalización no disponible. Reinicie aplicación o informe a la central');
+	    }
 
 	    var currPos = {};
 	    var that = this;
