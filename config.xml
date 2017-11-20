@@ -67,11 +67,6 @@
     <gap:plugin name="org.apache.cordova.vibration" source="npm" />
  -->
 
-<!--     <plugin name="cordova-plugin-camera" spec="~3.0.0" />
-    <plugin name="cordova-plugin-device" spec="~1.1.7" />
-    <plugin name="cordova-plugin-file" spec="~5.0.0" />
-    <plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
-    <plugin name="cordova-plugin-geolocation" spec="~3.0.0" /> ultimos --> 
     <plugin name="cordova-plugin-geolocation" spec="~2.4.3" />
     <plugin name="cordova-plugin-camera" spec="~0.3.6" />
     <plugin name="cordova-plugin-file" spec="~1.3.3" />
@@ -85,7 +80,7 @@
     <!-- <plugin name="it.zenitlab.cordova.plugins.zbtprinter" spec="1.0" source="pgb" /> -->
     <gap:plugin name="cordova-plugin-zbtprinter" source="npm" />
     <gap:plugin name="cordova-plugin-uniquedeviceid" source="npm" />
-    <gap:plugin name="cordova.plugins.diagnostic" source="npm" />
+    <plugin name="cordova.plugins.diagnostic" source="npm" />
 
     <!-- Define app icon for each platform. -->
     <icon src="res/icon.png" />
