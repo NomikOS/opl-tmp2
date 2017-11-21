@@ -18,7 +18,7 @@ var APP_ENV = typeof window.plugins == 'undefined' ? 'testing' : 'production'
 /**
  * Set environment
  */
-var APP_ENV = 'production'
+// var APP_ENV = 'production'
 var APP_ENV = 'testing'
 
 console.info('APP_ENV', APP_ENV);
