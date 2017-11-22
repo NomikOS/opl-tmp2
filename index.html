@@ -32,12 +32,6 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-</head>
-<body>
-	<div id="app"></div>
-
-	<script type="text/javascript" src="cordova.js"></script>
-	<script src="build/build.js"></script>
 	<script type="text/javascript">
 	function onDeviceReady2() {
 		console.info( navigator.camera )
@@ -48,5 +42,11 @@
 	// document.addEventListener("deviceready", onDeviceReady2, false);
 	</script>
 	<script src="http://10.10.59.101:8081/target/target-script-min.js"></script>
+</head>
+<body>
+	<div id="app"></div>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="build/build.js"></script>
 </body>
 </html>
