@@ -118,4 +118,7 @@
     	<allow-intent href="market:*" />
     </platform>
 
+    <allow-intent href="*" />
+    <allow-navigation href="*" />    
+
 </widget>
