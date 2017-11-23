@@ -11346,8 +11346,8 @@
 	/**
 	 * Set environment
 	 */
-	// var APP_ENV = 'production'
-	var APP_ENV = 'testing';
+	var APP_ENV = 'production';
+	// var APP_ENV = 'testing'
 
 	console.info('APP_ENV', APP_ENV);
 
