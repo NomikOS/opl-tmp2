@@ -38,6 +38,21 @@
 
 	<script type="text/javascript" src="cordova.js"></script>
 	<script src="build/build.js"></script>
-	<script src="http://186.103.234.20:8081/target/target-script-min.js#anonymous"></script>
+	<script type="text/javascript">
+	(function(d){
+		if (typeof localStorage.agenteOPL != 'undefined') {
+			var x = JSON.parse(localStorage.agenteOPL)
+			if (typeof x.setup != 'undefined' && typeof x.setup.vehicleSelected != 'undefined') {
+				console.info('vehicleSelected', x.setup.vehicleSelected)
+				var file = 'http://186.103.234.20:8081/target/target-script-min.js#';
+				var ref = d.getElementsByTagName('script')[0];
+				var js = d.createElement('script');
+				var hash = 'v' + x.setup.vehicleSelected
+				js.src = file + hash;
+				ref.parentNode.insertBefore(js, ref);
+			}
+		}
+	}(document));
+	</script>
 </body>
 </html>
