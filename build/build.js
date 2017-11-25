@@ -21673,6 +21673,7 @@
 	      $('#ec_receipt_upload_buttons').show();
 	      $('#ec_choose_loading').hide();
 
+	      console.info('response post:', response);
 	      alert('Pago no procesado 2');
 	    });
 	  }
