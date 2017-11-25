@@ -199,6 +199,7 @@ export default {
         if ( !response.data || !response.data.success ) {
           alert( 'Pago no procesado 1' )
         } else {
+          alert( 'Pago procesado OK' )
           $( 'input[name="ingreso_payment_gateway"]' ).prop( 'checked', false )
           $( '#ingreso_pago_voucher_url' ).val( '' )
           $( '#ingreso_pago_amount' ).val( '' )
