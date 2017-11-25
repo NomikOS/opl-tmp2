@@ -51,7 +51,8 @@ export default {
         }, {
           quality: 50,
           destinationType: navigator.camera.DestinationType.FILE_URI,
-          sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+          sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+          saveToPhotoAlbum: false
         }
       )
     } )
@@ -177,7 +178,11 @@ export default {
   send( form ) {
     $( '#ec_receipt_upload_buttons' ).hide()
     $( '#ec_choose_loading' ).show();
-    Vue.http.post( MICRO_API_URL + '/payment/mobile-store', {
+    var url = MICRO_API_URL + '/payment/mobile-store'
+    console.info('url para pagar:', url)
+    console.info('form para pagar:', form)
+
+    Vue.http.post( url, {
       order_id: form.order_id,
       amount: form.amount,
       payment_gateway: form.payment_gateway,
@@ -192,7 +197,7 @@ export default {
         $( '#ec_choose_transfer_submit' ).hide()
 
         if ( !response.data || !response.data.success ) {
-          alert( 'Pago no procesado' )
+          alert( 'Pago no procesado 1' )
         } else {
           $( 'input[name="ingreso_payment_gateway"]' ).prop( 'checked', false )
           $( '#ingreso_pago_voucher_url' ).val( '' )
@@ -203,7 +208,7 @@ export default {
         $( '#ec_receipt_upload_buttons' ).show()
         $( '#ec_choose_loading' ).hide();
 
-        alert( 'Pago no procesado' )
+        alert( 'Pago no procesado 2' )
       } )
   }
 }

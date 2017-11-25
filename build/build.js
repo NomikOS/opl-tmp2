@@ -11346,8 +11346,8 @@
 	/**
 	 * Set environment
 	 */
-	var APP_ENV = 'production';
-	// var APP_ENV = 'testing'
+	// var APP_ENV = 'production'
+	var APP_ENV = 'testing';
 
 	console.info('APP_ENV', APP_ENV);
 
@@ -21521,7 +21521,8 @@
 	      }, {
 	        quality: 50,
 	        destinationType: navigator.camera.DestinationType.FILE_URI,
-	        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+	        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+	        saveToPhotoAlbum: false
 	      });
 	    });
 	  },
@@ -21643,7 +21644,11 @@
 	  send: function send(form) {
 	    $('#ec_receipt_upload_buttons').hide();
 	    $('#ec_choose_loading').show();
-	    _vue2.default.http.post(MICRO_API_URL + '/payment/mobile-store', {
+	    var url = MICRO_API_URL + '/payment/mobile-store';
+	    console.info('url para pagar:', url);
+	    console.info('form para pagar:', form);
+
+	    _vue2.default.http.post(url, {
 	      order_id: form.order_id,
 	      amount: form.amount,
 	      payment_gateway: form.payment_gateway,
@@ -21657,7 +21662,7 @@
 	      $('#ec_choose_transfer_submit').hide();
 
 	      if (!response.data || !response.data.success) {
-	        alert('Pago no procesado');
+	        alert('Pago no procesado 1');
 	      } else {
 	        $('input[name="ingreso_payment_gateway"]').prop('checked', false);
 	        $('#ingreso_pago_voucher_url').val('');
@@ -21668,7 +21673,7 @@
 	      $('#ec_receipt_upload_buttons').show();
 	      $('#ec_choose_loading').hide();
 
-	      alert('Pago no procesado');
+	      alert('Pago no procesado 2');
 	    });
 	  }
 	};
